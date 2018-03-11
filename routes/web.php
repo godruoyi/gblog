@@ -11,10 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::group(['as' => 'admin.', 'domain' => config('app.admin_domain')], function () {
+    Route::view('login', 'admin.login')->name('login');
+    Route::post('login', 'Auth\LoginController@login')->name('login.submit');
+    Route::post('logout', 'Auth\LoginController@login')->name('logout');
 
-Route::get('admin', function () {
-    return view('admin.login');
+    Route::group(['middleware' => 'auth.admin'], function () {
+        Route::view('/', 'admin.index')->name('index');
+
+        Route::resource('users', 'Admin\UserController');
+        Route::resource('categories', 'Admin\CategoryController');
+        Route::resource('posts', 'Admin\PostController');
+    });
 });

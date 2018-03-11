@@ -19,12 +19,13 @@
                         <div class="Card SignContainer-content">
                             <div class="SignContainer-inner">
                                 <div class="Login-content">
-                                    <form novalidate="" class="SignFlow">
+                                    <form action="{{ route('admin.login.submit') }}" class="SignFlow" method="post">
+                                        {{ csrf_field() }}
                                         <div class="SignFlow-account">
                                             <div class="SignFlow-supportedCountriesSelectContainer"></div>
                                             <div class="SignFlowInput SignFlow-accountInputContainer">
                                                 <div class="SignFlow-accountInput Input-wrapper">
-                                                    <input type="text" value="" name="username" class="Input" placeholder="手机号或邮箱">
+                                                    <input type="text" value="" name="email" class="Input" placeholder="手机号或邮箱">
                                                 </div>
                                                 {{-- <div class="SignFlowInput-errorMask undefined SignFlowInput-requiredErrorMask">请输入手机号或邮箱</div> --}}
                                             </div>

@@ -2,6 +2,8 @@
 
 return [
 
+    'admin_domain' => env('ADMIN_DOMAIN', 'admin.godruoyi.com'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Name

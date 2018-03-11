@@ -10,13 +10,16 @@
             </ol>
         </div>
         <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown profile">
-                <a href="#" class="dropdown-toggle text-right" data-toggle="dropdown" role="button" aria-expanded="false"><img src="http://youlejia.test/storage/users/default.png" class="profile-img"> <span class="caret"></span></a>
+            <li class="dropdown profile" id="show-profile-modal">
+                <a href="#" class="dropdown-toggle text-right" data-toggle="dropdown" role="button" aria-expanded="false">
+                    <img src="{{ Auth::user()->avatar ?? 'http://youlejia.test/storage/users/default.png' }}" class="profile-img">
+                    <span class="caret"></span>
+                </a>
                 <ul class="dropdown-menu dropdown-menu-animated">
                     <li class="profile-img">
-                        <img src="http://youlejia.test/storage/users/default.png" class="profile-img">
+                        <img src="{{ Auth::user()->avatar ?? 'http://youlejia.test/storage/users/default.png' }}" class="profile-img">
                         <div class="profile-body">
-                            <h5>admin</h5>
+                            <h5>{{ Auth::user()->name }}</h5>
                             <h6></h6>
                         </div>
                     </li>
@@ -24,21 +27,21 @@
                     <li class="class-full-of-rum">
                         <a href="http://youlejia.test/admin/profile">
                             <i class="voyager-person"></i>
-                            Profile
+                            个人信息
                         </a>
                     </li>
                     <li>
                         <a href="/" target="_blank">
                             <i class="voyager-home"></i>
-                            Home
+                            前台站点
                         </a>
                     </li>
                     <li>
-                    <form action="http://youlejia.test/admin/logout" method="POST">
-                        <input type="hidden" name="_token" value="Qz3apRY7Y34LiGCUMC7BjXLpBrmsgaj8bUDLkI0U">
+                    <form action="{{ route('admin.logout') }}" method="POST">
+                        {{ csrf_field() }}
                         <button type="submit" class="btn btn-danger btn-block">
                             <i class="voyager-power"></i>
-                            Logout
+                            退出
                         </button>
                     </form>
                     </li>
@@ -47,3 +50,11 @@
         </ul>
     </div>
 </nav>
+
+@section('javascript')
+    <script>
+        $('#show-profile-modal .dropdown-toggle').click(function () {
+            $('#show-profile-modal').toggleClass('open')
+        });
+    </script>
+@endsection

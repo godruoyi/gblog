@@ -11,20 +11,24 @@
 </head>
 <body class="voyager">
     @include('admin.layouts.loader')
-    
+
     <div class="app-container expanded no-animation">
         <div class="fadetoblack visible-xs"></div>
         <div class="row content-container">
             @include('admin.layouts.header')
             @include('admin.layouts.sidebar')
-            
+
             <div class="container-fluid">
-                @yield('content')
+                <div class="side-body padding-top">
+                    <div class="voyager-notifications"></div>
+                    @yield('content')
+                </div>
             </div>
         </div>
     </div>
 
     @include('admin.layouts.footer')
-
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    @yield('javascript')
 </body>
 </html>
