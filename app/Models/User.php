@@ -29,7 +29,7 @@ class User extends Authenticatable
 
     /**
      * The user post list
-     * 
+     *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function posts()

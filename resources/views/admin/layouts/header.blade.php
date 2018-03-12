@@ -50,11 +50,3 @@
         </ul>
     </div>
 </nav>
-
-@section('javascript')
-    <script>
-        $('#show-profile-modal .dropdown-toggle').click(function () {
-            $('#show-profile-modal').toggleClass('open')
-        });
-    </script>
-@endsection

@@ -2,11 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Admin</title>
+    <title>@yield('title', '首页') | dddddddddddddddddd-d-d-d-d-d-d-</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
-    <link rel="stylesheet" href="{{ asset('vendor/css/app.css') }}">
-
+    <link rel="stylesheet" href="/vendor/css/app.css">
+    <style type="text/css">
+        .voyager .alert {margin: 10px auto;}
+        .voyager .alert.alert-success {
+            border-radius: 0px;
+            padding: 20px;
+            margin-bottom: 20px;
+            line-height: 26px;
+            border: none;
+            background-color: #E5F9E7;
+            color: #1EBC30;
+            box-shadow: 0 0 0 1px #1EBC30 inset, 0 0 0 0 transparent;
+        }
+        .voyager .alert.alert-danger {
+            background-color: #f2dede;
+            color: #a94442;
+        }
+    </style>
     @yield('styles')
 </head>
 <body class="voyager">
@@ -20,7 +36,9 @@
 
             <div class="container-fluid">
                 <div class="side-body padding-top">
-                    <div class="voyager-notifications"></div>
+                    <div class="col-md-12">
+                        @include('flash::message')
+                    </div>
                     @yield('content')
                 </div>
             </div>
@@ -28,7 +46,8 @@
     </div>
 
     @include('admin.layouts.footer')
-    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ mix('js/admin.js') }}"></script>
+    {{-- <script type="text/javascript" src="{{ mix('js/admin-vendor.js') }}"></script> --}}
     @yield('javascript')
 </body>
 </html>

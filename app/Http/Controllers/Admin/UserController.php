@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Storage;
 use App\Models\User;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\UserRequest;
 
 class UserController extends Controller
 {
@@ -15,6 +16,7 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
+        flash('Welcome Aboard!')->error();
         $users = User::withCount('posts')->paginate();
 
         return view('admin.users.index')->with(compact('users'));
@@ -36,9 +38,11 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
-        //
+        $user = User::create($request->prepareStoreUser());
+
+        return redirect(route('admin.users.show', $user->id));
     }
 
     /**
@@ -70,9 +74,13 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserRequest $request, $id)
     {
-        //
+        User::findOrFail($id)->update($request->prepareUpdateUser());
+
+        Flash::success();
+
+        return $this->success(route('admin.users.show', $id), '更新成功');
     }
 
     /**
@@ -84,11 +92,11 @@ class UserController extends Controller
     public function destroy($id)
     {
         if ($id == 1) {
-            return $this->error();
+            return $this->error('不能删除 ID 为 1 的用户！');
         }
 
         User::findOrFail($id)->delete();
 
-        return $this->success();
+        return $this->success('删除成功');
     }
 }

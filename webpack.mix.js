@@ -11,5 +11,13 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css');
+mix.js('resources/assets/js/admin.js', 'public/js/admin.js');
+    // .scripts([
+    //     'resources/assets/js/vendor/bootstrap-notify.min.js'
+    // ], 'public/js/admin-vendor.js');
+
+if (mix.inProduction()) {
+    mix.version();
+}
+
+// mix.disableNotifications();
