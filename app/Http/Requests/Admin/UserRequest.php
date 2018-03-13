@@ -20,12 +20,12 @@ class UserRequest extends FormRequest
 
         switch ($this->method()) {
             case 'POST':
-                $rules['password'] = 'required|min:6|max:20|confirmed';
                 $rules['email'] = 'required|email|unique:users,email';
+                $rules['password'] = 'required|min:6|max:20|confirmed';
                 break;
             case 'PUT':
-                $rules['password'] = 'min:6|max:20|confirmed';
                 $rules['email'] = ['required', 'email', Rule::unique('users')->ignore($this->route('user'))];
+                $rules['password'] = 'min:6|max:20|confirmed';
                 break;
             default:
                 return [];
@@ -36,5 +36,10 @@ class UserRequest extends FormRequest
 
     public function prepareStoreUser($value = '')
     {
+    }
+
+    public function prepareUpdateUser($value = '')
+    {
+        # code...
     }
 }

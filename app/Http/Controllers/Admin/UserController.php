@@ -16,8 +16,7 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        flash('Welcome Aboard!')->error();
-        $users = User::withCount('posts')->paginate();
+        $users = User::withCount('posts')->paginate(2);
 
         return view('admin.users.index')->with(compact('users'));
     }
@@ -41,6 +40,8 @@ class UserController extends Controller
     public function store(UserRequest $request)
     {
         $user = User::create($request->prepareStoreUser());
+
+        flash('新增用户成功！')->success();
 
         return redirect(route('admin.users.show', $user->id));
     }
@@ -78,7 +79,7 @@ class UserController extends Controller
     {
         User::findOrFail($id)->update($request->prepareUpdateUser());
 
-        Flash::success();
+        flash('更新用户成功！')->success();
 
         return $this->success(route('admin.users.show', $id), '更新成功');
     }
@@ -87,16 +88,19 @@ class UserController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         if ($id == 1) {
-            return $this->error('不能删除 ID 为 1 的用户！');
+            flash('不能删除 ID 为 1 的用户！')->error();
+        } else {
+            User::findOrFail($id)->delete();
+
+            flash('删除成功！')->success();
         }
 
-        User::findOrFail($id)->delete();
-
-        return $this->success('删除成功');
+        return redirect(route('admin.users.index'));
     }
 }
