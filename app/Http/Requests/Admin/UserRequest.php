@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Admin;
 
 use Illuminate\Validation\Rule;
+use App\Handlers\ImageUploadHandler;
 
 class UserRequest extends FormRequest
 {
@@ -25,7 +26,8 @@ class UserRequest extends FormRequest
                 break;
             case 'PUT':
                 $rules['email'] = ['required', 'email', Rule::unique('users')->ignore($this->route('user'))];
-                $rules['password'] = 'min:6|max:20|confirmed';
+                $rules['password'] = 'nullable|min:6|max:20|confirmed';
+                $rules['avatar']   = 'nullable|file';
                 break;
             default:
                 return [];
@@ -34,12 +36,35 @@ class UserRequest extends FormRequest
         return $rules;
     }
 
-    public function prepareStoreUser($value = '')
+    /**
+     * Prepare store user data
+     *
+     * @return array
+     */
+    public function prepareStoreUser(): array
     {
+        $path = app(ImageUploadHandler::class)->resize(200)->upload($this->file('avatar'), 'users');
+
+        $datas = $this->validated();
+        $datas['avatar'] = $path;
+
+        return $datas;
     }
 
-    public function prepareUpdateUser($value = '')
+    /**
+     * Prepare update user data
+     *
+     * @return array
+     */
+    public function prepareUpdateUser(): array
     {
-        # code...
+        $datas = $this->validated();
+
+        if ($file = $this->file('avatar')) {
+            $path = app(ImageUploadHandler::class)->resize(200)->upload($file, 'users');
+            $datas['avatar'] = $path;
+        }
+
+        return array_filter($datas);
     }
 }

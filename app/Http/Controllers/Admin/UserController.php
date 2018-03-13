@@ -81,7 +81,7 @@ class UserController extends Controller
 
         flash('更新用户成功！')->success();
 
-        return $this->success(route('admin.users.show', $id), '更新成功');
+        return redirect(route('admin.users.show', $id));
     }
 
     /**
