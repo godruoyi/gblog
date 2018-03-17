@@ -22,5 +22,7 @@ Route::group(['as' => 'admin.', 'domain' => config('app.admin_domain')], functio
         Route::resource('users', 'Admin\UserController');
         Route::resource('categories', 'Admin\CategoryController');
         Route::resource('posts', 'Admin\PostController');
+
+        Route::name('upload.sieditor')->post('sieditor/imageupload', 'Admin\PostController@sieditorUpload');
     });
 });

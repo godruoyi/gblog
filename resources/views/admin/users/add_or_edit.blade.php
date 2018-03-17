@@ -69,11 +69,8 @@
                                     <input type="file" class="form-control" name="avatar" id="avatar">
                                 </div>
                             </div>
+                            <button type="submit" class="col-md-offset-2 btn btn-primary"> 保 存</button>
                         </div><!-- panel-body -->
-
-                        <div class="panel-footer">
-                            <button type="submit" class="btn btn-primary"> 保 存</button>
-                        </div>
                     </form>
                 </div>
             </div>

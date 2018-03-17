@@ -51,7 +51,7 @@
                 </a>
             </li>
 
-            <!-- <li class="dropdown">
+            {{-- <li class="dropdown">
                 <a href="#fu-wu-xiang-mu-dropdown-element" data-toggle="collapse" aria-expanded="false" target="_self">
                     <span class="icon voyager-person"></span>
                     <span class="title">服务项目</span>
@@ -74,7 +74,7 @@
                         </ul>
                     </div>
                 </div>
-            </li> -->
+            </li> --}}
             <li class="">
                 <a href="#" target="_self">
                     <span class="icon voyager-settings"></span>

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\CategoryRequest;
 
 class CategoryController extends Controller
 {
@@ -14,7 +16,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::withCount('posts')->paginate();
+
+        return view('admin.categories.index')->with(compact('categories'));
     }
 
     /**
@@ -24,7 +28,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.categories.add_or_edit');
     }
 
     /**
@@ -33,9 +37,17 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
-        //
+        if (Category::create($request->validated())) {
+            flash('创建成功！')->success();
+
+            return redirect(route('admin.categories.index'));
+        }
+
+        flash('创建分类失败')->error();
+
+        return redirect(route('admin.categories.create'))->withInput();
     }
 
     /**
@@ -46,7 +58,7 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('admin.categories.add_or_edit')->with(['category' => Category::findOrFail($id)]);
     }
 
     /**
@@ -57,7 +69,7 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('admin.categories.add_or_edit')->with(['category' => Category::findOrFail($id)]);
     }
 
     /**
@@ -67,9 +79,13 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CategoryRequest $request, $id)
     {
-        //
+        Category::findOrFail($id)->update($request->validated());
+
+        flash('更新分类成功！')->success();
+
+        return redirect(route('admin.categories.edit', $id));
     }
 
     /**
@@ -80,6 +96,10 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Category::findOrFail($id)->delete();
+
+        flash('删除成功！')->success();
+
+        return redirect(route('admin.categories.index'));
     }
 }

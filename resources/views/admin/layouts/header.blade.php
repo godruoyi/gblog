@@ -12,12 +12,12 @@
         <ul class="nav navbar-nav navbar-right">
             <li class="dropdown profile" id="show-profile-modal">
                 <a href="#" class="dropdown-toggle text-right" data-toggle="dropdown" role="button" aria-expanded="false">
-                    <img src="{{ Auth::user()->avatar ?? 'http://youlejia.test/storage/users/default.png' }}" class="profile-img">
+                    <img src="{{ Auth::user()->avatar }}" class="profile-img">
                     <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-animated">
                     <li class="profile-img">
-                        <img src="{{ Auth::user()->avatar ?? 'http://youlejia.test/storage/users/default.png' }}" class="profile-img">
+                        <img src="{{ Auth::user()->avatar }}" class="profile-img">
                         <div class="profile-body">
                             <h5>{{ Auth::user()->name }}</h5>
                             <h6></h6>
@@ -25,7 +25,7 @@
                     </li>
                     <li class="divider"></li>
                     <li class="class-full-of-rum">
-                        <a href="http://youlejia.test/admin/profile">
+                        <a href="{{ route('admin.users.show', Auth::id()) }}">
                             <i class="voyager-person"></i>
                             个人信息
                         </a>

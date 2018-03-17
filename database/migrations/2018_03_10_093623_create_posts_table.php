@@ -23,9 +23,10 @@ class CreatePostsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->string('title', '191')->index();
-            $table->string('slug', '191')->index();
+            $table->string('slug', '191')->nullable()->index();
 
             $table->integer('order')->default(0);
+            $table->integer('is_deaft')->default(0)->comment('草稿 默认0 不是， 1 是');
 
             $table->integer('reply_count')->default(0)->index();
             $table->integer('view_count')->default(0)->index();

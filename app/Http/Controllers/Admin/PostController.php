@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Post;
+use App\Models\Category;
+use App\Handlers\ImageUploadHandler;
+use App\Http\Requests\Admin\PostRequest;
 
 class PostController extends Controller
 {
@@ -14,7 +18,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::with('category', 'user')->paginate();
+
+        return view('admin.posts.index')->with(compact('posts'));
     }
 
     /**
@@ -24,7 +30,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.posts.create', ['categories' => Category::all()]);
     }
 
     /**
@@ -33,9 +39,15 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostRequest $request, Post $post)
     {
-        //
+        $post->fill($request->validated());
+        $post->user_id = \Auth::id();
+        $post->save();
+
+        flash('文章发布成功！')->success();
+
+        return redirect()->route('admin.posts.index');
     }
 
     /**
@@ -46,7 +58,10 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        $categories = Category::all();
+        $post       = Post::findOrFail($id);
+
+        return view('admin.posts.edit')->with(compact('post', 'categories'));
     }
 
     /**
@@ -57,7 +72,10 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $categories = Category::all();
+        $post       = Post::findOrFail($id);
+
+        return view('admin.posts.edit')->with(compact('post', 'categories'));
     }
 
     /**
@@ -67,9 +85,13 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PostRequest $request, $id)
     {
-        //
+        Post::findOrFail($id)->update($request->validated());
+
+        flash('更新文章成功！')->success();
+
+        return redirect(route('admin.posts.show', $id));
     }
 
     /**
@@ -80,6 +102,26 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Post::findOrFail($id)->delete();
+
+        flash('删除文章成功')->success();
+
+        return redirect(route('admin.posts.index'));
+    }
+
+    /**
+     * 编辑器文件上传
+     */
+    public function sieditorUpload(Request $request, ImageUploadHandler $uploader)
+    {
+        if ($request->upload_files && ($path = $uploader->resize(500)->upload($request->upload_files, 'posts', \Auth::id()))) {
+            return [
+                'success' => true,
+                'msg'     => '上传成功',
+                'file_path' => $path
+            ];
+        }
+
+        return ['success' => false, 'msg' => '上传失败', 'file_path' => ''];
     }
 }
