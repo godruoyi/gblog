@@ -19,6 +19,10 @@
         "vue": "^2.5.7"
     },
     "dependencies": {
-        "simditor": "^2.3.6"
+        "inline-attachment": "^2.0.3",
+        "marked": "^0.3.17",
+        "simditor": "^2.3.6",
+        "simplemde": "^1.11.2",
+        "turndown": "^4.0.1"
     }
 }

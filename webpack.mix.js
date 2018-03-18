@@ -12,7 +12,8 @@ let mix = require('laravel-mix');
  */
 
 mix.js('resources/assets/js/admin.js', 'public/js/admin.js')
-    .js('resources/assets/js/sieditor.js', 'public/js/admin-sieditor.js')
+    // .js('resources/assets/js/sieditor.js', 'public/js/admin-sieditor.js')
+    .js('resources/assets/js/simeditormd.js', 'public/js/admin-sieditor.js')
     // .scripts([
     //     'resources/assets/js/vendor/bootstrap-notify.min.js'
     // ], 'public/js/admin-vendor.js');

@@ -116,12 +116,10 @@ class PostController extends Controller
     {
         if ($request->upload_files && ($path = $uploader->resize(500)->upload($request->upload_files, 'posts', \Auth::id()))) {
             return [
-                'success' => true,
-                'msg'     => '上传成功',
-                'file_path' => $path
+                'filename' => $path
             ];
         }
 
-        return ['success' => false, 'msg' => '上传失败', 'file_path' => ''];
+        return ['error' => '上传失败'];
     }
 }

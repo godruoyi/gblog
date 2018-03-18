@@ -7,6 +7,8 @@
         #reply_notice {border: 1px solid #ddd;margin-bottom: 15px;color: gray;padding: 16px;}
         .helpblock {line-height: 30px;margin-bottom: 0px;}
         ul.list {margin: 0;padding-left: 11px;}
+        .editor-toolbar.fullscreen {z-index: 9999 !important;}
+        .CodeMirror-fullscreen {z-index: 9999 !important;}
     </style>
 @endsection
 
