@@ -23,6 +23,18 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app['Dingo\Api\Transformer\Factory']->setAdapter(function ($app) {
+             return new \Dingo\Api\Transformer\Adapter\Fractal(
+                 (new \League\Fractal\Manager)->setSerializer(new \League\Fractal\Serializer\ArraySerializer)
+             );
+        });
+
+        app('Dingo\Api\Exception\Handler')->register(function (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException('404 Not Found!');
+        });
+
+        app('Dingo\Api\Exception\Handler')->register(function (\Illuminate\Validation\ValidationException $e) {
+            throw new \Symfony\Component\HttpKernel\Exception\BadRequestHttpException($e->validator->errors()->first());
+        });
     }
 }
