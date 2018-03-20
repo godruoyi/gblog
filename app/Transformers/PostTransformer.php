@@ -32,6 +32,7 @@ class PostTransformer extends TransformerAbstract
     {
         return [
             'title'       => $post->title,
+            'id' => $post->id,
             'body'        => $post->content,
             'slug'        => $post->slug,
             'user_id'     => $post->user_id,

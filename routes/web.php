@@ -26,3 +26,5 @@ Route::group(['as' => 'admin.', 'domain' => config('app.admin_domain')], functio
         Route::name('upload.sieditor')->post('sieditor/imageupload', 'Admin\PostController@sieditorUpload');
     });
 });
+
+Route::view('/{name?}/{name2?}/{name3?}', 'index')->name('home')->domain(config('app.home_domain'));

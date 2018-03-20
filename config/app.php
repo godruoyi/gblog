@@ -4,6 +4,8 @@ return [
 
     'admin_domain' => env('ADMIN_DOMAIN', 'admin.godruoyi.com'),
 
+    'home_domain' => env('HOME_DOMAIN', 'godruoyi.com'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Name

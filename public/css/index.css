@@ -390,4 +390,3 @@ li.app1-caselist-case a .app1-caselist-item-logo { transform:translateY(-2px) }
 .app1-caselist-item-desc { font-size:13px;line-height:18px;text-align:justify;color:#9f9dab }
 .app1-caselist-item-bottom { position:absolute;left:0;bottom:26px;width:100%;color:#9f9dab }
 .app1-caselist-item-bottom:before { content:"";position:absolute;top:-18px;left:50%;margin-left:-17.5px;width:35px;height:2px;background:#00c800 }
-</style>

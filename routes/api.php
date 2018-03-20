@@ -16,7 +16,7 @@ use Illuminate\Http\Request;
 $api = app('Dingo\Api\Routing\Router');
 
 $api->version('v1', function ($api) {
-    $api->group(['namespace' => 'App\Http\Controllers\Api'], function ($api) {
+    $api->group(['namespace' => 'App\Http\Controllers\Api', 'middleware' => ['cors']], function ($api) {
         $api->resource('posts', 'PostController', ['only' => ['index', 'show']]);
     });
 });

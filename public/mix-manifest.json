@@ -1,4 +1,5 @@
 {
-    "/js/admin-sieditor.js": "/js/admin-sieditor.js?id=b44982fcee78896f8b38",
-    "/js/admin.js": "/js/admin.js?id=a7bc902644bb091ca3ed"
+    "/js/app.js": "/js/app.js",
+    "/js/admin-sieditor.js": "/js/admin-sieditor.js",
+    "/js/admin.js": "/js/admin.js"
 }
