@@ -1,6 +1,9 @@
 export default {
     posts: {
         index: '/posts',
-        detail: '/posts/:xxx'
+        detail: '/posts/:slug'
+    },
+    categories: {
+        index: '/categories'
     }
 }

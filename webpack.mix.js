@@ -14,6 +14,8 @@ let mix = require('laravel-mix');
 mix.js('resources/assets/js/admin.js', 'public/js/admin.js')
     .js('resources/assets/js/frontend.js', 'public/js/app.js')
     .js('resources/assets/js/utils/simeditormd.js', 'public/js/admin-sieditor.js')
+    // .js('resources/assets/js/plugins/slim/slim.js', 'public/js/slim.js')
+    // .styles('resources/assets/js/plugins/slim/slim.css', 'public/css/slim.css')
 
 if (mix.inProduction()) {
     mix.version();

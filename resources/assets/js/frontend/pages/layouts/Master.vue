@@ -1,5 +1,5 @@
 <template>
-    <div class="app1 s-bgcolor_f2f3f5">
+    <div>
         <app-header></app-header>
         <router-view></router-view>
         <app-footer></app-footer>
@@ -14,9 +14,3 @@
         components: {AppFooter, AppHeader}
     }
 </script>
-
-<style lang="scss">
-    .app1 { position:relative }
-    .app1.s-bgcolor_f2f3f5 { background-color:#f2f3f5 }
-    body {margin: 0;}
-</style>

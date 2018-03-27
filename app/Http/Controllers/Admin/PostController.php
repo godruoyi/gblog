@@ -41,7 +41,7 @@ class PostController extends Controller
      */
     public function store(PostRequest $request, Post $post)
     {
-        $post->fill($request->validated());
+        $post->fill($request->prepareStorePost());
         $post->user_id = \Auth::id();
         $post->save();
 
@@ -87,7 +87,7 @@ class PostController extends Controller
      */
     public function update(PostRequest $request, $id)
     {
-        Post::findOrFail($id)->update($request->validated());
+        Post::findOrFail($id)->update($request->prepareUpdatePost());
 
         flash('更新文章成功！')->success();
 

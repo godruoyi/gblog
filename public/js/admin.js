@@ -60,36 +60,41 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 14);
+/******/ 	return __webpack_require__(__webpack_require__.s = 32);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 14:
+/***/ 32:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(15);
+module.exports = __webpack_require__(33);
 
 
 /***/ }),
 
-/***/ 15:
+/***/ 33:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-window.$ = window.jQuery = __webpack_require__(16);
+window.$ = window.jQuery = __webpack_require__(34);
 
 $(document).ready(function () {
     $('#show-profile-modal .dropdown-toggle').click(function () {
         $('#show-profile-modal').toggleClass('open');
     });
+
+    $('#reply_notice').click(function () {
+        var input = document.getElementById('post-banner');
+        input.click();
+    });
 });
 
 /***/ }),
 
-/***/ 16:
+/***/ 34:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!

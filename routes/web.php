@@ -27,4 +27,6 @@ Route::group(['as' => 'admin.', 'domain' => config('app.admin_domain')], functio
     });
 });
 
+Route::view('testb', 'test');
+
 Route::view('/{name?}/{name2?}/{name3?}', 'index')->name('home')->domain(config('app.home_domain'));

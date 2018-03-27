@@ -10,13 +10,13 @@ class Post extends Model
      * @var array
      */
     protected $fillable = [
-        'category_id', 'user_id', 'title', 'slug', 'order', 
+        'category_id', 'user_id', 'title', 'slug', 'order', 'banner', 
         'reply_count', 'view_count', 'content', 'excerpt'
     ];
 
     /**
      * The post's user
-     * 
+     *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function user()
@@ -26,7 +26,7 @@ class Post extends Model
 
     /**
      * The post's category
-     * 
+     *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function category()

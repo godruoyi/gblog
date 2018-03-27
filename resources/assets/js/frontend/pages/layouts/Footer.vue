@@ -1,78 +1,113 @@
 <template>
-    <div id="footer-zone" class="footer">
-        <div class="footer-outer" style="max-width: 1080px; margin: 0px auto;">
-            <div class="footer-upper">
-                <div class="footer-wrapper s-upper">
-                    <ul class="footer-item s-first">
-                        <li class="info">
-                            <div class="info-title"><i class="info-icon s-attendance"></i> <span>客服电话</span></div>
-                            <div class="info-desc">0755 - 8376 5566</div>
-                        </li>
-                        <li class="info">
-                            <div class="info-title"><i class="info-icon s-phone"></i> <span>销售热线</span></div>
-                            <div class="info-desc">400 810 5881</div>
-                        </li>
-                    </ul>
-                    <ul class="footer-item s-second">
-                        <li class="info">
-                            <div class="info-title"><i class="info-icon s-service"></i> <span>服务时间</span></div>
-                            <div class="info-desc">工作日 09:00-18:00</div>
-                        </li>
-                        <li class="info">
-                            <div class="info-title"><i class="info-icon s-mail"></i> <span>联系邮箱</span></div>
-                            <div class="info-desc"><a href="mailto:wxad@tencent.com" class="footer-link">wxad@tencent.com</a></div>
-                        </li>
-                    </ul>
-                    <ul class="footer-item s-third">
-                        <li class="info">
-                            <div class="info-title">微信广告助手</div>
-                            <div class="info-desc"><img src="//wximg.qq.com/wxp/home-site/build/dist/95b895b8072ee9f58bb6f667cc457ad4.png" alt="微信广告助手二维码" style="width: 100px;"></div>
-                        </li>
-                    </ul>
+    <div>
+        <footer class="site-footer">
+            <div class="container wrapper">
+                <ul class="social social--lg">
+                    <li>
+                        <a rel="nofollow" href="https://twitter.com/godruoyi" class="social__icon icon--twitter">
+                            <svg>
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-twitter"></use>
+                            </svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a rel="nofollow" href="https://github.com/godruoyi" class="social__icon icon--github">
+                            <svg>
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-github"></use>
+                            </svg>
+                        </a>
+                    </li>
+                </ul>
+                <nav class="footer__nav">
+                    <ol>
+                        <li><a href="https://laravel-news.com">Laravel-news</a></li>
+                        <li><a href="https://laravel-china.org">Laravel-china</a></li>
+                        <li><a href="https://github.com/godruoyi">Github</a></li>
+                        <li><a href="https://whoismy8023.com/">Sppan</a></li>
+                    </ol>
+                </nav>
+                <!-- <nav class="footer__nav nav--lighter">
+                    <ol>
+                        <li><a href="/category/news">News</a></li>
+                        <li><a href="/category/laravel-tutorials">Tutorials</a></li>
+                        <li><a href="/category/laravel-packages">Packages</a></li>
+                        <li><a href="/category/laravel-books">Books</a></li>
+                        <li><a href="/category/interviews">Interviews</a></li>
+                        <li><a href="/category/laravel-applications">Applications</a></li>
+                    </ol>
+                </nav> -->
+
+                <div class="footer__tribute">
+                    <p>Designed &amp; code by</p>
+                    <a href="https://godruoyi.com/" class="tribute__logo">
+                        <span>Zaengle</span>
+                        <img src="/vendor/images/godruoyi-logo.jpeg">
+                    </a>
                 </div>
             </div>
-            <div class="footer-lower">
-                <div class="footer-wrapper"><a href="//www.tencent.com/zh-cn/index.shtml" class="footer-link">关于腾讯</a> <a href="https://mp.weixin.qq.com" class="footer-link">公众平台</a> <a href="https://mp.weixin.qq.com/cgi-bin/readtemplate?t=home/adclient_agreement_tmpl" class="footer-link">服务条款</a> <span class="ui-fl-r">
-            Copyright © 1998-2018 Tencent <span>All Rights Reserved.</span></span>
-                </div>
-            </div>
-        </div>
-        <a id="go-top" href="javascript:void(0)" class="back-to-top" style="display: none;"></a>
+        </footer>
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="0" height="0" style="position:absolute; display: none; visibility: hidden; width: 0; height: 0;">
+            <symbol id="icon-arrow-down" fill="currentColor" viewBox="0 0 47.484 60.109">
+                <path d="M34.648 28.332h-.008c.004.012.004.016.008 0z"></path>
+                <path d="M26.773 58.855L46.23 39.398c1.672-1.675 1.672-4.39 0-6.062-1.672-1.676-4.387-1.676-6.062 0l-12.14 12.14V4.286C28.027 1.917 26.107 0 23.74 0c-2.367 0-4.285 1.918-4.285 4.285v41.19L7.315 33.336c-1.672-1.675-4.387-1.675-6.062 0C.418 34.173 0 35.27 0 36.368s.418 2.195 1.254 3.03L20.71 58.856c1.673 1.672 4.387 1.672 6.063 0z"></path>
+            </symbol>
+            <symbol id="icon-arrow-left" fill="currentColor" viewBox="0 0 60.109 47.484">
+                <path d="M31.777 34.648v-.008c-.012.004-.016.004 0 .008z"></path>
+                <path d="M1.254 26.773L20.71 46.23c1.676 1.672 4.39 1.672 6.063 0 1.676-1.672 1.676-4.387 0-6.062l-12.14-12.14h41.19c2.368 0 4.286-1.92 4.286-4.286 0-2.367-1.92-4.285-4.286-4.285H14.632l12.14-12.14c1.677-1.673 1.677-4.388 0-6.063C25.938.418 24.84 0 23.743 0c-1.098 0-2.195.418-3.03 1.254L1.253 20.71c-1.672 1.673-1.672 4.387 0 6.063z"></path>
+            </symbol>
+            <symbol id="icon-arrow-right" fill="currentColor" viewBox="0 0 60.109 47.484">
+                <path d="M28.332 12.836v.008c.012-.004.016-.004 0-.008z"></path>
+                <path d="M58.855 20.71L39.398 1.255c-1.675-1.672-4.39-1.672-6.062 0-1.676 1.672-1.676 4.387 0 6.062l12.14 12.14H4.287C1.917 19.457 0 21.377 0 23.743c0 2.367 1.918 4.285 4.285 4.285h41.192l-12.14 12.14c-1.677 1.673-1.677 4.388 0 6.063.835.836 1.932 1.254 3.03 1.254 1.098 0 2.194-.418 3.03-1.254l19.457-19.457c1.673-1.672 1.673-4.386 0-6.062z"></path>
+            </symbol>
+            <symbol id="icon-arrow-up" fill="currentColor" viewBox="0 0 47.484 60.109">
+                <path d="M12.835 31.78h.008c-.004-.01-.004-.015-.008 0z"></path>
+                <path d="M20.71 1.257L1.253 20.714c-1.672 1.675-1.672 4.39 0 6.062 1.672 1.676 4.387 1.676 6.062 0l12.14-12.14v41.19c0 2.368 1.92 4.286 4.286 4.286 2.367 0 4.285-1.918 4.285-4.285v-41.19l12.142 12.14c1.672 1.676 4.387 1.676 6.062 0 .835-.836 1.253-1.934 1.253-3.03s-.418-2.196-1.254-3.032L26.77 1.257c-1.672-1.672-4.386-1.672-6.062 0z"></path>
+            </symbol>
+            <symbol id="icon-arrow-thin-down" fill="currentColor" viewBox="0 0 35.1 12.92">
+                <path d="M.27 1.918c0-.18-.354-.83-.25-.992C.31.456 1.33-.22 1.8.07L17.52 9.748 33.235.07c.472-.29 1.49.387 1.783.856.29.468-.255 1.55-.725 1.842L18.048 12.77c-.324.2-.734.2-1.058 0L.745 2.768c-.307-.19-.476-.516-.476-.85z"></path>
+            </symbol>
+            <symbol id="icon-arrow-thin-left" fill="none" viewBox="0 0 31.344 105.69" stroke="currentColor" stroke-width="3px" fill-rule="evenodd">
+                <path d="M29.844 2.86l-25 50 25 50"></path>
+            </symbol>
+            <symbol id="icon-arrow-thin-right" fill="none" viewBox="0 0 30.69 103" stroke="currentColor" stroke-width="3px" fill-rule="evenodd">
+                <path d="M4.19 1.51l25 50-25 50"></path>
+            </symbol>
+            <symbol id="icon-behance" fill="currentColor" viewBox="0 5.8 31.963 20.306">
+                <path d="M12.9 14.9s3-.2 3-3.8-2.5-5.3-5.6-5.3H0v19.8h10.4s6.3.2 6.3-5.9c-.1.2.2-4.8-3.8-4.8zM4.6 9.4h5.7s1.4 0 1.4 2.1-.8 2.4-1.8 2.4H4.6V9.4zm5.5 12.8H4.6v-5.3h5.8s2.1 0 2.1 2.7c-.1 2.3-1.6 2.6-2.4 2.6zM25 10.9c-7.6 0-7.6 7.6-7.6 7.6s-.5 7.6 7.6 7.6c0 0 6.8.4 6.8-5.3h-3.5s.1 2.1-3.2 2.1c0 0-3.5.2-3.5-3.5h10.3c0 .1 1.2-8.5-6.9-8.5zm3.1 6h-6.5s.4-3.1 3.5-3.1 3 3.1 3 3.1zM20.8 7H29v2h-8.2z"></path>
+            </symbol>
+            <symbol id="icon-codepen" fill="currentColor" viewBox="0 0 32 32">
+                <path d="M32 10.9v-.2-.2-.2-.1s0-.1-.1-.1V10s0-.1-.1-.1l-.1-.1s-.102 0-.102-.1h-.1L16.8.2c-.5-.3-1.1-.3-1.5 0L.6 10H.5s-.1 0-.1.1l-.1.1-.1.1v.1s0 .1-.1.1V22s0 .1.1.1v.1s0 .1.1.1l.1.102s.1 0 .1.1h.1l14.6 9.8c.2.2.5.2.8.2s.5-.1.8-.2L31.4 22h.1s.1 0 .1-.1l.1-.1.1-.1v-.102s0-.1.102-.1V21.3v-.2-.2-.1V10.9c.098.2.098.1.098 0zm-14.6-7l10.8 7.2-4.8 3.2-6-4V3.9zm-2.8 0v6.4l-6 4-4.8-3.2 10.8-7.2zM2.8 13.7L6.2 16l-3.4 2.3v-4.6zm11.8 14.4L3.9 20.9l4.8-3.2 6 4v6.4h-.1zm1.4-8.8L11.1 16l4.9-3.3 4.9 3.3-4.9 3.3zm1.4 8.8v-6.4l6-4 4.8 3.2-10.8 7.2zm11.8-9.8L25.8 16l3.4-2.3v4.6z"></path>
+            </symbol>
+            <symbol id="icon-dribbble" fill="currentColor" viewBox="0 0 32 32">
+                <path d="M16 32C7.2 32 0 24.8 0 16S7.2 0 16 0s16 7.2 16 16-7.2 16-16 16zm13.5-13.8c-.5-.2-4.2-1.3-8.5-.6 1.8 4.9 2.5 8.9 2.7 9.7 3-2 5.2-5.3 5.8-9.1zm-8.2 10.4c-.2-1.2-1-5.4-2.9-10.4h-.1c-7.7 2.7-10.5 8-10.7 8.5 2.3 1.8 5.2 2.9 8.4 2.9 1.9.1 3.7-.3 5.3-1zM5.8 25.2c.3-.5 4.1-6.7 11.1-9 .2-.1.4-.1.5-.2-.3-.8-.7-1.6-1.1-2.3-6.8 2-13.4 2-14 1.9v.4c0 3.5 1.4 6.7 3.5 9.2zm-3.2-12c.6 0 6.2 0 12.6-1.7-2.3-4-4.7-7.4-5.1-7.9C6.4 5.5 3.5 9 2.6 13.2zM12.8 2.7c.4.5 2.9 3.9 5.1 8 4.9-1.8 6.9-4.6 7.2-4.9-2.4-2.1-5.6-3.4-9.1-3.4-1.1 0-2.2.1-3.2.3zm13.8 4.7c-.3.4-2.6 3.3-7.6 5.4.3.7.6 1.3.9 2 .1.2.2.5.3.7 4.5-.6 9.1.3 9.5.4-.1-3.2-1.2-6.2-3.1-8.5z"></path>
+            </symbol>
+            <symbol id="icon-facebook" fill="currentColor" viewBox="0 0 32 32">
+                <path d="M30.7 0H1.3C.6 0 0 .6 0 1.3v29.3c0 .8.6 1.4 1.3 1.4H17V20h-4v-5h4v-4c0-4.1 2.6-6.2 6.3-6.2 1.8 0 3.3.2 3.7.2v4.3h-2.6c-2 0-2.5 1-2.5 2.4V15h5l-1 5h-4l.1 12h8.6c.7 0 1.3-.6 1.3-1.3V1.3C32 .6 31.4 0 30.7 0z"></path>
+            </symbol>
+            <symbol id="icon-github" fill="currentColor" viewBox="0 0 32 32">
+                <path d="M16 .4C7.2.4 0 7.6 0 16.4c0 7.1 4.6 13.1 10.9 15.2.8.1 1.1-.3 1.1-.8v-2.7c-4.5 1-5.4-2.1-5.4-2.1-.7-1.8-1.8-2.3-1.8-2.3-1.5-1 .1-1 .1-1 1.6.1 2.5 1.6 2.5 1.6 1.4 2.4 3.7 1.7 4.7 1.3.1-1 .6-1.7 1-2.1-3.6-.4-7.3-1.8-7.3-7.9 0-1.7.6-3.2 1.6-4.3-.2-.4-.7-2 .2-4.2 0 0 1.3-.4 4.4 1.6 1.3-.4 2.6-.5 4-.5s2.7.2 4 .5C23.1 6.6 24.4 7 24.4 7c.9 2.2.3 3.8.2 4.2 1 1.1 1.6 2.5 1.6 4.3 0 6.1-3.7 7.5-7.3 7.9.6.5 1.1 1.5 1.1 3v4.4c0 .4.3.9 1.1.8C27.4 29.5 32 23.5 32 16.4c0-8.8-7.2-16-16-16z"></path>
+            </symbol>
+            <symbol id="icon-googleplus" fill="currentColor" viewBox="0 0 40 25.8">
+                <path d="M12.8 25.8C5.7 25.8 0 20 0 12.9S5.7 0 12.8 0c3.3 0 6.4 1.3 8.6 3.3C18.7 5.8 18.8 6 17.8 7c-1.3-1.1-2.8-1.9-5-1.9-4.2 0-7.5 3.4-7.5 7.6s3.3 7.7 7.5 7.7c4.1 0 5.8-2 6.9-5H13v-5h12.2c.8 6.1-1.8 15.4-12.4 15.4M40 13.5h-4v5h-3v-5h-5v-3h5v-4h3v4h4v3z"></path>
+            </symbol>
+            <symbol id="icon-instagram" fill="currentColor" viewBox="0 0 32 32">
+                <path d="M28.2 0H3.8C1.7 0 0 1.7 0 3.8v24.4C0 30.3 1.7 32 3.8 32h24.4c2.1 0 3.8-1.7 3.8-3.8V3.8C32 1.7 30.3 0 28.2 0zM24 4h3c.6 0 1 .4 1 1v3c0 .6-.4 1-1 1h-3c-.6 0-1-.4-1-1V5c0-.6.4-1 1-1zm-8 5.9c3.4 0 6.2 2.7 6.2 6.1 0 3.4-2.8 6.1-6.2 6.1-3.4 0-6.2-2.7-6.2-6.1.1-3.4 2.8-6.1 6.2-6.1zM28 29H4c-.6 0-1-.4-1-1V13h4c-.5.8-.7 2.1-.7 3 0 5.4 4.4 9.7 9.7 9.7 5.4 0 9.7-4.4 9.7-9.7 0-.9-.1-2.3-.8-3h4v15c.1.6-.3 1-.9 1z"></path>
+            </symbol>
+            <symbol id="icon-linkedin" fill="currentColor" viewBox="0 0 36.89 33.54">
+                <path d="M.93 10.75h7.19v22.78H.93zM27.77 10.54c-4.12 0-6.7 2.23-7.18 3.79v-3.58h-8.08c.1 1.9 0 22.78 0 22.78h8.08V21.21a5.2 5.2 0 0 1 .17-1.86 4.12 4.12 0 0 1 3.89-2.79c2.8 0 4.08 2.11 4.08 5.19v11.79h8.15V20.87c0-7.06-4-10.33-9.12-10.33M4.39 0C1.74 0 0 1.71 0 4a4 4 0 0 0 4.29 3.91h.05c2.7 0 4.39-1.75 4.39-4A4 4 0 0 0 4.39 0"></path>
+            </symbol>
+            <symbol id="icon-pinterest" fill="currentColor" viewBox="0 0 32 32">
+                <path d="M16 0C7.2 0 0 7.2 0 16c0 6.8 4.2 12.6 10.2 14.9-.1-1.3-.3-3.2.1-4.6.3-1.2 1.9-8 1.9-8s-.5-1-.5-2.4c0-2.2 1.3-3.9 2.9-3.9 1.4 0 2 1 2 2.3 0 1.4-.9 3.4-1.3 5.3-.4 1.6.8 2.9 2.4 2.9 2.8 0 5-3 5-7.3 0-3.8-2.8-6.5-6.7-6.5-4.6 0-7.2 3.4-7.2 6.9 0 1.4.5 2.8 1.2 3.7.1.2.1.3.1.5-.1.5-.4 1.6-.4 1.8-.2.3-.4.4-.7.2-2-.9-3.2-3.9-3.2-6.2 0-5 3.7-9.7 10.6-9.7 5.6 0 9.9 4 9.9 9.2 0 5.5-3.5 10-8.3 10-1.6 0-3.1-.8-3.7-1.8 0 0-.8 3.1-1 3.8-.4 1.4-1.3 3.1-2 4.2 1.5.5 3.1.7 4.7.7 8.8 0 16-7.2 16-16S24.8 0 16 0z"></path>
+            </symbol>
+            <symbol id="icon-twitter" fill="currentColor" viewBox="-0.1 3 32.1 26">
+                <path d="M32 6.1c-1.2.5-2.4.9-3.8 1 1.4-.8 2.4-2.1 2.9-3.6-1.3.8-2.7 1.3-4.2 1.6C25.7 3.8 24 3 22.2 3c-3.6 0-6.6 2.9-6.6 6.6 0 .5.1 1 .2 1.5-5.5-.3-10.3-2.9-13.6-6.9-.6 1-.9 2.1-.9 3.3 0 2.3 1.2 4.3 2.9 5.5-1.1 0-2.1-.3-3-.8v.1c0 3.2 2.3 5.8 5.3 6.4-.6.1-1.1.2-1.7.2-.4 0-.8 0-1.2-.1.8 2.6 3.3 4.5 6.1 4.6-2.2 1.8-5.1 2.8-8.2 2.8-.5 0-1.1 0-1.6-.1 3 1.8 6.5 2.9 10.2 2.9 12.1 0 18.7-10 18.7-18.7v-.8c1.2-1 2.3-2.1 3.2-3.4z"></path>
+            </symbol>
+            <symbol id="icon-close" fill="currentColor" viewBox="0 0 24.986 24.987">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M24.986 2.855L22.13 0l-9.65 9.65L2.922.095.094 2.922 9.65 12.48 0 22.13l2.855 2.857 9.652-9.652 9.557 9.558 2.83-2.83-9.56-9.556"></path>
+            </symbol>
+            <symbol id="icon-search" fill="currentColor" viewBox="0 0 88 88">
+                <path d="M86.8 81.2L64.1 58.5C69 52.3 72 44.5 72 36 72 16.1 55.9 0 36 0S0 16.1 0 36s16.1 36 36 36c8.5 0 16.3-2.9 22.5-7.9l22.7 22.7C82 87.6 83 88 84 88c1 0 2-.4 2.8-1.2 1.6-1.5 1.6-4.1 0-5.6zM36 64C20.5 64 8 51.5 8 36S20.5 8 36 8s28 12.5 28 28-12.5 28-28 28z"></path>
+            </symbol>
+        </svg>
     </div>
 </template>
-
-<style lang="scss" scoped>
-    .footer {color: #6e6f73;}
-    .footer,.footer-outer { background:#28292b }
-    .footer-wrapper { margin:0 auto;padding:0 20px }
-    .footer-wrapper.s-upper { border-right:1px solid #3a3b3d }
-    .footer-upper { font-size:0;border-bottom:1px solid #3a3b3d;padding-top:50px;padding-bottom:50px }
-    .footer-item { list-style:none;font-size:14px;display:inline-block;vertical-align:top }
-    .footer-item.s-first { width:32.4074074% }
-    .footer-item.s-second { width:32.8703704%;border-right:1px solid #3a3b3d }
-    .footer-item.s-third { margin-left:12.962963% }
-    .footer-item.s-third .info { margin-bottom:0 }
-    .footer-item.s-third .info-title { height:22px;margin-bottom:5px;overflow:hidden;text-align:justify }
-    .footer-item.s-third .info-title:after { content:"";display:inline-block;width:100%;height:0;line-height:0 }
-    .footer-item.s-third .info-desc { text-indent:0 }
-    .footer-lower { font-size:14px;line-height:70px;text-align:left;color:#6e6f73;letter-spacing:1px }
-    .footer-link { color:#6e6f73;margin-right:50px }
-    .footer-link:hover { color:#6b6b6d }
-    .info:first-child { margin-bottom:40px }
-
-    .info-title { letter-spacing:1px }
-    .info-desc { font-size:16px;color:#979aa2;text-indent:3em }
-    .info-desc .footer-link { color:inherit }
-    .info-icon { display:inline-block;margin-right:22px;vertical-align:middle;width:20px;height:20px }
-    .info-icon.s-attendance { background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAYCAYAAAD6S912AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyhpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDY3IDc5LjE1Nzc0NywgMjAxNS8wMy8zMC0yMzo0MDo0MiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MjAwMzlCMDgwRkZBMTFFNkJFOUJDQ0E2MkUxMTZFOTYiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MjAwMzlCMDkwRkZBMTFFNkJFOUJDQ0E2MkUxMTZFOTYiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDoyMDAzOUIwNjBGRkExMUU2QkU5QkNDQTYyRTExNkU5NiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDoyMDAzOUIwNzBGRkExMUU2QkU5QkNDQTYyRTExNkU5NiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqPYPE4AAAH0SURBVHjanJVNKERRFMffDNGUj9j4HoaFMilK0WwQGSsLxSRiysKOjRQ1C1lSJCsfCxE2LLBBiUzMsFFkxcYsJKUGRSj+J391vd6bGXPqV++de85/3r3nnjOWtvYOzcSqgBc0gUL6bsEOWARnRklWA58NzIID8Am6QDrppO+AMTZ9cqLuPQFsgVxQAa5166dkBmyCbdAMPsy+cBiUgFpgAesgDL5ImD4LY4qBz2zLWWCE55YJ/OAQOCggFNHnZ0w3GGTuzxadzvLf5z6QDMZ4PstgGrwqP/oGgjwaERsHdTzLE/0XusEqnxvBkmZuc6y+xoq71S3bwS5oAE7608BjBEFZS+FzJXNFwy6CC7wGGcCj/d88zBWNRRGsARPgGeTEIZjDXDlvlwgGWKlUcMegF76bWRpjNObI9vvBsQj2gnpwrxQiyMKYmZsxGnMeqOG1mPRyK++kC7zr1pLYx6NgI5Ze1hgog2AN5Cv+fF6tGyOxSIIyXc5BCwgprRei74idElVQWmsF7IMnUKC03S92igd45XLNBF0MugSlYEqpump3XCtjrORUG40v6d0eDtBYTObiJEVXOXn+fKHjH2Kq7TE3YlHiNquu4eNpvWx1kKiCcuPnGRCr5bHS80aCQ/wPuVLuXTQumOMzqrK02ACJ274FGAC6yXk9luHWwgAAAABJRU5ErkJggg==);height:24px }
-    .info-icon.s-phone { background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyhpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDY3IDc5LjE1Nzc0NywgMjAxNS8wMy8zMC0yMzo0MDo0MiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QTc0NUNENUUwRjdDMTFFNkJFOUJDQ0E2MkUxMTZFOTYiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MEI1NDYzRjAwRkZBMTFFNkJFOUJDQ0E2MkUxMTZFOTYiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpBNzQ1Q0Q1QzBGN0MxMUU2QkU5QkNDQTYyRTExNkU5NiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpBNzQ1Q0Q1RDBGN0MxMUU2QkU5QkNDQTYyRTExNkU5NiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Ppsr7agAAAGmSURBVHjanNRNKERRFMDxmTGlKcnUJMVCCWUxshCyQtmIjJqZyEcsSIlQWEik7KZQImGBFEuaZCUbJRsWRBY+slAWCqUp5H/rTN15zYf3Tv168959nTn3nXuv3R9otWlRiACOcWr7R+zt7sTcO7TfDbiASxJW2SyEU65dWJLqwrjFKsrwbSZhtMIx1EkyFVs4QZ/ZClVCD7JxZhhbxjSyzCZ04y3O2BXWzVapEr6gwNCgaDyjyGzCD1yi1DCmltAgQlaaso12w1gPNnBtJeEaOlFpaMoUvFYSvmMU/drYE0ZkKeWZTahiE5mY0Z6tSKVqTRZrz3MT/Ymxs70ydb3SOSzK3g6iHvcyg3Ag2FaSLOErmjCLbu35Alrgw75s0TQcqhVC0hAy1It2w2kTjXIcYUL2tB7piGj3LvlMKpHPmeDbnqNWGuKRaUcjYji+vtRZQIU3XOcdSRqmjrIKNMuU3SkanINHR4qX1Narxqds0SGZckxQ3TCXAYwn+obxQi2bSfjlUzxIU72yjBqZ/p3TxCZQh26H7O8a5OMXB2qdkuxHvfQnwABOKFtbd990JwAAAABJRU5ErkJggg==) }
-    .info-icon.s-service { background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyhpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDY3IDc5LjE1Nzc0NywgMjAxNS8wMy8zMC0yMzo0MDo0MiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MEI1NDYzRjcwRkZBMTFFNkJFOUJDQ0E2MkUxMTZFOTYiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MEI1NDYzRjgwRkZBMTFFNkJFOUJDQ0E2MkUxMTZFOTYiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDowQjU0NjNGNTBGRkExMUU2QkU5QkNDQTYyRTExNkU5NiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDowQjU0NjNGNjBGRkExMUU2QkU5QkNDQTYyRTExNkU5NiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PkwOqeMAAAFzSURBVHjarNW9S0JhFMfxq0VN0tDS69DaXGlE0NKY2YtC1NIQTi011R/gWGPQUNCYRkWthWNEEfQCBUFDRbM4FYR9T/wEtcfw7cAH5N57fj6X+9xzfdHYnOeoFkRkGF34whtucIhjHSsqvyNsCg+II41xBNCOCR2L65rp0ubmgt9NSCCMJTWW1rNsYwxbCGId36UrTOjkkCMs5whP69qgeotueVYrm0TWq7yy6gkr4zfQHsAGFpHxqq+MejctywKjeMKFV3tZ7yNifm2Nfa/+soyIBQ7ivAGBljFggR14bUCgZXT6tdtbK2jIOXiuN+VDr9Z/5SujsHosywJvtUHrrRFcWeAR5hsQuGBZFphEP0J1hIWUkcw/lFXsoq2GMOvZwQo+8++yrfJEMy5QRVhAPafKKJo2a7jDZYW3H9K19+r9Mw9tni1jBnt4QQpn2rQ2RHoxqsnSpzmYKjdg83Wg249qeltTt86941p/mHR9An4EGAAfe1JwnTpRSAAAAABJRU5ErkJggg==) }
-    .info-icon.s-mail { background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyhpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDY3IDc5LjE1Nzc0NywgMjAxNS8wMy8zMC0yMzo0MDo0MiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NDExRUJDQjEwRkZBMTFFNkJFOUJDQ0E2MkUxMTZFOTYiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NDExRUJDQjIwRkZBMTFFNkJFOUJDQ0E2MkUxMTZFOTYiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDoyMDAzOUIwRTBGRkExMUU2QkU5QkNDQTYyRTExNkU5NiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo0MTFFQkNCMDBGRkExMUU2QkU5QkNDQTYyRTExNkU5NiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PkfDwnMAAADRSURBVHjaYgwNi/RkYGCYC8SSDJSB50CczAI1TIqBOuAZE5LL1gOxDBmGyED1goAkE5LEQiDeBcT5QMxMhEHMULW7oHrBANnADUBsDsSKQHwMiI3xGAaSOwpVaw7VCwYsaAo/A3EBVMNUID4BxDVA/AUqzwPELUBsAcQ5QHwG3SYmHC44C8Q2QHwfiE8BsT8Un4KK2WAzDJsLkcEfIJ4IxOuAeDJUzB2IH+MLWBYiAh9kQACxUc7EQGUwNAx8TkXzXoAMTIEa+p9C/ARUOAAEGADADDRRhlz1+gAAAABJRU5ErkJggg==);height:14px }
-    @media (max-width:850px) { .footer-link { display:none }
-    .footer-wrapper span { font-size:12px;float:none;display:block;text-align:center }
-    .footer-item.s-first,.footer-item.s-second,.footer-wrapper span span { display:none }
-    .footer-item.s-third { margin-left:50%;transform:translateX(-50%) }
-     }
-
-    .back-to-top { background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADYAAAA1CAYAAAAK0RhzAAAABGdBTUEAALGPC/xhBQAAAyhJREFUaAXtmFtIVEEYx/9nd93NlUXRJLXVICm0XRUMJOrResjeyi4Q9BJJBJH5nKhBRBQRRQ9hF4J6CArtQhcKtQjWjG5o0k3ylpiarrbe9mY7J85hTTnqmTPHk8wsu2fmm5kz3+/7zzd7dgWbxzyFJVhMS5BJROJg/5uyXDGumEEiwLeiQYSYtxtcsXmHyiADdVNso2MT7mY9gN1k1wVdFzACdWvtbQTCftzPeqgLHHMwCWrf170o/rIdreOtusAxBYuGqh+pE7fg4e+HdIFjBjYblJRcesAxAVOC0gtOc7D5QOkBpynYQqBYw2kGpgaKJZwmYDRQrOCowbSAYgEn0P5LlWvPQ4//BwaCA5J/1Nccey46JzswHBpWfS9qMNUrM55IvRUZ+6f69hxMdegWaSJXbJECr3pZrpjq0C3SRAvNukdSjyLDmjHrLc73nkNH5EuW/MdRsuIg8uPWIzAVQJOvEZd/ViMUeZFSmlqGdGu6WCe2Jt8rPPM+hTfkFW1qP6i2YuNvD554H4vvwvjNaJv4Jre9QS/SYtLw0u1BoiURF3sv4FrfFWTHulDneo44U5zo8+7le/B54pM4r2G4AeSp40PeR6TEpKhlEudp9uRR73qBsvZSvBt9Kzt0NfM6uvydqOgql22kcmbVWYyERnC8uxKenCYcaNuPlrFmeUyFswpj4TGc7jkl2xZaoVJMaTEBAnYkFaN2sGbGMKLezqRdM+ySwWayYTw8LjVVXalyTGlFp9UpPsRGKyiNb59sh9P2N6+IbWtCEdyxblgECwocG1CUsA0FzfnScFVXZooNBgfF3CL59W9xmB3whXyy2Rk5PFYvy8RKmxM1v+4g+/0akPk0hZlio+FR8TAhatwcuDHNx8L4LXjjey3bqvsuTcsxuYOiwkwx4lN557FpxzmxuSJb7kTGSVR1V5Ims8JMMeLxvaFamAUzHq2LfC8Fh2AVrGK7JHIKzpZ7WlJqdtzP5VSyJRn+KT/Vr+K51ojuZ6pY9EL9wf7oJvM60xxj7r3CAhxMITiG7OKKGVIWBae4YgrBMWQXV8yQsig4xRVTCI4hu/4A6GkzwBTdAwoAAAAASUVORK5CYII=);width:54px;height:54px;position:fixed;right:50px;bottom:72px }
-</style>

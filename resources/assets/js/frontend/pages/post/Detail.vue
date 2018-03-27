@@ -1,55 +1,72 @@
 <template>
-    <div>
-        <div class="case-banner"></div>
-        <div class="case-wrapper">
-            <h3 class="case-title">线上线下完整闭环，塑造母婴行业O2O营销</h3>
+    <main class="site-main">
+        <div class="container wrapper">
+            <div class="card post mt2">
+                <div class="post__image">
+                    <img src="https://i2.wp.com/wp.laravel-news.com/wp-content/uploads/2018/03/laravel-excel.png?resize=2200%2C1125" alt="Laravel Excel 3.0">
+                </div>
+                <div class="post__content clearfix">
+                    <div class="col lg-col-9">
+                        <header class="post__header">
+                            <span class="label">
+                                <a href="javascript:;">{{ post.category.name }}</a>
+                                <span class="text--gray"> / </span>
+                                <span class="text--gray">{{ post.created_at }}</span>
+                            </span>
+                            <h1 class="post__title">{{ post.title }}</h1>
+                        </header>
+                        <p></p>
+                        <div v-html="content" id="post-content"></div>
+                    </div>
+
+                    <share></share>
+                </div>
+            </div>
         </div>
-    </div>
+
+    </main>
 </template>
 
+<script>
+    import Share from 'frontend/components/Share'
+    import {default as markdown} from 'utils/markdown'
+
+    export default {
+        components: {Share},
+        data () {
+            return {
+                post: {}
+            }
+        },
+        computed: {
+            content: function () {
+                let content = this.post.body
+
+                return content ? markdown.render(content) : ''
+            }
+        },
+        created: function () {
+            this.fetchPost()
+        },
+        methods: {
+            fetchPost: function () {
+                let url = this.$endpoints.posts.detail.replace(':slug', this.$route.params.slug)
+                url += '?include=category'
+
+                this.$http.get(url).then(response => {
+                    this.post = response
+                }, error => {})
+            }
+        }
+    }
+</script>
 
 <style lang="scss" scoped>
-    body {
-        color: #000;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei UI", "Microsoft YaHei", "Source Han Sans CN", sans-serif;
-        font-size: 14px;
-        line-height: 1.4;
-        height: 100%;
-        -webkit-font-smoothing: antialiased;
-        -webkit-text-size-adjust: none;
-    }
-    div {
-        display: block;
-    }
-    *:before, *:after {
-        box-sizing: inherit;
-    }
-    .case-banner {
-        position: fixed;
-        z-index: -1;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 430px;
-        background-image: url(/vendor/images/detail-bg.jpg);
-        background-size: cover;
-        background-position: 50%;
-    }
-    .case-wrapper {
-        position: relative;
-        z-index: 1;
-        padding-top: 28px;
-        width: 100%;
-
-        .case-title {
-            position: relative;
-            margin: 0 0 140px;
-            font-size: 38px;
-            font-weight: 400;
-            color: #fff;
-            text-align: center;
-            line-height: 100px;
-            letter-spacing: 2px;
-        }
+    #post-content {
+        font-size: 15px;
+        line-height: 1.3;
+        overflow: hidden;
+        line-height: 1.6;
+        word-wrap: break-word;
     }
 </style>

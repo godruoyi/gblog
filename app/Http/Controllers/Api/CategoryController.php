@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
-use App\Models\Post;
-use App\Transformers\PostTransformer;
+use App\Models\Category;
+use App\Transformers\CategoryTransformer;
 
-class PostController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        return $this->response->collection(Post::all(), new PostTransformer);
+        return $this->response->collection(Category::whereHas('posts')->get(), new CategoryTransformer);
     }
 
     /**
@@ -26,6 +26,6 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        return $this->response->item(Post::where('slug', $id)->firstOrFail(), new PostTransformer);
+        return $this->response->item(Category::findOrFail($id), new CategoryTransformer);
     }
 }

@@ -17,7 +17,7 @@
         <div class="panel panel-bordered">
             <form role="form" class="form-horizontal"
                 action="{{ route('admin.posts.update', $post->id) }}"
-                method="POST"
+                method="POST" enctype="multipart/form-data"
                 accept-charset="UTF-8">
                 <div class="panel-body">
                     {{ csrf_field() }}
