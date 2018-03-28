@@ -2932,6 +2932,8 @@ ul {
 }
 
 code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+
     color: #36465d;
     font-size: 1.125rem;
     line-height: 1.5em;
@@ -2957,7 +2959,7 @@ pre {
 pre,
 pre>code {
     padding: 10px 15px;
-    font-size: .8125rem
+    font-size: 1.1125rem
 }
 
 pre>code {

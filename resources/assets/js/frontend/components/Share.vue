@@ -20,7 +20,7 @@
 </template>
 
 <style lang="scss" scoped>
-    #share-container {
-        margin-top: 80px;
-    }
+    // #share-container {
+    //     margin-top: 80px;
+    // }
 </style>

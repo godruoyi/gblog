@@ -8,7 +8,7 @@
                     <div class="card card--post mt0 mb3" v-for="post in posts" :key="post.id">
                         <div class="post__image">
                             <router-link :to="{name: 'frontend.post.detail', params: {slug: post.slug}}">
-                                <img src="https://i0.wp.com/wp.laravel-news.com/wp-content/uploads/2018/03/null-coalesce.png?resize=1400%2C709" alt="">
+                                <img :src="post.banner" alt="">
                             </router-link>
                         </div>
                         <div class="post__content truncate">
@@ -18,7 +18,7 @@
                                 <span class="text--gray">{{ post.created_at }}</span>
                             </span>
                             <h2 class=""><a href="/blade-templates-null-coalesce-operator">{{ post.title }}</a></h2>
-                            <p>ddddddddd ads ad jaiodj aiosj daoij aoijdoaisjd aoijdoaisj oiajd aoij aoisj oiadj aiojd aosddddddddd ads ad jaiodj aiosj daoij aoijdoaisjd aoijdoaisj oiajd aoij aoisj oiadj aiojd aos </p>
+                            <p>{{ post.excerpt }}</p>
                             <router-link :to="{name: 'frontend.post.detail', params: {slug: post.slug}}" class="truncate__link">
                                 Read more…
                             </router-link>
@@ -34,7 +34,7 @@
 </template>
 
 <script>
-    import IndexSidebar from 'frontend/components/Sidebar'
+    import {default as IndexSidebar} from 'frontend/components/Sidebar'
     import Pagination from 'frontend/components/Pagination'
 
     export default {

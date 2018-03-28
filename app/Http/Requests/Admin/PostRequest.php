@@ -19,6 +19,7 @@ class PostRequest extends FormRequest
             'category_id' => 'required|integer|exists:categories,id',
             'content' => 'required|string',
             'banner' => 'required|file',
+            'is_draft' => 'required|string|in:no,yes'
         ];
 
 

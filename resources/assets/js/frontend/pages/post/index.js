@@ -3,7 +3,7 @@ import Detail from './Detail'
 export default [
     {
         path: '/',
-        component: require('./Index'),
+        component: require('./Index.vue'),
         name: 'frontend.home'
     },
     {

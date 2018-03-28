@@ -20,10 +20,10 @@
                 </ul>
                 <nav class="footer__nav">
                     <ol>
-                        <li><a href="https://laravel-news.com">Laravel-news</a></li>
-                        <li><a href="https://laravel-china.org">Laravel-china</a></li>
-                        <li><a href="https://github.com/godruoyi">Github</a></li>
-                        <li><a href="https://whoismy8023.com/">Sppan</a></li>
+                        <li><a target="_black" href="https://laravel-news.com">Laravel-news</a></li>
+                        <li><a target="_black" href="https://laravel-china.org">Laravel-china</a></li>
+                        <li><a target="_black" href="https://github.com/godruoyi">Github</a></li>
+                        <li><a target="_black" href="https://whoismy8023.com/">Sppan</a></li>
                     </ol>
                 </nav>
                 <!-- <nav class="footer__nav nav--lighter">
@@ -39,10 +39,10 @@
 
                 <div class="footer__tribute">
                     <p>Designed &amp; code by</p>
-                    <a href="https://godruoyi.com/" class="tribute__logo">
+                    <router-link :to="{name: 'frontend.home'}" class="tribute__logo">
                         <span>Zaengle</span>
                         <img src="/vendor/images/godruoyi-logo.jpeg">
-                    </a>
+                    </router-link>
                 </div>
             </div>
         </footer>
@@ -111,3 +111,9 @@
         </svg>
     </div>
 </template>
+
+<style lang="scss" scoped>
+    .footer__tribute img {
+        border-radius: 50%;
+    }
+</style>

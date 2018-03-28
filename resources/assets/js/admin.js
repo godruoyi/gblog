@@ -5,8 +5,8 @@ $(document).ready(function () {
         $('#show-profile-modal').toggleClass('open')
     });
 
-    $('#reply_notice').click(function () {
-        let input = document.getElementById('post-banner')
-        input.click()
+    $('#save-draft').click(function () {
+        $('#draft').val('yes');
+        $('.submit-btn').click();
     });
 });

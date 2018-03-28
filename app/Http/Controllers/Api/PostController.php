@@ -15,7 +15,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        return $this->response->collection(Post::all(), new PostTransformer);
+        return $this->response->collection(Post::isNotDraft()->get(), new PostTransformer);
     }
 
     /**
@@ -26,6 +26,10 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        return $this->response->item(Post::where('slug', $id)->firstOrFail(), new PostTransformer);
+        $post = Post::isNotDraft()->where('slug', $id)->firstOrFail();
+
+        $post->increment('view_count');
+
+        return $this->response->item($post, new PostTransformer);
     }
 }

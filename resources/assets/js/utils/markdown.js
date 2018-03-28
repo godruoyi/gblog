@@ -1,6 +1,7 @@
 import hljs from 'highlight.js'
 
 import 'highlight.js/styles/atom-one-dark.css'
+// import 'highlight.js/styles/hopscotch.css'
 
 const mt = require('markdown-it')({
     // typographer: true,
@@ -15,11 +16,11 @@ const mt = require('markdown-it')({
 
         if (lang && hljs.getLanguage(lang)) {
             try {
-                return '<pre class="hljs"><code>' + hljs.highlight(lang, str, true).value + '</code></pre>';
+                return '<pre class="hljs "><code>' + hljs.highlight(lang, str, true).value + '</code></pre>';
             } catch (__) {}
         }
 
-        return '<pre class="hljs"><code>' + mt.utils.escapeHtml(str) + '</code></pre>';
+        return '<pre class="hljs language-php"><code>' + mt.utils.escapeHtml(str) + '</code></pre>';
     }
 });
 

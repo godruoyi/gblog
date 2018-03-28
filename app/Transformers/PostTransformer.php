@@ -32,9 +32,11 @@ class PostTransformer extends TransformerAbstract
     {
         return [
             'title'       => $post->title,
-            'id' => $post->id,
+            'id'          => $post->id,
             'body'        => $post->content,
             'slug'        => $post->slug,
+            'excerpt'     =>  $post->excerpt,
+            'banner'      =>  $post->banner,
             'user_id'     => $post->user_id,
             'category_id' => $post->category_id,
             'created_at'  => $post->created_at->toDateTimeString()

@@ -2,13 +2,16 @@
 
 @section('styles')
     <style>
+        body {color: #525252;}
+        ul.list {margin: 0;padding-left: 11px;color: #524e4e;}
         .text-center {text-align: center;}
         .form-control {margin-bottom: 20px;}
-        #reply_notice {border: 1px solid #ddd;margin-bottom: 15px;color: gray;padding: 16px;}
+        #reply_notice {margin-bottom: 15px;padding: 16px;background-color: #fff;border: 1px dashed #d9d9d9;}
         .helpblock {line-height: 30px;margin-bottom: 0px;}
-        ul.list {margin: 0;padding-left: 11px;}
         .editor-toolbar.fullscreen {z-index: 9999 !important;}
         .CodeMirror-fullscreen {z-index: 9999 !important;}
+        .post-banner {height: 240px;}
+        .voyager input[type=file] {padding: 5px;}
     </style>
 @endsection
 
@@ -27,6 +30,9 @@
                     <h2 class="text-center">创造文章</h2>
                     <hr>
                     <input type="text" class="form-control title" name="title" value="{{ $post->title }}" placeholder="请输入文章标题">
+                    <input type="text" class="form-control" name="slug" value="{{ $post->slug }}" placeholder="请输入文章 slug">
+
+                    <input type="file" class="form-control" name="banner">
                     <select class="form-control" name="category_id" placeholder="请选择分类">
                         <option value="">请选择分类</option>
                         @foreach($categories as $category)
@@ -52,7 +58,8 @@
                         data-upload-token="{{ csrf_token() }}">{{ $post->content }}</textarea>
 
                     <button type="submit" class="btn btn-primary submit-btn">发布</button>&nbsp;&nbsp;or&nbsp;&nbsp;
-                    <button type="button" class="btn btn-basic">保存草稿</button>
+                    <input type="hidden" name="is_draft" value="no" id="draft">
+                    <button type="button" class="btn btn-basic" id="save-draft">保存草稿</button>
                     <div class=""></div>
                 </div><!-- panel-body -->
             </form>

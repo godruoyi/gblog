@@ -3,7 +3,7 @@
 @section('content')
     <div class="container-fluid">
         <h1 class="page-title">
-            <i class="voyager-lock"></i> 文章列表
+            <i class="voyager-tree"></i> 文章列表
         </h1>
         <a href="{{ route('admin.posts.create') }}" class="btn btn-success btn-add-new">
             <i class="voyager-plus"></i> <span>发布文章</span>
@@ -27,12 +27,13 @@
                                                     <td>标题</td>
                                                     <td>阅读量</td>
                                                     <td>回复量</td>
+                                                    <td>草稿</td>
                                                     <td>发布时间</td>
                                                     <td>操作</td>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach($posts as $post)
+                                                @forelse ($posts as $post)
                                                     <tr>
                                                         <td>{{ $post->id }}</td>
                                                         <td>{{ $post->category->name }}</td>
@@ -40,23 +41,30 @@
                                                         <td>{{ $post->title }}</td>
                                                         <td>{{ $post->view_count }}</td>
                                                         <td>{{ $post->reply_count }}</td>
+                                                        @if ($post->is_draft == 'yes')
+                                                            <td><span class="tag label label-warning">草稿</span></td>
+                                                        @else
+                                                            <td><span class="tag label label-success">已发布</span></td>
+                                                        @endif
                                                         <td>{{ $post->created_at }}</td>
                                                         <td class="no-sort no-click" id="bread-actions">
-                                                            <a href="{{ route('admin.posts.edit', $post->id) }}" class="btn btn-sm btn-warning">
-                                                                <i class="voyager-trash"></i>
+                                                            <a href="{{ route('admin.posts.edit', $post->id) }}" class="btn btn-sm btn-success">
+                                                                <i class="voyager-hammer"></i>
                                                                 <span class="hidden-xs hidden-sm">查 看</span>
                                                             </a>
-                                                            <a href="{{ route('admin.posts.edit', $post->id) }}" class="btn btn-sm btn-warning">
-                                                                <i class="voyager-trash"></i>
+                                                            <a href="{{ route('admin.posts.edit', $post->id) }}" class="btn btn-sm btn-info">
+                                                                <i class="voyager-edit"></i>
                                                                 <span class="hidden-xs hidden-sm">编 辑</span>
                                                             </a>
                                                             <a href="javascript:;" data-id="{{ $post->id }}" class="btn btn-sm btn-warning delete">
-                                                                <i class="voyager-edit"></i>
+                                                                <i class="voyager-x"></i>
                                                                 <span class="hidden-xs hidden-sm">删 除</span>
                                                             </a>
                                                         </td>
                                                     </tr>
-                                                @endforeach
+                                                @empty
+                                                    <tr><td colspan="9" align="center">暂无数据</td></tr>
+                                                @endforelse
                                             </tbody>
                                         </table>
                                     </div>

@@ -10,8 +10,8 @@ class Post extends Model
      * @var array
      */
     protected $fillable = [
-        'category_id', 'user_id', 'title', 'slug', 'order', 'banner', 
-        'reply_count', 'view_count', 'content', 'excerpt'
+        'category_id', 'user_id', 'title', 'slug', 'order', 'banner',
+        'reply_count', 'view_count', 'content', 'excerpt', 'is_draft'
     ];
 
     /**
@@ -32,5 +32,15 @@ class Post extends Model
     public function category()
     {
         return $this->belongsTo(Category::class, 'category_id');
+    }
+
+    /**
+     * Is not draft
+     *
+     * @return Builder
+     */
+    public function scopeIsNotDraft($builder)
+    {
+        return $builder->where('is_draft', 'no');
     }
 }

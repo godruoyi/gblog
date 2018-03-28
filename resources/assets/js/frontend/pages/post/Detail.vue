@@ -3,7 +3,7 @@
         <div class="container wrapper">
             <div class="card post mt2">
                 <div class="post__image">
-                    <img src="https://i2.wp.com/wp.laravel-news.com/wp-content/uploads/2018/03/laravel-excel.png?resize=2200%2C1125" alt="Laravel Excel 3.0">
+                    <img :src="post.banner" :alt="post.title">
                 </div>
                 <div class="post__content clearfix">
                     <div class="col lg-col-9">
@@ -20,6 +20,14 @@
                     </div>
 
                     <share></share>
+
+
+                </div>
+            </div>
+
+            <div class="partners my4">
+                <div class="container">
+                    <div class="label label--divider"><span>Laravel News Partners</span></div>
                 </div>
             </div>
         </div>

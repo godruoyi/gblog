@@ -13,7 +13,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $this->registerObserves();
     }
 
     /**
@@ -37,5 +37,15 @@ class AppServiceProvider extends ServiceProvider
         app('Dingo\Api\Exception\Handler')->register(function (\Illuminate\Validation\ValidationException $e) {
             throw new \Symfony\Component\HttpKernel\Exception\BadRequestHttpException($e->validator->errors()->first());
         });
+    }
+
+    /**
+     * Register observer
+     *
+     * @return void
+     */
+    protected function registerObserves(): void
+    {
+        \App\Models\Post::observe(\App\Observers\Postbserver::class);
     }
 }
