@@ -35,7 +35,7 @@
                     </ol>
                 </nav>
 
-                <div class="footer__copy mt5">
+                <div class="footer__copy">
                     <img src="/vendor/images/dark-ln-elephant.png">
                 </div>
 
@@ -117,5 +117,8 @@
 <style lang="scss" scoped>
     .footer__tribute img {
         border-radius: 50%;
+    }
+    .site-footer {
+        padding: 20px 0;
     }
 </style>

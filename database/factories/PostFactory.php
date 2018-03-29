@@ -15,9 +15,13 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Models\Post::class, function (Faker $faker) {
     return [
-        'post_count' => 0,
-        'description' => 0,
-        'created_at'     => \Carbon\Carbon::now(),
-        'updated_at'     => \Carbon\Carbon::now(),
+        'title'       => $faker->sentence,
+        'slug'        => $faker->unique()->slug,
+        'banner'      => '/vendor/images/detail-bg.jpg',
+        'content'     => $faker->text,
+        'excerpt'     => $faker->text(200),
+
+        'created_at'  => \Carbon\Carbon::now(),
+        'updated_at'  => \Carbon\Carbon::now(),
     ];
 });

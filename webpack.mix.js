@@ -1,4 +1,8 @@
 let mix = require('laravel-mix');
+const path = require('path');
+const BabiliPlugin = require("babili-webpack-plugin");
+
+let plugins = [];
 
 /*
  |--------------------------------------------------------------------------
@@ -11,14 +15,21 @@ let mix = require('laravel-mix');
  |
  */
 
+// mix.options({
+//     processCssUrls: false
+// });
+
 mix.js('resources/assets/js/admin.js', 'public/js/admin.js')
     .js('resources/assets/js/frontend.js', 'public/js/app.js')
     .js('resources/assets/js/utils/simeditormd.js', 'public/js/admin-sieditor.js')
-    .styles(['resources/assets/css/frontend.css'], 'public/css/frontend.css')
+    .styles(['resources/assets/css/frontend.css'], 'public/css/frontend.css');
 
-    .version()
+if (process.env.NODE_ENV === 'production') {
+    plugins.push(new BabiliPlugin());
+    mix.version();
+}
 
-// mix.disableNotifications();
+mix.options({ uglify: false });
 
 mix.webpackConfig({
     resolve: {
@@ -35,5 +46,17 @@ mix.webpackConfig({
             'node_modules',
             path.resolve(__dirname, "resources")
         ]
-    }
+    },
+    module: {
+        loaders: [
+            {
+                test: /\.(jpg|png|jpeg|gif)$/,
+                loader: 'url-loader',
+                query: {
+                    limit: 5000,
+                }
+            },
+        ]
+    },
+    plugins
 });

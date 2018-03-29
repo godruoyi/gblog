@@ -3,7 +3,7 @@
         <div class="card card--gray mb3" id="top-posts">
             <header class="card__header">
                 <h2>文章推荐</h2>
-                <img class="header__icon" src="/vendor/images/icon-newsletter.png">
+                <img class="header__icon" src="./../images/icon-newsletter.png">
             </header>
             <div class="card__content">
                <ul class="list-unstyled">
@@ -18,7 +18,7 @@
         <div class="card card--gray mb3">
             <header class="card__header">
                 <h2>友情链接</h2>
-                <img class="header__icon" src="/vendor/images/icon-chair.png">
+                <img class="header__icon" src="./../images/icon-chair.png">
             </header>
             <div class="card__content">
                 <dl class="list-unstyled">

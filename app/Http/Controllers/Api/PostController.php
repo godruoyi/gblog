@@ -45,7 +45,10 @@ class PostController extends Controller
      */
     public function recommend(Request $request)
     {
-        $posts = Post::isNotDraft()->orderBy('view_count', 'desc')->limit(10)->get();
+        $posts = Post::isNotDraft()
+            ->orderBy('view_count', 'desc')
+            ->select('title', 'id', 'slug', 'excerpt', 'banner', 'user_id', 'category_id', 'created_at')
+            ->limit(10)->get();
 
         return $this->response->collection($posts, new PostTransformer);
     }

@@ -1,1 +1,1 @@
-export const ApibaseURI = 'https://api.godruoyi.com/'
+export const ApibaseURI = 'http://api.godruoyi.test/'
