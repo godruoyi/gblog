@@ -6,6 +6,9 @@
     <title>gblog, a open source blog built with Laravel and Vue.js</title>
     <link rel="canonical" href="https://godruoyi.com/" itemprop="url">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="referrer" content="always">
     <meta name="theme-color" content="#ffffff">
