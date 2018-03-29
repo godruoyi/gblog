@@ -4,7 +4,7 @@
     <div class="page-content">
         <div class="clearfix container-fluid row">
             <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="panel widget center bgimage" style="margin-bottom:0;overflow:hidden;background-image:url('http://youlejia.test/vendor/tcg/voyager/assets/images/widget-backgrounds/01.jpg');">
+                <div class="panel widget center bgimage" style="margin-bottom:0;overflow:hidden;background-image:url('/vendor/images/01.jpg');">
                     <div class="dimmer"></div>
                     <div class="panel-content">
                         <i class="voyager-tree"></i><h4>10 文章</h4>
