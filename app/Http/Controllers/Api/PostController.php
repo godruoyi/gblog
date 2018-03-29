@@ -13,9 +13,12 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return $this->response->collection(Post::isNotDraft()->get(), new PostTransformer);
+        return $this->response->paginator(Post::isNotDraft()
+            ->orderBy('created_at', 'desc')
+            ->select('title', 'id', 'slug', 'excerpt', 'banner', 'user_id', 'category_id', 'created_at')
+            ->paginate(), new PostTransformer);
     }
 
     /**
@@ -26,10 +29,24 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        $post = Post::isNotDraft()->where('slug', $id)->firstOrFail();
+        $where = is_numeric($id) ? ['id' => $id] : ['slug' => $id];
+        $post  = Post::isNotDraft()->where($where)->firstOrFail();
 
         $post->increment('view_count');
 
         return $this->response->item($post, new PostTransformer);
+    }
+
+    /**
+     * 测试, 后续改为 7 天内热门
+     *
+     * @param  Request $request
+     * @return
+     */
+    public function recommend(Request $request)
+    {
+        $posts = Post::isNotDraft()->orderBy('view_count', 'desc')->limit(10)->get();
+
+        return $this->response->collection($posts, new PostTransformer);
     }
 }

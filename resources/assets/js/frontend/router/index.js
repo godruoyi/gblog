@@ -6,7 +6,7 @@ Vue.use(Router)
 
 const router = new Router({
     routes,
-    linkActiveClass: 'active',
+    linkActiveClass: '',
     mode: 'history', // do not use /#/.
 })
 

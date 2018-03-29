@@ -14,12 +14,9 @@ let mix = require('laravel-mix');
 mix.js('resources/assets/js/admin.js', 'public/js/admin.js')
     .js('resources/assets/js/frontend.js', 'public/js/app.js')
     .js('resources/assets/js/utils/simeditormd.js', 'public/js/admin-sieditor.js')
+    .styles(['resources/assets/css/frontend.css'], 'public/css/frontend.css')
 
-    .copyDirectory('resources/assets/js/plugins/slim', 'public/js/plugins/slim')
-
-if (mix.inProduction()) {
-    mix.version();
-}
+    .version()
 
 // mix.disableNotifications();
 

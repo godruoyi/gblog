@@ -10,30 +10,77 @@
                     </svg>
                     <p class="logo__title">Gblog</p>
                 </router-link>
-                <button type="button" class="nav__hamburger js-menu-toggle">
+                <button type="button" class="nav__hamburger js-menu-toggle" v-on:click="ismini = !ismini">
                     <div class="hamburger-box">
                         <div class="hamburger-inner"></div>
                     </div>
                 </button>
             </div>
-            <div class="nav__container js-menu" style="height: auto; float: right;">
+            <div :class="showminiCss">
+                <div class="nav__search">
+                    <form class="search" action="">
+                        <input type="text" placeholder="SEARCH" name="q" value="">
+                        <button type="button"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-search"></use></svg></button>
+                    </form>
+                </div>
                 <div class="nav__main">
                     <ul>
-                        <li class="nav__item">
-                            <router-link :to="{name: 'frontend.home'}">首页</router-link>
-                        </li>
-                        <li class="nav__item"><a href="https://github.com/godruoyi/gblog">微博</a></li>
-                        <li class="nav__item"><a href="https://github.com/godruoyi/gblog">关于</a></li>
+                        <li class="nav__item"><router-link :to="{name: 'frontend.home'}">首页</router-link></li>
+                        <li class="nav__item"><a href="https://weibo.com/godruoyi">微博</a></li>
+                        <li class="nav__item"><router-link :to="{name: 'frontend.post.detail', params: {slug: 'about-gblog'}}">关于</router-link></li>
                         <li class="nav__item"><a href="https://github.com/godruoyi/gblog">Github</a></li>
                     </ul>
                 </div>
+                <ul class="nav__social social social--lg">
+                    <li><a href="" rel="nofollow" class="social__icon icon--github">
+                            <svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-github"></use></svg>
+                        </a>
+                    </li>
+                </ul>
                 <div class="nav__footer">
                     <ol>
-                        <li><a href="/category/laravel-tutorials">Laravel Tutorials</a></li>
-                        <li><a href="/category/laravel-packages">Laravel Packages</a></li>
+                        <li v-for="category in categories" :key="category.id">
+                            <router-link :to="{name: 'frontend.category', params: {slug: category.slug}}">{{ category.name }}</router-link>
+                        </li>
                     </ol>
                 </div>
             </div>
         </div>
     </nav>
 </template>
+
+<script>
+    export default {
+        data () {
+            return {
+                ismini: false,
+                categories: []
+            }
+        },
+        mounted: function () {
+            this.$http.get(this.$endpoints.categories.index + '?limit=5').then(response => {
+                this.categories = response.data
+            }, error => {})
+        },
+        computed: {
+            showminiCss: function () {
+                return this.ismini ? 'nav__container js-menu is-active' : 'nav__container js-menu'
+            },
+        }
+    }
+</script>
+
+<style lang="scss" scoped>
+    .social.social--lg li {
+        width: 70px;
+        margin: auto;
+
+        img {
+            border: 0;
+            width: 100%;
+            border-radius: 50%;
+            background-size: cover;
+            background-position: 50%;
+        }
+    }
+</style>

@@ -18,7 +18,7 @@
                     <div class="SignFlowHomepage-content">
                         <div class="Card SignContainer-content">
                             <div class="SignFlowHeader">
-                                <img src="/vendor/images/large-logo-icon.png" style="width: 60px;">
+                                {{-- <img src="/vendor/images/large-logo-icon.png" style="width: 60px;"> --}}
                                 {{-- <div class="SignFlowHeader-slogen">
                                     登录管理后台
                                 </div> --}}

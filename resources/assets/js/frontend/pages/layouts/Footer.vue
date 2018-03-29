@@ -20,22 +20,24 @@
                 </ul>
                 <nav class="footer__nav">
                     <ol>
-                        <li><a target="_black" href="https://laravel-news.com">Laravel-news</a></li>
-                        <li><a target="_black" href="https://laravel-china.org">Laravel-china</a></li>
-                        <li><a target="_black" href="https://github.com/godruoyi">Github</a></li>
-                        <li><a target="_black" href="https://whoismy8023.com/">Sppan</a></li>
+                        <li><a target="_blank" href="https://laravel-news.com">Laravel-news</a></li>
+                        <li><a target="_blank" href="https://laravel-china.org/users/5359">Laravel-china</a></li>
+                        <li><a target="_blank" href="https://github.com/godruoyi">Github</a></li>
+                        <li><a target="_blank" href="https://weibo.com/godruoyi">Weibo</a></li>
+                        <li><a target="_blank" href="https://twitter.com/godruoyi">Twiter</a></li>
                     </ol>
                 </nav>
-                <!-- <nav class="footer__nav nav--lighter">
+                <nav class="footer__nav nav--lighter">
                     <ol>
-                        <li><a href="/category/news">News</a></li>
-                        <li><a href="/category/laravel-tutorials">Tutorials</a></li>
-                        <li><a href="/category/laravel-packages">Packages</a></li>
-                        <li><a href="/category/laravel-books">Books</a></li>
-                        <li><a href="/category/interviews">Interviews</a></li>
-                        <li><a href="/category/laravel-applications">Applications</a></li>
+                        <li><a target="_blank" href="https://whoismy8023.com/">Sppan</a></li>
+                        <li><a target="_blank" href="https://imququ.com/">JerryQu</a></li>
+                        <li><a target="_blank" href="https://laravel.com/">Laravel</a></li>
                     </ol>
-                </nav> -->
+                </nav>
+
+                <div class="footer__copy mt5">
+                    <img src="/vendor/images/dark-ln-elephant.png">
+                </div>
 
                 <div class="footer__tribute">
                     <p>Designed &amp; code by</p>

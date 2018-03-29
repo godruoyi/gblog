@@ -1,9 +1,11 @@
 export default {
     posts: {
         index: '/posts',
-        detail: '/posts/:slug'
+        detail: '/posts/:slug',
+        recommend: '/posts/recommend'
     },
     categories: {
-        index: '/categories'
+        index: '/categories',
+        detail: '/categories/:slug',
     }
 }

@@ -5,6 +5,7 @@ namespace App\Transformers;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Category;
+use League\Fractal\ParamBag;
 use League\Fractal\TransformerAbstract;
 
 class PostTransformer extends TransformerAbstract

@@ -26,6 +26,10 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        return $this->response->item(Category::findOrFail($id), new CategoryTransformer);
+        $where = is_numeric($id) ? ['id' => $id] : ['slug' => $id];
+
+        $category  = Category::where($where)->firstOrFail();
+
+        return $this->response->item($category, new CategoryTransformer);
     }
 }

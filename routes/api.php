@@ -17,7 +17,9 @@ $api = app('Dingo\Api\Routing\Router');
 
 $api->version('v1', function ($api) {
     $api->group(['namespace' => 'App\Http\Controllers\Api', 'middleware' => ['cors']], function ($api) {
+        $api->get('posts/recommend', 'PostController@recommend')->name('posts.recommend');
         $api->resource('posts', 'PostController', ['only' => ['index', 'show']]);
+
         $api->resource('categories', 'CategoryController', ['only' => ['index', 'show']]);
     });
 });

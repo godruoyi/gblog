@@ -9,7 +9,7 @@
                     <div class="col lg-col-9">
                         <header class="post__header">
                             <span class="label">
-                                <a href="javascript:;">{{ post.category.name }}</a>
+                                <router-link :to="{name: 'frontend.category', params: {slug: post.category.slug}}">{{ post.category.name }}</router-link>
                                 <span class="text--gray"> / </span>
                                 <span class="text--gray">{{ post.created_at }}</span>
                             </span>
@@ -20,8 +20,6 @@
                     </div>
 
                     <share></share>
-
-
                 </div>
             </div>
 

@@ -1,5 +1,6 @@
 import Master from './layouts/Master'
 import Post from './post'
+import Category from './categories'
 
 export default [
     {
@@ -7,7 +8,8 @@ export default [
         component: Master,
         // redirect: {name: 'frontend.home'},
         children: [
-            ...Post
+            ...Post,
+            ...Category
         ]
     },
 ]

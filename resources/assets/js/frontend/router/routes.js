@@ -6,7 +6,7 @@ const NotFound = {
     component: Master,
     children: [
         {
-            path: '404',
+            path: '*',
             name: '404',
             component: require('frontend/components/NotFound.vue')
         }

@@ -4,19 +4,18 @@
             <div class="navbar-header">
                 <a class="navbar-brand" href="{{ config('app.url') }}">
                     <div class="logo-icon-container">
-                        <img src="http://youlejia.test/vendor/tcg/voyager/assets/images/logo-icon-light.png" alt="Logo Icon">
+                        <img src="/vendor/images/logo-icon-light.png" alt="Logo Icon">
                     </div>
                     <div class="title">Godruoyi</div>
                 </a>
             </div><!-- .navbar-header -->
 
-            <div class="panel widget center bgimage" style="background-image:url(http://youlejia.test/vendor/tcg/voyager/assets/images/bg.jpg); background-size: cover; background-position: 0px;">
+            <div class="panel widget center bgimage" style="background-image:url(/vendor/images/bg.jpg); background-size: cover; background-position: 0px;">
                 <div class="dimmer"></div>
                 <div class="panel-content">
-                    <img src="{{ Auth::user()->avatar ?? 'http://youlejia.test/storage/users/default.png' }}" class="avatar" alt="admin avatar">
+                    <img src="{{ Auth::user()->avatar ?? '/vendor/godruoyi-logo.png' }}" class="avatar" alt="admin avatar">
                     <h4>{{ Auth::user()->name }}</h4>
                     <p></p>
-
                     <div style="clear:both"></div>
                 </div>
             </div>
