@@ -8,7 +8,9 @@
             <div class="card__content">
                <ul class="list-unstyled">
                    <li :class="key == 0 ? 'first' : ''" v-for="(post, key) in posts" :key="post.id">
-                        <a href="">{{ key == 0 ? '🏆' : ((key + 1)) }}、{{ post.title }}</a>
+                        <router-link :to="{name: 'frontend.post.detail', params: {slug: post.slug}}">
+                            {{ key == 0 ? '🏆' : ((key + 1)) }}、{{ post.title }}
+                        </router-link>
                     </li>
                </ul>
             </div>

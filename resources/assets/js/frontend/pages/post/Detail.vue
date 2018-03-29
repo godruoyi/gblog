@@ -25,7 +25,7 @@
 
             <div class="partners my4">
                 <div class="container">
-                    <div class="label label--divider"><span>Laravel News Partners</span></div>
+                    <div class="label label--divider"><span>Godruoyi</span></div>
                 </div>
             </div>
         </div>
