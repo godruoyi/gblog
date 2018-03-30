@@ -7,9 +7,6 @@ export default (http, router) => {
             router.push({name: '404'})
         }
 
-        console.log('error...........')
-        console.error(response.status)
-
         return Promise.reject(error)
     })
 }

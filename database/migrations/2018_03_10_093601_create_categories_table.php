@@ -18,6 +18,7 @@ class CreateCategoriesTable extends Migration
 
             $table->string('slug', 20)->unique();
             $table->string('name', 50)->index();
+            $table->string('title', 191)->index();
 
             $table->integer('post_count')->default(0);
             $table->text('description')->nullable();

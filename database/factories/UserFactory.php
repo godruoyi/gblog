@@ -16,9 +16,9 @@ use Faker\Generator as Faker;
 $factory->define(App\Models\User::class, function (Faker $faker) {
     return [
         'name'           => $faker->name,
-        'avatar'         => $faker->name,
+        'avatar'         => '/vendor/images/godruoyi-logo.jpeg',
         'email'          => $faker->unique()->safeEmail,
-        'password'       => bcrypt('admin1'), // secret
+        'password'       => bcrypt('admin1'),
         'remember_token' => str_random(10),
         'created_at'     => \Carbon\Carbon::now(),
         'updated_at'     => \Carbon\Carbon::now(),

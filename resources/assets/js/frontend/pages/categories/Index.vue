@@ -4,8 +4,8 @@
             <div class="container">
                 <div class="page__header pt6 pb5 clearfix gutter ">
                     <div class="header__content col lg-col-7 mb4 lg-mb0">
-                        <h1 class="bold">Laravel 5.6</h1>
-                        <p>Laravel 5.6 was released on February 7th, 2018.</p>
+                        <h1 class="bold">{{ category.name }}</h1>
+                        <p>{{ category.description }}</p>
                     </div>
                     <div class="lg-col card card--gray sponsor right"></div>
                 </div>
@@ -14,7 +14,7 @@
         <div class="container wrapper py5 tab__container">
             <div class="category mb4">
                 <header class="category__header">
-                    <h2 class="category__title">{{ category.description }}</h2>
+                    <h2 class="category__title">{{ category.title }}</h2>
                 </header>
                 <div class="gutter grid--2-col lg-grid--3-col grid--left">
                     <router-link class="card col mb1 sm-mb2"

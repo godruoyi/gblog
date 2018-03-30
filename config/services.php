@@ -35,4 +35,11 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'translate' => [
+        'youdao' => [
+            'appid' => env('YOUDAO_TRANS_APPID', ''),
+            'secret' => env('YOUDAO_TRANS_SECRET', ''),
+        ]
+    ]
+
 ];

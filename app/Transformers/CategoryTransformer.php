@@ -24,11 +24,12 @@ class CategoryTransformer extends TransformerAbstract
     public function transform(Category $category)
     {
         return [
-            'id' => $category->id,
-            'name' => $category->name,
-            'slug' => $category->slug,
+            'id'          => $category->id,
+            'name'        => $category->name,
+            'slug'        => $category->slug,
+            'title'       => $category->title,
             'description' => $category->description,
-            'created_at' => $category->created_at->toDateTimeString()
+            'created_at'  => $category->created_at->toDateTimeString()
         ];
     }
 

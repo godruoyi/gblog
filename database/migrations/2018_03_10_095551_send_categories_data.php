@@ -19,24 +19,19 @@ class SendCategoriesData extends Migration
             [
                 'slug'        => 'php',
                 'name'        => 'PHP',
-                'description' => 'This is php category',
+                'title'       => 'This is php category',
+                'description' => 'PHP 是世界上最好的语言！',
                 'created_at'  => $createdAt,
                 'updated_at'  => $createdAt,
             ],
             [
                 'slug'        => 'life',
-                'name'        => 'Life',
-                'description' => 'This is my life',
+                'name'        => '生活',
+                'title'       => 'This is my life',
+                'description' => '生活不止眼前的枸杞，还有保温杯！',
                 'created_at'  => $createdAt,
                 'updated_at'  => $createdAt,
             ],
-            [
-                'slug'        => 'other',
-                'name'        => 'Other',
-                'description' => 'I xxx',
-                'created_at'  => $createdAt,
-                'updated_at'  => $createdAt,
-            ]
         ]);
     }
 

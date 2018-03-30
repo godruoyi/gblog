@@ -17,12 +17,12 @@ class Category extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'slug', 'post_count', 'description'
+        'name', 'slug', 'post_count', 'description', 'title'
     ];
 
     /**
      * The category post list
-     * 
+     *
      * @return mixed
      */
     public function posts()

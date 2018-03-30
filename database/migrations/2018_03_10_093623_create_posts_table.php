@@ -26,7 +26,8 @@ class CreatePostsTable extends Migration
             $table->string('slug', '191')->nullable()->index();
 
             $table->integer('order')->default(0);
-            $table->integer('is_deaft')->default(0)->comment('草稿 默认0 不是， 1 是');
+            $table->enum('is_draft', ['yes', 'no'])->index()->default('no');
+            $table->string('banner')->nullable();
 
             $table->integer('reply_count')->default(0)->index();
             $table->integer('view_count')->default(0)->index();

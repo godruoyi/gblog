@@ -16,7 +16,6 @@ const simplemde = new SimpleMDE({
 
 });
 
-
 inlineAttachment.defaults.uploadUrl = $('#sieditor-id').data('upload-url');
 inlineAttachment.defaults.extraParams = {_token: $('#sieditor-id').data('upload-token')};
 inlineAttachment.defaults.uploadFieldName = 'upload_files';
