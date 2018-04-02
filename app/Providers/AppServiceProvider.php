@@ -47,5 +47,6 @@ class AppServiceProvider extends ServiceProvider
     protected function registerObserves(): void
     {
         \App\Models\Post::observe(\App\Observers\Postbserver::class);
+        \App\Models\Category::observe(\App\Observers\Categorybserver::class);
     }
 }

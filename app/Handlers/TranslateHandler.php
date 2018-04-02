@@ -3,6 +3,7 @@
 namespace App\Handlers;
 
 use GuzzleHttp\Client;
+use Overtrue\Pinyin\Pinyin;
 
 class TranslateHandler
 {
@@ -35,7 +36,7 @@ class TranslateHandler
      *
      * @return string
      */
-    public function trans(string $keyword, string $form = 'EN', string $to = 'zh-CHS'): string
+    public function trans(string $keyword, string $form = 'zh-CHS', string $to = 'EN'): string
     {
         $keyword = trim($keyword);
         $this->keyword = $keyword;
@@ -60,7 +61,7 @@ class TranslateHandler
      */
     public function defaultTrans(string $word): string
     {
-        return 'woshimoren';
+        return (new Pinyin())->sentence($word);
     }
 
     /**
@@ -76,7 +77,10 @@ class TranslateHandler
             $response = json_decode((string) $response->getBody(), true);
 
             if (json_last_error() === JSON_ERROR_NONE && ! empty($response['translation'][0])) {
-                return (string) $response['translation'][0];
+                $word = (string) $response['translation'][0];
+
+                $pattern = ['/[[:punct:]]/i', '/[ ]{1,}/'];
+                return trim(preg_replace($pattern, ' ', $word));
             }
         }
 
