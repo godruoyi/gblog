@@ -4,6 +4,7 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Validation\Rule;
 use App\Handlers\ImageUploadHandler;
+use App\Handlers\TranslateHandler;
 
 class PostRequest extends FormRequest
 {
@@ -45,10 +46,8 @@ class PostRequest extends FormRequest
      */
     public function prepareStorePost(): array
     {
-        $path = app(ImageUploadHandler::class)->upload($this->file('banner'), 'posts');
-
         $datas = $this->validated();
-        $datas['banner'] = $path;
+        $datas['banner'] = app(ImageUploadHandler::class)->resize(1100)->upload($this->file('banner'), 'posts');
 
         return $datas;
     }
@@ -60,13 +59,26 @@ class PostRequest extends FormRequest
      */
     public function prepareUpdatePost(): array
     {
-        $datas = $this->validated();
+        $datas = array_filter($this->validated());
 
         if ($file = $this->file('banner')) {
-            $path = app(ImageUploadHandler::class)->upload($file, 'posts');
-            $datas['banner'] = $path;
+            $datas['banner'] = app(ImageUploadHandler::class)->resize(1100)->upload($this->file('banner'), 'posts');
         }
 
-        return array_filter($datas);
+        return $datas;
+    }
+
+    /**
+     * Get data to be validated from the request.
+     *
+     * @return array
+     */
+    protected function validationData()
+    {
+        if ($this->title) {
+            $this->offsetSet('slug', str_slug(app(TranslateHandler::class)->trans($this->title)));
+        }
+
+        return $this->all();
     }
 }

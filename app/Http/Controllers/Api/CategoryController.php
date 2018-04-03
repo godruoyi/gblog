@@ -46,6 +46,7 @@ class CategoryController extends Controller
         $category  = Category::where($where)->firstOrFail();
 
         return $this->response->paginator($category->posts()
+            ->isNotDraft()
             ->select('id', 'title', 'slug', 'user_id', 'category_id', 'banner')->paginate(9), new PostTransformer)
             ->addMeta('category', $category->setVisible(['id', 'name', 'slug', 'description', 'title']));
     }

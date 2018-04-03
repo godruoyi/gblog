@@ -31,7 +31,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/" target="_blank">
+                        <a href="https://godruoyi.com" target="_blank">
                             <i class="voyager-home"></i>
                             前台站点
                         </a>

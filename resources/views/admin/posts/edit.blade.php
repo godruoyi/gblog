@@ -30,8 +30,10 @@
                     <h2 class="text-center">创造文章</h2>
                     <hr>
                     <input type="text" class="form-control title" name="title" value="{{ $post->title }}" placeholder="请输入文章标题">
-                    <input type="text" class="form-control" name="slug" value="{{ $post->slug }}" placeholder="请输入文章 slug">
 
+                    <div id="reply_notice" class="">
+                        <img src="{{ $post->banner }}">
+                    </div>
                     <input type="file" class="form-control" name="banner">
                     <select class="form-control" name="category_id" placeholder="请选择分类">
                         <option value="">请选择分类</option>

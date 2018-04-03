@@ -14,7 +14,7 @@
 Route::group(['as' => 'admin.', 'domain' => config('app.admin_domain')], function () {
     Route::view('login', 'admin.login')->name('login');
     Route::post('login', 'Auth\LoginController@login')->name('login.submit');
-    Route::post('logout', 'Auth\LoginController@login')->name('logout');
+    Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
     Route::group(['middleware' => 'auth.admin'], function () {
         Route::view('/', 'admin.index')->name('index');
@@ -24,6 +24,7 @@ Route::group(['as' => 'admin.', 'domain' => config('app.admin_domain')], functio
         Route::resource('posts', 'Admin\PostController');
 
         Route::name('upload.sieditor')->post('sieditor/imageupload', 'Admin\PostController@sieditorUpload');
+        Route::name('upload.slim')->post('slim/imageupload', 'Admin\PostController@slimFileUpload');
     });
 });
 

@@ -60,23 +60,23 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 34);
+/******/ 	return __webpack_require__(__webpack_require__.s = 35);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 34:
+/***/ 35:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(35);
+module.exports = __webpack_require__(36);
 
 
 /***/ }),
 
-/***/ 35:
+/***/ 36:
 /***/ (function(module, exports, __webpack_require__) {
 
-window.$ = window.jQuery = __webpack_require__(36);
+window.$ = window.jQuery = __webpack_require__(37);
 
 $(document).ready(function () {
     $('#show-profile-modal .dropdown-toggle').click(function () {
@@ -87,11 +87,25 @@ $(document).ready(function () {
         $('#draft').val('yes');
         $('.submit-btn').click();
     });
+
+    $('.alert .close').click(function () {
+        $(this).parent().remove();
+    });
+
+    $('.navbar-header .btn-link').click(function () {
+        if ($(this).hasClass('is-active')) {
+            $(this).removeClass('is-active');
+            $('.app-container').removeClass('expanded');
+        } else {
+            $(this).addClass('is-active');
+            $('.app-container').addClass('expanded');
+        }
+    });
 });
 
 /***/ }),
 
-/***/ 36:
+/***/ 37:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!

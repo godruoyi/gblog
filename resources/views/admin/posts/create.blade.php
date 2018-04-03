@@ -10,8 +10,9 @@
         .helpblock {line-height: 30px;margin-bottom: 0px;}
         .editor-toolbar.fullscreen {z-index: 9999 !important;}
         .CodeMirror-fullscreen {z-index: 9999 !important;}
-        .post-banner {height: 240px;}
+        .post-banner {height: 280px;max-height: 280px;}
         .voyager input[type=file] {padding: 5px;}
+        .CodeMirror {font-size: 17px!important;color: black!important;}
     </style>
 @endsection
 
@@ -29,8 +30,8 @@
                     <h2 class="text-center">创造文章</h2>
                     <hr>
                     <input type="text" class="form-control title" name="title" value="" placeholder="请输入文章标题">
-                    <input type="text" class="form-control" name="slug" value="" placeholder="请输入文章 slug">
 
+                    {{-- <input type="text" class="form-control" name="slug" value="" placeholder="请输入文章 slug"> --}}
                     <input type="file" class="form-control" name="banner">
 
                     <select class="form-control" name="category_id" placeholder="请选择分类">

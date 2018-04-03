@@ -3135,6 +3135,10 @@ find-versions@^1.0.0:
     meow "^3.5.0"
     semver-regex "^1.0.0"
 
+fine-uploader@^5.16.0:
+  version "5.16.0"
+  resolved "https://registry.yarnpkg.com/fine-uploader/-/fine-uploader-5.16.0.tgz#8554490996318c6ae4083498ac9c57e92f90b47e"
+
 first-chunk-stream@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/first-chunk-stream/-/first-chunk-stream-1.0.0.tgz#59bfb50cd905f60d7c394cd3d9acaab4e6ad934e"

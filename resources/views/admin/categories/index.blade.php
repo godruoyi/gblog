@@ -38,12 +38,12 @@
                                                         <td>{{ $category->posts_count }}</td>
                                                         <td>{{ $category->description }}</td>
                                                         <td class="no-sort no-click" id="bread-actions">
-                                                            <a href="{{ route('admin.categories.edit', $category->id) }}" class="btn btn-sm btn-warning">
-                                                                <i class="voyager-trash"></i>
+                                                            <a href="{{ route('admin.categories.edit', $category->id) }}" class="btn btn-sm btn-info">
+                                                                <i class="voyager-edit"></i>
                                                                 <span class="hidden-xs hidden-sm">编 辑</span>
                                                             </a>
                                                             <a href="javascript:;" data-id="{{ $category->id }}" class="btn btn-sm btn-warning delete">
-                                                                <i class="voyager-edit"></i>
+                                                                <i class="voyager-trash"></i>
                                                                 <span class="hidden-xs hidden-sm">删 除</span>
                                                             </a>
                                                         </td>

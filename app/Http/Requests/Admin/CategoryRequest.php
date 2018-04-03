@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Admin;
 
 use Illuminate\Validation\Rule;
+use App\Handlers\TranslateHandler;
 
 class CategoryRequest extends FormRequest
 {
@@ -17,12 +18,25 @@ class CategoryRequest extends FormRequest
             'name' => 'required|string|max:20',
             'description' => 'nullable|string|max:100',
             'title' => 'required|string|max:100',
-
             'slug' => $this->method() === 'POST'
                 ? 'required|max:20|regex:/^[A-Za-z0-9\-\_]+$/|unique:categories,slug'
                 : ['required', 'max:20', 'regex:/^[A-Za-z0-9\-\_]+$/', Rule::unique('categories')->ignore($this->route('category'))]
         ];
 
         return $rules;
+    }
+
+    /**
+     * Get data to be validated from the request.
+     *
+     * @return array
+     */
+    protected function validationData()
+    {
+        if ($this->name) {
+            $this->offsetSet('slug', str_slug(app(TranslateHandler::class)->trans($this->name)));
+        }
+
+        return $this->all();
     }
 }

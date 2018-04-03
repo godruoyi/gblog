@@ -7,9 +7,9 @@
                 <div class="panel widget center bgimage" style="margin-bottom:0;overflow:hidden;background-image:url('/vendor/images/01.jpg');">
                     <div class="dimmer"></div>
                     <div class="panel-content">
-                        <i class="voyager-tree"></i><h4>10 文章</h4>
-                        <p>目前为止，您一共写了 2 篇文章，再接再厉。</p>
-                        <a href="" class="btn btn-primary">查看所有文章</a>
+                        <i class="voyager-tree"></i><h4> 文章</h4>
+                        <p>目前为止，您一共发布了 {{ \App\Models\Post::isNotDraft()->count() }} 篇文章，再接再厉。</p>
+                        <a href="{{ route('admin.posts.index') }}" class="btn btn-primary">查看所有文章</a>
                     </div>
                 </div>
             </div>

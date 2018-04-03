@@ -8,6 +8,7 @@ use App\Models\Post;
 use App\Models\Category;
 use App\Handlers\ImageUploadHandler;
 use App\Http\Requests\Admin\PostRequest;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class PostController extends Controller
 {
@@ -18,7 +19,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::with('category', 'user')->paginate();
+        $posts = Post::with('category', 'user')->orderBy('created_at', 'desc')->paginate();
 
         return view('admin.posts.index')->with(compact('posts'));
     }
@@ -91,7 +92,7 @@ class PostController extends Controller
 
         flash('更新文章成功！')->success();
 
-        return redirect(route('admin.posts.show', $id));
+        return redirect(route('admin.posts.edit', $id));
     }
 
     /**
@@ -121,5 +122,31 @@ class PostController extends Controller
         }
 
         return ['error' => '上传失败'];
+    }
+
+    /**
+     * Slim 文件上传
+     *
+     * @param  Request            $request  [description]
+     * @param  ImageUploadHandler $uploader [description]
+     * @return [type]                       [description]
+     */
+    public function slimFileUpload(Request $request, ImageUploadHandler $uploader)
+    {
+        if ($request->slim && ! empty($request->slim[0])) {
+            $datas        = json_decode($request->slim[0], true);
+            $imageContent = array_get($datas, 'output.image');
+            $name         = array_get($datas, 'input.name');
+
+            list(, $imageContent) = explode(',', $imageContent);
+
+            if (! empty($imageContent)) {
+                $path = tempnam(sys_get_temp_dir(), 'banners');
+                file_put_contents($path, base64_decode($imageContent));
+                $path = $uploader->upload(new UploadedFile($path, $name), 'banners', \Auth::id());
+
+                return ['status' => 'success', 'name' => $name, 'path' => $path];
+            }
+        }
     }
 }
