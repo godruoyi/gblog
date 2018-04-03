@@ -25,10 +25,10 @@
                 </div>
                 <div class="nav__main">
                     <ul>
-                        <li class="nav__item"><router-link :to="{name: 'frontend.home'}">首页</router-link></li>
-                        <li class="nav__item"><a href="https://weibo.com/godruoyi">微博</a></li>
-                        <li class="nav__item"><router-link :to="{name: 'frontend.post.detail', params: {slug: 'about-gblog'}}">关于</router-link></li>
-                        <li class="nav__item"><a href="https://github.com/godruoyi/gblog">Github</a></li>
+                        <li class="nav__item"><router-link :to="{name: 'frontend.home'}">Home</router-link></li>
+                        <li class="nav__item"><router-link :to="{name: 'frontend.category'}">Categories</router-link></li>
+                        <li class="nav__item"><router-link :to="{name: 'frontend.post.detail', params: {slug: 'about-gblog'}}">About</router-link></li>
+                        <li class="nav__item"><a target="_blank" href="https://github.com/godruoyi/gblog">Github</a></li>
                     </ul>
                 </div>
                 <ul class="nav__social social social--lg">
@@ -37,13 +37,6 @@
                         </a>
                     </li>
                 </ul>
-                <div class="nav__footer">
-                    <ol>
-                        <li v-for="category in categories" :key="category.id">
-                            <router-link :to="{name: 'frontend.category', params: {slug: category.slug}}">{{ category.name }}</router-link>
-                        </li>
-                    </ol>
-                </div>
             </div>
         </div>
     </nav>
@@ -54,13 +47,7 @@
         data () {
             return {
                 ismini: false,
-                categories: []
             }
-        },
-        mounted: function () {
-            this.$http.get(this.$endpoints.categories.index + '?limit=5').then(response => {
-                this.categories = response.data
-            }, error => {})
         },
         computed: {
             showminiCss: function () {
@@ -71,16 +58,21 @@
 </script>
 
 <style lang="scss" scoped>
-    .social.social--lg li {
-        width: 70px;
-        margin: auto;
+    .social.social--lg {
+        // margin-top: 50px;
 
-        img {
-            border: 0;
-            width: 100%;
-            border-radius: 50%;
-            background-size: cover;
-            background-position: 50%;
+        li {
+            width: 70px;
+            margin: auto;
+
+            img {
+                border: 0;
+                width: 100%;
+                border-radius: 50%;
+                background-size: cover;
+                background-position: 50%;
+            }
         }
     }
+
 </style>

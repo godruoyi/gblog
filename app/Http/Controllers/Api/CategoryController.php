@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Transformers\CategoryTransformer;
+use App\Transformers\PostTransformer;
 
 class CategoryController extends Controller
 {
@@ -13,9 +14,9 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return $this->response->collection(Category::whereHas('posts')->get(), new CategoryTransformer);
+        return $this->response->paginator(Category::paginate(4), new CategoryTransformer);
     }
 
     /**
@@ -31,5 +32,21 @@ class CategoryController extends Controller
         $category  = Category::where($where)->firstOrFail();
 
         return $this->response->item($category, new CategoryTransformer);
+    }
+
+    /**
+     * Current category posts
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function posts($id)
+    {
+        $where = is_numeric($id) ? ['id' => $id] : ['slug' => $id];
+
+        $category  = Category::where($where)->firstOrFail();
+
+        return $this->response->paginator($category->posts()
+            ->select('id', 'title', 'slug', 'user_id', 'category_id', 'banner')->paginate(9), new PostTransformer)
+            ->addMeta('category', $category->setVisible(['id', 'name', 'slug', 'description', 'title']));
     }
 }

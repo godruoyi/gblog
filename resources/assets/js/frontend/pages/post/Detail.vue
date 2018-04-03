@@ -6,12 +6,12 @@
                     <img :src="post.banner" :alt="post.title">
                 </div>
                 <div class="post__content clearfix">
-                    <div class="col lg-col-9">
+                    <div class="col lg-col-9 margin-bottom40">
                         <header class="post__header">
                             <span class="label">
-                                <router-link :to="{name: 'frontend.category', params: {slug: post.category.slug}}">{{ post.category.name }}</router-link>
+                                <router-link :to="{name: 'frontend.category.detail', params: {slug: post.category ? post.category.slug : ''}}">{{ post.category ? post.category.name : '' }}</router-link>
                                 <span class="text--gray"> / </span>
-                                <span class="text--gray">{{ post.created_at }}</span>
+                                <span class="text--gray">{{ post.created_at | timeago }}</span>
                             </span>
                             <h1 class="post__title">{{ post.title }}</h1>
                         </header>
@@ -74,5 +74,9 @@
         overflow: hidden;
         line-height: 1.6;
         word-wrap: break-word;
+    }
+
+    .margin-bottom40 {
+        margin-bottom: 40px;
     }
 </style>

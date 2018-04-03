@@ -6,7 +6,6 @@ use App\Models\Post;
 use App\Models\User;
 use App\Models\Category;
 use League\Fractal\ParamBag;
-use League\Fractal\TransformerAbstract;
 
 class PostTransformer extends TransformerAbstract
 {
@@ -25,11 +24,18 @@ class PostTransformer extends TransformerAbstract
     protected $defaultIncludes = [];
 
     /**
+     * Available field for model
+     *
+     * @var array
+     */
+    public $transformFields = ['body' => 'content'];
+
+    /**
      * Transform a collection.
      *
      * @return array
      */
-    public function transform(Post $post)
+    public function transformFields(Post $post)
     {
         return [
             'title'       => $post->title,
@@ -40,7 +46,7 @@ class PostTransformer extends TransformerAbstract
             'banner'      =>  $post->banner,
             'user_id'     => $post->user_id,
             'category_id' => $post->category_id,
-            'created_at'  => $post->created_at->toDateTimeString()
+            'created_at'  => $post->created_at ? $post->created_at->toDateTimeString() : null
         ];
     }
 
@@ -51,9 +57,11 @@ class PostTransformer extends TransformerAbstract
      *
      * @return mixed
      */
-    public function includeUser(Post $post)
+    public function includeUser(Post $post, ParamBag $params)
     {
-        return $this->item($post->user, new UserTransformer());
+        $user = $this->searchItem($post, 'user', $params);
+
+        return $this->item($user, new UserTransformer());
     }
 
     /**
@@ -63,8 +71,10 @@ class PostTransformer extends TransformerAbstract
      *
      * @return mixed
      */
-    public function includeCategory(Post $post)
+    public function includeCategory(Post $post, ParamBag $params)
     {
-        return $this->item($post->category, new CategoryTransformer());
+        $category = $this->searchItem($post, 'category', $params);
+
+        return $this->item($category, new CategoryTransformer());
     }
 }

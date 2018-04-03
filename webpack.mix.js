@@ -15,10 +15,6 @@ let plugins = [];
  |
  */
 
-// mix.options({
-//     processCssUrls: false
-// });
-
 mix.js('resources/assets/js/admin.js', 'public/js/admin.js')
     .js('resources/assets/js/frontend.js', 'public/js/app.js')
     .js('resources/assets/js/utils/simeditormd.js', 'public/js/admin-sieditor.js')
@@ -29,7 +25,10 @@ if (process.env.NODE_ENV === 'production') {
     mix.version();
 }
 
-mix.options({ uglify: false });
+mix.options({
+    uglify: false,
+    // processCssUrls: false
+});
 
 mix.webpackConfig({
     resolve: {
@@ -48,13 +47,17 @@ mix.webpackConfig({
         ]
     },
     module: {
-        loaders: [
+        rules: [
             {
-                test: /\.(jpg|png|jpeg|gif)$/,
-                loader: 'url-loader',
-                query: {
-                    limit: 5000,
-                }
+                test: /\.(png|jpe?g|gif)$/,
+                loaders: [
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            limit: 10000,
+                        }
+                    }
+                ]
             },
         ]
     },

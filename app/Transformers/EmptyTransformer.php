@@ -2,8 +2,6 @@
 
 namespace App\Transformers;
 
-use League\Fractal\TransformerAbstract;
-
 class EmptyTransformer extends TransformerAbstract
 {
     /**
@@ -11,7 +9,7 @@ class EmptyTransformer extends TransformerAbstract
      *
      * @return array
      */
-    public function transform()
+    public function transformFields()
     {
         return [];
     }

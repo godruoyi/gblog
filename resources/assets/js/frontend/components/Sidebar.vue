@@ -3,13 +3,13 @@
         <div class="card card--gray mb3" id="top-posts">
             <header class="card__header">
                 <h2>文章推荐</h2>
-                <img class="header__icon" src="./../images/icon-newsletter.png">
+                <img class="header__icon" src="/vendor/images/icon-newsletter.png">
             </header>
             <div class="card__content">
                <ul class="list-unstyled">
-                   <li :class="key == 0 ? 'first' : ''" v-for="(post, key) in posts" :key="post.id">
+                   <li :class="key == 0 ? 'first' : ''" v-for="(post, key) in posts" :key="post.id" :title="post.title">
                         <router-link :to="{name: 'frontend.post.detail', params: {slug: post.slug}}">
-                            {{ key == 0 ? '🏆' : ((key + 1)) }}、{{ post.title }}
+                            {{ key == 0 ? '🏆' : ((key + 1)) }}、{{ post.title | title }}
                         </router-link>
                     </li>
                </ul>
@@ -18,7 +18,7 @@
         <div class="card card--gray mb3">
             <header class="card__header">
                 <h2>友情链接</h2>
-                <img class="header__icon" src="./../images/icon-chair.png">
+                <img class="header__icon" src="/vendor/images/icon-chair.png">
             </header>
             <div class="card__content">
                 <dl class="list-unstyled">
@@ -53,6 +53,11 @@
             this.$http.get(this.$endpoints.posts.recommend).then(response => {
                 this.posts = response.data
             }, error => {})
+        },
+        filters: {
+            title: function (title) {
+                return title ? title.substring(0, 30) + '...' : ''
+            }
         }
     }
 </script>
@@ -80,5 +85,8 @@
         a {
             color: #a5a5a5;
         }
+    }
+    .sponsor.sponsor.sponsor{
+        min-width: auto;
     }
 </style>

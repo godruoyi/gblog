@@ -5,7 +5,7 @@ namespace App\Transformers;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Category;
-use League\Fractal\TransformerAbstract;
+use League\Fractal\ParamBag;
 
 class CategoryTransformer extends TransformerAbstract
 {
@@ -21,7 +21,7 @@ class CategoryTransformer extends TransformerAbstract
      *
      * @return array
      */
-    public function transform(Category $category)
+    public function transformFields(Category $category)
     {
         return [
             'id'          => $category->id,
@@ -29,7 +29,7 @@ class CategoryTransformer extends TransformerAbstract
             'slug'        => $category->slug,
             'title'       => $category->title,
             'description' => $category->description,
-            'created_at'  => $category->created_at->toDateTimeString()
+            'created_at'  => $category->created_at ? $category->created_at->toDateTimeString() : null
         ];
     }
 
@@ -40,8 +40,10 @@ class CategoryTransformer extends TransformerAbstract
      *
      * @return mixed
      */
-    public function includePosts(Category $category)
+    public function includePosts(Category $category, ParamBag $params)
     {
-        return $this->collection($category->posts, new PostTransformer());
+        $posts = $this->searchCollection($category, 'posts', $params);
+
+        return $this->collection($posts, new PostTransformer());
     }
 }

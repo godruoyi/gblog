@@ -47,7 +47,7 @@ class PostController extends Controller
     {
         $posts = Post::isNotDraft()
             ->orderBy('view_count', 'desc')
-            ->select('title', 'id', 'slug', 'excerpt', 'banner', 'user_id', 'category_id', 'created_at')
+            ->select('title', 'id', 'slug')
             ->limit(10)->get();
 
         return $this->response->collection($posts, new PostTransformer);

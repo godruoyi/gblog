@@ -6,6 +6,10 @@ import {router} from 'frontend/index'
 */
 import httpPlugin from './plugins/http'
 
+import {default as timeago} from './utils/timeago'
+
+Vue.filter('timeago', timeago)
+
 import App from 'frontend/App'
 
 Vue.use(httpPlugin, {router});

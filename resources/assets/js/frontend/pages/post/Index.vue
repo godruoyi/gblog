@@ -12,11 +12,11 @@
                         </div>
                         <div class="post__content truncate">
                             <span class="label">
-                                <router-link :to="{name: 'frontend.category', params: {slug: post.category.slug}}">
+                                <router-link :to="{name: 'frontend.category.detail', params: {slug: post.category.slug}}">
                                     {{ post.category.name }}
                                 </router-link>
                                 <span class="text--gray"> / </span>
-                                <span class="text--gray">{{ post.created_at }}</span>
+                                <span class="text--gray">{{ post.created_at | timeago }}</span>
                             </span>
                             <h2 class=""><router-link :to="{name: 'frontend.post.detail', params: {slug: post.slug}}">{{ post.title }}</router-link></h2>
                             <p>{{ post.excerpt }}</p>

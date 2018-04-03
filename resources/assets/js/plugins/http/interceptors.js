@@ -4,7 +4,7 @@ export default (http, router) => {
         const { response } = error
 
         if (response && response.status == 404) {
-            router.push({name: '404'})
+            router.push({name: 'notfound'})
         }
 
         return Promise.reject(error)

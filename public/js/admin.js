@@ -76,9 +76,6 @@ module.exports = __webpack_require__(35);
 /***/ 35:
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-
 window.$ = window.jQuery = __webpack_require__(36);
 
 $(document).ready(function () {

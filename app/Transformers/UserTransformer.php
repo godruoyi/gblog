@@ -5,7 +5,6 @@ namespace App\Transformers;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Category;
-use League\Fractal\TransformerAbstract;
 
 class UserTransformer extends TransformerAbstract
 {
@@ -14,11 +13,11 @@ class UserTransformer extends TransformerAbstract
      *
      * @return array
      */
-    public function transform(User $user)
+    public function transformFields(User $user)
     {
         return [
             'name' => $user->name,
-            'created_at' => $user->created_at->toDateTimeString()
+            'created_at' => $user->created_at ? $user->created_at->toDateTimeString() : null
         ];
     }
 }

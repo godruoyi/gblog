@@ -24,9 +24,8 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app['Dingo\Api\Transformer\Factory']->setAdapter(function ($app) {
-             return new \Dingo\Api\Transformer\Adapter\Fractal(
+             return new \App\Support\Fractal(
                  (new \League\Fractal\Manager)->setSerializer(new \League\Fractal\Serializer\ArraySerializer)
-                 // (new \League\Fractal\Manager)->setSerializer(new \App\Support\ArraySerializer)
              );
         });
 

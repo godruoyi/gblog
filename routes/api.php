@@ -21,5 +21,6 @@ $api->version('v1', function ($api) {
         $api->resource('posts', 'PostController', ['only' => ['index', 'show']]);
 
         $api->resource('categories', 'CategoryController', ['only' => ['index', 'show']]);
+        $api->get('categories/{id}/posts', 'CategoryController@posts')->name('categories.posts');
     });
 });

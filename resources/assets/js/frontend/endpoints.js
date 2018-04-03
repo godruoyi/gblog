@@ -7,5 +7,6 @@ export default {
     categories: {
         index: '/categories',
         detail: '/categories/:slug',
+        posts: '/categories/:slug/posts'
     }
 }
