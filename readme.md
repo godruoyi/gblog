@@ -1,20 +1,16 @@
-<p align="center">GBlog is an open source blog built with Laravel and Vue.js. <a href="https://godruoyi.com">https://godruoyi.com</a></p>
+<p align="center">GBlog is an easy blog, built with Laravel and Vue.js. <a href="https://godruoyi.com">https://godruoyi.com</a></p>
 
 ## About
 
-dddddddddddddddddddddddd
+Gblog is easy blog build with `laravel5.5` and `vue2.*`, his `front-end` styles from [laravel-news](http://laravel-news.com), `Back-end` styles from [voyager](https://github.com/the-control-group/voyager).
 
 ## Basic Features
 
-- Manage users, articles, discussions and media
-- Statistical tables
-- Categorize articles
-- Label classification
-- Content moderation
-- Own comments system
+- Beautiful dashboard (Voyager, The Missing Laravel Admin)
+- Categorize manage
+- Manage users and articles
 - Multi-language switching
 - Markdown Editor
-- and more...
 
 ## Server Requirements
 
@@ -24,12 +20,6 @@ dddddddddddddddddddddddd
 - PDO PHP Extension
 - Mbstring PHP Extension
 - XML PHP Extension
-
-## Preview
-
-![New Blog](https://pigjian.com/uploads/post_img/2016-12-27/newblog1.jpeg)
-
-![New Blog](https://pigjian.com/uploads/post_img/2016-12-27/newblog2.jpeg)
 
 ## Install
 
