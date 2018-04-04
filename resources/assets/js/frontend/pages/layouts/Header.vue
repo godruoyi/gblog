@@ -18,7 +18,7 @@
             </div>
             <div :class="showminiCss">
                 <div class="nav__search">
-                    <form class="search" action="">
+                    <form class="search" action="#">
                         <input type="text" placeholder="SEARCH" name="q" value="">
                         <button type="button"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-search"></use></svg></button>
                     </form>
@@ -32,7 +32,7 @@
                     </ul>
                 </div>
                 <ul class="nav__social social social--lg">
-                    <li><a href="" rel="nofollow" class="social__icon icon--github">
+                    <li><a href="https://github.com/godruoyi/gblog" rel="nofollow" class="social__icon icon--github">
                             <svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-github"></use></svg>
                         </a>
                     </li>

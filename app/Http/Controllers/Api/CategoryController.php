@@ -16,7 +16,7 @@ class CategoryController extends Controller
      */
     public function index(Request $request)
     {
-        return $this->response->paginator(Category::paginate(4), new CategoryTransformer);
+        return $this->response->paginator(Category::whereHas('posts')->paginate(2), new CategoryTransformer);
     }
 
     /**

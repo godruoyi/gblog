@@ -19,7 +19,7 @@
                         <div v-html="content" id="post-content"></div>
                     </div>
 
-                    <share></share>
+                    <!-- <share></share> -->
                 </div>
             </div>
 

@@ -53,12 +53,7 @@
                                         </table>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-sm-5">
-                                        <div class="dataTables_info" id="dataTable_info">显示第 1 至 2 项结果，共 2 项</div>
-                                    </div>
-                                    <div class="col-sm-7 pull-right">{{ $categories->links() }}</div>
-                                </div>
+                                @include('admin.common.pagination', ['data' => $categories])
                             </div>
                         </div>
                     </div>
