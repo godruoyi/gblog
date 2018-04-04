@@ -1,58 +1,117 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+<p align="center">GBlog is an open source blog built with Laravel and Vue.js. <a href="https://godruoyi.com">https://godruoyi.com</a></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+## About
 
-## About Laravel
+dddddddddddddddddddddddd
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+## Basic Features
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- Manage users, articles, discussions and media
+- Statistical tables
+- Categorize articles
+- Label classification
+- Content moderation
+- Own comments system
+- Multi-language switching
+- Markdown Editor
+- and more...
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications.
+## Server Requirements
 
-## Learning Laravel
+- PHP >= 7.0.0
+- Node >= 6.x
+- OpenSSL PHP Extension
+- PDO PHP Extension
+- Mbstring PHP Extension
+- XML PHP Extension
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of any modern web application framework, making it a breeze to get started learning the framework.
+## Preview
 
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 1100 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
+![New Blog](https://pigjian.com/uploads/post_img/2016-12-27/newblog1.jpeg)
 
-## Laravel Sponsors
+![New Blog](https://pigjian.com/uploads/post_img/2016-12-27/newblog2.jpeg)
 
-We would like to extend our thanks to the following sponsors for helping fund on-going Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell):
+## Install
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Pulse Storm](http://www.pulsestorm.net/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
+### 1. Clone project from github
 
-## Contributing
+```bash
+git clone https://github.com/godruoyi/gblog
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 2. Set the basic config
 
-## Security Vulnerabilities
+```bash
+cp .env.example .env
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Edit the `.env` file and set the `database` and `api` config. By default, we use `ADMIN_DOMAIN` to  represent the management domain name, use `HOME_DOMAIN` to represent the home domain name.
+
+### 3. Run gblog install command.
+
+```bash
+
+php artisan gblog:install
+
+```
+
+> The command will run the `migrate` command, if you whant generate test data, you can append `--test` option on command end.
+
+```bash
+php artisan gblog:install --test
+```
+
+You can run the following command to generate an administrator account, he will prompt you to complete step by step.
+
+```bash
+php artisan gblog:adduser
+```
+
+### 3. Install the extended package dependency
+
+Install `laravel` framework dependent
+
+```bash
+composer install
+```
+
+Install the front-end environment dependent.
+
+```bash
+npm install
+```
+
+Or
+
+```bash
+yarn install
+```
+
+Next, you can start compiling `js` file.
+
+```bash
+npm run dev
+
+//or
+
+npm run watch-poll
+
+//or
+
+npm run prod
+```
+
+## Contributors
+
+- [Lianbo Xu](https://github.com/godruoyi)
+
+
+## Thanks
+
+- [Laravel-news](https://laravel-news.com)
+- [Laravel-china](laravel-china.org)
+- [Jcc blog](https://github.com/jcc/blog)
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+The project is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).

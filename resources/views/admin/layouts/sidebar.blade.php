@@ -6,7 +6,7 @@
                     <div class="logo-icon-container">
                         <img src="/vendor/images/logo-icon-light.png" alt="Logo Icon">
                     </div>
-                    <div class="title">Godruoyi</div>
+                    <div class="title">Gblog</div>
                 </a>
             </div><!-- .navbar-header -->
 

@@ -14,6 +14,8 @@ import App from 'frontend/App'
 
 Vue.use(httpPlugin, {router});
 
+require('animate.css')
+
 Vue.prototype.$config = require("./config")
 Vue.prototype.$endpoints = require("frontend/endpoints").default
 

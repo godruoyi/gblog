@@ -1,27 +1,28 @@
 <template>
     <main class="site-main">
         <div class="container wrapper">
-            <div class="card post mt2">
-                <div class="post__image">
-                    <img :src="post.banner" :alt="post.title">
-                </div>
-                <div class="post__content clearfix">
-                    <div class="col lg-col-9 margin-bottom40">
-                        <header class="post__header">
-                            <span class="label">
-                                <router-link :to="{name: 'frontend.category.detail', params: {slug: post.category ? post.category.slug : ''}}">{{ post.category ? post.category.name : '' }}</router-link>
-                                <span class="text--gray"> / </span>
-                                <span class="text--gray">{{ post.created_at | timeago }}</span>
-                            </span>
-                            <h1 class="post__title">{{ post.title }}</h1>
-                        </header>
-                        <p></p>
-                        <div v-html="content" id="post-content"></div>
+            <transition enter-active-class="animated fadeInUp">
+                <div class="card post mt2" v-if="show">
+                    <div class="post__image">
+                        <img :src="post.banner" :alt="post.title">
                     </div>
-
-                    <!-- <share></share> -->
+                    <div class="post__content clearfix">
+                        <div class="col lg-col-12 margin-bottom40">
+                            <header class="post__header">
+                                <span class="label">
+                                    <router-link :to="{name: 'frontend.category.detail', params: {slug: post.category ? post.category.slug : ''}}">{{ post.category ? post.category.name : '' }}</router-link>
+                                    <span class="text--gray"> / </span>
+                                    <span class="text--gray">{{ post.created_at | timeago }}</span>
+                                </span>
+                                <h1 class="post__title">{{ post.title }}</h1>
+                            </header>
+                            <p></p>
+                            <div v-html="content" id="post-content"></div>
+                        </div>
+                        <!-- <share></share> -->
+                    </div>
                 </div>
-            </div>
+            </transition>
 
             <div class="partners my4">
                 <div class="container">
@@ -29,7 +30,6 @@
                 </div>
             </div>
         </div>
-
     </main>
 </template>
 
@@ -41,7 +41,8 @@
         components: {Share},
         data () {
             return {
-                post: {}
+                post: {},
+                show: false
             }
         },
         computed: {
@@ -61,6 +62,7 @@
 
                 this.$http.get(url).then(response => {
                     this.post = response
+                    this.show = true
                 }, error => {})
             }
         }

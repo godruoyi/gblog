@@ -56,7 +56,11 @@
         },
         filters: {
             title: function (title) {
-                return title ? title.substring(0, 30) + '...' : ''
+                if (title && title.length > 30) {
+                    title = title.substring(0, 30) + '...'
+                }
+
+                return title
             }
         }
     }

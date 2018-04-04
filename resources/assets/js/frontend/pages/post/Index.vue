@@ -4,6 +4,7 @@
             <div class="callout my1"></div>
             <div class="gutter">
                 <div class="md-col md-col-7 lg-col-8">
+                    <transition-group name="list" tag="p" appear>
                     <div class="card card--post mt0 mb3" v-for="post in posts" :key="post.id">
                         <div class="post__image">
                             <router-link :to="{name: 'frontend.post.detail', params: {slug: post.slug}}">
@@ -25,9 +26,12 @@
                             </router-link>
                         </div>
                     </div>
+                    </transition-group>
                     <pagination :pagination="meta.pagination" :fetchData="fetchData"></pagination>
                 </div>
-                <index-sidebar></index-sidebar>
+                <transition appear>
+                    <index-sidebar name="list"></index-sidebar>
+                </transition>
             </div>
         </div>
     </main>
@@ -61,3 +65,18 @@
         }
     }
 </script>
+
+<style lang="scss" scoped>
+    .list-item {
+      display: inline-block;
+      margin-right: 10px;
+    }
+    .list-enter-active, .list-leave-active {
+      transition: all 0.5s;
+    }
+    .list-enter, .list-leave-to
+    /* .list-leave-active for below version 2.1.8 */ {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+</style>

@@ -16,20 +16,22 @@
                 <header class="category__header">
                     <h2 class="category__title">{{ category.title }}</h2>
                 </header>
-                <div class="gutter grid--2-col lg-grid--3-col grid--left">
-                    <router-link class="card col mb1 sm-mb2"
-                        :to="{name: 'frontend.post.detail', params: {slug: post.slug}}"
-                        v-for="post in posts" :key="post.id">
+                <transition enter-active-class="animated fadeInUp">
+                    <div class="gutter grid--2-col lg-grid--3-col grid--left" v-show="show">
+                        <router-link class="card col mb1 sm-mb2"
+                            :to="{name: 'frontend.post.detail', params: {slug: post.slug}}"
+                            v-for="post in posts" :key="post.id">
 
-                        <div class="card__image">
-                            <img :src="post.banner" :alt="post.title">
-                        </div>
-                        <div class="card__content">
-                            <span class="label">{{ post.created_at | timeago }}</span>
-                            <h4>{{ post.title }}</h4>
-                        </div>
-                    </router-link>
-                </div>
+                            <div class="card__image">
+                                <img :src="post.banner" :alt="post.title">
+                            </div>
+                            <div class="card__content">
+                                <span class="label">{{ post.created_at | timeago }}</span>
+                                <h4>{{ post.title }}</h4>
+                            </div>
+                        </router-link>
+                    </div>
+                </transition>
             </div>
             <pagination :pagination="pagination" :fetchData="fetchData"></pagination>
         </div>
@@ -45,17 +47,9 @@
             return {
                 category: {},
                 posts: [],
-                pagination: {}
+                pagination: {},
+                show: false
             }
-        },
-        created: function () {
-            let url = this.$endpoints.categories.posts.replace(':slug', this.$route.params.slug)
-
-            this.$http.get(url).then(response => {
-                this.category = response.meta.category
-                this.pagination = response.meta.pagination
-                this.posts = response.data
-            }).catch(e => {})
         },
         created: function () {
             this.fetchData()
@@ -69,6 +63,7 @@
                     this.category = response.meta.category
                     this.pagination = response.meta.pagination
                     this.posts = response.data
+                    this.show = true
                 }).catch(e => {})
             }
         }

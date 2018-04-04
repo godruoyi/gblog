@@ -1,5 +1,7 @@
 @extends('admin.layouts.layout')
 
+@section('title', isset($category) ? '编辑分类' : '创建分类')
+
 @section('content')
     <div class="container-fluid">
         <h1 class="page-title">

@@ -1,5 +1,5 @@
 @extends('admin.layouts.layout')
-
+@section('title', '文章列表')
 @section('content')
     <div class="container-fluid">
         <h1 class="page-title">
@@ -48,7 +48,7 @@
                                                         @endif
                                                         <td>{{ $post->created_at }}</td>
                                                         <td class="no-sort no-click" id="bread-actions">
-                                                            <a href="{{ route('admin.posts.edit', $post->id) }}" class="btn btn-sm btn-success">
+                                                            <a href="http://{{ config('app.home_domain') . '/posts/' . $post->slug }}" target="_blank" class="btn btn-sm btn-success">
                                                                 <i class="voyager-hammer"></i>
                                                                 <span class="hidden-xs hidden-sm">查 看</span>
                                                             </a>

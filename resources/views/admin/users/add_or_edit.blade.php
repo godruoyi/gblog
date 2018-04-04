@@ -1,5 +1,5 @@
 @extends('admin.layouts.layout')
-
+@section('title', '用户创建/编辑')
 @section('styles')
     <style>
         .voyager input[type=file] {padding: 6px;}

@@ -1,5 +1,5 @@
 @extends('admin.layouts.layout')
-
+@section('title', '创建文章')
 @section('styles')
     <style>
         body {color: #525252;}

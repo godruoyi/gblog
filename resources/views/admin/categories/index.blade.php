@@ -1,4 +1,5 @@
 @extends('admin.layouts.layout')
+@section('title', '分类列表')
 
 @section('content')
     <div class="container-fluid">
