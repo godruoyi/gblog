@@ -1,8 +1,8 @@
 <template>
     <main class="site-main">
-        <div class="container wrapper py4 md-py6">
-            <transition enter-active-class="animated fadeInUp">
-                <div class="category mb4" v-for="category in categories" :key="category.id"  v-show="show">
+        <transition enter-active-class="animated fadeInUp">
+            <div class="container wrapper py4 md-py6" v-show="show">
+                <div class="category mb4" v-for="category in categories" :key="category.id">
                     <header class="category__header">
                         <h2 class="category__title">{{ category.title }}</h2>
                         <router-link :to="{name: 'frontend.category.detail', params: {slug: category.slug}}" class="category__link link--black"><< 查看所有</router-link>
@@ -19,9 +19,9 @@
                         </router-link>
                     </div>
                 </div>
-            </transition>
-            <pagination :pagination="meta.pagination" :fetchData="fetchData"></pagination>
-        </div>
+                <pagination :pagination="meta.pagination" :fetchData="fetchData"></pagination>
+            </div>
+        </transition>
     </main>
 </template>
 
