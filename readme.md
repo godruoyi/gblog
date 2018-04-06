@@ -10,11 +10,11 @@
   <b>Blog stylesheet reference from:</b>
   <br><br>
   <a href="https://laravel-news.com/">
-    <img src="http://godruoyi.test/vendor/images/laravel-news.png" width="">
+    <img src="https://godruoyi.com/vendor/images/laravel-news.png" width="">
   </a>
   <br><br/>
   <a href="https://www.upyun.com">
-    <img src="http://godruoyi.test/vendor/images/voyager.png" width=400>
+    <img src="https://godruoyi.com/vendor/images/voyager.png" width=400>
   </a>
 </p>
 
