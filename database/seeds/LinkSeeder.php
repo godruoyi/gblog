@@ -2,7 +2,9 @@
 
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+use App\Models\Link;
+
+class LinkSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,5 +13,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $Links = factory(Link::class)->times(10)->make()->toArray();
+
+        Link::insert($Links);
     }
 }

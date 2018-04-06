@@ -1,17 +1,17 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Seeder;
 
-class SendCategoriesData extends Migration
+use App\Models\LInk;
+
+class CategorySeeder extends Seeder
 {
     /**
-     * Run the migrations.
+     * Run the database seeds.
      *
      * @return void
      */
-    public function up()
+    public function run()
     {
         $createdAt = \Carbon\Carbon::now();
 
@@ -33,15 +33,5 @@ class SendCategoriesData extends Migration
                 'updated_at'  => $createdAt,
             ],
         ]);
-    }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        //
     }
 }

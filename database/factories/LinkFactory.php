@@ -13,13 +13,13 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(App\Models\Post::class, function (Faker $faker) {
+$factory->define(App\Models\Link::class, function (Faker $faker) {
     return [
-        'title'       => $faker->sentence,
-        'slug'        => $faker->unique()->slug,
-        'banner'      => $faker->imageUrl(1100, 480, null, false),
-        'content'     => $faker->text,
-        'excerpt'     => $faker->text(200),
+        'name' => $faker->company,
+        'logo' => '',
+        'description' => $faker->text,
+        'link' => $faker->url,
+        'type' => $faker->randomElement(['left', 'bottom']),
 
         'created_at'  => \Carbon\Carbon::now(),
         'updated_at'  => \Carbon\Carbon::now(),

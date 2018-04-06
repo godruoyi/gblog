@@ -15,8 +15,11 @@ class UserSeeder extends Seeder
     {
         $users = factory(User::class)->times(10)->make()->toArray();
 
-        $users[0]['email'] = 'admin@admin.com';
-
         User::insert($users);
+
+        if ($user = User::find(1)) {
+            $user->email = 'admin@admin.com';
+            $user->save();
+        }
     }
 }

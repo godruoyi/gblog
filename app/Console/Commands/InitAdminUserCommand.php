@@ -12,14 +12,14 @@ class InitAdminUserCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'godruoyi:adduser';
+    protected $signature = 'gblog:adduser';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Add manage user';
+    protected $description = 'Add a admin account.';
 
     /**
      * Create a new command instance.
