@@ -1,15 +1,14 @@
 @extends('admin.layouts.layout')
-@section('title', '用户列表')
+@section('title', '友情链接')
+
 @section('content')
     <div class="container-fluid">
         <h1 class="page-title">
-            <i class="voyager-lock"></i> 角色列表
+            <i class="voyager-anchor"></i> 友情链接
         </h1>
-        <a href="{{ route('admin.users.create') }}" class="btn btn-success btn-add-new">
-            <i class="voyager-plus"></i> <span>添加用户</span>
+        <a href="{{ route('admin.links.create') }}" class="btn btn-success btn-add-new">
+            <i class="voyager-plus"></i> <span>添加友接</span>
         </a>
-        <!-- <a class="btn btn-danger" id="bulk_delete_btn"><i class="voyager-trash"></i> <span>删除选中</span></a> -->
-        <!-- /.modal -->
     </div>
     <div class="page-content browse container-fluid">
         <div class="row">
@@ -20,31 +19,35 @@
                             <div class="dataTables_wrapper form-inline dt-bootstrap no-footer">
                                 <div class="row">
                                     <div class="col-sm-12">
-                                        <table class="table table-hover no-footer" id="dataTable">
+                                        <table class="table table-hover no-footer" id="dataTable" data-deletename="links">
                                             <thead>
                                                 <tr>
                                                     <td>#</td>
-                                                    <td>姓 名</td>
-                                                    <td>邮 箱</td>
-                                                    <td>文章数</td>
-                                                    <td>头像</td>
+                                                    <td>名称</td>
+                                                    <td>logo</td>
+                                                    <td>描述</td>
+                                                    <td>类型</td>
                                                     <td>操作</td>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach($users as $user)
+                                                @foreach($links as $link)
                                                     <tr>
-                                                        <td>{{ $user->id }}</td>
-                                                        <td>{{ $user->name }}</td>
-                                                        <td>{{ $user->email }}</td>
-                                                        <td>{{ $user->posts_count }}</td>
-                                                        <td><img src="{{ $user->avatar ?? '/vendor/images/captain-avatar.png' }}" class="user-avatar"></td>
+                                                        <td>{{ $link->id }}</td>
+                                                        <td><a href="{{ $link->link }}">{{ $link->name }}</a></td>
+                                                        <td>
+                                                            @empty(! $link->logo)
+                                                                <img class="user-avatar" src="{{ $link->logo }}"/>
+                                                            @endempty
+                                                        </td>
+                                                        <td>{{ $link->description }}</td>
+                                                        <td>{{ $link->type }}</td>
                                                         <td class="no-sort no-click" id="bread-actions">
-                                                            <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-sm btn-info">
+                                                            <a href="{{ route('admin.links.edit', $link->id) }}" class="btn btn-sm btn-info">
                                                                 <i class="voyager-edit"></i>
                                                                 <span class="hidden-xs hidden-sm">编 辑</span>
                                                             </a>
-                                                            <a href="javascript:;" data-id="{{ $user->id }}" class="btn btn-sm btn-warning delete">
+                                                            <a href="javascript:;" data-id="{{ $link->id }}" class="btn btn-sm btn-warning delete">
                                                                 <i class="voyager-trash"></i>
                                                                 <span class="hidden-xs hidden-sm">删 除</span>
                                                             </a>
@@ -55,7 +58,7 @@
                                         </table>
                                     </div>
                                 </div>
-                                @include('admin.common.pagination', ['data' => $users])
+                                @include('admin.common.pagination', ['data' => $links])
                             </div>
                         </div>
                     </div>
@@ -63,23 +66,4 @@
             </div>
         </div>
     </div>
-
-    <form action="{{ route('admin.users.index') }}" method="post" id="delete-form">
-        {{ csrf_field() }}
-        {{ method_field('DELETE') }}
-    </form>
-@endsection
-
-@section('javascript')
-    <script>
-        $(document).ready(function () {
-            $('.delete').click(function () {
-                var $form = $('#delete-form');
-                var action = $form.attr('action');
-
-                $form.attr('action', action + "/" + $(this).data('id'))
-                $form.submit();
-            })
-        });
-    </script>
 @endsection

@@ -23,10 +23,8 @@
                                                 <tr>
                                                     <td>#</td>
                                                     <td>分类</td>
-                                                    <td>作者</td>
                                                     <td>标题</td>
                                                     <td>阅读量</td>
-                                                    <td>回复量</td>
                                                     <td>草稿</td>
                                                     <td>发布时间</td>
                                                     <td>操作</td>
@@ -37,10 +35,8 @@
                                                     <tr>
                                                         <td>{{ $post->id }}</td>
                                                         <td>{{ $post->category->name }}</td>
-                                                        <td>{{ $post->user->name }}</td>
-                                                        <td>{{ $post->title }}</td>
+                                                        <td><a target="_blank" href="http://{{ config('app.home_domain') . '/posts/' . $post->slug }}">{{ $post->title }}</a></td>
                                                         <td>{{ $post->view_count }}</td>
-                                                        <td>{{ $post->reply_count }}</td>
                                                         @if ($post->is_draft == 'yes')
                                                             <td><span class="tag label label-warning">草稿</span></td>
                                                         @else
@@ -48,12 +44,8 @@
                                                         @endif
                                                         <td>{{ $post->created_at }}</td>
                                                         <td class="no-sort no-click" id="bread-actions">
-                                                            <a href="http://{{ config('app.home_domain') . '/posts/' . $post->slug }}" target="_blank" class="btn btn-sm btn-success">
-                                                                <i class="voyager-hammer"></i>
-                                                                <span class="hidden-xs hidden-sm">查 看</span>
-                                                            </a>
                                                             <a href="{{ route('admin.posts.edit', $post->id) }}" class="btn btn-sm btn-info">
-                                                                <i class="voyager-edit"></i>
+                                                                <i class="voyager-hammer"></i>
                                                                 <span class="hidden-xs hidden-sm">编 辑</span>
                                                             </a>
                                                             <a href="javascript:;" data-id="{{ $post->id }}" class="btn btn-sm btn-warning delete">

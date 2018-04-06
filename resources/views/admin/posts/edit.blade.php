@@ -32,7 +32,7 @@
                     <input type="text" class="form-control title" name="title" value="{{ $post->title }}" placeholder="请输入文章标题">
 
                     <div id="reply_notice" class="">
-                        <img src="{{ $post->banner }}">
+                        <img src="{{ $post->banner }}" style="width: 100%;">
                     </div>
                     <input type="file" class="form-control" name="banner">
                     <select class="form-control" name="category_id" placeholder="请选择分类">

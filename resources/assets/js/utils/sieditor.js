@@ -15,8 +15,3 @@ const editor = new Simditor({
     },
     pasteImage: true
 })
-
-let content = $('#sieditor-id').text()
-if (content) {
-    editor.setValue(content)
-}

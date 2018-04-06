@@ -29,9 +29,7 @@
                 </nav>
                 <nav class="footer__nav nav--lighter">
                     <ol>
-                        <li><a target="_blank" href="https://whoismy8023.com/">Sppan</a></li>
-                        <li><a target="_blank" href="https://imququ.com/">JerryQu</a></li>
-                        <li><a target="_blank" href="https://laravel.com/">Laravel</a></li>
+                        <li v-for="link in links" :key="link.id"><a target="_blank" :href="link.link">{{ link.name }}</a></li>
                     </ol>
                 </nav>
 
@@ -113,6 +111,17 @@
         </svg>
     </div>
 </template>
+
+<script>
+    export default {
+        props: {
+            links: {
+                required: true,
+                type: Array
+            }
+        }
+    }
+</script>
 
 <style lang="scss" scoped>
     .footer__tribute img {

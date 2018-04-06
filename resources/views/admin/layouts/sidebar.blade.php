@@ -50,34 +50,10 @@
                 </a>
             </li>
 
-            {{-- <li class="dropdown">
-                <a href="#fu-wu-xiang-mu-dropdown-element" data-toggle="collapse" aria-expanded="false" target="_self">
-                    <span class="icon voyager-person"></span>
-                    <span class="title">服务项目</span>
-                </a>
-                <div id="fu-wu-xiang-mu-dropdown-element" class="panel-collapse collapse ">
-                    <div class="panel-body">
-                        <ul class="nav navbar-nav">
-                            <li class="">
-                                <a href="http://youlejia.test/admin/categories" target="_self">
-                                    <span class="icon voyager-photos"></span>
-                                    <span class="title">服务类别</span>
-                                </a>
-                            </li>
-                            <li class="">
-                                <a href="http://youlejia.test/admin/service-items" target="_self">
-                                    <span class="icon voyager-phone"></span>
-                                    <span class="title">项目列表</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </li> --}}
-            <li class="">
-                <a href="#" target="_self">
-                    <span class="icon voyager-settings"></span>
-                    <span class="title">系统设置</span>
+            <li>
+                <a href="{{ route('admin.links.index') }}" target="_self">
+                    <span class="icon voyager-anchor"></span>
+                    <span class="title">友情链接</span>
                 </a>
             </li>
         </ul>

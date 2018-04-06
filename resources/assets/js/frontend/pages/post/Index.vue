@@ -30,7 +30,7 @@
                     <pagination :pagination="meta.pagination" :fetchData="fetchData"></pagination>
                 </div>
                 <transition appear>
-                    <index-sidebar name="list"></index-sidebar>
+                    <index-sidebar name="list" :links="links"></index-sidebar>
                 </transition>
             </div>
         </div>
@@ -46,7 +46,8 @@
             return {
                 posts: [],
                 include:'?include=category',
-                meta: {}
+                meta: {},
+                links: []
             }
         },
         components: {
@@ -54,6 +55,10 @@
         },
         created: function () {
             this.fetchData()
+
+        },
+        updated: function () {
+            this.links = this.$parent.links.left
         },
         methods: {
             fetchData: function (page) {

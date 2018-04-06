@@ -22,5 +22,7 @@ $api->version('v1', function ($api) {
 
         $api->resource('categories', 'CategoryController', ['only' => ['index', 'show']]);
         $api->get('categories/{id}/posts', 'CategoryController@posts')->name('categories.posts');
+
+        $api->get('links', 'LinkController@index')->name('links.index');
     });
 });

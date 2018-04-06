@@ -22,12 +22,10 @@
             </header>
             <div class="card__content">
                 <dl class="list-unstyled">
-                    <dt><a href="https://laravel-china.org/" class="link--white" rel="nofollow">Laravel China</a></dt>
-                    <dd>高品质的 Laravel 开发者社区</dd>
-                    <dt><a href="https://laravel-news.com/" class="link--white" rel="nofollow">Laravel News</a></dt>
-                    <dd>最新 laravel 资讯、教程</dd>
-                    <dt><a href="https://laravel-china.org/docs" class="link--white" rel="nofollow">Laravel 社区文档</a></dt>
-                    <dd>优质的社区翻译文档，包括 laravel 中文文档、设计模式、Dingo API 中文文档，</dd>
+                    <template v-for="link in links">
+                        <dt><a :href="link.link" class="link--white" rel="nofollow">{{ link.name }}</a></dt>
+                        <dd>{{ link.desc }}</dd>
+                    </template>
                 </dl>
             </div>
         </div>
@@ -44,6 +42,12 @@
 
 <script>
     export default {
+        props: {
+            links: {
+                type: Array,
+                required: true
+            }
+        },
         data () {
             return {
                 posts: []

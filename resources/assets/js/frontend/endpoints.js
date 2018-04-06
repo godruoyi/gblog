@@ -8,5 +8,8 @@ export default {
         index: '/categories',
         detail: '/categories/:slug',
         posts: '/categories/:slug/posts'
+    },
+    links: {
+        index: '/links'
     }
 }

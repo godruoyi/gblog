@@ -7,13 +7,12 @@ require('simplemde/src/css/simplemde.css')
 
 const simplemde = new SimpleMDE({
     element: document.getElementById("sieditor-id"),
-    autosave: {
-        enabled: true,
-        uniqueId: 'simplemde-auto-unique-id',
-    },
+    // autosave: {
+    //     enabled: true,
+    //     uniqueId: 'simplemde-auto-unique-id',
+    // },
     placeholder: '请使用 Markdown 格式书写～_～，支持图片拖拽和剪切板上传。',
-    spellChecker: false
-
+    spellChecker: false,
 });
 
 inlineAttachment.defaults.uploadUrl = $('#sieditor-id').data('upload-url');
