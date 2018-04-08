@@ -12,6 +12,7 @@
   <a href="https://laravel-news.com/">
     <img src="https://godruoyi.com/vendor/images/laravel-news.png" width="160">
   </a>
+  <br><br>
   <a href="https://github.com/the-control-group/voyager">
     <img src="https://godruoyi.com/vendor/images/voyager.png" width=400>
   </a>
