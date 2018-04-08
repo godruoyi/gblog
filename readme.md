@@ -1,6 +1,6 @@
 <p align="center">
     <a href="https://godruoyi.com/">
-        <img src="https://godruoyi.com/uploads/Logo.png" alt="Powered By godruoyi" width="160">
+        <img src="http://godruoyi.test/vendor/images/logo.png" alt="Powered By godruoyi">
     </a>
 </p>
 
@@ -10,9 +10,8 @@
   <b>Blog stylesheet reference from:</b>
   <br><br>
   <a href="https://laravel-news.com/">
-    <img src="https://godruoyi.com/vendor/images/laravel-news.png" width="">
+    <img src="https://godruoyi.com/vendor/images/laravel-news.png" width="160">
   </a>
-  <br><br/>
   <a href="https://github.com/the-control-group/voyager">
     <img src="https://godruoyi.com/vendor/images/voyager.png" width=400>
   </a>
@@ -41,6 +40,11 @@ Gblog is easy blog build with `laravel5.5` and `vue2.*`, The `front-end` styles 
 
 ## Preview
 
+![godruoyi.com](https://lccdn.phphub.org/uploads/images/201804/08/5359/RXxxG7g2iC.png)
+
+![godruoyi.com](https://lccdn.phphub.org/uploads/images/201804/08/5359/JGjl4APHkG.png)
+
+![godruoyi.com](https://lccdn.phphub.org/uploads/images/201804/08/5359/vTwI4CTamp.png)
 
 ## Install
 

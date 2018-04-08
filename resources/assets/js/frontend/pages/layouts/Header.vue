@@ -25,7 +25,7 @@
                     <ul>
                         <li class="nav__item"><router-link :to="{name: 'frontend.home'}">Home</router-link></li>
                         <li class="nav__item"><router-link :to="{name: 'frontend.category'}">Categories</router-link></li>
-                        <li class="nav__item"><router-link :to="{name: 'frontend.post.detail', params: {slug: 'about-gblog'}}">About</router-link></li>
+                        <li class="nav__item"><router-link :to="{name: 'frontend.post.detail', params: {slug: 'the-about-gblog'}}">About</router-link></li>
                         <li class="nav__item"><a target="_blank" href="https://github.com/godruoyi/gblog">Github</a></li>
                     </ul>
                 </div>
