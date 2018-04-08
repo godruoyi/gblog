@@ -1,6 +1,6 @@
 <p align="center">
     <a href="https://godruoyi.com/">
-        <img src="http://godruoyi.test/vendor/images/logo.png" alt="Powered By godruoyi">
+        <img src="https://godruoyi.com/vendor/images/logo.png" alt="Powered By godruoyi">
     </a>
 </p>
 
