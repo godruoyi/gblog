@@ -41,11 +41,13 @@ Gblog is easy blog build with `laravel5.5` and `vue2.*`, The `front-end` styles 
 
 ## Preview
 
-![godruoyi.com](https://lccdn.phphub.org/uploads/images/201804/08/5359/RXxxG7g2iC.png)
+![godruoyi.com](https://godruoyi.com/vendor/images/admin.png)
 
-![godruoyi.com](https://lccdn.phphub.org/uploads/images/201804/08/5359/JGjl4APHkG.png)
+![godruoyi.com](https://godruoyi.com/vendor/images/publish.png)
 
-![godruoyi.com](https://lccdn.phphub.org/uploads/images/201804/08/5359/vTwI4CTamp.png)
+![godruoyi.com](https://godruoyi.com/vendor/images/home.png)
+
+![godruoyi.com](https://godruoyi.com/vendor/images/detail.png)
 
 ## Install
 
