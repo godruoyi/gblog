@@ -1,6 +1,6 @@
 @extends('admin.layouts.layout')
 @section('title', '编辑文章')
-@section('styles')
+@push('styles')
     <style>
         body {color: #525252;}
         ul.list {margin: 0;padding-left: 11px;color: #524e4e;}
@@ -13,7 +13,7 @@
         .post-banner {height: 240px;}
         .voyager input[type=file] {padding: 5px;}
     </style>
-@endsection
+@endpush
 
 @section('content')
     <div class="page-content edit-add container-fluid">

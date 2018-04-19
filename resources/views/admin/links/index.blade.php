@@ -15,52 +15,23 @@
             <div class="col-md-12">
                 <div class="panel panel-bordered">
                     <div class="panel-body">
-                        <div class="table-responsive">
-                            <div class="dataTables_wrapper form-inline dt-bootstrap no-footer">
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <table class="table table-hover no-footer" id="dataTable" data-deletename="links">
-                                            <thead>
-                                                <tr>
-                                                    <td>#</td>
-                                                    <td>名称</td>
-                                                    <td>logo</td>
-                                                    <td>描述</td>
-                                                    <td>类型</td>
-                                                    <td>操作</td>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @foreach($links as $link)
-                                                    <tr>
-                                                        <td>{{ $link->id }}</td>
-                                                        <td><a href="{{ $link->link }}">{{ $link->name }}</a></td>
-                                                        <td>
-                                                            @empty(! $link->logo)
-                                                                <img class="user-avatar" src="{{ $link->logo }}"/>
-                                                            @endempty
-                                                        </td>
-                                                        <td>{{ $link->description }}</td>
-                                                        <td>{{ $link->type }}</td>
-                                                        <td class="no-sort no-click" id="bread-actions">
-                                                            <a href="{{ route('admin.links.edit', $link->id) }}" class="btn btn-sm btn-info">
-                                                                <i class="voyager-edit"></i>
-                                                                <span class="hidden-xs hidden-sm">编 辑</span>
-                                                            </a>
-                                                            <a href="javascript:;" data-id="{{ $link->id }}" class="btn btn-sm btn-warning delete">
-                                                                <i class="voyager-trash"></i>
-                                                                <span class="hidden-xs hidden-sm">删 除</span>
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                                @endforeach
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                                @include('admin.common.pagination', ['data' => $links])
-                            </div>
-                        </div>
+                        @include('admin.common.pagination_table', [
+                            'datas'  => $links,
+                            'name'   => 'links',
+                            'fields' => [
+                                'id'          => '#',
+                                'name'        => ['name' => '名 称', 'callback' => function ($name, $link) {
+                                    return '<a href="'. $link->link .'">'. $name .'</a>';
+                                }],
+                                'logo'        => ['name' => 'Logo',  'callback' => function ($logo) {
+                                    return $logo ? '<img class="user-avatar" src="'. $logo .'"/>' : ' - ';
+                                }],
+                                'description' => ['name' => '描 述', 'callback' => function ($desc) {
+                                    return str_limit($desc, 30);
+                                }],
+                                'type'        => '类 型',
+                            ]
+                        ])
                     </div>
                 </div>
             </div>

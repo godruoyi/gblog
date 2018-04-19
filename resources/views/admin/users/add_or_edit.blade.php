@@ -1,11 +1,11 @@
 @extends('admin.layouts.layout')
 @section('title', '用户创建/编辑')
-@section('styles')
+@push('styles')
     <style>
         .voyager input[type=file] {padding: 6px;}
         .user-avatar {width:120px; height:auto; clear:both; display:block; padding:2px; border:1px solid #ddd; margin-bottom:10px;}
     </style>
-@endsection
+@endpush
 
 @section('content')
     <div class="container-fluid">
@@ -68,6 +68,8 @@
                                     @endisset
                                     <input type="file" class="form-control" name="avatar" id="avatar">
                                 </div>
+
+                                @include('admin.common.upload')
                             </div>
                             <button type="submit" class="col-md-offset-2 btn btn-primary"> 保 存</button>
                         </div><!-- panel-body -->

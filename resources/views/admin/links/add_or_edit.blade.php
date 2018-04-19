@@ -1,11 +1,11 @@
 @extends('admin.layouts.layout')
 @section('title', $link->id > 0 ? '编辑友链' : '新增友链')
-@section('styles')
+@push('styles')
     <style>
         .voyager input[type=file] {padding: 6px;}
         .user-avatar {width:120px; height:auto; clear:both; display:block; padding:2px; border:1px solid #ddd; margin-bottom:10px;}
     </style>
-@endsection
+@endpush
 
 @section('content')
     <div class="container-fluid">

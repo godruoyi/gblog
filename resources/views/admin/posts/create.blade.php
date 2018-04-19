@@ -1,6 +1,6 @@
 @extends('admin.layouts.layout')
 @section('title', '创建文章')
-@section('styles')
+@push('styles')
     <style>
         body {color: #525252;}
         ul.list {margin: 0;padding-left: 11px;color: #524e4e;}
@@ -14,7 +14,7 @@
         .voyager input[type=file] {padding: 5px;}
         .CodeMirror {font-size: 17px!important;color: black!important;}
     </style>
-@endsection
+@endpush
 
 @section('content')
     <div class="page-content edit-add container-fluid">

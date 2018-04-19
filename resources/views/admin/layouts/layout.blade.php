@@ -14,7 +14,7 @@
         .user-avatar { border-radius:50%; height: 50px; width: 50px;}
         .voyager .table>tbody>tr>td { line-height: 50px; }
     </style>
-    @yield('styles')
+    @stack('styles')
 </head>
 <body class="voyager">
     @include('admin.layouts.loader')
@@ -38,6 +38,6 @@
 
     @include('admin.layouts.footer')
     <script type="text/javascript" src="{{ mix('js/admin.js') }}"></script>
-    @yield('javascript')
+    @stack('javascript')
 </body>
 </html>
