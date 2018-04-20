@@ -3,7 +3,7 @@
 @section('content')
     <div class="container-fluid">
         <h1 class="page-title">
-            <i class="voyager-lock"></i> 角色列表
+            <i class="voyager-group"></i> 用户列表
         </h1>
         <a href="{{ route('admin.users.create') }}" class="btn btn-success btn-add-new">
             <i class="voyager-plus"></i> <span>添加用户</span>

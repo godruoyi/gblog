@@ -62,6 +62,6 @@
     </div>
 @endsection
 
-@section('javascript')
+@push('javascript')
     <script src="{{ mix('js/admin-sieditor.js') }}"></script>
-@endsection
+@endpush

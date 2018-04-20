@@ -26,7 +26,7 @@
                                 }],
                                 'view_count' => '阅读量',
                                 'is_draft'   => ['name' => '状态', 'callback' => function ($isdraft) {
-                                    return $isdraft
+                                    return $isdraft === 'yes'
                                         ? '<span class="tag label label-warning">草稿</span>'
                                         : '<span class="tag label label-success">已发布</span>';
                                 }],

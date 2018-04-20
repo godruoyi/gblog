@@ -5,7 +5,7 @@
 @section('content')
     <div class="container-fluid">
         <h1 class="page-title">
-            <i class="voyager-group"></i> 分类
+            <i class="voyager-crop"></i> 分类
         </h1>
         <a href="{{ route('admin.categories.index') }}" class="btn btn-success">
             <i class="voyager-list"></i> <span>返回分类列表</span>
@@ -40,6 +40,14 @@
                                     <input type="text" class="form-control" name="title" id="title" placeholder="请输入分类标题" value="{{ isset($category) ? $category->title : old('title') }}">
                                 </div>
                             </div>
+                            @if (isset($category->id) && $category->id > 0)
+                                <div class="form-group">
+                                    <label for="slug" class="col-sm-2 control-label">Slug</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" name="slug" id="slug" placeholder="Slug" value="{{ isset($category) ? $category->slug : old('slug') }}">
+                                    </div>
+                                </div>
+                            @endif
                             <div class="form-group">
                                 <label for="description" class="col-sm-2 control-label">描述</label>
                                 <div class="col-sm-8">

@@ -4,7 +4,7 @@
 @section('content')
     <div class="container-fluid">
         <h1 class="page-title">
-            <i class="voyager-lock"></i> 分类列表
+            <i class="voyager-crop"></i> 分类列表
         </h1>
         <a href="{{ route('admin.categories.create') }}" class="btn btn-success btn-add-new">
             <i class="voyager-plus"></i> <span>添加分类</span>

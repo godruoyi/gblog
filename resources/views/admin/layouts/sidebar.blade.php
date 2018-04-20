@@ -22,7 +22,7 @@
         </div>
 
         <ul class="nav navbar-nav">
-            <li class="active">
+            <li>
                 <a href="/" target="_self">
                     <span class="icon voyager-boat"></span>
                     <span class="title">控制台</span>
@@ -31,7 +31,7 @@
 
             <li>
                 <a href="{{ route('admin.users.index') }}" target="_self">
-                    <span class="icon voyager-skull"></span>
+                    <span class="icon voyager-group"></span>
                     <span class="title">用户管理</span>
                 </a>
             </li>

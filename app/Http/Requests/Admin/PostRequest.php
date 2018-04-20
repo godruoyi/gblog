@@ -19,7 +19,7 @@ class PostRequest extends FormRequest
             'title' => 'required|string|max:100',
             'category_id' => 'required|integer|exists:categories,id',
             'content' => 'required|string',
-            'banner' => 'required|file',
+            'banner' => 'required|url',
             'is_draft' => 'required|string|in:no,yes'
         ];
 
@@ -30,7 +30,7 @@ class PostRequest extends FormRequest
                 break;
             case 'PUT':
                 $rules['slug'] = ['required', 'string', Rule::unique('posts')->ignore($this->route('post'))];
-                $rules['banner']   = 'nullable|file';
+                $rules['banner']   = 'nullable|url';
                 break;
             default:
                 return [];
@@ -46,10 +46,12 @@ class PostRequest extends FormRequest
      */
     public function prepareStorePost(): array
     {
-        $datas = $this->validated();
-        $datas['banner'] = app(ImageUploadHandler::class)->resize(1100)->upload($this->file('banner'), 'posts');
+        return $this->validated();
 
-        return $datas;
+        // $datas = $this->validated();
+        // $datas['banner'] = app(ImageUploadHandler::class)->resize(1100)->upload($this->file('banner'), 'posts');
+
+        // return $datas;
     }
 
     /**
@@ -59,13 +61,15 @@ class PostRequest extends FormRequest
      */
     public function prepareUpdatePost(): array
     {
-        $datas = array_filter($this->validated());
+        return array_filter($this->validated());
 
-        if ($file = $this->file('banner')) {
-            $datas['banner'] = app(ImageUploadHandler::class)->resize(1100)->upload($this->file('banner'), 'posts');
-        }
+        // $datas = array_filter($this->validated());
 
-        return $datas;
+        // if ($file = $this->file('banner')) {
+        //     $datas['banner'] = app(ImageUploadHandler::class)->resize(1100)->upload($this->file('banner'), 'posts');
+        // }
+
+        // return $datas;
     }
 
     /**

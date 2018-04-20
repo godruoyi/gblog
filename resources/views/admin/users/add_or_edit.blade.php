@@ -60,18 +60,22 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="avatar" class="col-sm-2 control-label">头 像</label>
-                                <div class="col-sm-8">
-                                    @isset($user)
-                                        <img src="{{ $user->avatar ?? '/vendor/images/captain-avatar.png' }}" class=" user-avatar">
-                                        {{ method_field('PUT') }}
-                                    @endisset
-                                    <input type="file" class="form-control" name="avatar" id="avatar">
+                                <div class="col-md-offset-2 col-sm-8">
+                                    <div class="slim user-avatar"
+                                        data-size="240,240"
+                                        data-service="/slim/imageupload"
+                                        data-ratio="1:1"
+                                        data-push="true"
+                                        data-default-input-name='avatar'
+                                        data-label='请上传头像'>
+                                        @if (isset($user) && ! empty($user->avatar))
+                                            <img src="{{ $user->avatar }}" alt="">
+                                        @endif
+                                    </div>
                                 </div>
 
-                                @include('admin.common.upload')
                             </div>
-                            <button type="submit" class="col-md-offset-2 btn btn-primary"> 保 存</button>
+                            <button type="submit" class="col-sm-2 col-md-offset-2 btn btn-primary"> 保 存</button>
                         </div><!-- panel-body -->
                     </form>
                 </div>
@@ -79,3 +83,4 @@
         </div>
     </div>
 @endsection
+@include('admin.common.upload')

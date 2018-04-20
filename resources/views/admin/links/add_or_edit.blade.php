@@ -63,15 +63,21 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="logo" class="col-sm-2 control-label">Logo</label>
-                                <div class="col-sm-8">
-                                    @if(! empty($link->logo))
-                                        <img src="{{ $link->logo }}" class="user-avatar">
-                                    @endif
-                                    <input type="file" class="form-control" name="logo" id="logo">
+                                <div class="col-md-offset-2 col-sm-8">
+                                    <div class="slim user-avatar"
+                                        data-size="240,240"
+                                        data-service="/slim/imageupload"
+                                        data-ratio="1:1"
+                                        data-push="true"
+                                        data-default-input-name='logo'
+                                        data-label='请上传 Logo'>
+                                        @if (isset($link) && ! empty($link->logo))
+                                            <img src="{{ $link->logo }}" alt="">
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
-                            <button type="submit" class="col-md-offset-2 btn btn-primary"> 保 存</button>
+                            <button type="submit" class="col-sm-2 col-md-offset-2 btn btn-primary"> 保 存</button>
                         </div><!-- panel-body -->
                     </form>
                 </div>
@@ -79,3 +85,4 @@
         </div>
     </div>
 @endsection
+@include('admin.common.upload')
