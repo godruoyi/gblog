@@ -21,21 +21,26 @@
             }
         },
         created: function () {
-            this.$http.get(this.$endpoints.links.index).then(links => {
-                let lefts = []
-                let bottoms = []
+            this.fetchLinks()
+        },
+        methods: {
+            fetchLinks: function () {
+                this.$http.get(this.$endpoints.links.index).then(links => {
+                    let lefts = []
+                    let bottoms = []
 
-                links.data.forEach(link => {
-                    if (link.type === 'left') {
-                        lefts.push(link)
-                    } else {
-                        bottoms.push(link)
-                    }
-                })
+                    links.data.forEach(link => {
+                        if (link.type === 'left') {
+                            lefts.push(link)
+                        } else {
+                            bottoms.push(link)
+                        }
+                    })
 
-                this.links.left = lefts
-                this.links.bottom = bottoms
-            }, e => {})
+                    this.links.left = lefts
+                    this.links.bottom = bottoms
+                }, e => {})
+            }
         }
     }
 </script>

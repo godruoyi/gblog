@@ -3,7 +3,7 @@
 <head>
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
     <meta charset="utf-8">
-    <title>gblog, a open source blog built with Laravel and Vue.js.</title>
+    <title>二楞徐的闲谈杂鱼</title>
     <link rel="canonical" href="https://godruoyi.com/" itemprop="url">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 

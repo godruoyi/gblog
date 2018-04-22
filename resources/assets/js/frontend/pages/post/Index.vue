@@ -21,9 +21,9 @@
                             </span>
                             <h2 class=""><router-link :to="{name: 'frontend.post.detail', params: {slug: post.slug}}">{{ post.title }}</router-link></h2>
                             <p>{{ post.excerpt }}</p>
-                            <router-link :to="{name: 'frontend.post.detail', params: {slug: post.slug}}" class="truncate__link">
+                            <!-- <router-link :to="{name: 'frontend.post.detail', params: {slug: post.slug}}" class="truncate__link">
                                 查看更多...
-                            </router-link>
+                            </router-link> -->
                         </div>
                     </div>
                     </transition-group>

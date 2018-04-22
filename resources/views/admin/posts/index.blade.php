@@ -14,80 +14,28 @@
             <div class="col-md-12">
                 <div class="panel panel-bordered">
                     <div class="panel-body">
-                        <div class="table-responsive">
-                            <div class="dataTables_wrapper form-inline dt-bootstrap no-footer">
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <table class="table table-hover no-footer" id="dataTable">
-                                            <thead>
-                                                <tr>
-                                                    <td>#</td>
-                                                    <td>分类</td>
-                                                    <td>标题</td>
-                                                    <td>阅读量</td>
-                                                    <td>草稿</td>
-                                                    <td>发布时间</td>
-                                                    <td>操作</td>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @forelse ($posts as $post)
-                                                    <tr>
-                                                        <td>{{ $post->id }}</td>
-                                                        <td>{{ $post->category->name }}</td>
-                                                        <td><a target="_blank" href="http://{{ config('app.home_domain') . '/posts/' . $post->slug }}">{{ $post->title }}</a></td>
-                                                        <td>{{ $post->view_count }}</td>
-                                                        @if ($post->is_draft == 'yes')
-                                                            <td><span class="tag label label-warning">草稿</span></td>
-                                                        @else
-                                                            <td><span class="tag label label-success">已发布</span></td>
-                                                        @endif
-                                                        <td>{{ $post->created_at }}</td>
-                                                        <td class="no-sort no-click" id="bread-actions">
-                                                            <a href="{{ route('admin.posts.edit', $post->id) }}" class="btn btn-sm btn-info">
-                                                                <i class="voyager-hammer"></i>
-                                                                <span class="hidden-xs hidden-sm">编 辑</span>
-                                                            </a>
-                                                            <a href="javascript:;" data-id="{{ $post->id }}" class="btn btn-sm btn-warning delete">
-                                                                <i class="voyager-x"></i>
-                                                                <span class="hidden-xs hidden-sm">删 除</span>
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                                @empty
-                                                    <tr><td colspan="9" align="center">暂无数据</td></tr>
-                                                @endforelse
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                                @include('admin.common.pagination', ['data' => $posts])
-                            </div>
-                        </div>
+                        @include('admin.common.pagination_table', [
+                            'datas'  => $posts,
+                            'name'   => 'posts',
+                            'fields' => [
+                                'id'         => '#',
+                                'slug'       => ['name' => '标题', 'callback' => function ($slug, $post) {
+                                    $url = sprintf('//%s/posts/%s', config('app.home_domain'), $slug);
+
+                                    return '<a target="_blank" href="'.$url.'">'. str_limit($post->title, 50) .'</a>';
+                                }],
+                                'view_count' => '阅读量',
+                                'is_draft'   => ['name' => '状态', 'callback' => function ($isdraft) {
+                                    return $isdraft === 'yes'
+                                        ? '<span class="tag label label-warning">草稿</span>'
+                                        : '<span class="tag label label-success">已发布</span>';
+                                }],
+                                'created_at' => '发布时间',
+                            ]
+                        ])
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <form action="{{ route('admin.posts.index') }}" method="post" id="delete-form">
-        {{ csrf_field() }}
-        {{ method_field('DELETE') }}
-    </form>
-@endsection
-
-@section('javascript')
-    <script>
-        $(document).ready(function () {
-            $('.delete').click(function () {
-                var $form = $('#delete-form');
-                var action = $form.attr('action');
-
-                $form.attr('action', action + "/" + $(this).data('id'))
-
-                alert($form.attr('action'))
-                $form.submit();
-            })
-        });
-    </script>
 @endsection

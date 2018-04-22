@@ -16,7 +16,7 @@ class UserRequest extends FormRequest
     {
         $rules = [
             'name'   => 'required|string|max:20',
-            'avatar' => 'required|file',
+            'avatar' => 'required|url',
         ];
 
         switch ($this->method()) {
@@ -27,7 +27,7 @@ class UserRequest extends FormRequest
             case 'PUT':
                 $rules['email'] = ['required', 'email', Rule::unique('users')->ignore($this->route('user'))];
                 $rules['password'] = 'nullable|min:6|max:20|confirmed';
-                $rules['avatar']   = 'nullable|file';
+                $rules['avatar']   = 'nullable|url';
                 break;
             default:
                 return [];
@@ -43,12 +43,14 @@ class UserRequest extends FormRequest
      */
     public function prepareStoreUser(): array
     {
-        $path = app(ImageUploadHandler::class)->resize(200)->upload($this->file('avatar'), 'users');
+        return $this->validated();
 
-        $datas = $this->validated();
-        $datas['avatar'] = $path;
+        // $path = app(ImageUploadHandler::class)->resize(200)->upload($this->file('avatar'), 'users');
 
-        return $datas;
+        // $datas = $this->validated();
+        // $datas['avatar'] = $path;
+
+        // return $datas;
     }
 
     /**
@@ -60,10 +62,10 @@ class UserRequest extends FormRequest
     {
         $datas = $this->validated();
 
-        if ($file = $this->file('avatar')) {
-            $path = app(ImageUploadHandler::class)->resize(200)->upload($file, 'users');
-            $datas['avatar'] = $path;
-        }
+        // if ($file = $this->file('avatar')) {
+        //     $path = app(ImageUploadHandler::class)->resize(200)->upload($file, 'users');
+        //     $datas['avatar'] = $path;
+        // }
 
         return array_filter($datas);
     }

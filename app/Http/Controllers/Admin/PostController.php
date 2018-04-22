@@ -19,7 +19,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::with('category', 'user')->orderBy('created_at', 'desc')->paginate();
+        $posts = Post::with('category', 'user')->orderBy('created_at', 'desc')->paginate(8);
 
         return view('admin.posts.index')->with(compact('posts'));
     }
@@ -29,9 +29,9 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Post $post)
     {
-        return view('admin.posts.create', ['categories' => Category::all()]);
+        return view('admin.posts.add_or_edit', ['categories' => Category::all(), 'post' => $post]);
     }
 
     /**
@@ -62,7 +62,7 @@ class PostController extends Controller
         $categories = Category::all();
         $post       = Post::findOrFail($id);
 
-        return view('admin.posts.edit')->with(compact('post', 'categories'));
+        return view('admin.posts.add_or_edit')->with(compact('post', 'categories'));
     }
 
     /**
@@ -76,7 +76,7 @@ class PostController extends Controller
         $categories = Category::all();
         $post       = Post::findOrFail($id);
 
-        return view('admin.posts.edit')->with(compact('post', 'categories'));
+        return view('admin.posts.add_or_edit')->with(compact('post', 'categories'));
     }
 
     /**
@@ -92,7 +92,7 @@ class PostController extends Controller
 
         flash('更新文章成功！')->success();
 
-        return redirect(route('admin.posts.edit', $id));
+        return redirect(route('admin.posts.index'));
     }
 
     /**
@@ -115,7 +115,7 @@ class PostController extends Controller
      */
     public function sieditorUpload(Request $request, ImageUploadHandler $uploader)
     {
-        if ($request->upload_files && ($path = $uploader->resize(500)->upload($request->upload_files, 'posts', \Auth::id()))) {
+        if ($request->upload_files && ($path = $uploader->resize(900)->upload($request->upload_files, 'posts', \Auth::id()))) {
             return [
                 'filename' => $path
             ];
@@ -127,26 +127,20 @@ class PostController extends Controller
     /**
      * Slim 文件上传
      *
-     * @param  Request            $request  [description]
-     * @param  ImageUploadHandler $uploader [description]
-     * @return [type]                       [description]
+     * @param  Request            $request
+     * @param  ImageUploadHandler $uploader
+     *
+     * @return mixed
      */
     public function slimFileUpload(Request $request, ImageUploadHandler $uploader)
     {
-        if ($request->slim && ! empty($request->slim[0])) {
-            $datas        = json_decode($request->slim[0], true);
-            $imageContent = array_get($datas, 'output.image');
-            $name         = array_get($datas, 'input.name');
+        $file = collect($request->allFiles())->first();
+        if (! is_null($file)) {
+            $path = $uploader->upload($file, 'banners', \Auth::id());
 
-            list(, $imageContent) = explode(',', $imageContent);
-
-            if (! empty($imageContent)) {
-                $path = tempnam(sys_get_temp_dir(), 'banners');
-                file_put_contents($path, base64_decode($imageContent));
-                $path = $uploader->upload(new UploadedFile($path, $name), 'banners', \Auth::id());
-
-                return ['status' => 'success', 'name' => $name, 'path' => $path];
-            }
+            return ['status' => 'success', 'name' => $file->getClientOriginalName(), 'path' => $path];
         }
+
+        return response('上传失败!', 400);
     }
 }

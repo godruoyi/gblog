@@ -2949,24 +2949,37 @@ code {
 
 pre {
     display: block;
-    border: 2px solid #e8e8e8;
+    /*border: 2px solid #e8e8e8;*/
     border-radius: 2px;
     line-height: 1.6em
 }
 
 pre,
 pre>code {
-    padding: 10px 15px;
-    font-size: 1.1125rem
+    /*padding: 10px 15px;
+    font-size: 1.1125rem*/
 }
 
 pre>code {
-    padding: 0;
+    /*padding: 0;
     margin: 0;
     border: 0 solid transparent;
-    /*background-color: #fff;*/
+    background-color: #fff;
     -ms-overflow-x: scroll;
-    overflow-x: scroll
+    overflow-x: scroll*/
+
+    display: block;
+    padding: 0;
+    background: #272822;
+    margin: 0;
+    overflow: initial;
+    line-height: inherit;
+    word-wrap: normal;
+    background-color: transparent;
+    border: 0;
+    color: #f8f8f2;
+    font-size: 100%;
+    white-space: pre;
 }
 
 /*blockquote {
@@ -5137,6 +5150,10 @@ select {
     padding: 14px 0
 }
 
+.site-nav .nav__header .nav__logo img {
+    border-radius: 50%;
+}
+
 .site-nav .nav__header .nav__logo .logo {
     height: 44px;
     width: 44px;
@@ -5151,7 +5168,7 @@ select {
     letter-spacing: -.02em;
     display: inline-block;
     margin-left: 12px;
-    transform: translatey(2px)
+    transform: translatey(-16px)
 }
 
 .site-nav .nav__header .nav__logo .logo__note {
@@ -5875,7 +5892,25 @@ select {
 .post__content p,
 .post__content pre,
 .post__content ul {
-    margin-bottom: 30px
+    margin-bottom: 10px
+}
+
+#post-content ul {
+    padding-left: 2em;
+    padding: 10px 20px 10px 30px;
+    color: #7d8688;
+}
+
+#post-content p {
+    margin-top: 0;
+    margin-bottom: 10px!important;
+    line-height: 30px;
+}
+
+#post-content a {
+    color: #4183C4;
+    position: relative;
+    text-decoration: none;
 }
 
 .post__content blockquote:last-child,
@@ -7112,6 +7147,8 @@ select {
     overflow-x: auto;
     padding: 10px 20px;
     /*background: #fff*/
+    background: rgba(54, 56, 58, 0.98);
+    border-radius: 4px !important;
 }
 
 .hljs,
@@ -7191,7 +7228,7 @@ select {
 
 .post__content img {
     height: auto;
-    width: auto;
+    width: 100%;
     max-width: 100%
 }
 
