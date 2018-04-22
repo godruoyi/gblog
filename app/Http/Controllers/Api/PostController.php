@@ -52,4 +52,28 @@ class PostController extends Controller
 
         return $this->response->collection($posts, new PostTransformer);
     }
+
+    /**
+     * Search post
+     *
+     * @param  Request $request
+     * @return [type]
+     */
+    public function search(Request $request)
+    {
+        $result = [];
+
+        if (! empty($keywork = $request->q)) {
+            $result = Post::search($keywork)->paginate();
+
+            $data = ($result->map(function ($post) {
+                return $post->setAttribute('highlight', $post->highlight)
+                    ->setVisible(['id', 'title', 'slug', 'created_at', 'excerpt', 'highlight']);
+            }));
+
+            $result->setCollection($data);
+        }
+
+        return response()->json($result);
+    }
 }

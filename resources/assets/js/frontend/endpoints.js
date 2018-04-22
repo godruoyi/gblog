@@ -11,5 +11,6 @@ export default {
     },
     links: {
         index: '/links'
-    }
+    },
+    search: '/search'
 }

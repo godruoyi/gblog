@@ -16,7 +16,8 @@
         "laravel/tinker": "~1.0",
         "overtrue/pinyin": "~3.0",
         "predis/predis": "^1.1",
-        "sentry/sentry-laravel": "^0.8.0"
+        "sentry/sentry-laravel": "^0.8.0",
+        "tamayo/laravel-scout-elastic": "^3.0"
     },
     "require-dev": {
         "filp/whoops": "~2.0",

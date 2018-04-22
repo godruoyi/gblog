@@ -2,8 +2,12 @@
 
 namespace App\Models;
 
+use Laravel\Scout\Searchable;
+
 class Post extends Model
 {
+    use Searchable;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -13,6 +17,28 @@ class Post extends Model
         'category_id', 'user_id', 'title', 'slug', 'order', 'banner',
         'reply_count', 'view_count', 'content', 'excerpt', 'is_draft'
     ];
+
+    public $searchSettings = [
+        'attributesToHighlight' => [
+            '*'
+        ]
+    ];
+
+    public $highlight = [];
+
+    /**
+     * Get the indexable data array for the model.
+     *
+     * @return array
+     */
+    public function toSearchableArray()
+    {
+        return [
+            'title'   => $this->title,
+            'slug'    => $this->slug,
+            'content' => $this->content,
+        ];
+    }
 
     /**
      * The post's user

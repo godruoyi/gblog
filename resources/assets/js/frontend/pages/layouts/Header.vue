@@ -14,10 +14,10 @@
             </div>
             <div :class="showminiCss">
                 <div class="nav__search">
-                    <form class="search" action="#">
-                        <input type="text" placeholder="SEARCH" name="q" value="">
-                        <button type="button"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-search"></use></svg></button>
-                    </form>
+                    <div class="search">
+                        <input type="text" placeholder="SEARCH" @keyup.enter="search" name="q" v-model="keyword">
+                        <button type="button" v-on:click="search"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-search"></use></svg></button>
+                    </div>
                 </div>
                 <div class="nav__main">
                     <ul>
@@ -43,12 +43,20 @@
         data () {
             return {
                 ismini: false,
+                keyword: ''
             }
         },
         computed: {
             showminiCss: function () {
                 return this.ismini ? 'nav__container js-menu is-active' : 'nav__container js-menu'
             },
+        },
+        methods: {
+            search: function () {
+                this.ismini = false
+
+                this.$router.push({ name: 'frontend.search', query: { q: this.keyword }})
+            }
         }
     }
 </script>

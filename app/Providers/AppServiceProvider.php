@@ -2,7 +2,10 @@
 
 namespace App\Providers;
 
+use App\Support\ElasticsearchEngine;
 use Illuminate\Support\ServiceProvider;
+use Laravel\Scout\EngineManager;
+use Elasticsearch\ClientBuilder as ElasticBuilder;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -14,6 +17,14 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerObserves();
+
+        resolve(EngineManager::class)->extend('elasticsearch', function($app) {
+            return new ElasticsearchEngine(ElasticBuilder::create()
+                ->setHosts(config('scout.elasticsearch.hosts'))
+                ->build(),
+                config('scout.elasticsearch.index')
+            );
+        });
     }
 
     /**

@@ -171,6 +171,7 @@ return [
         /*
          * Package Service Providers...
          */
+        ScoutEngines\Elasticsearch\ElasticsearchProvider::class,
 
         /*
          * Application Service Providers...

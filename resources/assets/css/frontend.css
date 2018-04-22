@@ -2924,6 +2924,10 @@ i {
     font-style: italic
 }
 
+.card__content em {
+    color: red;
+}
+
 ol,
 ul {
     padding-left: .9375rem
@@ -5147,11 +5151,12 @@ select {
 
 .site-nav .nav__header .nav__logo {
     display: inline-block;
-    padding: 14px 0
+    padding: 11px 0
 }
 
 .site-nav .nav__header .nav__logo img {
     border-radius: 50%;
+    transform: translatey(4px);
 }
 
 .site-nav .nav__header .nav__logo .logo {
@@ -5168,7 +5173,7 @@ select {
     letter-spacing: -.02em;
     display: inline-block;
     margin-left: 12px;
-    transform: translatey(-16px)
+    transform: translatey(-12px)
 }
 
 .site-nav .nav__header .nav__logo .logo__note {
