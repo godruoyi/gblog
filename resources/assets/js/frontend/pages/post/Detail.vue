@@ -55,6 +55,11 @@
         created: function () {
             this.fetchPost()
         },
+        beforeRouteUpdate: function (to, from, next) {
+            this.fetchPost()
+
+            next()
+        },
         methods: {
             fetchPost: function () {
                 let url = this.$endpoints.posts.detail.replace(':slug', this.$route.params.slug)
