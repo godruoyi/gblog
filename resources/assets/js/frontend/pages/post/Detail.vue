@@ -56,6 +56,7 @@
             this.fetchPost()
         },
         beforeRouteUpdate: function (to, from, next) {
+            this.$route.params.slug = to.params.slug
             this.fetchPost()
 
             next()
