@@ -8,7 +8,7 @@
                     <h2>Results for: "{{ keyword }}"</h2>
                     <div class="gutter mb4">
                         <transition-group name="list" tag="p" appear>
-                            <div class="md-col md-col-12 lg-col-12" v-for="post in posts" :key="post.id">
+                            <div class="md-col md-col-12 lg-col-12 mb4" v-for="post in posts" :key="post.id">
                                 <router-link :to="{name: 'frontend.post.detail', params: {slug: post.slug}}">
                                     <div class="card__content">
                                         <h2 v-html="getTitle(post)"></h2>
@@ -17,7 +17,7 @@
                                 </router-link>
                             </div>
                         </transition-group>
-                        <pagination :pagination="pagination" :fetchData="fetchData"></pagination>
+                        <pagination :pagination="pagination" :paginationclass="'md-col md-col-12 lg-col-12'" :fetchData="fetchData"></pagination>
                     </div>
                 </div>
                 <transition appear>
@@ -60,7 +60,7 @@
                     this.posts      = response.data
                     this.pagination = {
                         total_pages: response.total,
-                        current_page: response.to
+                        current_page: response.current_page
                     }
                 }).catch(e => {})
             },

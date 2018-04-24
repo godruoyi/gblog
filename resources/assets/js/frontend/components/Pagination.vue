@@ -1,5 +1,5 @@
 <template>
-    <nav class="pagination" v-if="showPagination">
+    <nav :class="'pagination ' + paginationclass" v-if="showPagination">
         <a href="javascript:;" v-on:click="fetchOtherData('prev')" :class="'pagination__arrow arrow--left ' + leftCss"><svg class="pagination__icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-left"></use></svg> 上一页</a>
         <a href="javascript:;" v-on:click="fetchOtherData('next')" :class="'pagination__arrow arrow--right ' + rightCss">下一页 <svg class="pagination__icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-right"></use></svg></a>
     </nav>
@@ -19,6 +19,10 @@
                 default: function () {
                     return page => console.log('The default page click event, current page:' + page)
                 }
+            },
+            paginationclass: {
+                type: String,
+                default: ''
             }
         },
         computed: {
