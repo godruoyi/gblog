@@ -59,7 +59,7 @@
                 this.$http.get(this.$endpoints.search + '?q=' + this.keyword + '&page=' + page).then(response => {
                     this.posts      = response.data
                     this.pagination = {
-                        total_pages: response.total,
+                        total_pages: Math.ceil(response.total / response.per_page),
                         current_page: response.current_page
                     }
                 }).catch(e => {})
