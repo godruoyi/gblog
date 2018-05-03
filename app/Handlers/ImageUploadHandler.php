@@ -11,7 +11,7 @@ class ImageUploadHandler
 {
     protected $allowedExts = [];
 
-    protected $disk = 'public';
+    protected $disk = 'cosv5';
 
     protected $maxWidth = null;
 
@@ -24,7 +24,7 @@ class ImageUploadHandler
      *
      * @return \App\Handlers\ImageUploadHandler
      */
-    public function disk(string $disk = 'public'): ImageUploadHandler
+    public function disk(string $disk = 'cosv5'): ImageUploadHandler
     {
         $this->disk = $disk;
 
