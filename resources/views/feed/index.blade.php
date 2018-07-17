@@ -16,7 +16,7 @@
             <title><![CDATA[二楞的闲谈杂鱼]]></title>
             <url>https://images.godruoyi.com/logos/god.png</url>
         </image>
-        <title>Laravel News</title>
+        <title>二楞的闲谈杂鱼</title>
         <atom:link href="https://godruoyi.com/feeds/" rel="self" type="application/rss+xml"/>
         <link>https://godruoyi.com</link>
         <description>二楞的闲谈杂鱼.</description>
@@ -37,13 +37,13 @@
                 <description><![CDATA[
                     <p><img src="{{ $item->banner }}"></p>
                     <p>{{ $item->excerpt }}</p>
-                    <p>Visit <a href="https://godruoyi.com/posts/{{ $item->slug }}">Laravel News</a> for the full post.</p>
+                    <p>Visit <a href="https://godruoyi.com/posts/{{ $item->slug }}">Godruoyi</a> for the full post.</p>
                     <p>The post <a href="https://godruoyi.com/posts/{{ $item->slug }}">{{ $item->title }}</a> appeared first on <a href="https://godruoyi.com">Godruoyi</a>.</p>
                 ]]></description>
                 <content:encoded><![CDATA[
                     <p><img src="{{ $item->banner }}"></p>
                     <p>{{ $item->excerpt }}</p>
-                    <p>Visit <a href="https://godruoyi.com/posts/{{ $item->slug }}">Laravel News</a> for the full post.</p>
+                    <p>Visit <a href="https://godruoyi.com/posts/{{ $item->slug }}">Godruoyi</a> for the full post.</p>
                     <p>The post <a href="https://godruoyi.com/posts/{{ $item->slug }}">{{ $item->title }}</a> appeared first on <a href="https://godruoyi.com">Godruoyi</a>.</p>
                 ]]></content:encoded>
             </item>
