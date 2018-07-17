@@ -25,8 +25,7 @@ ______                            _              _                              
     <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
     <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
 
-    <link rel="alternate" type="application/rss+xml" title="Godruoyi &raquo; Feed" href="https://godruoyi.com/feed">
-    <link rel="alternate" title="Godruoyi Feed" type="application/json" href="https://godruoyi.com/feed/json" />
+    <link rel="alternate" type="application/rss+xml" title="Godruoyi &raquo; Feed" href="https://godruoyi.com/feeds">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="referrer" content="always">
