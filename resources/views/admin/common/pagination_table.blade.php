@@ -26,15 +26,15 @@
                                         <i class="voyager-hammer"></i>
                                         <span class="hidden-xs hidden-sm">编 辑</span>
                                     </a>
-                                    <a href="javascript:;" data-id="{{ $item->id }}" class="btn btn-sm btn-warning delete">
+                                    {{-- <a href="javascript:;" data-id="{{ $item->id }}" class="btn btn-sm btn-warning delete">
                                         <i class="voyager-trash"></i>
                                         <span class="hidden-xs hidden-sm">删 除</span>
-                                    </a>
+                                    </a> --}}
 
-                                    <form action="{{ route('admin.'. $name .'.index') }}" method="post" id="delete-form">
+                                    {{-- <form action="{{ route('admin.'. $name .'.index') }}" method="post" id="delete-form">
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}
-                                    </form>
+                                    </form> --}}
                                 </td>
                             </tr>
                         @endforeach
@@ -47,7 +47,7 @@
 </div>
 
 @push('javascript')
-    <script>
+    {{-- <script>
         $(document).ready(function () {
             $('.delete').click(function () {
                 var $form = $('#delete-form');
@@ -56,5 +56,5 @@
                 $form.submit();
             })
         });
-    </script>
+    </script> --}}
 @endpush

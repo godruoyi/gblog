@@ -36,4 +36,8 @@ Route::group(['as' => 'sitemap.'], function () {
     Route::name('index_xml')->get('/sitemap.xml', 'SitemapController@index');
 });
 
+Route::group(['as' => 'feed'], function () {
+    Route::name('feed.index')->get('/feeds', 'FeedController@index');
+});
+
 Route::view('/{name?}/{name2?}/{name3?}', 'index')->name('home')->domain(config('app.home_domain'));

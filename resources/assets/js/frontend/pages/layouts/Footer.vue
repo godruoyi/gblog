@@ -38,11 +38,11 @@
                 </div>
 
                 <div class="footer__tribute">
-                    <p>Designed &amp; code by</p>
-                    <router-link :to="{name: 'frontend.home'}" class="tribute__logo">
-                        <span>Zaengle</span>
+                    <p>Designed By Zaengle &amp; Code by</p>
+                    <a href="https://zaengle.com/" class="tribute__logo">
+                        <span>Godruoyi</span>
                         <img src="/vendor/images/godruoyi-logo.jpeg">
-                    </router-link>
+                    </a>
                 </div>
             </div>
         </footer>

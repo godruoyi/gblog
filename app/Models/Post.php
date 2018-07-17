@@ -6,7 +6,8 @@ use Laravel\Scout\Searchable;
 
 class Post extends Model
 {
-    use Searchable;
+    // 放弃使用 elasticsearch，线上环境内存不足
+    // use Searchable;
 
     /**
      * The attributes that are mass assignable.

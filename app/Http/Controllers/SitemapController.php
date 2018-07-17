@@ -10,8 +10,8 @@ class SitemapController extends Controller
 {
     public function index()
     {
-        $post     = Post::isNotDraft()->orderBy('updated_at', 'desc')->first();
-        $category = Category::orderBy('updated_at', 'desc')->first();
+        $post     = Post::isNotDraft()->orderBy('created_at', 'desc')->first();
+        $category = Category::orderBy('created_at', 'desc')->first();
 
         return response()->view('sitemap.index', compact('post', 'category'))->header('Content-Type', 'text/xml');
     }
