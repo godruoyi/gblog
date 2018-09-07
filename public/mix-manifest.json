@@ -1,6 +1,6 @@
 {
-    "/js/app.js": "/js/app.js?id=b5b743e87db1dc3daa58",
-    "/js/admin-sieditor.js": "/js/admin-sieditor.js?id=f8a6ebd671ed7dccfc8d",
-    "/js/admin.js": "/js/admin.js?id=e59b27eae33fbd936580",
-    "/css/frontend.css": "/css/frontend.css?id=b02795bc7ef16eb4551e"
+    "/js/app.js": "/js/app.js",
+    "/js/admin-sieditor.js": "/js/admin-sieditor.js",
+    "/js/admin.js": "/js/admin.js",
+    "/css/frontend.css": "/css/frontend.css"
 }
