@@ -152,7 +152,7 @@ function toComment(sourceMap) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // CodeMirror, copyright (c) by Marijn Haverbeke and others
-// Distributed under an MIT license: https://codemirror.net/LICENSE
+// Distributed under an MIT license: http://codemirror.net/LICENSE
 
 (function(mod) {
   if (true) // CommonJS
@@ -243,7 +243,7 @@ CodeMirror.defineMode("markdown", function(cmCfg, modeCfg) {
   ,   setextHeaderRE = /^ *(?:\={1,}|-{1,})\s*$/
   ,   textRE = /^[^#!\[\]*_\\<>` "'(~:]+/
   ,   fencedCodeRE = /^(~~~+|```+)[ \t]*([\w+#-]*)[^\n`]*$/
-  ,   linkDefRE = /^\s*\[[^\]]+?\]:.*$/ // naive link-definition
+  ,   linkDefRE = /^\s*\[[^\]]+?\]:\s*\S+(\s*\S*\s*)?$/ // naive link-definition
   ,   punctuation = /[!\"#$%&\'()*+,\-\.\/:;<=>?@\[\\\]^_`{|}~—]/
   ,   expandedTab = "    " // CommonMark specifies tab as 4 spaces
 
@@ -279,17 +279,8 @@ CodeMirror.defineMode("markdown", function(cmCfg, modeCfg) {
     // Reset state.indentedCode
     state.indentedCode = false;
     if (state.f == htmlBlock) {
-      var exit = htmlModeMissing
-      if (!exit) {
-        var inner = CodeMirror.innerMode(htmlMode, state.htmlState)
-        exit = inner.mode.name == "xml" && inner.state.tagStart === null &&
-          (!inner.state.context && inner.state.tokenize.isInText)
-      }
-      if (exit) {
-        state.f = inlineNormal;
-        state.block = blockNormal;
-        state.htmlState = null;
-      }
+      state.f = inlineNormal;
+      state.block = blockNormal;
     }
     // Reset state.trailingSpace
     state.trailingSpace = 0;
@@ -659,7 +650,6 @@ CodeMirror.defineMode("markdown", function(cmCfg, modeCfg) {
     }
 
     if (ch === '[' && !state.image) {
-      if (state.linkText && stream.match(/^.*?\]/)) return getType(state)
       state.linkText = true;
       if (modeCfg.highlightFormatting) state.formatting = "link";
       return getType(state);
@@ -697,7 +687,7 @@ CodeMirror.defineMode("markdown", function(cmCfg, modeCfg) {
       return type + tokenTypes.linkEmail;
     }
 
-    if (modeCfg.xml && ch === '<' && stream.match(/^(!--|\?|!\[CDATA\[|[a-z][a-z0-9-]*(?:\s+[a-z_:.\-]+(?:\s*=\s*[^>]+)?)*\s*(?:>|$))/i, false)) {
+    if (modeCfg.xml && ch === '<' && stream.match(/^(!--|[a-z]+(?:\s+[a-z_:.\-]+(?:\s*=\s*[^ >]+)?)*\s*>)/i, false)) {
       var end = stream.string.indexOf(">", stream.pos);
       if (end != -1) {
         var atts = stream.string.substring(stream.start, end);
@@ -782,7 +772,7 @@ CodeMirror.defineMode("markdown", function(cmCfg, modeCfg) {
     }
 
     if (ch === ' ') {
-      if (stream.match(/^ +$/, false)) {
+      if (stream.match(/ +$/, false)) {
         state.trailingSpace++;
       } else if (state.trailingSpace) {
         state.trailingSpaceNewLine = true;
@@ -1022,8 +1012,6 @@ CodeMirror.defineMode("markdown", function(cmCfg, modeCfg) {
 
     getType: getType,
 
-    blockCommentStart: "<!--",
-    blockCommentEnd: "-->",
     closeBrackets: "()[]{}''\"\"``",
     fold: "markdown"
   };
@@ -1043,7 +1031,7 @@ CodeMirror.defineMIME("text/x-markdown", "markdown");
 /***/ (function(module, exports, __webpack_require__) {
 
 // CodeMirror, copyright (c) by Marijn Haverbeke and others
-// Distributed under an MIT license: https://codemirror.net/LICENSE
+// Distributed under an MIT license: http://codemirror.net/LICENSE
 
 (function(mod) {
   if (true) // CommonJS
@@ -1207,9 +1195,8 @@ CodeMirror.defineMode("xml", function(editorConf, config_) {
         stream.next();
       }
       return style;
-    }
+    };
   }
-
   function doctype(depth) {
     return function(stream, state) {
       var ch;
@@ -1452,7 +1439,7 @@ if (!CodeMirror.mimeModes.hasOwnProperty("text/html"))
 /***/ (function(module, exports, __webpack_require__) {
 
 // CodeMirror, copyright (c) by Marijn Haverbeke and others
-// Distributed under an MIT license: https://codemirror.net/LICENSE
+// Distributed under an MIT license: http://codemirror.net/LICENSE
 
 // Utility function that allows modes to be combined. The mode given
 // as the base argument takes care of most of the normal mode
@@ -3642,7 +3629,7 @@ module.exports = SimpleMDE;
 /***/ (function(module, exports, __webpack_require__) {
 
 // CodeMirror, copyright (c) by Marijn Haverbeke and others
-// Distributed under an MIT license: https://codemirror.net/LICENSE
+// Distributed under an MIT license: http://codemirror.net/LICENSE
 
 (function(mod) {
   if (true) // CommonJS
@@ -3709,7 +3696,7 @@ module.exports = SimpleMDE;
         var newNumber = (parseInt(startItem[3], 10) + lookAhead - skipCount);
         var nextNumber = (parseInt(nextItem[3], 10)), itemNumber = nextNumber;
 
-        if (startIndent === nextIndent && !isNaN(nextNumber)) {
+        if (startIndent === nextIndent) {
           if (newNumber === nextNumber) itemNumber = nextNumber + 1;
           if (newNumber > nextNumber) itemNumber = newNumber + 1;
           cm.replaceRange(
@@ -3789,7 +3776,7 @@ CodeMirror.commands.shiftTabAndUnindentMarkdownList = function (cm) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // CodeMirror, copyright (c) by Marijn Haverbeke and others
-// Distributed under an MIT license: https://codemirror.net/LICENSE
+// Distributed under an MIT license: http://codemirror.net/LICENSE
 
 (function(mod) {
   if (true) // CommonJS
@@ -3837,7 +3824,7 @@ CodeMirror.commands.shiftTabAndUnindentMarkdownList = function (cm) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // CodeMirror, copyright (c) by Marijn Haverbeke and others
-// Distributed under an MIT license: https://codemirror.net/LICENSE
+// Distributed under an MIT license: http://codemirror.net/LICENSE
 
 (function(mod) {
   if (true) // CommonJS
@@ -3913,7 +3900,7 @@ CodeMirror.commands.shiftTabAndUnindentMarkdownList = function (cm) {
     {name: "JSON", mimes: ["application/json", "application/x-json"], mode: "javascript", ext: ["json", "map"], alias: ["json5"]},
     {name: "JSON-LD", mime: "application/ld+json", mode: "javascript", ext: ["jsonld"], alias: ["jsonld"]},
     {name: "JSX", mime: "text/jsx", mode: "jsx", ext: ["jsx"]},
-    {name: "Jinja2", mime: "null", mode: "jinja2", ext: ["j2", "jinja", "jinja2"]},
+    {name: "Jinja2", mime: "null", mode: "jinja2"},
     {name: "Julia", mime: "text/x-julia", mode: "julia", ext: ["jl"]},
     {name: "Kotlin", mime: "text/x-kotlin", mode: "clike", ext: ["kt"]},
     {name: "LESS", mime: "text/x-less", mode: "css", ext: ["less"]},
@@ -4061,7 +4048,7 @@ CodeMirror.commands.shiftTabAndUnindentMarkdownList = function (cm) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // CodeMirror, copyright (c) by Marijn Haverbeke and others
-// Distributed under an MIT license: https://codemirror.net/LICENSE
+// Distributed under an MIT license: http://codemirror.net/LICENSE
 
 (function(mod) {
   if (true) // CommonJS
@@ -4131,7 +4118,7 @@ CodeMirror.commands.shiftTabAndUnindentMarkdownList = function (cm) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // CodeMirror, copyright (c) by Marijn Haverbeke and others
-// Distributed under an MIT license: https://codemirror.net/LICENSE
+// Distributed under an MIT license: http://codemirror.net/LICENSE
 
 // Because sometimes you need to mark the selected *text*.
 //
@@ -4257,7 +4244,7 @@ CodeMirror.commands.shiftTabAndUnindentMarkdownList = function (cm) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // CodeMirror, copyright (c) by Marijn Haverbeke and others
-// Distributed under an MIT license: https://codemirror.net/LICENSE
+// Distributed under an MIT license: http://codemirror.net/LICENSE
 
 (function(mod) {
   if (true) // CommonJS
@@ -7276,97 +7263,65 @@ for (var i = 0, len = code.length; i < len; ++i) {
 revLookup['-'.charCodeAt(0)] = 62
 revLookup['_'.charCodeAt(0)] = 63
 
-function getLens (b64) {
+function placeHoldersCount (b64) {
   var len = b64.length
-
   if (len % 4 > 0) {
     throw new Error('Invalid string. Length must be a multiple of 4')
   }
 
-  // Trim off extra bytes after placeholder bytes are found
-  // See: https://github.com/beatgammit/base64-js/issues/42
-  var validLen = b64.indexOf('=')
-  if (validLen === -1) validLen = len
-
-  var placeHoldersLen = validLen === len
-    ? 0
-    : 4 - (validLen % 4)
-
-  return [validLen, placeHoldersLen]
+  // the number of equal signs (place holders)
+  // if there are two placeholders, than the two characters before it
+  // represent one byte
+  // if there is only one, then the three characters before it represent 2 bytes
+  // this is just a cheap hack to not do indexOf twice
+  return b64[len - 2] === '=' ? 2 : b64[len - 1] === '=' ? 1 : 0
 }
 
-// base64 is 4/3 + up to two characters of the original data
 function byteLength (b64) {
-  var lens = getLens(b64)
-  var validLen = lens[0]
-  var placeHoldersLen = lens[1]
-  return ((validLen + placeHoldersLen) * 3 / 4) - placeHoldersLen
-}
-
-function _byteLength (b64, validLen, placeHoldersLen) {
-  return ((validLen + placeHoldersLen) * 3 / 4) - placeHoldersLen
+  // base64 is 4/3 + up to two characters of the original data
+  return (b64.length * 3 / 4) - placeHoldersCount(b64)
 }
 
 function toByteArray (b64) {
-  var tmp
-  var lens = getLens(b64)
-  var validLen = lens[0]
-  var placeHoldersLen = lens[1]
+  var i, l, tmp, placeHolders, arr
+  var len = b64.length
+  placeHolders = placeHoldersCount(b64)
 
-  var arr = new Arr(_byteLength(b64, validLen, placeHoldersLen))
-
-  var curByte = 0
+  arr = new Arr((len * 3 / 4) - placeHolders)
 
   // if there are placeholders, only get up to the last complete 4 chars
-  var len = placeHoldersLen > 0
-    ? validLen - 4
-    : validLen
+  l = placeHolders > 0 ? len - 4 : len
 
-  for (var i = 0; i < len; i += 4) {
-    tmp =
-      (revLookup[b64.charCodeAt(i)] << 18) |
-      (revLookup[b64.charCodeAt(i + 1)] << 12) |
-      (revLookup[b64.charCodeAt(i + 2)] << 6) |
-      revLookup[b64.charCodeAt(i + 3)]
-    arr[curByte++] = (tmp >> 16) & 0xFF
-    arr[curByte++] = (tmp >> 8) & 0xFF
-    arr[curByte++] = tmp & 0xFF
+  var L = 0
+
+  for (i = 0; i < l; i += 4) {
+    tmp = (revLookup[b64.charCodeAt(i)] << 18) | (revLookup[b64.charCodeAt(i + 1)] << 12) | (revLookup[b64.charCodeAt(i + 2)] << 6) | revLookup[b64.charCodeAt(i + 3)]
+    arr[L++] = (tmp >> 16) & 0xFF
+    arr[L++] = (tmp >> 8) & 0xFF
+    arr[L++] = tmp & 0xFF
   }
 
-  if (placeHoldersLen === 2) {
-    tmp =
-      (revLookup[b64.charCodeAt(i)] << 2) |
-      (revLookup[b64.charCodeAt(i + 1)] >> 4)
-    arr[curByte++] = tmp & 0xFF
-  }
-
-  if (placeHoldersLen === 1) {
-    tmp =
-      (revLookup[b64.charCodeAt(i)] << 10) |
-      (revLookup[b64.charCodeAt(i + 1)] << 4) |
-      (revLookup[b64.charCodeAt(i + 2)] >> 2)
-    arr[curByte++] = (tmp >> 8) & 0xFF
-    arr[curByte++] = tmp & 0xFF
+  if (placeHolders === 2) {
+    tmp = (revLookup[b64.charCodeAt(i)] << 2) | (revLookup[b64.charCodeAt(i + 1)] >> 4)
+    arr[L++] = tmp & 0xFF
+  } else if (placeHolders === 1) {
+    tmp = (revLookup[b64.charCodeAt(i)] << 10) | (revLookup[b64.charCodeAt(i + 1)] << 4) | (revLookup[b64.charCodeAt(i + 2)] >> 2)
+    arr[L++] = (tmp >> 8) & 0xFF
+    arr[L++] = tmp & 0xFF
   }
 
   return arr
 }
 
 function tripletToBase64 (num) {
-  return lookup[num >> 18 & 0x3F] +
-    lookup[num >> 12 & 0x3F] +
-    lookup[num >> 6 & 0x3F] +
-    lookup[num & 0x3F]
+  return lookup[num >> 18 & 0x3F] + lookup[num >> 12 & 0x3F] + lookup[num >> 6 & 0x3F] + lookup[num & 0x3F]
 }
 
 function encodeChunk (uint8, start, end) {
   var tmp
   var output = []
   for (var i = start; i < end; i += 3) {
-    tmp =
-      ((uint8[i] << 16) & 0xFF0000) +
-      ((uint8[i + 1] << 8) & 0xFF00) +
-      (uint8[i + 2] & 0xFF)
+    tmp = ((uint8[i] << 16) & 0xFF0000) + ((uint8[i + 1] << 8) & 0xFF00) + (uint8[i + 2] & 0xFF)
     output.push(tripletToBase64(tmp))
   }
   return output.join('')
@@ -7376,33 +7331,30 @@ function fromByteArray (uint8) {
   var tmp
   var len = uint8.length
   var extraBytes = len % 3 // if we have 1 byte left, pad 2 bytes
+  var output = ''
   var parts = []
   var maxChunkLength = 16383 // must be multiple of 3
 
   // go through the array every three bytes, we'll deal with trailing stuff later
   for (var i = 0, len2 = len - extraBytes; i < len2; i += maxChunkLength) {
-    parts.push(encodeChunk(
-      uint8, i, (i + maxChunkLength) > len2 ? len2 : (i + maxChunkLength)
-    ))
+    parts.push(encodeChunk(uint8, i, (i + maxChunkLength) > len2 ? len2 : (i + maxChunkLength)))
   }
 
   // pad the end with zeros, but make sure to not forget the extra bytes
   if (extraBytes === 1) {
     tmp = uint8[len - 1]
-    parts.push(
-      lookup[tmp >> 2] +
-      lookup[(tmp << 4) & 0x3F] +
-      '=='
-    )
+    output += lookup[tmp >> 2]
+    output += lookup[(tmp << 4) & 0x3F]
+    output += '=='
   } else if (extraBytes === 2) {
-    tmp = (uint8[len - 2] << 8) + uint8[len - 1]
-    parts.push(
-      lookup[tmp >> 10] +
-      lookup[(tmp >> 4) & 0x3F] +
-      lookup[(tmp << 2) & 0x3F] +
-      '='
-    )
+    tmp = (uint8[len - 2] << 8) + (uint8[len - 1])
+    output += lookup[tmp >> 10]
+    output += lookup[(tmp >> 4) & 0x3F]
+    output += lookup[(tmp << 2) & 0x3F]
+    output += '='
   }
+
+  parts.push(output)
 
   return parts.join('')
 }
@@ -7415,7 +7367,7 @@ function fromByteArray (uint8) {
 
 exports.read = function (buffer, offset, isLE, mLen, nBytes) {
   var e, m
-  var eLen = (nBytes * 8) - mLen - 1
+  var eLen = nBytes * 8 - mLen - 1
   var eMax = (1 << eLen) - 1
   var eBias = eMax >> 1
   var nBits = -7
@@ -7428,12 +7380,12 @@ exports.read = function (buffer, offset, isLE, mLen, nBytes) {
   e = s & ((1 << (-nBits)) - 1)
   s >>= (-nBits)
   nBits += eLen
-  for (; nBits > 0; e = (e * 256) + buffer[offset + i], i += d, nBits -= 8) {}
+  for (; nBits > 0; e = e * 256 + buffer[offset + i], i += d, nBits -= 8) {}
 
   m = e & ((1 << (-nBits)) - 1)
   e >>= (-nBits)
   nBits += mLen
-  for (; nBits > 0; m = (m * 256) + buffer[offset + i], i += d, nBits -= 8) {}
+  for (; nBits > 0; m = m * 256 + buffer[offset + i], i += d, nBits -= 8) {}
 
   if (e === 0) {
     e = 1 - eBias
@@ -7448,7 +7400,7 @@ exports.read = function (buffer, offset, isLE, mLen, nBytes) {
 
 exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
   var e, m, c
-  var eLen = (nBytes * 8) - mLen - 1
+  var eLen = nBytes * 8 - mLen - 1
   var eMax = (1 << eLen) - 1
   var eBias = eMax >> 1
   var rt = (mLen === 23 ? Math.pow(2, -24) - Math.pow(2, -77) : 0)
@@ -7481,7 +7433,7 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
       m = 0
       e = eMax
     } else if (e + eBias >= 1) {
-      m = ((value * c) - 1) * Math.pow(2, mLen)
+      m = (value * c - 1) * Math.pow(2, mLen)
       e = e + eBias
     } else {
       m = value * Math.pow(2, eBias - 1) * Math.pow(2, mLen)
@@ -7526,7 +7478,7 @@ module.exports = Array.isArray || function (arr) {
 /* WEBPACK VAR INJECTION */(function(global) {/**
  * marked - a markdown parser
  * Copyright (c) 2011-2014, Christopher Jeffrey. (MIT Licensed)
- * https://github.com/markedjs/marked
+ * https://github.com/chjj/marked
  */
 
 ;(function(root) {
@@ -7541,29 +7493,20 @@ var block = {
   code: /^( {4}[^\n]+\n*)+/,
   fences: noop,
   hr: /^ {0,3}((?:- *){3,}|(?:_ *){3,}|(?:\* *){3,})(?:\n+|$)/,
-  heading: /^ *(#{1,6}) *([^\n]+?) *(?:#+ *)?(?:\n+|$)/,
+  heading: /^ *(#{1,6}) *([^\n]+?) *#* *(?:\n+|$)/,
   nptable: noop,
   blockquote: /^( {0,3}> ?(paragraph|[^\n]*)(?:\n|$))+/,
   list: /^( *)(bull) [\s\S]+?(?:hr|def|\n{2,}(?! )(?!\1bull )\n*|\s*$)/,
-  html: '^ {0,3}(?:' // optional indentation
-    + '<(script|pre|style)[\\s>][\\s\\S]*?(?:</\\1>[^\\n]*\\n+|$)' // (1)
-    + '|comment[^\\n]*(\\n+|$)' // (2)
-    + '|<\\?[\\s\\S]*?\\?>\\n*' // (3)
-    + '|<![A-Z][\\s\\S]*?>\\n*' // (4)
-    + '|<!\\[CDATA\\[[\\s\\S]*?\\]\\]>\\n*' // (5)
-    + '|</?(tag)(?: +|\\n|/?>)[\\s\\S]*?(?:\\n{2,}|$)' // (6)
-    + '|<(?!script|pre|style)([a-z][\\w-]*)(?:attribute)*? */?>(?=\\h*\\n)[\\s\\S]*?(?:\\n{2,}|$)' // (7) open tag
-    + '|</(?!script|pre|style)[a-z][\\w-]*\\s*>(?=\\h*\\n)[\\s\\S]*?(?:\\n{2,}|$)' // (7) closing tag
-    + ')',
+  html: /^ *(?:comment *(?:\n|\s*$)|closed *(?:\n{2,}|\s*$)|closing *(?:\n{2,}|\s*$))/,
   def: /^ {0,3}\[(label)\]: *\n? *<?([^\s>]+)>?(?:(?: +\n? *| *\n *)(title))? *(?:\n+|$)/,
   table: noop,
   lheading: /^([^\n]+)\n *(=|-){2,} *(?:\n+|$)/,
-  paragraph: /^([^\n]+(?:\n(?!hr|heading|lheading| {0,3}>|<\/?(?:tag)(?: +|\n|\/?>)|<(?:script|pre|style|!--))[^\n]+)*)/,
+  paragraph: /^([^\n]+(?:\n?(?!hr|heading|lheading| {0,3}>|tag)[^\n]+)+)/,
   text: /^[^\n]+/
 };
 
-block._label = /(?!\s*\])(?:\\[\[\]]|[^\[\]])+/;
-block._title = /(?:"(?:\\"?|[^"\\])*"|'[^'\n]*(?:\n[^'\n]+)*\n?'|\([^()]*\))/;
+block._label = /(?:\\[\[\]]|[^\[\]])+/;
+block._title = /(?:"(?:\\"|[^"]|"[^"\n]*")*"|'\n?(?:[^'\n]+\n?)*'|\([^()]*\))/;
 block.def = edit(block.def)
   .replace('label', block._label)
   .replace('title', block._title)
@@ -7581,24 +7524,23 @@ block.list = edit(block.list)
   .replace('def', '\\n+(?=' + block.def.source + ')')
   .getRegex();
 
-block._tag = 'address|article|aside|base|basefont|blockquote|body|caption'
-  + '|center|col|colgroup|dd|details|dialog|dir|div|dl|dt|fieldset|figcaption'
-  + '|figure|footer|form|frame|frameset|h[1-6]|head|header|hr|html|iframe'
-  + '|legend|li|link|main|menu|menuitem|meta|nav|noframes|ol|optgroup|option'
-  + '|p|param|section|source|summary|table|tbody|td|tfoot|th|thead|title|tr'
-  + '|track|ul';
-block._comment = /<!--(?!-?>)[\s\S]*?-->/;
-block.html = edit(block.html, 'i')
-  .replace('comment', block._comment)
-  .replace('tag', block._tag)
-  .replace('attribute', / +[a-zA-Z:_][\w.:-]*(?: *= *"[^"\n]*"| *= *'[^'\n]*'| *= *[^\s"'=<>`]+)?/)
+block._tag = '(?!(?:'
+  + 'a|em|strong|small|s|cite|q|dfn|abbr|data|time|code'
+  + '|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo'
+  + '|span|br|wbr|ins|del|img)\\b)\\w+(?!:|[^\\w\\s@]*@)\\b';
+
+block.html = edit(block.html)
+  .replace('comment', /<!--[\s\S]*?-->/)
+  .replace('closed', /<(tag)[\s\S]+?<\/\1>/)
+  .replace('closing', /<tag(?:"[^"]*"|'[^']*'|\s[^'"\/>\s]*)*?\/?>/)
+  .replace(/tag/g, block._tag)
   .getRegex();
 
 block.paragraph = edit(block.paragraph)
   .replace('hr', block.hr)
   .replace('heading', block.heading)
   .replace('lheading', block.lheading)
-  .replace('tag', block._tag) // pars can be interrupted by type (6) html blocks
+  .replace('tag', '<' + block._tag)
   .getRegex();
 
 block.blockquote = edit(block.blockquote)
@@ -7632,26 +7574,8 @@ block.gfm.paragraph = edit(block.paragraph)
  */
 
 block.tables = merge({}, block.gfm, {
-  nptable: /^ *([^|\n ].*\|.*)\n *([-:]+ *\|[-| :]*)(?:\n((?:.*[^>\n ].*(?:\n|$))*)\n*|$)/,
-  table: /^ *\|(.+)\n *\|?( *[-:]+[-| :]*)(?:\n((?: *[^>\n ].*(?:\n|$))*)\n*|$)/
-});
-
-/**
- * Pedantic grammar
- */
-
-block.pedantic = merge({}, block.normal, {
-  html: edit(
-    '^ *(?:comment *(?:\\n|\\s*$)'
-    + '|<(tag)[\\s\\S]+?</\\1> *(?:\\n{2,}|\\s*$)' // closed tag
-    + '|<tag(?:"[^"]*"|\'[^\']*\'|\\s[^\'"/>\\s]*)*?/?> *(?:\\n{2,}|\\s*$))')
-    .replace('comment', block._comment)
-    .replace(/tag/g, '(?!(?:'
-      + 'a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub'
-      + '|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)'
-      + '\\b)\\w+(?!:|[^\\w\\s@]*@)\\b')
-    .getRegex(),
-  def: /^ *\[([^\]]+)\]: *<?([^\s>]+)>?(?: +(["(][^\n]+[")]))? *(?:\n+|$)/
+  nptable: /^ *(\S.*\|.*)\n *([-:]+ *\|[-| :]*)\n((?:.*\|.*(?:\n|$))*)\n*/,
+  table: /^ *\|(.+)\n *\|( *[-:]+[-| :]*)\n((?: *\|.*(?:\n|$))*)\n*/
 });
 
 /**
@@ -7660,13 +7584,11 @@ block.pedantic = merge({}, block.normal, {
 
 function Lexer(options) {
   this.tokens = [];
-  this.tokens.links = Object.create(null);
+  this.tokens.links = {};
   this.options = options || marked.defaults;
   this.rules = block.normal;
 
-  if (this.options.pedantic) {
-    this.rules = block.pedantic;
-  } else if (this.options.gfm) {
+  if (this.options.gfm) {
     if (this.options.tables) {
       this.rules = block.tables;
     } else {
@@ -7716,16 +7638,10 @@ Lexer.prototype.token = function(src, top) {
       bull,
       b,
       item,
-      listStart,
-      listItems,
-      t,
       space,
       i,
       tag,
-      l,
-      isordered,
-      istask,
-      ischecked;
+      l;
 
   while (src) {
     // newline
@@ -7745,7 +7661,7 @@ Lexer.prototype.token = function(src, top) {
       this.tokens.push({
         type: 'code',
         text: !this.options.pedantic
-          ? rtrim(cap, '\n')
+          ? cap.replace(/\n+$/, '')
           : cap
       });
       continue;
@@ -7775,36 +7691,34 @@ Lexer.prototype.token = function(src, top) {
 
     // table no leading pipe (gfm)
     if (top && (cap = this.rules.nptable.exec(src))) {
+      src = src.substring(cap[0].length);
+
       item = {
         type: 'table',
-        header: splitCells(cap[1].replace(/^ *| *\| *$/g, '')),
+        header: cap[1].replace(/^ *| *\| *$/g, '').split(/ *\| */),
         align: cap[2].replace(/^ *|\| *$/g, '').split(/ *\| */),
-        cells: cap[3] ? cap[3].replace(/\n$/, '').split('\n') : []
+        cells: cap[3].replace(/\n$/, '').split('\n')
       };
 
-      if (item.header.length === item.align.length) {
-        src = src.substring(cap[0].length);
-
-        for (i = 0; i < item.align.length; i++) {
-          if (/^ *-+: *$/.test(item.align[i])) {
-            item.align[i] = 'right';
-          } else if (/^ *:-+: *$/.test(item.align[i])) {
-            item.align[i] = 'center';
-          } else if (/^ *:-+ *$/.test(item.align[i])) {
-            item.align[i] = 'left';
-          } else {
-            item.align[i] = null;
-          }
+      for (i = 0; i < item.align.length; i++) {
+        if (/^ *-+: *$/.test(item.align[i])) {
+          item.align[i] = 'right';
+        } else if (/^ *:-+: *$/.test(item.align[i])) {
+          item.align[i] = 'center';
+        } else if (/^ *:-+ *$/.test(item.align[i])) {
+          item.align[i] = 'left';
+        } else {
+          item.align[i] = null;
         }
-
-        for (i = 0; i < item.cells.length; i++) {
-          item.cells[i] = splitCells(item.cells[i], item.header.length);
-        }
-
-        this.tokens.push(item);
-
-        continue;
       }
+
+      for (i = 0; i < item.cells.length; i++) {
+        item.cells[i] = item.cells[i].split(/ *\| */);
+      }
+
+      this.tokens.push(item);
+
+      continue;
     }
 
     // hr
@@ -7842,21 +7756,15 @@ Lexer.prototype.token = function(src, top) {
     if (cap = this.rules.list.exec(src)) {
       src = src.substring(cap[0].length);
       bull = cap[2];
-      isordered = bull.length > 1;
 
-      listStart = {
+      this.tokens.push({
         type: 'list_start',
-        ordered: isordered,
-        start: isordered ? +bull : '',
-        loose: false
-      };
-
-      this.tokens.push(listStart);
+        ordered: bull.length > 1
+      });
 
       // Get each top-level item.
       cap = cap[0].match(this.rules.item);
 
-      listItems = [];
       next = false;
       l = cap.length;
       i = 0;
@@ -7897,27 +7805,11 @@ Lexer.prototype.token = function(src, top) {
           if (!loose) loose = next;
         }
 
-        if (loose) {
-          listStart.loose = true;
-        }
-
-        // Check for task list items
-        istask = /^\[[ xX]\] /.test(item);
-        ischecked = undefined;
-        if (istask) {
-          ischecked = item[1] !== ' ';
-          item = item.replace(/^\[[ xX]\] +/, '');
-        }
-
-        t = {
-          type: 'list_item_start',
-          task: istask,
-          checked: ischecked,
-          loose: loose
-        };
-
-        listItems.push(t);
-        this.tokens.push(t);
+        this.tokens.push({
+          type: loose
+            ? 'loose_item_start'
+            : 'list_item_start'
+        });
 
         // Recurse.
         this.token(item, false);
@@ -7925,14 +7817,6 @@ Lexer.prototype.token = function(src, top) {
         this.tokens.push({
           type: 'list_item_end'
         });
-      }
-
-      if (listStart.loose) {
-        l = listItems.length;
-        i = 0;
-        for (; i < l; i++) {
-          listItems[i].loose = true;
-        }
       }
 
       this.tokens.push({
@@ -7960,7 +7844,7 @@ Lexer.prototype.token = function(src, top) {
     if (top && (cap = this.rules.def.exec(src))) {
       src = src.substring(cap[0].length);
       if (cap[3]) cap[3] = cap[3].substring(1, cap[3].length - 1);
-      tag = cap[1].toLowerCase().replace(/\s+/g, ' ');
+      tag = cap[1].toLowerCase();
       if (!this.tokens.links[tag]) {
         this.tokens.links[tag] = {
           href: cap[2],
@@ -7972,38 +7856,36 @@ Lexer.prototype.token = function(src, top) {
 
     // table (gfm)
     if (top && (cap = this.rules.table.exec(src))) {
+      src = src.substring(cap[0].length);
+
       item = {
         type: 'table',
-        header: splitCells(cap[1].replace(/^ *| *\| *$/g, '')),
+        header: cap[1].replace(/^ *| *\| *$/g, '').split(/ *\| */),
         align: cap[2].replace(/^ *|\| *$/g, '').split(/ *\| */),
-        cells: cap[3] ? cap[3].replace(/(?: *\| *)?\n$/, '').split('\n') : []
+        cells: cap[3].replace(/(?: *\| *)?\n$/, '').split('\n')
       };
 
-      if (item.header.length === item.align.length) {
-        src = src.substring(cap[0].length);
-
-        for (i = 0; i < item.align.length; i++) {
-          if (/^ *-+: *$/.test(item.align[i])) {
-            item.align[i] = 'right';
-          } else if (/^ *:-+: *$/.test(item.align[i])) {
-            item.align[i] = 'center';
-          } else if (/^ *:-+ *$/.test(item.align[i])) {
-            item.align[i] = 'left';
-          } else {
-            item.align[i] = null;
-          }
+      for (i = 0; i < item.align.length; i++) {
+        if (/^ *-+: *$/.test(item.align[i])) {
+          item.align[i] = 'right';
+        } else if (/^ *:-+: *$/.test(item.align[i])) {
+          item.align[i] = 'center';
+        } else if (/^ *:-+ *$/.test(item.align[i])) {
+          item.align[i] = 'left';
+        } else {
+          item.align[i] = null;
         }
-
-        for (i = 0; i < item.cells.length; i++) {
-          item.cells[i] = splitCells(
-            item.cells[i].replace(/^ *\| *| *\| *$/g, ''),
-            item.header.length);
-        }
-
-        this.tokens.push(item);
-
-        continue;
       }
+
+      for (i = 0; i < item.cells.length; i++) {
+        item.cells[i] = item.cells[i]
+          .replace(/^ *\| *| *\| *$/g, '')
+          .split(/ *\| */);
+      }
+
+      this.tokens.push(item);
+
+      continue;
     }
 
     // lheading
@@ -8053,54 +7935,39 @@ Lexer.prototype.token = function(src, top) {
  */
 
 var inline = {
-  escape: /^\\([!"#$%&'()*+,\-./:;<=>?@\[\]\\^_`{|}~])/,
+  escape: /^\\([\\`*{}\[\]()#+\-.!_>])/,
   autolink: /^<(scheme:[^\s\x00-\x1f<>]*|email)>/,
   url: noop,
-  tag: '^comment'
-    + '|^</[a-zA-Z][\\w:-]*\\s*>' // self-closing tag
-    + '|^<[a-zA-Z][\\w-]*(?:attribute)*?\\s*/?>' // open tag
-    + '|^<\\?[\\s\\S]*?\\?>' // processing instruction, e.g. <?php ?>
-    + '|^<![a-zA-Z]+\\s[\\s\\S]*?>' // declaration, e.g. <!DOCTYPE html>
-    + '|^<!\\[CDATA\\[[\\s\\S]*?\\]\\]>', // CDATA section
-  link: /^!?\[(label)\]\(href(?:\s+(title))?\s*\)/,
-  reflink: /^!?\[(label)\]\[(?!\s*\])((?:\\[\[\]]?|[^\[\]\\])+)\]/,
-  nolink: /^!?\[(?!\s*\])((?:\[[^\[\]]*\]|\\[\[\]]|[^\[\]])*)\](?:\[\])?/,
-  strong: /^__([^\s])__(?!_)|^\*\*([^\s])\*\*(?!\*)|^__([^\s][\s\S]*?[^\s])__(?!_)|^\*\*([^\s][\s\S]*?[^\s])\*\*(?!\*)/,
-  em: /^_([^\s_])_(?!_)|^\*([^\s*"<\[])\*(?!\*)|^_([^\s][\s\S]*?[^\s_])_(?!_)|^_([^\s_][\s\S]*?[^\s])_(?!_)|^\*([^\s"<\[][\s\S]*?[^\s*])\*(?!\*)|^\*([^\s*"<\[][\s\S]*?[^\s])\*(?!\*)/,
+  tag: /^<!--[\s\S]*?-->|^<\/?[a-zA-Z0-9\-]+(?:"[^"]*"|'[^']*'|\s[^<'">\/\s]*)*?\/?>/,
+  link: /^!?\[(inside)\]\(href\)/,
+  reflink: /^!?\[(inside)\]\s*\[([^\]]*)\]/,
+  nolink: /^!?\[((?:\[[^\[\]]*\]|\\[\[\]]|[^\[\]])*)\]/,
+  strong: /^__([\s\S]+?)__(?!_)|^\*\*([\s\S]+?)\*\*(?!\*)/,
+  em: /^_([^\s_](?:[^_]|__)+?[^\s_])_\b|^\*((?:\*\*|[^*])+?)\*(?!\*)/,
   code: /^(`+)\s*([\s\S]*?[^`]?)\s*\1(?!`)/,
-  br: /^( {2,}|\\)\n(?!\s*$)/,
+  br: /^ {2,}\n(?!\s*$)/,
   del: noop,
   text: /^[\s\S]+?(?=[\\<!\[`*]|\b_| {2,}\n|$)/
 };
 
-inline._escapes = /\\([!"#$%&'()*+,\-./:;<=>?@\[\]\\^_`{|}~])/g;
-
 inline._scheme = /[a-zA-Z][a-zA-Z0-9+.-]{1,31}/;
 inline._email = /[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+(@)[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+(?![-_])/;
+
 inline.autolink = edit(inline.autolink)
   .replace('scheme', inline._scheme)
   .replace('email', inline._email)
-  .getRegex();
+  .getRegex()
 
-inline._attribute = /\s+[a-zA-Z:_][\w.:-]*(?:\s*=\s*"[^"]*"|\s*=\s*'[^']*'|\s*=\s*[^\s"'=<>`]+)?/;
-
-inline.tag = edit(inline.tag)
-  .replace('comment', block._comment)
-  .replace('attribute', inline._attribute)
-  .getRegex();
-
-inline._label = /(?:\[[^\[\]]*\]|\\[\[\]]?|`[^`]*`|[^\[\]\\])*?/;
-inline._href = /\s*(<(?:\\[<>]?|[^\s<>\\])*>|(?:\\[()]?|\([^\s\x00-\x1f\\]*\)|[^\s\x00-\x1f()\\])*?)/;
-inline._title = /"(?:\\"?|[^"\\])*"|'(?:\\'?|[^'\\])*'|\((?:\\\)?|[^)\\])*\)/;
+inline._inside = /(?:\[[^\[\]]*\]|\\[\[\]]|[^\[\]]|\](?=[^\[]*\]))*/;
+inline._href = /\s*<?([\s\S]*?)>?(?:\s+['"]([\s\S]*?)['"])?\s*/;
 
 inline.link = edit(inline.link)
-  .replace('label', inline._label)
+  .replace('inside', inline._inside)
   .replace('href', inline._href)
-  .replace('title', inline._title)
   .getRegex();
 
 inline.reflink = edit(inline.reflink)
-  .replace('label', inline._label)
+  .replace('inside', inline._inside)
   .getRegex();
 
 /**
@@ -8115,13 +7982,7 @@ inline.normal = merge({}, inline);
 
 inline.pedantic = merge({}, inline.normal, {
   strong: /^__(?=\S)([\s\S]*?\S)__(?!_)|^\*\*(?=\S)([\s\S]*?\S)\*\*(?!\*)/,
-  em: /^_(?=\S)([\s\S]*?\S)_(?!_)|^\*(?=\S)([\s\S]*?\S)\*(?!\*)/,
-  link: edit(/^!?\[(label)\]\((.*?)\)/)
-    .replace('label', inline._label)
-    .getRegex(),
-  reflink: edit(/^!?\[(label)\]\s*\[([^\]]*)\]/)
-    .replace('label', inline._label)
-    .getRegex()
+  em: /^_(?=\S)([\s\S]*?\S)_(?!_)|^\*(?=\S)([\s\S]*?\S)\*(?!\*)/
 });
 
 /**
@@ -8134,7 +7995,7 @@ inline.gfm = merge({}, inline.normal, {
     .replace('email', inline._email)
     .getRegex(),
   _backpedal: /(?:[^?!.,:;*_~()&]+|\([^)]*\)|&(?![a-zA-Z0-9]+;$)|[?!.,:;*_~)]+(?!$))+/,
-  del: /^~+(?=\S)([\s\S]*?\S)~+/,
+  del: /^~~(?=\S)([\s\S]*?\S)~~/,
   text: edit(inline.text)
     .replace(']|', '~]|')
     .replace('|', '|https?://|ftp://|www\\.|[a-zA-Z0-9.!#$%&\'*+/=?^_`{\\|}~-]+@|')
@@ -8165,14 +8026,14 @@ function InlineLexer(links, options) {
     throw new Error('Tokens array requires a `links` property.');
   }
 
-  if (this.options.pedantic) {
-    this.rules = inline.pedantic;
-  } else if (this.options.gfm) {
+  if (this.options.gfm) {
     if (this.options.breaks) {
       this.rules = inline.breaks;
     } else {
       this.rules = inline.gfm;
     }
+  } else if (this.options.pedantic) {
+    this.rules = inline.pedantic;
   }
 }
 
@@ -8200,9 +8061,7 @@ InlineLexer.prototype.output = function(src) {
       link,
       text,
       href,
-      title,
-      cap,
-      prevCapZero;
+      cap;
 
   while (src) {
     // escape
@@ -8228,10 +8087,7 @@ InlineLexer.prototype.output = function(src) {
 
     // url (gfm)
     if (!this.inLink && (cap = this.rules.url.exec(src))) {
-      do {
-        prevCapZero = cap[0];
-        cap[0] = this.rules._backpedal.exec(cap[0])[0];
-      } while (prevCapZero !== cap[0]);
+      cap[0] = this.rules._backpedal.exec(cap[0])[0];
       src = src.substring(cap[0].length);
       if (cap[2] === '@') {
         text = escape(cap[0]);
@@ -8268,23 +8124,9 @@ InlineLexer.prototype.output = function(src) {
     if (cap = this.rules.link.exec(src)) {
       src = src.substring(cap[0].length);
       this.inLink = true;
-      href = cap[2];
-      if (this.options.pedantic) {
-        link = /^([^'"]*[^\s])\s+(['"])(.*)\2/.exec(href);
-
-        if (link) {
-          href = link[1];
-          title = link[3];
-        } else {
-          title = '';
-        }
-      } else {
-        title = cap[3] ? cap[3].slice(1, -1) : '';
-      }
-      href = href.trim().replace(/^<([\s\S]*)>$/, '$1');
       out += this.outputLink(cap, {
-        href: InlineLexer.escapes(href),
-        title: InlineLexer.escapes(title)
+        href: cap[2],
+        title: cap[3]
       });
       this.inLink = false;
       continue;
@@ -8310,14 +8152,14 @@ InlineLexer.prototype.output = function(src) {
     // strong
     if (cap = this.rules.strong.exec(src)) {
       src = src.substring(cap[0].length);
-      out += this.renderer.strong(this.output(cap[4] || cap[3] || cap[2] || cap[1]));
+      out += this.renderer.strong(this.output(cap[2] || cap[1]));
       continue;
     }
 
     // em
     if (cap = this.rules.em.exec(src)) {
       src = src.substring(cap[0].length);
-      out += this.renderer.em(this.output(cap[6] || cap[5] || cap[4] || cap[3] || cap[2] || cap[1]));
+      out += this.renderer.em(this.output(cap[2] || cap[1]));
       continue;
     }
 
@@ -8357,16 +8199,12 @@ InlineLexer.prototype.output = function(src) {
   return out;
 };
 
-InlineLexer.escapes = function(text) {
-  return text ? text.replace(InlineLexer.rules._escapes, '$1') : text;
-}
-
 /**
  * Compile Link
  */
 
 InlineLexer.prototype.outputLink = function(cap, link) {
-  var href = link.href,
+  var href = escape(link.href),
       title = link.title ? escape(link.title) : null;
 
   return cap[0].charAt(0) !== '!'
@@ -8424,7 +8262,7 @@ InlineLexer.prototype.mangle = function(text) {
  */
 
 function Renderer(options) {
-  this.options = options || marked.defaults;
+  this.options = options || {};
 }
 
 Renderer.prototype.code = function(code, lang, escaped) {
@@ -8439,7 +8277,7 @@ Renderer.prototype.code = function(code, lang, escaped) {
   if (!lang) {
     return '<pre><code>'
       + (escaped ? code : escape(code, true))
-      + '</code></pre>';
+      + '\n</code></pre>';
   }
 
   return '<pre><code class="'
@@ -8447,7 +8285,7 @@ Renderer.prototype.code = function(code, lang, escaped) {
     + escape(lang, true)
     + '">'
     + (escaped ? code : escape(code, true))
-    + '</code></pre>\n';
+    + '\n</code></pre>\n';
 };
 
 Renderer.prototype.blockquote = function(quote) {
@@ -8459,56 +8297,43 @@ Renderer.prototype.html = function(html) {
 };
 
 Renderer.prototype.heading = function(text, level, raw) {
-  if (this.options.headerIds) {
-    return '<h'
-      + level
-      + ' id="'
-      + this.options.headerPrefix
-      + raw.toLowerCase().replace(/[^\w]+/g, '-')
-      + '">'
-      + text
-      + '</h'
-      + level
-      + '>\n';
-  }
-  // ignore IDs
-  return '<h' + level + '>' + text + '</h' + level + '>\n';
+  return '<h'
+    + level
+    + ' id="'
+    + this.options.headerPrefix
+    + raw.toLowerCase().replace(/[^\w]+/g, '-')
+    + '">'
+    + text
+    + '</h'
+    + level
+    + '>\n';
 };
 
 Renderer.prototype.hr = function() {
   return this.options.xhtml ? '<hr/>\n' : '<hr>\n';
 };
 
-Renderer.prototype.list = function(body, ordered, start) {
-  var type = ordered ? 'ol' : 'ul',
-      startatt = (ordered && start !== 1) ? (' start="' + start + '"') : '';
-  return '<' + type + startatt + '>\n' + body + '</' + type + '>\n';
+Renderer.prototype.list = function(body, ordered) {
+  var type = ordered ? 'ol' : 'ul';
+  return '<' + type + '>\n' + body + '</' + type + '>\n';
 };
 
 Renderer.prototype.listitem = function(text) {
   return '<li>' + text + '</li>\n';
 };
 
-Renderer.prototype.checkbox = function(checked) {
-  return '<input '
-    + (checked ? 'checked="" ' : '')
-    + 'disabled="" type="checkbox"'
-    + (this.options.xhtml ? ' /' : '')
-    + '> ';
-}
-
 Renderer.prototype.paragraph = function(text) {
   return '<p>' + text + '</p>\n';
 };
 
 Renderer.prototype.table = function(header, body) {
-  if (body) body = '<tbody>' + body + '</tbody>';
-
   return '<table>\n'
     + '<thead>\n'
     + header
     + '</thead>\n'
+    + '<tbody>\n'
     + body
+    + '</tbody>\n'
     + '</table>\n';
 };
 
@@ -8519,7 +8344,7 @@ Renderer.prototype.tablerow = function(content) {
 Renderer.prototype.tablecell = function(content, flags) {
   var type = flags.header ? 'th' : 'td';
   var tag = flags.align
-    ? '<' + type + ' align="' + flags.align + '">'
+    ? '<' + type + ' style="text-align:' + flags.align + '">'
     : '<' + type + '>';
   return tag + content + '</' + type + '>\n';
 };
@@ -8561,12 +8386,7 @@ Renderer.prototype.link = function(href, title, text) {
   if (this.options.baseUrl && !originIndependentUrl.test(href)) {
     href = resolveUrl(this.options.baseUrl, href);
   }
-  try {
-    href = encodeURI(href).replace(/%25/g, '%');
-  } catch (e) {
-    return text;
-  }
-  var out = '<a href="' + escape(href) + '"';
+  var out = '<a href="' + href + '"';
   if (title) {
     out += ' title="' + title + '"';
   }
@@ -8756,34 +8576,39 @@ Parser.prototype.tok = function() {
     }
     case 'list_start': {
       body = '';
-      var ordered = this.token.ordered,
-          start = this.token.start;
+      var ordered = this.token.ordered;
 
       while (this.next().type !== 'list_end') {
         body += this.tok();
       }
 
-      return this.renderer.list(body, ordered, start);
+      return this.renderer.list(body, ordered);
     }
     case 'list_item_start': {
       body = '';
-      var loose = this.token.loose;
-
-      if (this.token.task) {
-        body += this.renderer.checkbox(this.token.checked);
-      }
 
       while (this.next().type !== 'list_item_end') {
-        body += !loose && this.token.type === 'text'
+        body += this.token.type === 'text'
           ? this.parseText()
           : this.tok();
       }
 
       return this.renderer.listitem(body);
     }
+    case 'loose_item_start': {
+      body = '';
+
+      while (this.next().type !== 'list_item_end') {
+        body += this.tok();
+      }
+
+      return this.renderer.listitem(body);
+    }
     case 'html': {
-      // TODO parse inline content if parameter markdown=1
-      return this.renderer.html(this.token.text);
+      var html = !this.token.pre && !this.options.pedantic
+        ? this.inline.output(this.token.text)
+        : this.token.text;
+      return this.renderer.html(html);
     }
     case 'paragraph': {
       return this.renderer.paragraph(this.inline.output(this.token.text));
@@ -8822,7 +8647,7 @@ function unescape(html) {
 }
 
 function edit(regex, opt) {
-  regex = regex.source || regex;
+  regex = regex.source;
   opt = opt || '';
   return {
     replace: function(name, val) {
@@ -8845,7 +8670,7 @@ function resolveUrl(base, href) {
     if (/^[^:]+:\/*[^/]*$/.test(base)) {
       baseUrls[' ' + base] = base + '/';
     } else {
-      baseUrls[' ' + base] = rtrim(base, '/', true);
+      baseUrls[' ' + base] = base.replace(/[^/]*$/, '');
     }
   }
   base = baseUrls[' ' + base];
@@ -8879,64 +8704,6 @@ function merge(obj) {
   }
 
   return obj;
-}
-
-function splitCells(tableRow, count) {
-  // ensure that every cell-delimiting pipe has a space
-  // before it to distinguish it from an escaped pipe
-  var row = tableRow.replace(/\|/g, function (match, offset, str) {
-        var escaped = false,
-            curr = offset;
-        while (--curr >= 0 && str[curr] === '\\') escaped = !escaped;
-        if (escaped) {
-          // odd number of slashes means | is escaped
-          // so we leave it alone
-          return '|';
-        } else {
-          // add space before unescaped |
-          return ' |';
-        }
-      }),
-      cells = row.split(/ \|/),
-      i = 0;
-
-  if (cells.length > count) {
-    cells.splice(count);
-  } else {
-    while (cells.length < count) cells.push('');
-  }
-
-  for (; i < cells.length; i++) {
-    // leading or trailing whitespace is ignored per the gfm spec
-    cells[i] = cells[i].trim().replace(/\\\|/g, '|');
-  }
-  return cells;
-}
-
-// Remove trailing 'c's. Equivalent to str.replace(/c*$/, '').
-// /c*$/ is vulnerable to REDOS.
-// invert: Remove suffix of non-c chars instead. Default falsey.
-function rtrim(str, c, invert) {
-  if (str.length === 0) {
-    return '';
-  }
-
-  // Length of suffix matching the invert condition.
-  var suffLen = 0;
-
-  // Step left until we fail to match the invert condition.
-  while (suffLen < str.length) {
-    var currChar = str.charAt(str.length - suffLen - 1);
-    if (currChar === c && !invert) {
-      suffLen++;
-    } else if (currChar !== c && invert) {
-      suffLen++;
-    } else {
-      break;
-    }
-  }
-
-  return str.substr(0, str.length - suffLen);
 }
 
 /**
@@ -9026,7 +8793,7 @@ function marked(src, opt, callback) {
     if (opt) opt = merge({}, marked.defaults, opt);
     return Parser.parse(Lexer.lex(src, opt), opt);
   } catch (e) {
-    e.message += '\nPlease report this to https://github.com/markedjs/marked.';
+    e.message += '\nPlease report this to https://github.com/chjj/marked.';
     if ((opt || marked.defaults).silent) {
       return '<p>An error occurred:</p><pre>'
         + escape(e.message + '', true)
@@ -9046,29 +8813,24 @@ marked.setOptions = function(opt) {
   return marked;
 };
 
-marked.getDefaults = function () {
-  return {
-    baseUrl: null,
-    breaks: false,
-    gfm: true,
-    headerIds: true,
-    headerPrefix: '',
-    highlight: null,
-    langPrefix: 'language-',
-    mangle: true,
-    pedantic: false,
-    renderer: new Renderer(),
-    sanitize: false,
-    sanitizer: null,
-    silent: false,
-    smartLists: false,
-    smartypants: false,
-    tables: true,
-    xhtml: false
-  };
-}
-
-marked.defaults = marked.getDefaults();
+marked.defaults = {
+  gfm: true,
+  tables: true,
+  breaks: false,
+  pedantic: false,
+  sanitize: false,
+  sanitizer: null,
+  mangle: true,
+  smartLists: false,
+  silent: false,
+  highlight: null,
+  langPrefix: 'lang-',
+  smartypants: false,
+  headerPrefix: '',
+  renderer: new Renderer(),
+  xhtml: false,
+  baseUrl: null
+};
 
 /**
  * Expose
@@ -9622,8 +9384,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!../../../_css-loader@0.28.11@css-loader/index.js!./simplemde.css", function() {
-			var newContent = require("!!../../../_css-loader@0.28.11@css-loader/index.js!./simplemde.css");
+		module.hot.accept("!!../../../css-loader/index.js!./simplemde.css", function() {
+			var newContent = require("!!../../../css-loader/index.js!./simplemde.css");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
@@ -9653,9 +9415,9 @@ exports.push([module.i, ".CodeMirror {\n    height: auto;\n    min-height: 300px
 /***/ (function(module, exports, __webpack_require__) {
 
 // CodeMirror, copyright (c) by Marijn Haverbeke and others
-// Distributed under an MIT license: https://codemirror.net/LICENSE
+// Distributed under an MIT license: http://codemirror.net/LICENSE
 
-// This is CodeMirror (https://codemirror.net), a code editor
+// This is CodeMirror (http://codemirror.net), a code editor
 // implemented in JavaScript on top of the browser's DOM.
 //
 // You can find some technical background for some of the code below
@@ -10399,16 +10161,6 @@ function collapsedSpanAtSide(line, start) {
 }
 function collapsedSpanAtStart(line) { return collapsedSpanAtSide(line, true) }
 function collapsedSpanAtEnd(line) { return collapsedSpanAtSide(line, false) }
-
-function collapsedSpanAround(line, ch) {
-  var sps = sawCollapsedSpans && line.markedSpans, found;
-  if (sps) { for (var i = 0; i < sps.length; ++i) {
-    var sp = sps[i];
-    if (sp.marker.collapsed && (sp.from == null || sp.from < ch) && (sp.to == null || sp.to > ch) &&
-        (!found || compareCollapsedMarkers(found, sp.marker) < 0)) { found = sp.marker; }
-  } }
-  return found
-}
 
 // Test whether there exists a collapsed span that partially
 // overlaps (covers the start or end, but not both) of a new span.
@@ -12444,11 +12196,12 @@ function coordsChar(cm, x, y) {
   var lineObj = getLine(doc, lineN);
   for (;;) {
     var found = coordsCharInner(cm, lineObj, lineN, x, y);
-    var collapsed = collapsedSpanAround(lineObj, found.ch + (found.xRel > 0 ? 1 : 0));
-    if (!collapsed) { return found }
-    var rangeEnd = collapsed.find(1);
-    if (rangeEnd.line == lineN) { return rangeEnd }
-    lineObj = getLine(doc, lineN = rangeEnd.line);
+    var merged = collapsedSpanAtEnd(lineObj);
+    var mergedPos = merged && merged.find(0, true);
+    if (merged && (found.ch > mergedPos.from.ch || found.ch == mergedPos.from.ch && found.xRel > 0))
+      { lineN = lineNo(lineObj = mergedPos.to.line); }
+    else
+      { return found }
   }
 }
 
@@ -13208,7 +12961,6 @@ var NativeScrollbars = function(place, scroll, cm) {
   this.cm = cm;
   var vert = this.vert = elt("div", [elt("div", null, null, "min-width: 1px")], "CodeMirror-vscrollbar");
   var horiz = this.horiz = elt("div", [elt("div", null, null, "height: 100%; min-height: 1px")], "CodeMirror-hscrollbar");
-  vert.tabIndex = horiz.tabIndex = -1;
   place(vert); place(horiz);
 
   on(vert, "scroll", function () {
@@ -14460,7 +14212,7 @@ function addChangeToHistory(doc, change, selAfter, opId) {
 
   if ((hist.lastOp == opId ||
        hist.lastOrigin == change.origin && change.origin &&
-       ((change.origin.charAt(0) == "+" && hist.lastModTime > time - (doc.cm ? doc.cm.options.historyEventDelay : 500)) ||
+       ((change.origin.charAt(0) == "+" && doc.cm && hist.lastModTime > time - doc.cm.options.historyEventDelay) ||
         change.origin.charAt(0) == "*")) &&
       (cur = lastChangeEvent(hist, hist.lastOp == opId))) {
     // Merge this change into the last event
@@ -15074,7 +14826,7 @@ function makeChangeSingleDocInEditor(cm, change, spans) {
 function replaceRange(doc, code, from, to, origin) {
   if (!to) { to = from; }
   if (cmp(to, from) < 0) { var assign;
-    (assign = [to, from], from = assign[0], to = assign[1]); }
+    (assign = [to, from], from = assign[0], to = assign[1], assign); }
   if (typeof code == "string") { code = doc.splitLines(code); }
   makeChange(doc, {from: from, to: to, text: code, origin: origin});
 }
@@ -15170,10 +14922,10 @@ function LeafChunk(lines) {
 }
 
 LeafChunk.prototype = {
-  chunkSize: function() { return this.lines.length },
+  chunkSize: function chunkSize() { return this.lines.length },
 
   // Remove the n lines at offset 'at'.
-  removeInner: function(at, n) {
+  removeInner: function removeInner(at, n) {
     var this$1 = this;
 
     for (var i = at, e = at + n; i < e; ++i) {
@@ -15186,13 +14938,13 @@ LeafChunk.prototype = {
   },
 
   // Helper used to collapse a small branch into a single leaf.
-  collapse: function(lines) {
+  collapse: function collapse(lines) {
     lines.push.apply(lines, this.lines);
   },
 
   // Insert the given array of lines at offset 'at', count them as
   // having the given height.
-  insertInner: function(at, lines, height) {
+  insertInner: function insertInner(at, lines, height) {
     var this$1 = this;
 
     this.height += height;
@@ -15201,7 +14953,7 @@ LeafChunk.prototype = {
   },
 
   // Used to iterate over a part of the tree.
-  iterN: function(at, n, op) {
+  iterN: function iterN(at, n, op) {
     var this$1 = this;
 
     for (var e = at + n; at < e; ++at)
@@ -15225,9 +14977,9 @@ function BranchChunk(children) {
 }
 
 BranchChunk.prototype = {
-  chunkSize: function() { return this.size },
+  chunkSize: function chunkSize() { return this.size },
 
-  removeInner: function(at, n) {
+  removeInner: function removeInner(at, n) {
     var this$1 = this;
 
     this.size -= n;
@@ -15253,13 +15005,13 @@ BranchChunk.prototype = {
     }
   },
 
-  collapse: function(lines) {
+  collapse: function collapse(lines) {
     var this$1 = this;
 
     for (var i = 0; i < this.children.length; ++i) { this$1.children[i].collapse(lines); }
   },
 
-  insertInner: function(at, lines, height) {
+  insertInner: function insertInner(at, lines, height) {
     var this$1 = this;
 
     this.size += lines.length;
@@ -15288,7 +15040,7 @@ BranchChunk.prototype = {
   },
 
   // When a node has grown, check whether it should be split.
-  maybeSpill: function() {
+  maybeSpill: function maybeSpill() {
     if (this.children.length <= 10) { return }
     var me = this;
     do {
@@ -15310,7 +15062,7 @@ BranchChunk.prototype = {
     me.parent.maybeSpill();
   },
 
-  iterN: function(at, n, op) {
+  iterN: function iterN(at, n, op) {
     var this$1 = this;
 
     for (var i = 0; i < this.children.length; ++i) {
@@ -15361,7 +15113,7 @@ LineWidget.prototype.changed = function () {
   this.height = null;
   var diff = widgetHeight(this) - oldH;
   if (!diff) { return }
-  if (!lineIsHidden(this.doc, line)) { updateLineHeight(line, line.height + diff); }
+  updateLineHeight(line, line.height + diff);
   if (cm) {
     runInOp(cm, function () {
       cm.curOp.forceUpdate = true;
@@ -16243,6 +15995,8 @@ function registerGlobalHandlers() {
 // Called when the window resizes
 function onResize(cm) {
   var d = cm.display;
+  if (d.lastWrapHeight == d.wrapper.clientHeight && d.lastWrapWidth == d.wrapper.clientWidth)
+    { return }
   // Might be a text scaling operation, clear size caches.
   d.cachedCharWidth = d.cachedTextHeight = d.cachedPaddingH = null;
   d.scrollbarsClipped = false;
@@ -16288,7 +16042,7 @@ keyMap.pcDefault = {
   "Ctrl-G": "findNext", "Shift-Ctrl-G": "findPrev", "Shift-Ctrl-F": "replace", "Shift-Ctrl-R": "replaceAll",
   "Ctrl-[": "indentLess", "Ctrl-]": "indentMore",
   "Ctrl-U": "undoSelection", "Shift-Ctrl-U": "redoSelection", "Alt-U": "redoSelection",
-  "fallthrough": "basic"
+  fallthrough: "basic"
 };
 // Very basic readline/emacs-style bindings, which are standard on Mac.
 keyMap.emacsy = {
@@ -16306,7 +16060,7 @@ keyMap.macDefault = {
   "Cmd-G": "findNext", "Shift-Cmd-G": "findPrev", "Cmd-Alt-F": "replace", "Shift-Cmd-Alt-F": "replaceAll",
   "Cmd-[": "indentLess", "Cmd-]": "indentMore", "Cmd-Backspace": "delWrappedLineLeft", "Cmd-Delete": "delWrappedLineRight",
   "Cmd-U": "undoSelection", "Shift-Cmd-U": "redoSelection", "Ctrl-Up": "goDocStart", "Ctrl-Down": "goDocEnd",
-  "fallthrough": ["basic", "emacsy"]
+  fallthrough: ["basic", "emacsy"]
 };
 keyMap["default"] = mac ? keyMap.macDefault : keyMap.pcDefault;
 
@@ -16986,8 +16740,8 @@ function leftButtonStartDrag(cm, event, pos, behavior) {
   var dragEnd = operation(cm, function (e) {
     if (webkit) { display.scroller.draggable = false; }
     cm.state.draggingText = false;
-    off(display.wrapper.ownerDocument, "mouseup", dragEnd);
-    off(display.wrapper.ownerDocument, "mousemove", mouseMove);
+    off(document, "mouseup", dragEnd);
+    off(document, "mousemove", mouseMove);
     off(display.scroller, "dragstart", dragStart);
     off(display.scroller, "drop", dragEnd);
     if (!moved) {
@@ -16996,7 +16750,7 @@ function leftButtonStartDrag(cm, event, pos, behavior) {
         { extendSelection(cm.doc, pos, null, null, behavior.extend); }
       // Work around unexplainable focus problem in IE9 (#2127) and Chrome (#3081)
       if (webkit || ie && ie_version == 9)
-        { setTimeout(function () {display.wrapper.ownerDocument.body.focus(); display.input.focus();}, 20); }
+        { setTimeout(function () {document.body.focus(); display.input.focus();}, 20); }
       else
         { display.input.focus(); }
     }
@@ -17011,8 +16765,8 @@ function leftButtonStartDrag(cm, event, pos, behavior) {
   dragEnd.copy = !behavior.moveOnDrag;
   // IE's approach to draggable
   if (display.scroller.dragDrop) { display.scroller.dragDrop(); }
-  on(display.wrapper.ownerDocument, "mouseup", dragEnd);
-  on(display.wrapper.ownerDocument, "mousemove", mouseMove);
+  on(document, "mouseup", dragEnd);
+  on(document, "mousemove", mouseMove);
   on(display.scroller, "dragstart", dragStart);
   on(display.scroller, "drop", dragEnd);
 
@@ -17144,19 +16898,19 @@ function leftButtonSelect(cm, event, start, behavior) {
     counter = Infinity;
     e_preventDefault(e);
     display.input.focus();
-    off(display.wrapper.ownerDocument, "mousemove", move);
-    off(display.wrapper.ownerDocument, "mouseup", up);
+    off(document, "mousemove", move);
+    off(document, "mouseup", up);
     doc.history.lastSelOrigin = null;
   }
 
   var move = operation(cm, function (e) {
-    if (e.buttons === 0 || !e_button(e)) { done(e); }
+    if (!e_button(e)) { done(e); }
     else { extend(e); }
   });
   var up = operation(cm, done);
   cm.state.selectingText = up;
-  on(display.wrapper.ownerDocument, "mousemove", move);
-  on(display.wrapper.ownerDocument, "mouseup", up);
+  on(document, "mousemove", move);
+  on(document, "mouseup", up);
 }
 
 // Used when mouse-selecting to adjust the anchor to the proper side
@@ -17388,7 +17142,6 @@ function defineOptions(CodeMirror) {
   option("tabindex", null, function (cm, val) { return cm.display.input.getField().tabIndex = val || ""; });
   option("autofocus", null);
   option("direction", "ltr", function (cm, val) { return cm.doc.setDirection(val); }, true);
-  option("phrases", null);
 }
 
 function guttersChanged(cm) {
@@ -17440,7 +17193,6 @@ function CodeMirror$1(place, options) {
 
   var doc = options.value;
   if (typeof doc == "string") { doc = new Doc(doc, options.mode, null, options.lineSeparator, options.direction); }
-  else if (options.mode) { doc.modeOption = options.mode; }
   this.doc = doc;
 
   var input = new CodeMirror$1.inputStyles[options.inputStyle](this);
@@ -18227,11 +17979,6 @@ var addEditorMethods = function(CodeMirror) {
       return old
     }),
 
-    phrase: function(phraseText) {
-      var phrases = this.options.phrases;
-      return phrases && Object.prototype.hasOwnProperty.call(phrases, phraseText) ? phrases[phraseText] : phraseText
-    },
-
     getInputField: function(){return this.display.input.getField()},
     getWrapperElement: function(){return this.display.wrapper},
     getScrollerElement: function(){return this.display.scroller},
@@ -18436,12 +18183,8 @@ ContentEditableInput.prototype.showSelection = function (info, takeFocus) {
   this.showMultipleSelections(info);
 };
 
-ContentEditableInput.prototype.getSelection = function () {
-  return this.cm.display.wrapper.ownerDocument.getSelection()
-};
-
 ContentEditableInput.prototype.showPrimarySelection = function () {
-  var sel = this.getSelection(), cm = this.cm, prim = cm.doc.sel.primary();
+  var sel = window.getSelection(), cm = this.cm, prim = cm.doc.sel.primary();
   var from = prim.from(), to = prim.to();
 
   if (cm.display.viewTo == cm.display.viewFrom || from.line >= cm.display.viewTo || to.line < cm.display.viewFrom) {
@@ -18508,13 +18251,13 @@ ContentEditableInput.prototype.showMultipleSelections = function (info) {
 };
 
 ContentEditableInput.prototype.rememberSelection = function () {
-  var sel = this.getSelection();
+  var sel = window.getSelection();
   this.lastAnchorNode = sel.anchorNode; this.lastAnchorOffset = sel.anchorOffset;
   this.lastFocusNode = sel.focusNode; this.lastFocusOffset = sel.focusOffset;
 };
 
 ContentEditableInput.prototype.selectionInEditor = function () {
-  var sel = this.getSelection();
+  var sel = window.getSelection();
   if (!sel.rangeCount) { return false }
   var node = sel.getRangeAt(0).commonAncestorContainer;
   return contains(this.div, node)
@@ -18549,14 +18292,14 @@ ContentEditableInput.prototype.receivedFocus = function () {
 };
 
 ContentEditableInput.prototype.selectionChanged = function () {
-  var sel = this.getSelection();
+  var sel = window.getSelection();
   return sel.anchorNode != this.lastAnchorNode || sel.anchorOffset != this.lastAnchorOffset ||
     sel.focusNode != this.lastFocusNode || sel.focusOffset != this.lastFocusOffset
 };
 
 ContentEditableInput.prototype.pollSelection = function () {
   if (this.readDOMTimeout != null || this.gracePeriod || !this.selectionChanged()) { return }
-  var sel = this.getSelection(), cm = this.cm;
+  var sel = window.getSelection(), cm = this.cm;
   // On Android Chrome (version 56, at least), backspacing into an
   // uneditable block element will put the cursor in that element,
   // and then, because it's not editable, hide the virtual keyboard.
@@ -18690,7 +18433,7 @@ ContentEditableInput.prototype.setUneditable = function (node) {
 };
 
 ContentEditableInput.prototype.onKeyPress = function (e) {
-  if (e.charCode == 0 || this.composing) { return }
+  if (e.charCode == 0) { return }
   e.preventDefault();
   if (!this.cm.isReadOnly())
     { operation(this.cm, applyTextInput)(this.cm, String.fromCharCode(e.charCode == null ? e.keyCode : e.charCode), 0); }
@@ -18730,13 +18473,12 @@ function isInGutter(node) {
 function badPos(pos, bad) { if (bad) { pos.bad = true; } return pos }
 
 function domTextBetween(cm, from, to, fromLine, toLine) {
-  var text = "", closing = false, lineSep = cm.doc.lineSeparator(), extraLinebreak = false;
+  var text = "", closing = false, lineSep = cm.doc.lineSeparator();
   function recognizeMarker(id) { return function (marker) { return marker.id == id; } }
   function close() {
     if (closing) {
       text += lineSep;
-      if (extraLinebreak) { text += lineSep; }
-      closing = extraLinebreak = false;
+      closing = false;
     }
   }
   function addText(str) {
@@ -18748,8 +18490,8 @@ function domTextBetween(cm, from, to, fromLine, toLine) {
   function walk(node) {
     if (node.nodeType == 1) {
       var cmText = node.getAttribute("cm-text");
-      if (cmText) {
-        addText(cmText);
+      if (cmText != null) {
+        addText(cmText || node.textContent.replace(/\u200b/g, ""));
         return
       }
       var markerID = node.getAttribute("cm-marker"), range$$1;
@@ -18760,24 +18502,19 @@ function domTextBetween(cm, from, to, fromLine, toLine) {
         return
       }
       if (node.getAttribute("contenteditable") == "false") { return }
-      var isBlock = /^(pre|div|p|li|table|br)$/i.test(node.nodeName);
-      if (!/^br$/i.test(node.nodeName) && node.textContent.length == 0) { return }
-
+      var isBlock = /^(pre|div|p)$/i.test(node.nodeName);
       if (isBlock) { close(); }
       for (var i = 0; i < node.childNodes.length; i++)
         { walk(node.childNodes[i]); }
-
-      if (/^(pre|p)$/i.test(node.nodeName)) { extraLinebreak = true; }
       if (isBlock) { closing = true; }
     } else if (node.nodeType == 3) {
-      addText(node.nodeValue.replace(/\u200b/g, "").replace(/\u00a0/g, " "));
+      addText(node.nodeValue);
     }
   }
   for (;;) {
     walk(from);
     if (from == to) { break }
     from = from.nextSibling;
-    extraLinebreak = false;
   }
   return text
 }
@@ -18878,10 +18615,13 @@ TextareaInput.prototype.init = function (display) {
     var this$1 = this;
 
   var input = this, cm = this.cm;
-  this.createField(display);
-  var te = this.textarea;
 
-  display.wrapper.insertBefore(this.wrapper, display.wrapper.firstChild);
+  // Wraps and hides input textarea
+  var div = this.wrapper = hiddenTextarea();
+  // The semihidden textarea that is focused when the editor is
+  // focused, and receives input.
+  var te = this.textarea = div.firstChild;
+  display.wrapper.insertBefore(div, display.wrapper.firstChild);
 
   // Needed to hide big blue blinking cursor on Mobile Safari (doesn't seem to work in iOS 8 anymore)
   if (ios) { te.style.width = "0px"; }
@@ -18946,14 +18686,6 @@ TextareaInput.prototype.init = function (display) {
       input.composing = null;
     }
   });
-};
-
-TextareaInput.prototype.createField = function (_display) {
-  // Wraps and hides input textarea
-  this.wrapper = hiddenTextarea();
-  // The semihidden textarea that is focused when the editor is
-  // focused, and receives input.
-  this.textarea = this.wrapper.firstChild;
 };
 
 TextareaInput.prototype.prepareSelection = function () {
@@ -19349,7 +19081,7 @@ CodeMirror$1.fromTextArea = fromTextArea;
 
 addLegacyProps(CodeMirror$1);
 
-CodeMirror$1.version = "5.40.0";
+CodeMirror$1.version = "5.35.0";
 
 return CodeMirror$1;
 

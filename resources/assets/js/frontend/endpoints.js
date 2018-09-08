@@ -12,5 +12,6 @@ export default {
     links: {
         index: '/links'
     },
-    search: '/search'
+    search: '/search',
+    fileupload: '/upload'
 }
