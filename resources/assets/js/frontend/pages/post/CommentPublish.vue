@@ -12,7 +12,7 @@
                 </div>
                 <br>
                 <div class="form-group">
-                    <markdown-editor :configs="configs" :attachments="attachments" @change="markdownInput"></markdown-editor>
+                    <markdown-editor :configs="configs" :value="initialValue" :attachments="attachments" @change="markdownInput"></markdown-editor>
                 </div>
                 <div class="form-group reply-post-submit">
                     <div class="pull-left meta">
@@ -42,8 +42,12 @@
         components: {
             MarkdownEditor
         },
+        props: {
+            postId: Number
+        },
         data () {
             return {
+                initialValue: '',
                 configs: {
                     toolbar: false,
                     autofocus: true,
@@ -60,18 +64,69 @@
                         Accept: 'application/vnd.godruoyi.v1+json'
                     },
                 },
-                commentContent: ''
+                commentContent: '',
+                user: {}
             }
         },
         created: function () {
-            if (this.$route.query.code && this.$route.query.state == 'godruoyi') {
+            if (this.$route.query.code && this.$route.query.state == 'godruoyi' ) {
                 this.$http.post(this.$endpoints.github, {code: this.$route.query.code}).then(response => {
+                    this.$router.replace({path: document.location.pathname + '#reply_notice', query: {}})
+
                     localStorage.setItem('access_token', response.access_token)
-                })
+                    localStorage.setItem('user_info', JSON.stringify(response.user))
+
+                    this.initialValue = ''
+                }, error => {})
             }
+
+            this.initialValue = localStorage.getItem('comment')
         },
         methods: {
             submitComment: function () {
+                if (this.checkAuth()) {
+                    const user = this.paresUserInfo()
+                    let url    = this.$endpoints.comment.replace(':post', this.postId)
+
+                    const comment = {
+                        id: Math.random(),
+                        content: this.commentContent,
+                        user: user
+                    }
+
+                    this.$http.post(url, {content: this.commentContent}).then(response => {
+                        this.$emit('publish', comment)
+
+                        localStorage.removeItem('comment')
+                    }, error => {})
+                }
+
+            },
+
+            markdownInput: function (value) {
+                this.originContent  = value
+                this.commentContent = markdown.render(value)
+            },
+
+            paresUserInfo: function () {
+                const user = localStorage.getItem('user_info')
+
+                if (user && typeof user === 'string') {
+                    try {
+                        return JSON.parse(user)
+                    } catch(e) {
+                    }
+                }
+
+                return {
+                    username: '游客',
+                    home_page: '',
+                    avatar: 'https://images.godruoyi.com/avatars/github/unknow_1536570935_CBDKowkcB6.png'
+                }
+            },
+
+            checkAuth: function () {
+                let _this = this
                 if (this.commentContent && ! localStorage.getItem('access_token')) {
                     swal({
                         title: "您还没有登录",
@@ -85,22 +140,16 @@
                             currentUrl = encodeURIComponent(currentUrl)
                             let url = 'https://github.com/login/oauth/authorize?client_id=393f40cf9a2f7ff41916&redirect_uri='+currentUrl+'&scopes=user&state=godruoyi'
 
+                            localStorage.setItem('comment', _this.originContent)
+
                             location.href = url
                         }
                     });
 
-                    return
+                    return false
                 }
 
-                let url = this.$endpoints.comment.replace(':post', 19)
-
-                this.$http.post(url, {content: this.commentContent}).then(response => {
-                    alert(1)
-                })
-            },
-
-            markdownInput: function (value) {
-                this.commentContent = markdown.render(value)
+                return true
             }
         }
     }

@@ -14,7 +14,7 @@ class PostTransformer extends TransformerAbstract
      *
      * @var array
      */
-    protected $availableIncludes = ['user', 'category'];
+    protected $availableIncludes = ['user', 'category', 'comments'];
 
     /**
      * List of default includes.
@@ -63,6 +63,20 @@ class PostTransformer extends TransformerAbstract
         $user = $this->searchItem($post, 'user', $params);
 
         return $this->item($user, new UserTransformer());
+    }
+
+    /**
+     * Includer user
+     *
+     * @param  Post   $post
+     *
+     * @return mixed
+     */
+    public function includeComments(Post $post, ParamBag $params)
+    {
+        $comments = $this->searchItem($post, 'comments', $params);
+
+        return $this->collection($comments, new CommentTransformer());
     }
 
     /**

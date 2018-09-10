@@ -1,7 +1,31 @@
 <template>
     <main class="site-main" id="wrap">
         <div class="container wrapper">
-            <comment></comment>
+            <transition enter-active-class="animated flash">
+                <div>
+                    <div class="card post mt2" v-if="show">
+                        <div class="post__image">
+                            <img :src="post.banner" :alt="post.title">
+                        </div>
+                        <div class="post__content clearfix">
+                            <div class="col lg-col-12 margin-bottom40">
+                                <header class="post__header">
+                                    <span class="label">
+                                        <router-link :to="{name: 'frontend.category.detail', params: {slug: post.category ? post.category.slug : ''}}">{{ post.category ? post.category.name : '' }}</router-link>
+                                        <span class="text--gray"> / </span>
+                                        <span class="text--gray">{{ post.created_at | timeago }}</span>
+                                    </span>
+                                    <h1 class="post__title">{{ post.title }}</h1>
+                                </header>
+                                <p></p>
+                                <div v-html="content" id="post-content"></div>
+                            </div>
+                            <!-- <share></share> -->
+                        </div>
+                    </div>
+                    <comment :comments="comments" :post-id="post.id"></comment>
+                </div>
+            </transition>
 
             <div class="partners my4">
                 <div class="container">
@@ -23,7 +47,8 @@
         data () {
             return {
                 post: {},
-                show: false
+                show: false,
+                comments: []
             }
         },
         computed: {
@@ -45,10 +70,11 @@
         methods: {
             fetchPost: function () {
                 let url = this.$endpoints.posts.detail.replace(':slug', this.$route.params.slug)
-                url += '?include=category'
+                url += '?include=category,comments'
 
                 this.$http.get(url).then(response => {
                     this.post = response
+                    this.comments = response.comments.data
                     this.show = true
                 }, error => {})
             }
@@ -73,6 +99,10 @@
         overflow: hidden;
         line-height: 1.6;
         word-wrap: break-word;
+
+        img {
+            width: 100%;
+        }
     }
 
     .box {

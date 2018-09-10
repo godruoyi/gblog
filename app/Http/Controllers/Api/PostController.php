@@ -30,7 +30,7 @@ class PostController extends Controller
     public function show($id)
     {
         $where = is_numeric($id) ? ['id' => $id] : ['slug' => $id];
-        $post  = Post::isNotDraft()->where($where)->firstOrFail();
+        $post  = Post::with('comments.githubUser')->isNotDraft()->where($where)->firstOrFail();
 
         $post->increment('view_count');
 
@@ -77,6 +77,14 @@ class PostController extends Controller
         return response()->json($result);
     }
 
+    /**
+     * 保存评论信息
+     *
+     * @param  Request $request
+     * @param  [type]  $post
+     *
+     * @return mixed
+     */
     public function storeComment(Request $request, $post)
     {
         $post = Post::isNotDraft()->findOrFail($post);

@@ -18,7 +18,7 @@
             }
         },
         props: {
-            // element: String,
+            value: String,
             attachments: {
                 type: Object,
                 default () {
@@ -36,10 +36,21 @@
             this.initSimplemde()
         },
 
+        watch: {
+            value(val) {
+                if (val === this.simplemde.value()) {
+                    return
+                }
+
+                this.simplemde.value(val);
+            },
+        },
+
         methods: {
             initSimplemde: function () {
                 const configs = Object.assign({
                     element: this.$el.firstElementChild,
+                    initialValue: this.value
                 }, this.configs);
 
                 if (configs.initialValue) {

@@ -23,7 +23,9 @@ export default (http, router) => {
                 }
             });
 
-            return
+            this.$router.replace({path: document.location.pathname, query: {}})
+
+            return Promise.reject(error)
         }
 
         swal("您成功的发现一枚 Bug", response.data.message, "error")

@@ -57,8 +57,10 @@ class AuthorizationsController extends Controller
         }
 
         try {
+            $avatar = upload_github_avatar($socialUser->avatar, $socialUser->username);
+
             $user = GithubUser::updateOrCreate(['email' => $socialUser->email], $socialUser->getOriginal() + [
-                'avatar'   => $socialUser->avatar,
+                'avatar'   => $avatar,
                 'username' => $socialUser->username,
                 'nickname' => $socialUser->nickname,
                 'name'     => $socialUser->name,
@@ -74,7 +76,13 @@ class AuthorizationsController extends Controller
         return response()->json([
             'access_token' => $token,
             'token_type'   => 'Bearer',
-            'expires_in'   => \Auth::guard('api')->factory()->getTTL() * 60
+            'expires_in'   => \Auth::guard('api')->factory()->getTTL() * 60,
+
+            'user'         => [
+                'username'  => $user->username,
+                'home_page' => $user->blog ?: $user->html_url,
+                'avatar'    => $avatar
+            ]
         ], 201);
     }
 }
