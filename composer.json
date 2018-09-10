@@ -15,10 +15,12 @@
         "laracasts/flash": "^3.0",
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
+        "overtrue/laravel-socialite": "~2.0",
         "overtrue/pinyin": "~3.0",
         "predis/predis": "^1.1",
         "sentry/sentry-laravel": "^0.8.0",
-        "tamayo/laravel-scout-elastic": "^3.0"
+        "tamayo/laravel-scout-elastic": "^3.0",
+        "tymon/jwt-auth": "1.0.0-rc.2"
     },
     "require-dev": {
         "filp/whoops": "~2.0",
@@ -66,6 +68,5 @@
         "preferred-install": "dist",
         "sort-packages": true,
         "optimize-autoloader": true
-    },
-    "minimum-stability": "dev"
+    }
 }

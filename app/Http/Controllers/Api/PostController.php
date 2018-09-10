@@ -76,4 +76,20 @@ class PostController extends Controller
 
         return response()->json($result);
     }
+
+    public function storeComment(Request $request, $post)
+    {
+        $post = Post::isNotDraft()->findOrFail($post);
+
+        if (empty($request->content)) {
+            return $this->response->errorBadRequest('评论内容不能为空');
+        }
+
+        auth('api')->user()->comments()->create([
+            'content' => $request->content,
+            'post_id' => $post->id,
+        ]);
+
+        return $this->response->created();
+    }
 }

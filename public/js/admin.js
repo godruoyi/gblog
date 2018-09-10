@@ -60,23 +60,23 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 36);
+/******/ 	return __webpack_require__(__webpack_require__.s = 57);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 36:
+/***/ 57:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(37);
+module.exports = __webpack_require__(58);
 
 
 /***/ }),
 
-/***/ 37:
+/***/ 58:
 /***/ (function(module, exports, __webpack_require__) {
 
-window.$ = window.jQuery = __webpack_require__(38);
+window.$ = window.jQuery = __webpack_require__(59);
 
 $(document).ready(function () {
     $('#show-profile-modal .dropdown-toggle').click(function () {
@@ -105,7 +105,7 @@ $(document).ready(function () {
 
 /***/ }),
 
-/***/ 38:
+/***/ 59:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!

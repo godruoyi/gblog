@@ -52,6 +52,16 @@ class Post extends Model
     }
 
     /**
+     * The post's comments
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'post_id', 'id');
+    }
+
+    /**
      * The post's category
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

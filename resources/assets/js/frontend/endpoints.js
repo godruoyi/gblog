@@ -12,6 +12,8 @@ export default {
     links: {
         index: '/links'
     },
+    comment: '/posts/:post/comments',
     search: '/search',
-    fileupload: '/upload'
+    fileupload: 'images/upload',
+    github: '/socials/github/authorizations'
 }

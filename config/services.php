@@ -40,6 +40,12 @@ return [
             'appid' => env('YOUDAO_TRANS_APPID', ''),
             'secret' => env('YOUDAO_TRANS_SECRET', ''),
         ]
-    ]
+    ],
+
+    'github' => [
+        'client_id'     => env('GITHUB_APP_ID'),
+        'client_secret' => env('GITHUB_APP_SECRET'),
+        'redirect'      => env('GITHUB_REDIRECT')
+    ],
 
 ];
