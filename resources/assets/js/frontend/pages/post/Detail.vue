@@ -101,7 +101,7 @@
         word-wrap: break-word;
 
         img {
-            width: 100%;
+            max-width: 100%;
         }
     }
 
