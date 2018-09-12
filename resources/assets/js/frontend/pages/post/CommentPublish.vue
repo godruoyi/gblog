@@ -68,7 +68,7 @@
                 },
                 commentContent: '',
                 user: {},
-                loading: true
+                loading: false
             }
         },
         created: function () {
