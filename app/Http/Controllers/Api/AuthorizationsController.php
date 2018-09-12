@@ -57,14 +57,23 @@ class AuthorizationsController extends Controller
         }
 
         try {
-            $avatar = upload_github_avatar($socialUser->avatar, $socialUser->username);
-
-            $user = GithubUser::updateOrCreate(['email' => $socialUser->email], $socialUser->getOriginal() + [
-                'avatar'   => $avatar,
+            $userData = $socialUser->getOriginal() + [
                 'username' => $socialUser->username,
-                'nickname' => $socialUser->nickname,
-                'name'     => $socialUser->name,
-            ]);
+                'nickname' => $socialUser->nickname ?: $socialUser->username,
+                'name'     => $socialUser->name ?: $socialUser->username,
+            ];
+
+            $user = GithubUser::whereEmail($socialUser->email)->first();
+            if (! $user) {
+                $avatar = upload_github_avatar($socialUser->avatar, $socialUser->username);
+                $userData['avatar'] = $avatar;
+
+                $user = GithubUser::create($userData);
+            } else {
+                unset($userData['avatar']);
+
+                $user->fill($userData)->save();
+            }
         } catch (Exception $e) {
             Log::error($e);
 
