@@ -11,9 +11,11 @@
                     </ul>
                 </div>
                 <br>
-                <div class="form-group">
+
+                <div class="form-group" v-loading="loading" element-loading-text="正在使用 code 登录中">
                     <markdown-editor :configs="configs" :value="initialValue" :attachments="attachments" @change="markdownInput"></markdown-editor>
                 </div>
+
                 <div class="form-group reply-post-submit">
                     <div class="pull-left meta">
                         <a href="javascript:;" class="action popover-with-html">支持 MD</a>
@@ -65,19 +67,25 @@
                     },
                 },
                 commentContent: '',
-                user: {}
+                user: {},
+                loading: true
             }
         },
         created: function () {
             if (this.$route.query.code && this.$route.query.state == 'godruoyi' ) {
-                this.$http.post(this.$endpoints.github, {code: this.$route.query.code}).then(response => {
-                    this.$router.replace({path: document.location.pathname + '#reply_notice', query: {}})
+                let code = this.$route.query.code
+                this.$router.replace({path: document.location.pathname + '#reply_notice', query: {}})
+                this.loading = true
 
+                this.$http.post(this.$endpoints.github, {code: code}).then(response => {
                     localStorage.setItem('access_token', response.access_token)
                     localStorage.setItem('user_info', JSON.stringify(response.user))
 
                     this.initialValue = ''
-                }, error => {})
+                    this.loading = false
+                }, error => {
+                    this.loading = false
+                })
             }
 
             this.initialValue = localStorage.getItem('comment')

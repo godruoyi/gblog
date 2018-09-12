@@ -90,7 +90,7 @@ class AuthorizationsController extends Controller
             'user'         => [
                 'username'  => $user->username,
                 'home_page' => $user->blog ?: $user->html_url,
-                'avatar'    => $avatar
+                'avatar'    => $user->avatar
             ]
         ], 201);
     }

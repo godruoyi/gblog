@@ -17,7 +17,8 @@ class StorageController extends Controller
     {
         $file = $request->upload_files;
 
-        if (($file instanceof UploadedFile) && ($path = $uploader->resize(1200)->upload($file, 'comments', mt_rand(1, 100)))) {
+        // ->resize(1200)
+        if (($file instanceof UploadedFile) && ($path = $uploader->upload($file, 'comments', mt_rand(1, 100)))) {
             return [
                 'filename' => $path
             ];

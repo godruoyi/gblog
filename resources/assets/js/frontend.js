@@ -12,6 +12,9 @@ Vue.filter('timeago', timeago)
 
 import App from 'frontend/App'
 
+import { Loading } from 'element-ui'
+Vue.use(Loading.directive)
+
 Vue.use(httpPlugin, {router});
 
 require('animate.css')
