@@ -81,7 +81,6 @@
                     localStorage.setItem('access_token', response.access_token)
                     localStorage.setItem('user_info', JSON.stringify(response.user))
 
-                    this.initialValue = ''
                     this.loading = false
                 }, error => {
                     this.loading = false
