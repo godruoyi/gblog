@@ -23,6 +23,9 @@ export default (http, router) => {
                 }
             });
 
+            localStorage.removeItem('access_token')
+            localStorage.removeItem('user_info')
+
             this.$router.replace({path: document.location.pathname, query: {}})
 
             return Promise.reject(error)

@@ -19,7 +19,7 @@ $api->version('v1', function ($api) {
     $api->group(['namespace' => 'App\Http\Controllers\Api', 'middleware' => ['cors']], function ($api) {
         $api->get('posts/recommend', 'PostController@recommend')->name('posts.recommend');
 
-        $api->post('posts/{post}/comments', 'PostController@storeComment')->name('posts.store-comment')->middleware('auth:api');
+        $api->post('posts/{post}/comments', 'PostController@storeComment')->name('posts.store-comment')->middleware('api.auth');
 
         $api->resource('posts', 'PostController', ['only' => ['index', 'show']]);
 
