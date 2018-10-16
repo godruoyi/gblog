@@ -54,7 +54,7 @@
                             data-label='请上传文章 Banner 图！'>
 
                             @if (! empty($post->banner))
-                                <img src="{{ $post->banner }}" alt="">
+                                {{-- <img src="{{ $post->banner }}" alt=""> --}}
                             @endif
                         </div>
                     </div>

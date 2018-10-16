@@ -16,6 +16,7 @@ class PostController extends Controller
     public function index(Request $request)
     {
         return $this->response->paginator(Post::isNotDraft()
+            ->whereNotIn('category_id', [2])
             ->orderBy('created_at', 'desc')
             ->select('title', 'id', 'slug', 'excerpt', 'banner', 'user_id', 'category_id', 'created_at')
             ->paginate(), new PostTransformer);
