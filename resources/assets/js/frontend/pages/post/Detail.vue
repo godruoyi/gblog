@@ -113,9 +113,9 @@
         box-shadow: 0 0.2em 0 0 #ddd, 0 0 0 1px #ddd;
     }
 
-    .post__content {
-        padding: 60px 40px;
-    }
+    // .post__content {
+    //     padding: 60px 40px;
+    // }
 
     .meta, .operate {
         color: #a9a7a7;
