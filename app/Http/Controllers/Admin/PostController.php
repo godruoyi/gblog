@@ -115,7 +115,7 @@ class PostController extends Controller
      */
     public function sieditorUpload(Request $request, ImageUploadHandler $uploader)
     {
-        if ($request->upload_files && ($path = $uploader->resize(900)->upload($request->upload_files, 'posts', \Auth::id()))) {
+        if ($request->upload_files && ($path = $uploader->upload($request->upload_files, 'posts', \Auth::id()))) {
             return [
                 'filename' => $path
             ];
