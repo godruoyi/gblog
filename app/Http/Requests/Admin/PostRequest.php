@@ -3,7 +3,6 @@
 namespace App\Http\Requests\Admin;
 
 use Illuminate\Validation\Rule;
-use App\Handlers\ImageUploadHandler;
 use App\Handlers\TranslateHandler;
 
 class PostRequest extends FormRequest
@@ -20,7 +19,8 @@ class PostRequest extends FormRequest
             'category_id' => 'required|integer|exists:categories,id',
             'content' => 'required|string',
             'banner' => 'required|url',
-            'is_draft' => 'required|string|in:no,yes'
+            'is_draft' => 'required|string|in:no,yes',
+            'excerpt' => 'nullable'
         ];
 
 
@@ -47,11 +47,6 @@ class PostRequest extends FormRequest
     public function prepareStorePost(): array
     {
         return $this->validated();
-
-        // $datas = $this->validated();
-        // $datas['banner'] = app(ImageUploadHandler::class)->resize(1100)->upload($this->file('banner'), 'posts');
-
-        // return $datas;
     }
 
     /**
@@ -62,14 +57,6 @@ class PostRequest extends FormRequest
     public function prepareUpdatePost(): array
     {
         return array_filter($this->validated());
-
-        // $datas = array_filter($this->validated());
-
-        // if ($file = $this->file('banner')) {
-        //     $datas['banner'] = app(ImageUploadHandler::class)->resize(1100)->upload($this->file('banner'), 'posts');
-        // }
-
-        // return $datas;
     }
 
     /**
@@ -79,7 +66,7 @@ class PostRequest extends FormRequest
      */
     protected function validationData()
     {
-        if ($this->title) {
+        if ($this->title && empty($this->slug)) {
             $this->offsetSet('slug', str_slug(app(TranslateHandler::class)->trans($this->title)));
         }
 

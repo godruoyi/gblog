@@ -33,6 +33,7 @@
                     <h2 class="text-center">创造文章</h2>
                     <hr>
                     <input type="text" class="form-control title" name="title" value="{{ $post->title ?? old('title') }}" placeholder="请输入文章标题">
+                    <input type="text" class="form-control" name="slug" value="{{ $post->slug ?? old('slug') }}" placeholder="文章 Slug">
                     <select class="form-control" name="category_id" placeholder="请选择分类">
                         <option value="">请选择分类</option>
                         @foreach($categories as $category)
@@ -67,6 +68,12 @@
                           <li>发布框支持本地存储功能，会在内容变更时保存，「提交」按钮点击时清空</li>
                         </ul>
                     </div> --}}
+
+                    <textarea name="excerpt"
+                        class="form-control"
+                        cols="30"
+                        placeholder="文章简介，为空自动截取"
+                        rows="5">{{ $post->excerpt }}</textarea>
 
                     <textarea name="content"
                         class="form-control" id="sieditor-id"

@@ -15,6 +15,8 @@ class Postbserver
      */
     public function saving(Post $post)
     {
-        $post->excerpt = make_excerpt($post->content);
+        if (empty($post->excerpt) && $post->content) {
+            $post->excerpt = make_excerpt($post->content);
+        }
     }
 }

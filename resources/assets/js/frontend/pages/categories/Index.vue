@@ -3,10 +3,11 @@
         <transition enter-active-class="animated fadeInUp">
             <div class="container wrapper py4 md-py6" v-show="show">
                 <div class="category mb4" v-for="category in categories" :key="category.id">
-                    <header class="category__header">
-                        <h2 class="category__title">{{ category.title }}</h2>
-                        <router-link :to="{name: 'frontend.category.detail', params: {slug: category.slug}}" class="category__link link--black">All</router-link>
-                    </header>
+                    <router-link :to="{name: 'frontend.category.detail', params: {slug: category.slug}}" class="category__link link--black">
+                        <header class="category__header">
+                            <h2 class="category__title">{{ category.title }}</h2>
+                        </header>
+                    </router-link>
                     <div class="gutter grid--2-col lg-grid--3-col grid--left">
                         <router-link :to="{name: 'frontend.post.detail', params: {slug: post.slug}}" class="card col mb1 sm-mb2" v-for="post in category.posts.data" :key="post.id">
                             <div class="card__image">

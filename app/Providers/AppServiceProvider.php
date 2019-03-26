@@ -18,13 +18,20 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->registerObserves();
 
-        resolve(EngineManager::class)->extend('elasticsearch', function($app) {
-            return new ElasticsearchEngine(ElasticBuilder::create()
+        resolve(EngineManager::class)->extend('elasticsearch', function ($app) {
+            return new ElasticsearchEngine(
+                ElasticBuilder::create()
                 ->setHosts(config('scout.elasticsearch.hosts'))
                 ->build(),
                 config('scout.elasticsearch.index')
             );
         });
+
+        \Tinify\setKey(config('app.tinify_key'));
+
+        if ($proxy = config('app.tinify_proxy')) {
+            \Tinify\setProxy($proxy);
+        }
     }
 
     /**

@@ -2,8 +2,6 @@
 
 namespace App\Http\Requests\Admin;
 
-use App\Handlers\ImageUploadHandler;
-
 class LinkRequest extends FormRequest
 {
     /**
@@ -32,7 +30,7 @@ class LinkRequest extends FormRequest
         $datas = $this->validated();
 
         // if (($logo = $this->file('logo'))
-        //     && ($logopath = app(ImageUploadHandler::class)->resize(200)->upload($logo, 'links'))) {
+        //     && ($logopath = \App\Support\Uploader::upload($logo, 'links'))) {
         //     $datas['logo'] = $logopath;
         // }
 

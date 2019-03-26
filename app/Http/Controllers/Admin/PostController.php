@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use App\Models\Category;
-use App\Handlers\ImageUploadHandler;
+use App\Support\Uploader;
 use App\Http\Requests\Admin\PostRequest;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
@@ -113,9 +113,12 @@ class PostController extends Controller
     /**
      * 编辑器文件上传
      */
-    public function sieditorUpload(Request $request, ImageUploadHandler $uploader)
+    public function sieditorUpload(Request $request)
     {
-        if ($request->upload_files && ($path = $uploader->upload($request->upload_files, 'posts', \Auth::id()))) {
+        if ($request->upload_files && ($path = Uploader::resizeUpload($request->upload_files, 'posts', [
+            'method' => 'scale',
+            'height' => 500,
+        ]))) {
             return [
                 'filename' => $path
             ];
@@ -128,15 +131,17 @@ class PostController extends Controller
      * Slim 文件上传
      *
      * @param  Request            $request
-     * @param  ImageUploadHandler $uploader
      *
      * @return mixed
      */
-    public function slimFileUpload(Request $request, ImageUploadHandler $uploader)
+    public function slimFileUpload(Request $request)
     {
         $file = collect($request->allFiles())->first();
         if (! is_null($file)) {
-            $path = $uploader->upload($file, 'banners', \Auth::id());
+            $path = Uploader::resizeUpload($file, 'banners', [
+                'method' => 'scale',
+                'height' => 500,
+            ]);
 
             return ['status' => 'success', 'name' => $file->getClientOriginalName(), 'path' => $path];
         }

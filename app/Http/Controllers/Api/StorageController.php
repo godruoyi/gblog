@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Support\Uploader;
 use Illuminate\Http\Request;
-use App\Handlers\ImageUploadHandler;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class StorageController extends Controller
@@ -13,12 +13,14 @@ class StorageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function upload(Request $request, ImageUploadHandler $uploader)
+    public function upload(Request $request)
     {
         $file = $request->upload_files;
 
-        // ->resize(1200)
-        if (($file instanceof UploadedFile) && ($path = $uploader->upload($file, 'comments', mt_rand(1, 100)))) {
+        if (($file instanceof UploadedFile) && ($path = Uploader::resizeUpload($file, 'comments', [
+            'method' => 'scale',
+            'height' => 300,
+        ]))) {
             return [
                 'filename' => $path
             ];

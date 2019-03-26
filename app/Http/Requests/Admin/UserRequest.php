@@ -44,13 +44,6 @@ class UserRequest extends FormRequest
     public function prepareStoreUser(): array
     {
         return $this->validated();
-
-        // $path = app(ImageUploadHandler::class)->resize(200)->upload($this->file('avatar'), 'users');
-
-        // $datas = $this->validated();
-        // $datas['avatar'] = $path;
-
-        // return $datas;
     }
 
     /**
@@ -61,11 +54,6 @@ class UserRequest extends FormRequest
     public function prepareUpdateUser(): array
     {
         $datas = $this->validated();
-
-        // if ($file = $this->file('avatar')) {
-        //     $path = app(ImageUploadHandler::class)->resize(200)->upload($file, 'users');
-        //     $datas['avatar'] = $path;
-        // }
 
         return array_filter($datas);
     }
