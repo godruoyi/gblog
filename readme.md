@@ -4,23 +4,11 @@
     </a>
 </p>
 
-<p align="center">GBlog is an easy blog, built with Laravel and Vue.js. <a href="https://godruoyi.com">https://godruoyi.com</a></p>
-
-<p align="center">
-  <b>Blog stylesheet reference from:</b>
-  <br><br>
-  <a href="https://laravel-news.com/">
-    <img src="https://godruoyi.com/vendor/images/laravel-news.png" width="160">
-  </a>
-  <br><br>
-  <a href="https://github.com/the-control-group/voyager">
-    <img src="https://godruoyi.com/vendor/images/voyager.png" width=400>
-  </a>
-</p>
+<p align="center">gblog is an easy blog, built with Laravel and Vue.js. <a href="https://godruoyi.com">https://godruoyi.com</a></p>
 
 ## About
 
-Gblog is easy blog build with `laravel5.5` and `vue2.*`, The `front-end` styles from [laravel-news](http://laravel-news.com), `Back-end` styles from [voyager](https://github.com/the-control-group/voyager).
+gblog is easy blog build with `laravel5.5` and `vue2.*`, The `front-end` styles from [laravel-news](http://laravel-news.com), `Back-end` styles from [voyager](https://github.com/the-control-group/voyager).
 
 ## Basic Features
 
@@ -41,13 +29,7 @@ Gblog is easy blog build with `laravel5.5` and `vue2.*`, The `front-end` styles 
 
 ## Preview
 
-![godruoyi.com](http://7xsyri.com2.z0.glb.qiniucdn.com/2018-04-08_10h38_03.png)
-
-![godruoyi.com](http://7xsyri.com2.z0.glb.qiniucdn.com/2018-04-08_10h39_36.png)
-
-![godruoyi.com](http://7xsyri.com2.z0.glb.qiniucdn.com/2018-04-08_10h40_00.png)
-
-![godruoyi.com](http://7xsyri.com2.z0.glb.qiniucdn.com/2018-04-08_10h41_07.png)
+go to [https://godruoyi.com](https://godruoyi.com)
 
 ## Install
 
@@ -55,17 +37,13 @@ Gblog is easy blog build with `laravel5.5` and `vue2.*`, The `front-end` styles 
 
 ```bash
 git clone https://github.com/godruoyi/gblog
+
+or
+
+git clone https://github.com/godruoyi/gblog.git
 ```
 
-### 2. Set the basic config
-
-```bash
-cp .env.example .env
-```
-
-Edit the `.env` file and set the `database` and `api` config. By default, we use `ADMIN_DOMAIN` to  represent the management domain name, use `HOME_DOMAIN` to represent the home domain name.
-
-### 3. Install the extended package dependency
+### 2. Install package dependency
 
 Install `laravel` framework dependent
 
@@ -73,31 +51,13 @@ Install `laravel` framework dependent
 composer install
 ```
 
-Install the front-end environment dependent.
+### 3. Set the basic config
 
 ```bash
-npm install
+cp .env.example .env
 ```
 
-Or
-
-```bash
-yarn install
-```
-
-Next, you can start compiling `js` file.
-
-```bash
-npm run dev
-
-//or
-
-npm run watch-poll
-
-//or
-
-npm run prod
-```
+Edit the `.env` file and set the `database` or `api` config. By default, we use `ADMIN_DOMAIN` to  represent the management domain name, use `HOME_DOMAIN` to represent the home domain name.
 
 ### 4. Run gblog install command.
 
@@ -119,9 +79,49 @@ You can run the following command to generate an administrator account, he will 
 php artisan gblog:adduser
 ```
 
+You can login management background to $ADMIN_DOMAIN/login.
+
+### 5. Install front-end environment dependent
+
+Install the front-end environment dependent.
+
+```bash
+npm install
+```
+
+Or
+
+```bash
+yarn install
+```
+
+change `/resources/assets/js/config.js` setting:
+
+```javascript
+export const ApibaseURI = (process.env.NODE_ENV === 'production'
+        ? 'https://api.godruoyi.com/'
+        : 'http://api.godruoyi.test/')
+
+export const AcceptHerader = 'application/vnd.godruoyi.v1+json'
+```
+
+Next, you can start compiling `js` file.
+
+```bash
+npm run dev
+
+//or
+
+npm run watch-poll
+
+//or
+
+npm run prod
+```
+
 ## Contributors
 
-- [Lianbo Xu](https://github.com/godruoyi)
+- [godruoyi](https://github.com/godruoyi)
 
 ## Thanks
 
