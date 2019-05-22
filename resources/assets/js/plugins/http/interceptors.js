@@ -7,19 +7,35 @@ export default (http, router) => {
         if (response && response.status == 404) {
             return router.push({name: 'notfound'})
         } else if (response && response.status == 401) {
+            let title = localStorage.getItem('access_token')
+                ? '登录失败，是否需要重新登录？'
+                : '您还没有登录，请选择下列方式登录'
+
             swal({
-                title: '登录失败，是否需要重新登录？',
-                text:  response.data.message,
+                title: title,
+                text: response.data.message,
                 icon: "error",
-                buttons: ["取 消", "重新登录"],
+                buttons: {
+                    cancel: "取 消",
+                    anonymous: {
+                        text: '匿名登录',
+                        value: 'anonymous'
+                    },
+                    github: {
+                        text: 'GitHub 登录',
+                        value: 'github'
+                    }
+                }
             })
             .then((yes) => {
-                if (yes) {
-                    let currentUrl = location.origin + location.pathname
+                let currentUrl = location.origin + location.pathname
+                if ('github' == yes) {
                     currentUrl = encodeURIComponent(currentUrl)
-                    let url = 'https://github.com/login/oauth/authorize?client_id=393f40cf9a2f7ff41916&redirect_uri='+currentUrl+'&scopes=user&state=godruoyi'
+                    let url = 'https://github.com/login/oauth/authorize?client_id=393f40cf9a2f7ff41916&redirect_uri='+currentUrl+'&scopes=user&state=github'
 
                     location.href = url
+                } else if (yes == 'anonymous') {
+                    location.href = currentUrl + '?code=anonymous&state=anonymous'
                 }
             });
 

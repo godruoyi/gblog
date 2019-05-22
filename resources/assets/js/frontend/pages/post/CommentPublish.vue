@@ -12,7 +12,7 @@
                 </div>
                 <br>
 
-                <div class="form-group" v-loading="loading" element-loading-text="正在使用 code 登录中">
+                <div class="form-group" v-loading="loading" :element-loading-text="loginText">
                     <markdown-editor :configs="configs" :value="initialValue" :attachments="attachments" @change="markdownInput"></markdown-editor>
                 </div>
 
@@ -50,6 +50,7 @@
         data () {
             return {
                 initialValue: '',
+                loginText: '',
                 configs: {
                     toolbar: false,
                     autofocus: true,
@@ -63,7 +64,7 @@
                     uploadUrl: ApibaseURI + this.$endpoints.fileupload,
                     uploadFieldName: 'upload_files',
                     extraHeaders: {
-                        Accept: 'application/vnd.godruoyi.v1+json'
+                        Accept: this.$config.AcceptHerader
                     },
                 },
                 commentContent: '',
@@ -72,12 +73,15 @@
             }
         },
         created: function () {
-            if (this.$route.query.code && this.$route.query.state == 'godruoyi' ) {
-                let code = this.$route.query.code
+            let code = this.$route.query.code
+            let state = this.$route.query.state
+
+            if (code && (state == 'github' || state == 'anonymous')) {
+                this.loginText = state == 'github' ? '正在使用 code 登录中' : '正在匿名登录中'
                 this.$router.replace({path: document.location.pathname + '#reply_notice', query: {}})
                 this.loading = true
 
-                this.$http.post(this.$endpoints.github, {code: code}).then(response => {
+                this.$http.post(this.$endpoints[state], {code: code}).then(response => {
                     localStorage.setItem('access_token', response.access_token)
                     localStorage.setItem('user_info', JSON.stringify(response.user))
 
@@ -91,22 +95,22 @@
         },
         methods: {
             submitComment: function () {
-                if (this.checkAuth()) {
-                    const user = this.paresUserInfo()
-                    let url    = this.$endpoints.comment.replace(':post', this.postId)
+                let url = this.$endpoints.comment.replace(':post', this.postId)
+                localStorage.setItem('comment', this.originContent)
 
+                this.$http.post(url, {content: this.commentContent}).then(response => {
+                    const user = this.paresUserInfo()
                     const comment = {
                         id: Math.random(),
                         content: this.commentContent,
                         user: user
                     }
 
-                    this.$http.post(url, {content: this.commentContent}).then(response => {
-                        this.$emit('publish', comment)
+                    this.$emit('publish', comment)
+                    this.initialValue = ''
 
-                        localStorage.removeItem('comment')
-                    }, error => {})
-                }
+                    localStorage.removeItem('comment')
+                }, error => {})
 
             },
 
@@ -131,33 +135,6 @@
                     avatar: 'https://images.godruoyi.com/avatars/github/unknow_1536570935_CBDKowkcB6.png'
                 }
             },
-
-            checkAuth: function () {
-                let _this = this
-                if (this.commentContent && ! localStorage.getItem('access_token')) {
-                    swal({
-                        title: "您还没有登录",
-                        text: "确定跳转到 Github 登录吗？",
-                        icon: "warning",
-                        buttons: ["取 消", "确 定"],
-                    })
-                    .then((yes) => {
-                        if (yes) {
-                            let currentUrl = location.origin + location.pathname
-                            currentUrl = encodeURIComponent(currentUrl)
-                            let url = 'https://github.com/login/oauth/authorize?client_id=393f40cf9a2f7ff41916&redirect_uri='+currentUrl+'&scopes=user&state=godruoyi'
-
-                            localStorage.setItem('comment', _this.originContent)
-
-                            location.href = url
-                        }
-                    });
-
-                    return false
-                }
-
-                return true
-            }
         }
     }
 </script>

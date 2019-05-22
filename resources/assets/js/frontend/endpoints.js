@@ -15,5 +15,6 @@ export default {
     comment: '/posts/:post/comments',
     search: '/search',
     fileupload: 'images/upload',
-    github: '/socials/github/authorizations'
+    github: '/socials/github/authorizations',
+    anonymous: '/socials/anonymous/authorizations',
 }

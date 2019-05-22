@@ -2,7 +2,10 @@ export default [
     {
         path: '/categories',
         component: require('./Index.vue'),
-        name: 'frontend.category'
+        name: 'frontend.category',
+        meta: {
+            title: '分类'
+        }
     },
     {
         path: '/categories/:slug',

@@ -17,10 +17,7 @@ class StorageController extends Controller
     {
         $file = $request->upload_files;
 
-        if (($file instanceof UploadedFile) && ($path = Uploader::resizeUpload($file, 'comments', [
-            'method' => 'scale',
-            'height' => 300,
-        ]))) {
+        if (($file instanceof UploadedFile) && ($path = Uploader::optimizeUpload($file, 'comments'))) {
             return [
                 'filename' => $path
             ];

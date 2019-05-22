@@ -45,10 +45,7 @@ class OptimizePostBanner extends Command
     {
         Post::all(['id', 'banner'])->each(function ($post) {
             if (! \Cache::has($key = ('banner-optimize:' . $post->id))) {
-                $path = Uploader::resizeUpload($post->banner, 'banners', [
-                    'method' => 'scale',
-                    'height' => 500,
-                ]);
+                $path = Uploader::optimizeUpload($post->banner, 'banners');
 
                 $post->fill(['banner' => $path])->save();
 

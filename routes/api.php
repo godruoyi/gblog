@@ -16,10 +16,10 @@ use Illuminate\Http\Request;
 $api = app('Dingo\Api\Routing\Router');
 
 $api->version('v1', function ($api) {
-    $api->group(['namespace' => 'App\Http\Controllers\Api', 'middleware' => ['cors']], function ($api) {
+    $api->group(['namespace' => 'App\Http\Controllers\Api'], function ($api) {
         $api->get('posts/recommend', 'PostController@recommend')->name('posts.recommend');
 
-        $api->post('posts/{post}/comments', 'PostController@storeComment')->name('posts.store-comment')->middleware('api.auth');
+        $api->post('posts/{post}/comments', 'PostController@storeComment')->name('posts.store-comment')->middleware('auth:api');
 
         $api->resource('posts', 'PostController', ['only' => ['index', 'show']]);
 

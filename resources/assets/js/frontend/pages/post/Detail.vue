@@ -76,6 +76,8 @@
                     this.post = response
                     this.comments = response.comments.data
                     this.show = true
+
+                    window.document.title = response.title + ' | ' + this.$config.Title
                 }, error => {})
             }
         }

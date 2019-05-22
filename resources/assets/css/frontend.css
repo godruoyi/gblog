@@ -8388,3 +8388,7 @@ body .sponsor div a {
         display: block
     }
 }
+
+.swal-button--github {
+    background-color: #28a745;
+}

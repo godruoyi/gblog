@@ -111,14 +111,11 @@ class PostController extends Controller
     }
 
     /**
-     * 编辑器文件上传
+     * 编辑器文件上传，文章内图，只优化，不裁剪
      */
     public function sieditorUpload(Request $request)
     {
-        if ($request->upload_files && ($path = Uploader::resizeUpload($request->upload_files, 'posts', [
-            'method' => 'scale',
-            'height' => 500,
-        ]))) {
+        if ($request->upload_files && ($path = Uploader::optimizeUpload($request->upload_files, 'posts'))) {
             return [
                 'filename' => $path
             ];
@@ -128,7 +125,7 @@ class PostController extends Controller
     }
 
     /**
-     * Slim 文件上传
+     * Slim 文件上传，文字 banner 图，只优化，不裁剪
      *
      * @param  Request            $request
      *
@@ -138,10 +135,7 @@ class PostController extends Controller
     {
         $file = collect($request->allFiles())->first();
         if (! is_null($file)) {
-            $path = Uploader::resizeUpload($file, 'banners', [
-                'method' => 'scale',
-                'height' => 500,
-            ]);
+            $path = Uploader::optimizeUpload($file, 'banners');
 
             return ['status' => 'success', 'name' => $file->getClientOriginalName(), 'path' => $path];
         }

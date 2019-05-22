@@ -64,6 +64,8 @@
                     this.pagination = response.meta.pagination
                     this.posts = response.data
                     this.show = true
+
+                    window.document.title = this.category.title + ' | ' + this.$config.Title
                 }).catch(e => {})
             }
         }

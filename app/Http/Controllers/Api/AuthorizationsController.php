@@ -17,7 +17,7 @@ class AuthorizationsController extends Controller
      *
      * @var array
      */
-    protected $allowedLogin = ['github'];
+    protected $allowedLogin = ['github', 'anonymous'];
 
     /**
      * Wechat login
@@ -34,6 +34,26 @@ class AuthorizationsController extends Controller
         $method = $type . 'Login';
 
         return $this->{$method}($request);
+    }
+
+    /**
+     * 尼玛登录
+     *
+     * @param  Request $request
+     *
+     * @return mixed
+     */
+    public function anonymousLogin(Request $request)
+    {
+        $user = GithubUser::create([
+            'username' => '匿名用户',
+            'nickname' => '匿名用户',
+            'name'     => app('Faker\Generator')->name,
+            'email'    => app('Faker\Generator')->safeEmail,
+            'avatar'   => 'https://images.godruoyi.com/avatars/github/unknow_1536570935_CBDKowkcB6.png',
+        ]);
+
+        return $this->userToToken($user);
     }
 
     /**
@@ -80,6 +100,18 @@ class AuthorizationsController extends Controller
             return $this->response->errorInternal('看样子发生了一个 bug');
         }
 
+        return $this->userToToken($user);
+    }
+
+    /**
+     * User to token
+     *
+     * @param  GithubUser $user
+     *
+     * @return [type]
+     */
+    private function userToToken($user)
+    {
         $token = \Auth::guard('api')->fromUser($user);
 
         return response()->json([

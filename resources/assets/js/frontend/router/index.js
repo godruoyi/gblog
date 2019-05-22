@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import routes from './routes'
+import {Title} from 'src/config'
 
 Vue.use(Router)
 
@@ -13,8 +14,19 @@ const router = new Router({
             return {selector: to.hash}
         }
 
-        return savedPosition ? savedPosition : {x: 0, y: 0}
+        return {x: 0, y: 0}
     }
 })
+
+router.beforeEach((to, from, next) => {
+    let title = to.meta.title
+        ? (to.meta.title + ' | ' + Title)
+        : Title
+
+    window.document.title = title
+
+    return next()
+})
+
 
 export default router

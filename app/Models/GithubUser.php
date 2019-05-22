@@ -11,6 +11,13 @@ class GithubUser extends Authenticatable implements JWTSubject
     use Notifiable;
 
     /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'github_users';
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array

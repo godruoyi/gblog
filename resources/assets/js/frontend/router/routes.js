@@ -8,12 +8,18 @@ const NotFound = {
         {
             path: '*',
             name: '404',
-            component: require('frontend/components/NotFound.vue')
+            component: require('frontend/components/NotFound.vue'),
+            meta: {
+                title: '404 NotFound'
+            }
         },
         {
             path: '404',
             name: 'notfound',
-            component: require('frontend/components/NotFound.vue')
+            component: require('frontend/components/NotFound.vue'),
+            meta: {
+                title: '404 NotFound'
+            }
         }
     ]
 }
