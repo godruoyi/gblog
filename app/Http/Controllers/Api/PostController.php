@@ -65,7 +65,10 @@ class PostController extends Controller
         $result = [];
 
         if (! empty($keywork = $request->q)) {
-            $result = Post::search($keywork)->paginate();
+            $keywork = '%'. $keywork .'%';
+            $result = Post::where('title', 'like', $keywork)
+                ->orWhere('excerpt', 'like', $keywork)
+                ->paginate();
 
             $data = ($result->map(function ($post) {
                 return $post->setAttribute('highlight', $post->highlight)
