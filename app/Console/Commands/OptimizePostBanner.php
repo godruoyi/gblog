@@ -45,7 +45,7 @@ class OptimizePostBanner extends Command
     {
         Post::all(['id', 'banner'])->each(function ($post) {
             if (! \Cache::has($key = ('banner-optimize:' . $post->id))) {
-                $path = Uploader::optimizeUpload($post->banner, 'banners');
+                $path = Uploader::optimizeUpload($post->banner, 'logos');
 
                 $post->fill(['banner' => $path])->save();
 

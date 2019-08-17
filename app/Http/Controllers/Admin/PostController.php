@@ -135,7 +135,7 @@ class PostController extends Controller
     {
         $file = collect($request->allFiles())->first();
         if (! is_null($file)) {
-            $path = Uploader::optimizeUpload($file, 'banners');
+            $path = Uploader::optimizeUpload($file, 'logos');
 
             return ['status' => 'success', 'name' => $file->getClientOriginalName(), 'path' => $path];
         }
