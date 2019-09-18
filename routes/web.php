@@ -24,6 +24,8 @@ Route::group(['as' => 'admin.', 'domain' => config('app.admin_domain')], functio
         Route::resource('posts', 'Admin\PostController');
         Route::resource('links', 'Admin\LinkController');
 
+        Route::resource('comments', 'Admin\CommentController');
+
         Route::name('upload.sieditor')->post('sieditor/imageupload', 'Admin\PostController@sieditorUpload');
         Route::name('upload.slim')->post('slim/imageupload', 'Admin\PostController@slimFileUpload');
     });

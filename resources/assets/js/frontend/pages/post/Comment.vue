@@ -85,7 +85,8 @@
             }
 
             .details {
-                padding: 18px 0;
+                padding: 18px 1px 18px 0;
+                width: calc(100% - 48px);
 
                 .media-right {
                     padding-left: 10px;
@@ -104,6 +105,7 @@
                 .infos {
                     margin-left: 10px;
                     margin-top: 10px;
+                    padding-right: 10px;
 
                     .media-body {
                         vertical-align: top;

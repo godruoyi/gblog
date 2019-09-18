@@ -44,6 +44,13 @@
             </li>
 
             <li>
+                <a href="{{ route('admin.comments.index') }}" target="_self">
+                    <span class="icon voyager-tree"></span>
+                    <span class="title">评论管理</span>
+                </a>
+            </li>
+
+            <li>
                 <a href="{{ route('admin.posts.index') }}" target="_self">
                     <span class="icon voyager-tree"></span>
                     <span class="title">文章管理</span>

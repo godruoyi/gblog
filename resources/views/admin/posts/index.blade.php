@@ -25,6 +25,9 @@
                                     return '<a target="_blank" href="'.$url.'">'. str_limit($post->title, 50) .'</a>';
                                 }],
                                 'view_count' => '阅读量',
+                                'comments_count' => ['name' => '评论数量', 'callback' => function ($count, $post) {
+                                    return '<a target="_blank" href="/comments?post_id='.$post->id.'">'. $count .'</a>';
+                                }],
                                 'is_draft'   => ['name' => '状态', 'callback' => function ($isdraft) {
                                     return $isdraft === 'yes'
                                         ? '<span class="tag label label-warning">草稿</span>'
