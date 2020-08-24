@@ -17,7 +17,7 @@ class StorageController extends Controller
     {
         $file = $request->upload_files;
 
-        if (($file instanceof UploadedFile) && ($path = Uploader::optimizeUpload($file, 'comments'))) {
+        if (($file instanceof UploadedFile) && ($path = Uploader::upload($file, 'comments'))) {
             return [
                 'filename' => $path
             ];
