@@ -7,9 +7,7 @@ banner: "@images/banners/QBB0CImWrPPETTcpQdkwYiMw0AnJL4CH4FJ1dq0O.jpeg"
 banner2: "@images/banners/a-turtle-2.png"
 banner3: "@images/banners/QBB0CImWrPPETTcpQdkwYiMw0AnJL4CH4FJ1dq0O.jpeg"
 tags: ["life"]
-oldViewCount: 1032
 selected: true
-oldKeywords: ["godruoyi,一条狗的使命"]
 ---
 
 老丈人在自家的鱼塘里钓了一个甲鱼。

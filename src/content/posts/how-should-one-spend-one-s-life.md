@@ -3,10 +3,9 @@ title: "人的一生应该怎样度过"
 description: "今天突然发现我还有个 wordpress 站点，进去看才发现不知什么时候写了这样的一篇。这应该是在中移物联网的时候写下的，现把他搬到我的 Blog。"
 pubDate: "2021-06-03 03:22:32"
 category: "life"
-banner: "@images/banners/TIECszb8kMWX3vl5FhWbxpLbR2i9grEcABtYRE7J.png"
+cardImage: "@images/banners/TIECszb8kMWX3vl5FhWbxpLbR2i9grEcABtYRE7J.png"
 tags: ["life"]
-oldViewCount: 3533
-oldKeywords: ["连波,柯察金"]
+selected: true
 ---
 
 > 今天突然发现我还有个 wordpress 站点，进去看才发现不知什么时候写了这样的一篇。原文发布于 2016-07，这应该是在中移物联网的时候写下的，现把他搬到我的博客。
