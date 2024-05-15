@@ -1,4 +1,4 @@
 ---
-title: '我的工具箱 🪜'
-description: '停止折腾就老了吧'
+title: 'My AI Tools 🪜'
+description: 'Please don't stop trying anything'
 ---
