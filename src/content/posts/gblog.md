@@ -3,15 +3,11 @@ title: "Gblog, a beautiful blog built with Astro"
 description: "Gblog is a blog template designed for those who are unable or unwilling to write frontend code"
 pubDate: "2024-05-15 13:00:00"
 category: "astro"
-cardImage: "@images/banners/gblog.png"
-cardImage2: "@images/banners/gblog-2.png"
+cardImage: "@images/banners/gblog-2.jpg"
+cardImage2: "@images/banners/gblog.jpg"
 tags: ["Gblog", "Astro", "Godruoyi"]
 selected: true
 ---
-
-# Gblog is an open-source, simple, and beautiful blog built with Astro.
-
-![godruoyi gblog](https://images.godruoyi.com/logos/gblog-1.png)
 
 Gblog is a blog template designed for those who are unable or unwilling to write frontend code. All you need to do is find an interesting Tailwind CSS template from elsewhere and paste it into Gblog, and it will function seamlessly. Additionally, you can customize your own blog without to write any JavaScript code.
 

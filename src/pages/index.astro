@@ -15,8 +15,8 @@ const posts: CollectionEntry<'posts'>[] = (await getCollection('posts')).sort(
 
 <BaseLayout>
     <HeroSection
-        title=`Hello, <span class="text-yellow-500 dark:text-yellow-400">Godruoyi</span>`
-        subTitle="Hi, I'm Lianbo, I enjoy the process of building something using any technology stack, welcome to my blog"
+        title=`Hello, <span class="text-yellow-500 dark:text-yellow-400">GBlog</span>`
+        subTitle="Hi, Welcome to Gblog, gblog is an open-source, simple, and beautiful blog built with Astro."
         primaryBtn="Explore Posts"
         primaryBtnURL="/posts"
         src={blogHeroImg}
@@ -46,6 +46,6 @@ const posts: CollectionEntry<'posts'>[] = (await getCollection('posts')).sort(
     <HeroSectionAlt
         title="Fellow me on GitHub"
         subTitle="I love open source and have some small tools on my GitHub. You can get me more by checking out my code"
-        url="https://github.com/godruoyi"
+        url="https://github.com/godruoyi/gblog"
     />
 </BaseLayout>

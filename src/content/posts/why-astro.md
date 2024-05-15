@@ -1,10 +1,10 @@
 ---
 title: "Why Astro?"
 description: "Astro is the web framework for building content-driven websites like blogs, marketing, and e-commerce. Learn why Astro might be a good choice for your next website."
-pubDate: "2024-05-13 18:18:53"
+pubDate: "2024-05-15 14:18:53"
 category: "astro"
-cardImage: "@images/banners/why-astro.jpg"
-cardImage2: "@images/banners/why-astro-2.webp"
+cardImage: "@images/banners/why-astro-2.webp"
+cardImage2: "@images/banners/why-astro.jpg"
 tags: ["Astro"]
 selected: true
 ---

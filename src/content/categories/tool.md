@@ -1,4 +1,4 @@
 ---
 title: 'My AI Tools 🪜'
-description: 'Please don't stop trying anything'
+description: 'Please dont stop trying anything'
 ---
