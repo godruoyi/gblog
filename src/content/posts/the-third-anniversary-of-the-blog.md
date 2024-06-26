@@ -3,7 +3,7 @@ title: "Blog 3 周年"
 description: "2021-04-04 号，Blog 就满了 3 周年了。作者已经忘记了 Blog 具体上线时间了，只记得 Timeline 里，最早的文章发布于 2018-04-04。"
 pubDate: "2021-04-02 05:12:22"
 category: "life"
-banner: "@images/banners/UmPvxfPRpqXiBU7Bf6fukza2Fagp5drXNbjR3rMe.jpeg"
+banner: "/images/banners/UmPvxfPRpqXiBU7Bf6fukza2Fagp5drXNbjR3rMe.jpeg"
 tags: ["life"]
 oldViewCount: 2255
 oldKeywords: ["null"]

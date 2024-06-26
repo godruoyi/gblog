@@ -3,7 +3,7 @@ title: "文城"
 description: "人生就是自己的往事和他人的序章，时代的洪流推着每个人做出各自的选择。这是一个荒蛮的年代，结束的尚未结束，开始的尚未开始。"
 pubDate: "2021-09-23 05:50:30"
 category: "books"
-banner: "@images/banners/LTon13CrqxnO2m0WD3Npe6CAc8kwbBr1gUPfqaMz.jpeg"
+banner: "/images/banners/LTon13CrqxnO2m0WD3Npe6CAc8kwbBr1gUPfqaMz.jpeg"
 tags: ["books"]
 oldViewCount: 3895
 oldKeywords: ["文城,余华,wencheng,林祥福,小美"]

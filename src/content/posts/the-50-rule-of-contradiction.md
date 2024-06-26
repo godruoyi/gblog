@@ -3,7 +3,7 @@ title: "矛盾的 50% 定律"
 description: "大概是这样的，一个楚国的商人，说自己的卖的矛无坚不摧，然后又说自己的盾坚不可摧，路人让其「以子之矛，陷子之盾，何如？」，结果商人弗能应也。"
 pubDate: "2020-05-09 14:10:40"
 category: "life"
-banner: "@images/banners/_1589033425_F8CI2F3YQP.jpg"
+banner: "/images/banners/_1589033425_F8CI2F3YQP.jpg"
 tags: ["life"]
 oldViewCount: 2195
 oldKeywords: ["null"]

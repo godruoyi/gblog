@@ -3,7 +3,7 @@ title: "关于这个站点"
 description: "Blog 是基于 Laravel5.5和 vue2 来搭建的；前台是 vue 的单页应用，后台采用的是传统的模板渲染"
 pubDate: "2018-05-07 03:07:05"
 category: "life"
-banner: "@images/banners/6thaLd7mXc4878byoBTLk6ZJ6yatn6ZHTDVnILWF.jpeg"
+banner: "/images/banners/6thaLd7mXc4878byoBTLk6ZJ6yatn6ZHTDVnILWF.jpeg"
 tags: ["life"]
 oldViewCount: 4207
 oldKeywords: ["二愣的闲谈杂鱼"]

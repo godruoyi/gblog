@@ -3,7 +3,7 @@ title: "峨眉⼭的⽇出"
 description: "上个周末，和⽼婆及阿婷们⼀起去峨眉⼭看⽇出。虽然结局很悲惨，过程也悲惨，却并⾮那么不如⼈意，写下来权当是安慰我们的这次旅⾏吧。"
 pubDate: "2019-05-22 12:03:18"
 category: "books"
-banner: "@images/banners/_1558526592_DaadbXpCjI.jpg"
+banner: "/images/banners/_1558526592_DaadbXpCjI.jpg"
 tags: ["books"]
 oldViewCount: 2396
 oldKeywords: ["null"]

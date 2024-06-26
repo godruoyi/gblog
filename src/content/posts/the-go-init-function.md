@@ -3,7 +3,7 @@ title: "Go 语言中的 init 函数（译）"
 description: "有时候，在创建 golang 应用程序的时候，我们经常需要在程序初始化的时候执行某些操作。如初始化数据库的连接、载入本地配置文件等。"
 pubDate: "2020-10-30 09:42:11"
 category: "golang"
-banner: "@images/banners/gsjg5h5pRyfRBreK7ED4eO8lls2AlWq9V2oEdBKx.png"
+banner: "/images/banners/gsjg5h5pRyfRBreK7ED4eO8lls2AlWq9V2oEdBKx.png"
 tags: ["golang"]
 oldViewCount: 2955
 oldKeywords: ["go初始化,init函数,初始化,go,init"]

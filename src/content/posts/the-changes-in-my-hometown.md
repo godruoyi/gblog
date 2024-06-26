@@ -3,7 +3,7 @@ title: "老家的变化"
 description: "我的老家在贵州的一个山沟里，那里有四五个小村庄坐落在几座大山脚下，中间有一些田和一条小河，还有条水泥马路把它们串起来形成一个长约 3 公里的跑道；还有新安的路灯；我们家门口就有一盏路灯。"
 pubDate: "2023-03-26 12:48:51"
 category: "life"
-banner: "@images/banners/o1nzrsUMAcfcHJpbLYFEHa9OiZVPKqpR3OQkhxk4.jpeg"
+banner: "/images/banners/o1nzrsUMAcfcHJpbLYFEHa9OiZVPKqpR3OQkhxk4.jpeg"
 tags: ["life"]
 oldViewCount: 1467
 selected: true

@@ -3,7 +3,7 @@ title: "Go 语言的词法分析和语法分析(2)—Import声明的解析"
 description: "Go 语言编译原理，import 声明的解析。上篇文章 Go 语言的词法分析和语法分析(1)作者阐述了渐渐式词法分析的过程；通过这一步，源文件已被转化为 Syntax.File 结构体，其属性情况如下"
 pubDate: "2021-03-25 07:21:21"
 category: "golang"
-banner: "@images/banners/I7H10I0eO4RgdzKxVQx9SfkEUkngcUNbRtZOW78y.jpeg"
+banner: "/images/banners/I7H10I0eO4RgdzKxVQx9SfkEUkngcUNbRtZOW78y.jpeg"
 tags: ["golang"]
 oldViewCount: 3551
 oldKeywords: ["Go编译原理,词法分析,语法分析,importdecl"]

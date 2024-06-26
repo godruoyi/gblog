@@ -1,11 +1,14 @@
 import type { NavigationLink, Site, User } from './types.ts'
 
+const isProd = (): boolean => import.meta.env.MODE === 'production' || process.env.NODE_ENV === 'production'
+
 export const SITE: Site = {
     author: 'Godruoyi',
     url: 'https://godruoyi.com',
     title: '连波的闲谈杂鱼',
     description: 'Godruoyi\'s personal blog, I enjoy the process of building something using any technology stack',
     shortDescription: '',
+    assertPath: isProd() ? 'https://images.godruoyi.com' : '',
 }
 
 export const NavigationLinks: NavigationLink[] = [

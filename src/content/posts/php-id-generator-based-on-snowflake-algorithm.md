@@ -3,7 +3,7 @@ title: "基于雪花算法的 PHP ID 生成器"
 description: "Snowflake 是 Twitter 内部的一个 ID 生算法，可以通过一些简单的规则保证在大规模分布式情况下生成唯一的 ID 号码"
 pubDate: "2019-08-13 05:07:09"
 category: "php"
-banner: "@images/banners/_1565672621_LPW65Pi8cG.png"
+banner: "/images/banners/_1565672621_LPW65Pi8cG.png"
 tags: ["php"]
 oldViewCount: 10242
 oldKeywords: ["null"]

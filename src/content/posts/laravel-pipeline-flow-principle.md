@@ -3,7 +3,7 @@ title: "Laravel 管道流原理"
 description: "> Laravel管道流原理强烈依赖array_reduce函数，我们先来了解下array_reduce函数的使用。  ## array_reduce  > `array_reduce()` 将回调函数 `callback` 迭代地作用到 `array` 数组中的每一个单元中，从而将数组简化..."
 pubDate: "2018-04-04 07:39:04"
 category: "laravel"
-banner: "@images/banners/_1553621473_pZwNEZykbY.jpeg"
+banner: "/images/banners/_1553621473_pZwNEZykbY.jpeg"
 tags: ["laravel"]
 oldViewCount: 2960
 oldKeywords: ["null"]

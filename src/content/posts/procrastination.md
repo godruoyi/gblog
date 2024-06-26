@@ -3,7 +3,7 @@ title: "Ocr 2.0 Release（拖延症）"
 description: "三年前在 Github 发布了一个图片识别的 PHP 扩展包 godruoyi/ocr，主要功能是整合几大厂商的图片识别接口，方便统一调用。"
 pubDate: "2020-11-20 08:53:41"
 category: "php"
-banner: "@images/banners/ZUZkJL1ik3SrCe2b1rf8obtmXlNnpEi7loouJ6mv.jpeg"
+banner: "/images/banners/ZUZkJL1ik3SrCe2b1rf8obtmXlNnpEi7loouJ6mv.jpeg"
 tags: ["php"]
 oldViewCount: 2906
 oldKeywords: ["生活,ocr,php-ocr,tencent-ocr,aliyun-ocr,baidu-ocr"]

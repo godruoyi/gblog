@@ -3,7 +3,7 @@ title: "讲个鬼故事"
 description: "鬼到底是有的是没有的？传说上有人见过，还跟鬼说过话，还有人在后边被鬼追赶过，吊死鬼一见了人就贴在墙上。但没有一个人捉住一个鬼给大家看看。"
 pubDate: "2021-10-11 02:34:06"
 category: "life"
-banner: "@images/banners/uKXz9c9tt3coLlZ47KcyS5WwA8dRN3LRDthMtc7j.jpeg"
+banner: "/images/banners/uKXz9c9tt3coLlZ47KcyS5WwA8dRN3LRDthMtc7j.jpeg"
 tags: ["life"]
 oldViewCount: 3314
 oldKeywords: ["回忆鲁迅先生,萧红"]

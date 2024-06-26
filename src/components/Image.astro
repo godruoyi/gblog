@@ -1,38 +1,45 @@
 ---
-import { Image } from 'astro:assets'
-import { ImageMetadata } from 'astro'
-import { blurStyle } from '../support/image'
+// Copy from Astro Image.astro
+// see https://github.com/withastro/astro/blob/main/packages/astro/components/Image.astro
 
-interface Props {
-    src: ImageMetadata
-    alt: string
-    className?: string
-    draggable?: string
-    format?: string
-    loading?: string
+import { type LocalImageProps, type RemoteImageProps, getImage } from 'astro:assets'
+import { ImageMetadata } from 'astro'
+import { HTMLAttributes } from 'astro/types'
+import { blurStylePublicPath } from '../support/image'
+
+type Props = LocalImageProps | RemoteImageProps
+
+const props = Astro.props
+
+const className = props.class ?? ''
+let image = props.src
+let blurCSS = {}
+
+if (typeof image === 'string') {
+    const imageWithPublicPath = `/public${props.src}`
+    const images = import.meta.glob<{ default: ImageMetadata }>(`/public/images/**/*.{jpeg,jpg,png,gif,webp}`)
+
+    if (!images[imageWithPublicPath]) {
+        throw new Error(`"${imageWithPublicPath}" does not exist in glob: "/public/images/**/*.{jpeg,jpg,png,gif,webp}"`)
+    }
+
+    image = await getImage({ src: images[imageWithPublicPath]() })
+
+    blurCSS = await blurStylePublicPath(props.src)
 }
 
-const {
-    src,
-    alt,
-    className,
-    format = 'avif',
-    draggable = 'false',
-    loading = 'lazy',
-} = Astro.props
+const additionalAttributes: HTMLAttributes<'img'> = {}
+if (image.srcSet?.values?.length > 0) {
+    additionalAttributes.srcset = image.srcSet.attribute
+}
 
-const blurCSS = await blurStyle(src.fsPath) // todo: refactor me
-
+if (import.meta.env.DEV) {
+    additionalAttributes['data-image-component'] = 'true'
+}
 ---
 
-<Image
-    class={className}
-    src={src}
-    alt={alt}
-    draggable={draggable}
-    format={format}
-    loading={loading}
-    style={blurCSS}
-/>
+<img src={image.src} alt={image.alt} {...additionalAttributes} class={className} {...image.attributes} style={blurCSS} />
+
+
 
 

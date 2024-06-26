@@ -3,8 +3,8 @@ title: "Lambda Connect RDS"
 description: "我们的目的是把 RDS 和 Lambda 放在同一个VPC 下，并且要支持 Lambda 访问 RDS，Lambda 可以访问 SecretManager，Lambda 可以访问 DynamoDB" 
 pubDate: "2024-05-21 17:47:00"
 category: "tool"
-banner: "@images/posts/lambda-rds/banner-1.jpg"
-ogImage: "@images/posts/lambda-rds/banner-1.jpg"
+banner: "/images/posts/lambda-rds/banner-1.jpg"
+ogImage: "/images/posts/lambda-rds/banner-1.jpg"
 tags: ["AWS", "Lambda", "RDS"]
 ---
 
@@ -173,13 +173,13 @@ GitHub <- igw <- 0.0.0.0/0 <- Route Table2 <- subnet3(igw) <---/
 
 最后生成的网络结构如下：
 
-![Lambda-RDS](@images/posts/lambda-rds/default-vpc.png)
+![Lambda-RDS](/images/posts/lambda-rds/default-vpc.png)
 
 这里有两个 Public Subnet 经过路由表 `project-rbt-public` 将流量流向了 `project-igw`，剩下两个 Private Subnet 各自有一个路由表，最后都将流量流向 `project-nat`。
 
 我们重命名并删除不必要的路由表后：
 
-![Lambda-RDS](@images/posts/lambda-rds/kmind-vpc.png)
+![Lambda-RDS](/images/posts/lambda-rds/kmind-vpc.png)
 
 1. 每个可用区都包含一个 Public Subnet 和 两个 Private Subnet
 2. 两个可用区的所有 Public Subnet 会将**外部**流量通过 kmind-igw-routetable 转发到 IGW 网关
@@ -209,7 +209,7 @@ RDS 的创建没有太多的注意事项，只需要按照提示一步一步创�
 3. 修改数据库，将 DB Parameter Group 改为刚刚创建的参数组。
 4. 重启数据库
 
-![Lambda-RDS-Force-SSL](@images/posts/lambda-rds/rds_force_ssl.png)
+![Lambda-RDS-Force-SSL](/images/posts/lambda-rds/rds_force_ssl.png)
 
 ## Lambda
 
@@ -253,7 +253,7 @@ Lambda 默认情况下并不会部署到 VPC 中，我们需要修改 Lambda 的
     2. 配置 Lambda 函数部署的子网，为了满足跨分区可用，这里指定了不同区域的两个子网。
     3. 注意这里配置的子网应该是上面 VPC 网络设置中的 Private 子网(`kmind-private*`)。
 
-![Lambda-RDS](@images/posts/lambda-rds/kmind-vpc.png)
+![Lambda-RDS](/images/posts/lambda-rds/kmind-vpc.png)
 
 ### Security Group
 

@@ -3,7 +3,7 @@ title: "三体"
 description: "是地球人与三体人的技术水平差距大呢，还是蝗虫与咱们人的技术水平差距大？"
 pubDate: "2021-05-20 09:53:37"
 category: "books"
-banner: "@images/banners/xOw3PVdihEbxlJfIu0KoQrRIu1stJfWI2BIUv707.jpeg"
+banner: "/images/banners/xOw3PVdihEbxlJfIu0KoQrRIu1stJfWI2BIUv707.jpeg"
 tags: ["books"]
 oldViewCount: 4290
 oldKeywords: ["三体,三体世界,蝗虫,你是一颗独立向上的力量"]

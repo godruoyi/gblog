@@ -3,7 +3,7 @@ title: "停电"
 description: "前段时间贵州大雨，电力局提前发了短信，说可能会停一两个小时的电  我们家是用电来烘烟的，没电了，万把块钱一烘的烟，就全部烂掉了  爸去街上抬发电机  但是发电机太大，至少需要三个人  找不到人  姐夫说用钱请人..."
 pubDate: "2020-08-28 09:11:03"
 category: "life"
-banner: "@images/banners/_1598605859_vwfXGqateM.jpg"
+banner: "/images/banners/_1598605859_vwfXGqateM.jpg"
 tags: ["life"]
 oldViewCount: 2282
 oldKeywords: ["null"]

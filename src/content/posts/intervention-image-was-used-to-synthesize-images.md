@@ -3,7 +3,7 @@ title: "利用 Intervention Image 合成图片"
 description: "在我们实际应用中，经常遇到图片合成的需求（比如合成一整用户信息 + 二维码图片，便于传播分享等），传统的做法是采用 `GD` 或 `Imagick ` 库内置函数来完成。但估计你和我一样，对这些函数都不会很上心。  > 下面..."
 pubDate: "2018-06-06 02:02:11"
 category: "laravel"
-banner: "@images/banners/_1553621520_6d34Z1x7UB.jpg"
+banner: "/images/banners/_1553621520_6d34Z1x7UB.jpg"
 tags: ["laravel"]
 oldViewCount: 6366
 oldKeywords: ["null"]

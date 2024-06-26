@@ -3,7 +3,7 @@ title: "提高安全性的最佳 Nginx 配置"
 description: "由于安全问题一直是重中之重，这里整理下 `nginx` 的安全配置。文章大部分参考了 Best nginx configuration for improved security(and performance)"
 pubDate: "2018-04-08 10:16:19"
 category: "nginx"
-banner: "@images/banners/_1553621487_p9sQHrWtHr.jpg"
+banner: "/images/banners/_1553621487_p9sQHrWtHr.jpg"
 tags: ["nginx"]
 oldViewCount: 4454
 oldKeywords: ["null"]

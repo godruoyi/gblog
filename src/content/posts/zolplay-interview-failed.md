@@ -3,7 +3,7 @@ title: "佐玩的面试挂了"
 description: "佐玩的面试挂了，我很伤心。"
 pubDate: "2023-07-22 14:18:53"
 category: "life"
-banner: "@images/banners/2WuRG9JdUORSQyo4MghNrfu2Kd0WR3JpLXRl7BwJ.jpeg"
+banner: "/images/banners/2WuRG9JdUORSQyo4MghNrfu2Kd0WR3JpLXRl7BwJ.jpeg"
 tags: ["life"]
 oldViewCount: 1567
 oldKeywords: ["面试,zolplay"]

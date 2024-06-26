@@ -3,7 +3,7 @@ title: "换一种方式，交换两个变量的值"
 description: "你知道如何不实用临时变量交换两个变量的值吗"
 pubDate: "2020-08-24 15:02:22"
 category: "php"
-banner: "@images/banners/_1598318282_jY8TmSXOFP.jpeg"
+banner: "/images/banners/_1598318282_jY8TmSXOFP.jpeg"
 tags: ["php"]
 oldViewCount: 2646
 oldKeywords: ["null"]

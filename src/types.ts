@@ -4,6 +4,7 @@ export interface Site {
     url: string
     description: string
     shortDescription: string
+    assertPath: string
 }
 
 export interface NavigationLink {
@@ -28,31 +29,4 @@ export interface User {
     title: string
     description: string
     social: Social
-}
-
-export interface Image {
-    /**
-     * public url of the image
-     */
-    src: string
-    /**
-     * image width
-     */
-    width: number
-    /**
-     * image height
-     */
-    height: number
-    /**
-     * blurDataURL of the image
-     */
-    blurDataURL: string
-    /**
-     * blur image width
-     */
-    blurWidth: number
-    /**
-     * blur image height
-     */
-    blurHeight: number
 }

@@ -3,7 +3,7 @@ title: "我的阅读清单"
 description: "我的天空里没有太阳，全是黑暗，但并不黑，因为有东西代替了太阳"
 pubDate: "2021-10-18 08:11:09"
 category: "books"
-banner: "@images/banners/nBQIxDPW3EPrFPwY8QJiMBtnMW6hgGE1bguvykwf.jpeg"
+banner: "/images/banners/nBQIxDPW3EPrFPwY8QJiMBtnMW6hgGE1bguvykwf.jpeg"
 tags: ["books"]
 oldViewCount: 3506
 oldKeywords: ["null"]

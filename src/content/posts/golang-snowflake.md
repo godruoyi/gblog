@@ -3,7 +3,7 @@ title: "Go 语言的雪花算法实现"
 description: "An Lock Free ID Generator for Golang based on Snowflake Algorithm (Twitter announced)."
 pubDate: "2021-04-15 08:30:29"
 category: "golang"
-banner: "@images/banners/uEqFnn6SqBapPpW7RN06f6eSgTJcLGMBAKe3fsXs.png"
+banner: "/images/banners/uEqFnn6SqBapPpW7RN06f6eSgTJcLGMBAKe3fsXs.png"
 tags: ["golang"]
 oldViewCount: 5324
 oldKeywords: ["snowflake"]

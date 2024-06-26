@@ -3,7 +3,7 @@ title: "使用预加载优化 Laravel Model 查询"
 description: "原文译自[eloquent-eager-loading](https://laravel-news.com/eloquent-eager-loading)，简化其前面~~构造数据~~部分。  ## 介绍  对象关系映射（`ORM`）使数据库的工作变得非常简单。 在以面向对象的方式定义数据库..."
 pubDate: "2018-04-04 07:34:04"
 category: "laravel"
-banner: "@images/banners/_1553621467_sOfIjjZjU2.png"
+banner: "/images/banners/_1553621467_sOfIjjZjU2.png"
 tags: ["laravel"]
 oldViewCount: 2088
 oldKeywords: ["null"]

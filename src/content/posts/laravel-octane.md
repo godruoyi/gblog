@@ -3,7 +3,7 @@ title: "Laravel Octane 初体验"
 description: "Laravel 框架一直很优秀，但是他在性能方面却一直为人诟病。框架的 boot 时间可能比业务处理时间还长；而 Laravel Octane 则通过启动 Application 一次，常驻内存的方式来加速我们的应用。"
 pubDate: "2021-04-29 09:51:32"
 category: "laravel"
-banner: "@images/banners/xVs1eZ8ja9nLX6XO9EUolY7Zl0MbUTPTyH6FqQLl.png"
+banner: "/images/banners/xVs1eZ8ja9nLX6XO9EUolY7Zl0MbUTPTyH6FqQLl.png"
 tags: ["laravel"]
 oldViewCount: 8073
 oldKeywords: ["laravel,laravel-octane,swoole,roadrunner"]

@@ -3,7 +3,7 @@ title: "2022 年终总结"
 description: "这一年，国家站在战争发起的一方，人们嘲笑被刺杀的首相，孕妇会因为新冠拒诊而流产，火灾会活活烧死逃生通道被焊死的孩子们，清零的大巴在夜间翻车，诸如等等，以至于忍无可忍的人们举起了白纸"
 pubDate: "2023-01-04 09:55:30"
 category: "life"
-banner: "@images/banners/jfxd7lxnFNWPfKudZ3dewqpczfJxH3CTLWuQBmB3.jpeg"
+banner: "/images/banners/jfxd7lxnFNWPfKudZ3dewqpczfJxH3CTLWuQBmB3.jpeg"
 tags: ["life"]
 oldViewCount: 2483
 selected: true

@@ -3,7 +3,7 @@ title: "NativePHP 的技术原理和实现细节"
 description: "NativePHP 在这里的价值就是提供了一套相对完整的 API，通过操作这些 API 我们就能非常方便的和 Electron APP 进行交付。而且我们不需要关心项目打包的具体细节，也不需要手动对接这些 API；NativePHP 已经非常深度的把他们集成到了 Laravel 环境中，我们可以高效的在 Laravel 中使用这些魔法而不用关心具体的细节实现。"
 pubDate: "2023-07-25 08:37:52"
 category: "laravel"
-banner: "@images/banners/GxdPb3nbyxlWC8cEekUxTvsRVcVx1Sb9riEa4NNx.png"
+banner: "/images/banners/GxdPb3nbyxlWC8cEekUxTvsRVcVx1Sb9riEa4NNx.png"
 tags: ["laravel"]
 oldViewCount: 3219
 selected: true

@@ -3,7 +3,7 @@ title: "Laravel 队列优先级的一个坑"
 description: "准确来说这不算是坑，但骚不注意就掉进去了，在使用 Laravel 队列时，有时候我们希望为他设定一个优先级，如 bash php artisan queue:work --queue=high,low 这样，当我们的任务需要优先发送时"
 pubDate: "2018-04-04 07:24:36"
 category: "laravel"
-banner: "@images/banners/_1553621445_wdxtb6K4l3.png"
+banner: "/images/banners/_1553621445_wdxtb6K4l3.png"
 tags: ["laravel"]
 oldViewCount: 2486
 oldKeywords: ["null"]

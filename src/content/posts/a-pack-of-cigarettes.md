@@ -3,7 +3,7 @@ title: "一包烟"
 description: "读小学的时候我有机会通过自己的劳动获得一包烟，但我拒绝了。"
 pubDate: "2021-10-29 07:45:49"
 category: "life"
-banner: "@images/banners/NQ2XNWNbIBlIRcQuE31zArmpGr7X9N0y5M99LnSb.jpeg"
+banner: "/images/banners/NQ2XNWNbIBlIRcQuE31zArmpGr7X9N0y5M99LnSb.jpeg"
 tags: ["life"]
 oldViewCount: 3706
 selected: true

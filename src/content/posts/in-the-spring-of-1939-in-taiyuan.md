@@ -3,7 +3,7 @@ title: "一九三九年春在太原"
 description: "只有时候，从野外吹来的风，使你嗅到一点着自由的气息。很细致，很新鲜，很温暖，并且很有生气。在这种感觉里，你可以想到，黔南已解封了，草已经发芽了，戏已经演完了"
 pubDate: "2022-09-19 12:48:32"
 category: "life"
-banner: "@images/banners/Ay48gb4P2DDRkka9p4t4TFrj3dImBHfS813jnPwB.jpeg"
+banner: "/images/banners/Ay48gb4P2DDRkka9p4t4TFrj3dImBHfS813jnPwB.jpeg"
 tags: ["life"]
 oldViewCount: 2293
 oldKeywords: ["life"]

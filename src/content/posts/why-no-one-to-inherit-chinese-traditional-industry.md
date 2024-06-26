@@ -3,7 +3,7 @@ title: "为什么中国的传统行业没人继承"
 description: "今天在坐公交车上班的时候，看到重庆电视台推送的视频，一位小男孩在跟着自己的爸爸学京剧打鼓"
 pubDate: "2020-08-07 01:55:44"
 category: "life"
-banner: "@images/banners/_1596765334_F027thkBdf.jpg"
+banner: "/images/banners/_1596765334_F027thkBdf.jpg"
 tags: ["life"]
 oldViewCount: 2364
 oldKeywords: ["null"]

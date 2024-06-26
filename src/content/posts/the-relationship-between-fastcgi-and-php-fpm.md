@@ -3,7 +3,7 @@ title: "FastCgi 与 PHP-fpm 之间的关系"
 description: "原文分享自 segmentfault 尹川的回答，搞不清 FastCgi 与 PHP-fpm 之间是个什么样的关系"
 pubDate: "2018-04-04 07:32:25"
 category: "php"
-banner: "@images/banners/_1567224162_PFOHIykVkd.jpg"
+banner: "/images/banners/_1567224162_PFOHIykVkd.jpg"
 tags: ["php"]
 oldViewCount: 3391
 oldKeywords: ["null"]

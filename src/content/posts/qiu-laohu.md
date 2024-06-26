@@ -3,7 +3,7 @@ title: "秋老虎"
 description: "家里面的老人说立秋后的第一场雨就是要强降温的前奏，跟着就会反一波热浪，重庆称为「秋老虎」（意思就是强降温之后再来一波强升温达到 38° 39°那种天气，还是有点热的哦），跟着就会越来越冷身上越来越厚进入到了寒..."
 pubDate: "2020-08-20 05:36:27"
 category: "life"
-banner: "@images/banners/_1597901755_TZ4DJUTlFW.jpg"
+banner: "/images/banners/_1597901755_TZ4DJUTlFW.jpg"
 tags: ["life"]
 oldViewCount: 2218
 oldKeywords: ["null"]

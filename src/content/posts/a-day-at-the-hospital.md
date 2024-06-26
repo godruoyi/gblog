@@ -3,7 +3,7 @@ title: "去医院的一天"
 description: "下午请了半天假，今天又是去医院的一天。  爬上门诊部二楼开始排队取号时，看了看时间，才下午两点半。前面的夫妻预约取号按成了预约挂号，还指着已经满号的医生问我为什么按不动，我说满号了，挂不起，他说我取号怎..."
 pubDate: "2020-11-23 09:49:54"
 category: "life"
-banner: "@images/banners/6P95vUcquiealnMNWPJMmmLcH9RG8hWZ75Qo9HE4.jpeg"
+banner: "/images/banners/6P95vUcquiealnMNWPJMmmLcH9RG8hWZ75Qo9HE4.jpeg"
 tags: ["life"]
 oldViewCount: 2971
 oldKeywords: ["连波"]

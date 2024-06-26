@@ -3,7 +3,7 @@ title: "为你的 Laravel Faker 指定中文支持"
 description: "在 Laravel 中使用 Faker 构造假数据时，默认的输出为英文格式，你可通过简单的配置，让其支持中文输出"
 pubDate: "2018-07-27 09:13:30"
 category: "laravel"
-banner: "@images/banners/_1567223790_ADv0UbdWE5.png"
+banner: "/images/banners/_1567223790_ADv0UbdWE5.png"
 tags: ["laravel"]
 oldViewCount: 3765
 oldKeywords: ["laravel-faker,laravel中文支持"]

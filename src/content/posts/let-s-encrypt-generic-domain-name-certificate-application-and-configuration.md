@@ -3,7 +3,7 @@ title: "Let's Encrypt 泛域名证书申请及配置"
 description: "Let's Encrypt 在今年 3 月份就已经推出泛域名证书支持了，以前我一直是使用的单域名证书，加上站点开启了 `HSTS` 支持，当新增网站应用时不得不为其单独申请证书，十分不便。  目前比较常用的为 `Let's Encrypt..."
 pubDate: "2018-06-21 15:26:19"
 category: "nginx"
-banner: "@images/banners/_1553621543_3ivCUwq5C7.jpg"
+banner: "/images/banners/_1553621543_3ivCUwq5C7.jpg"
 tags: ["nginx"]
 oldViewCount: 4189
 oldKeywords: ["null"]

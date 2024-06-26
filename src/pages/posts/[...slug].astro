@@ -25,13 +25,12 @@ const category: CollectionEntry<'categories'> = (await getCollection('categories
 
 const tags = post.data.tags ?? [category.slug]
 const URL = Astro.url.href
-const ogImage = post.data.ogImage
 ---
 
 <BaseLayout
     title={post.data.title}
     description={post.data.description}
-    ogImage={ogImage}
+    ogImage={post.data.ogImage}
     structuredData={{
         '@context': 'https://schema.org',
         '@type': 'NewsArticle',
@@ -58,16 +57,10 @@ const ogImage = post.data.ogImage
                     class="w-full object-cover rounded-tl-sm rounded-tr-sm"
                     src={post.data.banner}
                     alt={post.data.title}
+                    draggable="false"
+                    format="avif"
+                    loading="lazy"
                 />
-                <!--<Image-->
-                <!--    class="w-full object-cover rounded-tl-sm rounded-tr-sm"-->
-                <!--    src={post.data.banner}-->
-                <!--    alt={post.data.title}-->
-                <!--    draggable="false"-->
-                <!--    format="avif"-->
-                <!--    loading="lazy"-->
-                <!--    style={xcss}-->
-                <!--/>-->
             </div>
             <div class="sm:dark:bg-neutral-900/30 sm:bg-neutral-100 px-0 sm:px-6 md:px-10 lg:px-14 py-6">
                 <div class="mb-10">

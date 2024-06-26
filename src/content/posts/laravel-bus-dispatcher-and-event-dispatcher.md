@@ -3,7 +3,7 @@ title: "Bus Dispatcher & Event Dispatcher"
 description: "Laravel 提供的 Bus 总线组件主要为了解决什么问题？我们平时使用的 event、dispatch 等方法和他有什么关系？他和 Event 组件提供的 Dispatcher 有什么区别？"
 pubDate: "2020-11-04 05:17:23"
 category: "laravel"
-banner: "@images/banners/35TCzBa3CNP65B3TV3oEWIRQKhSeoj0SCicxmY2z.png"
+banner: "/images/banners/35TCzBa3CNP65B3TV3oEWIRQKhSeoj0SCicxmY2z.png"
 tags: ["laravel"]
 oldViewCount: 2636
 oldKeywords: ["bus,even,dispatcher,dispatch,laravel"]

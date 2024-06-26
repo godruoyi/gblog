@@ -3,8 +3,8 @@ title: "Blog 的延续"
 description: "最近花了一些时间将我的博客迁移到了 Astro 平台，我感觉整个过程挺美妙的，很喜欢 Astro。"
 pubDate: "2024-05-16 13:06:49"
 category: "life"
-banner: "@images/posts/blog-3/banner-1.png"
-banner2: "@images/posts/blog-3/banner-2.png"
+banner: "/images/posts/blog-3/banner-1.png"
+banner2: "/images/posts/blog-3/banner-2.png"
 tags: ["Astro", "Blog"]
 selected: true
 ---
@@ -31,6 +31,6 @@ docker run --name gblog -p 9900:9900 -d ${imageName}
 
 按照约定，放几张新版本博客的截图。
 
-![Godruoyi Blog](@images/posts/blog-3/home.png)
-![Godruoyi Categories](@images/posts/blog-3/categories.png)
-![Godruoyi Timeline](@images/posts/blog-3/timeline.png)
+![Godruoyi Blog](/images/posts/blog-3/home.png)
+![Godruoyi Categories](/images/posts/blog-3/categories.png)
+![Godruoyi Timeline](/images/posts/blog-3/timeline.png)

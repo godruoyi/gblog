@@ -3,7 +3,7 @@ title: "RESTful API 设计规范"
 description: "RESTful API 设计规范，文章大量参考了目前比较常见的 RESTful API 设计。  为了更好的讨论规范带来的争议及问题，现已把该文档整..."
 pubDate: "2018-06-24 13:41:48"
 category: "laravel"
-banner: "@images/banners/_1553621572_9IdArs7Xpd.jpg"
+banner: "/images/banners/_1553621572_9IdArs7Xpd.jpg"
 tags: ["laravel"]
 oldViewCount: 17232
 oldKeywords: ["null"]

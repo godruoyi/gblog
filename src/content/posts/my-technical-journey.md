@@ -3,7 +3,7 @@ title: "我是如何走向技术这条路的"
 description: "每个人都有自己的故事，我的故事并不有趣，也不励志，但我愿意把他写出来，你的呢？"
 pubDate: "2021-05-17 06:11:42"
 category: "life"
-banner: "@images/banners/1JNl1w2oiX8z09g2BqKFpDac7WKrapB7kUF8eYKw.png"
+banner: "/images/banners/1JNl1w2oiX8z09g2BqKFpDac7WKrapB7kUF8eYKw.png"
 tags: ["life"]
 oldViewCount: 3424
 oldKeywords: ["技术,如何成为程序员"]

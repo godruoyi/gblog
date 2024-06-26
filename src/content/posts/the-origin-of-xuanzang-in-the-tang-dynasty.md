@@ -3,7 +3,7 @@ title: "唐玄奘的由来"
 description: "这篇短文是前年（2017）年去婺源路上看 《西游记》时写的，现重新整理并发布到我的 Blog。  时阿阿平登位，天下太平，人才短缺。故大力招聘 `PHP` 。  重庆有一人，姓陈名萼，字光蕊，见到该招聘信息"
 pubDate: "2019-03-28 05:23:11"
 category: "books"
-banner: "@images/banners/_1553751386_fdnzaRA7G5.jpg"
+banner: "/images/banners/_1553751386_fdnzaRA7G5.jpg"
 tags: ["books"]
 oldViewCount: 4120
 oldKeywords: ["null"]

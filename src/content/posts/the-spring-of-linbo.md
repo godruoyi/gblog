@@ -3,7 +3,7 @@ title: "连波的春天"
 description: "我意愿我老来的时候，在大山脚下有个房子，和阿宝种点包谷茄子，再养一头狗，像电影「百鸟朝凤」里面的妞妞一样，我在田里干活，她给我送饭。"
 pubDate: "2020-11-03 04:06:42"
 category: "life"
-banner: "@images/banners/qe525sBIiMmDiEx4QQfDBrseDHJNTyZ4SZCAK0q8.png"
+banner: "/images/banners/qe525sBIiMmDiEx4QQfDBrseDHJNTyZ4SZCAK0q8.png"
 tags: ["life"]
 oldViewCount: 2668
 oldKeywords: ["四个春天,电影,纪录片,godruoyi"]

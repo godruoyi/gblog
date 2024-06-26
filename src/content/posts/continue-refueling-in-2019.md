@@ -3,7 +3,7 @@ title: "2020 继续加油"
 description: "大年三十了，终于写完了这篇总结，给来年定个目标，给今年一个肯定；希望以后的每年都有总结可写，有美好的故事发送，加油！"
 pubDate: "2020-01-23 16:14:23"
 category: "life"
-banner: "@images/banners/_1579796057_JziCfZiZhV.jpg"
+banner: "/images/banners/_1579796057_JziCfZiZhV.jpg"
 tags: ["life"]
 oldViewCount: 2502
 oldKeywords: ["null"]

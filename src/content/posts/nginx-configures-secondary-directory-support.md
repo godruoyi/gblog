@@ -3,7 +3,7 @@ title: "Nginx 配置二级目录支持"
 description: "用最简单优雅的方式，配置你的二级目录支持"
 pubDate: "2019-06-03 03:25:20"
 category: "nginx"
-banner: "@images/banners/_1559532299_jGQT68JVuD.jpg"
+banner: "/images/banners/_1559532299_jGQT68JVuD.jpg"
 tags: ["nginx"]
 oldViewCount: 7361
 oldKeywords: ["null"]

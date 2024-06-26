@@ -3,7 +3,7 @@ title: "说一说公众号"
 description: "我不相信我错过的东西真的就那么有价值，我也不相信真的能用碎片时间从工号上学到什么新知识"
 pubDate: "2021-08-19 05:37:06"
 category: "life"
-banner: "@images/banners/m2FL2F5rf7fTPCr35lvB4sDhjNH5wBNWx7fBXPzw.jpeg"
+banner: "/images/banners/m2FL2F5rf7fTPCr35lvB4sDhjNH5wBNWx7fBXPzw.jpeg"
 tags: ["life"]
 oldViewCount: 3355
 oldKeywords: ["go,公众号,博客"]

@@ -3,7 +3,7 @@ title: "Laravel 响应宏原理"
 description: "在使用 Laravel 来写 API 时，经常需要返回一个 JSON 字符串或 JsonResponse，通常的做法可能有两种。  1、在 BaseController 中定义一个返回 JSON 响应的方法，然后继承该 BaseController。"
 pubDate: "2018-04-04 05:09:16"
 category: "laravel"
-banner: "@images/banners/_1553621438_lPB7Pmr00g.png"
+banner: "/images/banners/_1553621438_lPB7Pmr00g.png"
 tags: ["laravel"]
 oldViewCount: 2370
 oldKeywords: ["Laravel,response macro,响应宏"]

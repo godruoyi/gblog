@@ -3,7 +3,7 @@ title: "少平和晓霞的故事"
 description: "生活的道路不断向前伸展。有时我会蓦地想到我们约定的那件事，尤其是在约期临近的几天里，我有一种强烈的忧悒和不安压在心头，仿佛我熬过的所有岁月，都是为了这次约会。"
 pubDate: "2019-08-02 13:11:18"
 category: "books"
-banner: "@images/banners/_1569076328_MWH1g7QeDg.jpg"
+banner: "/images/banners/_1569076328_MWH1g7QeDg.jpg"
 tags: ["books"]
 oldViewCount: 2521
 oldKeywords: ["null"]

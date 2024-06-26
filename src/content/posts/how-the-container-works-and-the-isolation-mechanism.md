@@ -3,7 +3,7 @@ title: "容器的工作原理和隔离机制"
 description: "容器的本质是一个进程，进程与进程之间相互隔离造就了容器与容器互不影响的特性。在启动一个容器（即创建一个进程时），通过 Namespace 技术实现容器的隔离、通过  Cgroups 来实现容器的资源控制。"
 pubDate: "2018-10-21 11:50:15"
 category: "kubernetes"
-banner: "@images/banners/_1553621604_f8zlXLDPQD.jpg"
+banner: "/images/banners/_1553621604_f8zlXLDPQD.jpg"
 tags: ["kubernetes"]
 oldViewCount: 7360
 oldKeywords: ["null"]

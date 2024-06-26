@@ -3,7 +3,7 @@ title: "推荐一款高颜值的 ssh client 工具"
 description: "当我们需要管理的服务器愈来愈多时，用传统的 ssh user@hostname -p port 来连接服务器肯定是不能满足需求的；通常我们会使用下面的 ssh client 来管理服务器账号信息"
 pubDate: "2018-08-28 02:22:48"
 category: "tool"
-banner: "@images/banners/_1553621594_dPbjOyaEBG.jpg"
+banner: "/images/banners/_1553621594_dPbjOyaEBG.jpg"
 tags: ["tool"]
 oldViewCount: 8436
 oldKeywords: ["null"]

@@ -3,7 +3,7 @@ title: "为什么我们需要数据库事务"
 description: "事务一直是简化这些问题的首选机制。他为上层应用程序提供一个可靠性保障：将多个读写操作组合成一个逻辑单元来执行，要么全部成功，要么全部失败。应用程序在处理这些问题时将不再关心一半成功一半失败的情况，也不再拘泥于下层各种不可靠的系统。"
 pubDate: "2021-08-03 07:41:41"
 category: "mysql"
-banner: "@images/banners/jFCjp0lKCELdUeIJYNFqfp5BgU1BaVZYbdwmVLJh.jpeg"
+banner: "/images/banners/jFCjp0lKCELdUeIJYNFqfp5BgU1BaVZYbdwmVLJh.jpeg"
 tags: ["mysql"]
 oldViewCount: 3519
 oldKeywords: ["事务,ACID,Atomicity,Consistency,Isolation,Read Committed,Snapshot,隔离级别"]

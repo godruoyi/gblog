@@ -3,7 +3,7 @@ title: "金瓶梅"
 description: "今儿用微信听书听金瓶梅，听到有一段特别有意思，心想用程序来描述出来肯定也不错。"
 pubDate: "2021-02-19 08:23:15"
 category: "life"
-banner: "@images/banners/oPUzmrZg7MUMtP2L7Jk54USu03WZaIav8L6Fm0n6.jpeg"
+banner: "/images/banners/oPUzmrZg7MUMtP2L7Jk54USu03WZaIav8L6Fm0n6.jpeg"
 tags: ["life"]
 oldViewCount: 2144
 oldKeywords: ["金瓶梅,go,godruoyi,金瓶梅的go实现"]

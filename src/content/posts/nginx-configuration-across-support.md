@@ -3,7 +3,7 @@ title: "Nginx 配置跨越支持"
 description: "用你最美的姿态，去「跨域」那座山"
 pubDate: "2019-05-27 07:24:26"
 category: "nginx"
-banner: "@images/banners/_1566034633_MLDcvVC5wX.jpg"
+banner: "/images/banners/_1566034633_MLDcvVC5wX.jpg"
 tags: ["nginx"]
 oldViewCount: 4044
 oldKeywords: ["null"]

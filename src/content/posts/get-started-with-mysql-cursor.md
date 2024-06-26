@@ -3,7 +3,7 @@ title: "Mysql游标入门"
 description: "> MySQL检索操作返回一组称为结果集的行。这组返回的行都是与SQL语句相匹配的行（零行或多行）。使用简单的SELECT语句，例如，没有办法得到第一行、下一行或前10行，也不存在每次一行地处理所有行的简单方法（相对于..."
 pubDate: "2018-04-04 07:43:48"
 category: "mysql"
-banner: "@images/banners/_1553621481_JkgiDiMr2h.png"
+banner: "/images/banners/_1553621481_JkgiDiMr2h.png"
 tags: ["mysql"]
 oldViewCount: 353
 oldKeywords: ["null"]

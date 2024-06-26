@@ -3,7 +3,7 @@ title: "相比如今公众号等大热的文字创作平台，你如何看待 Bl
 description: "摘抄一段 Hsiaoming Yang 关于 Blog 的看法，在丝经济大行其道的今天，你是不是拥有自己的信息来源呢？"
 pubDate: "2020-05-23 03:51:06"
 category: "life"
-banner: "@images/banners/_1590205863_YuDkTretY5.jpg"
+banner: "/images/banners/_1590205863_YuDkTretY5.jpg"
 tags: ["life"]
 oldViewCount: 2607
 oldKeywords: ["null"]

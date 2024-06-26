@@ -3,7 +3,7 @@ title: "为什么 Laravel 这么优秀"
 description: "Laravel 一直是我心中最优雅的后端框架，为了向更多的人解释为什么 Laravel 这么优雅？框架本身都做了什么操作？比起其他框架的优势在哪里等？我准备从一个后端最常用的 CURD 例子说起，一步一步阐述这过程中 Laravel 都是怎么完成的；以及~~大家~~(我)为什么喜欢用 Laravel。"
 pubDate: "2024-01-24 04:45:05"
 category: "laravel"
-banner: "@images/banners/cltrDj0NYYvdGRANg6gPkpafhUZkjLKQVn2Lofld.jpeg"
+banner: "/images/banners/cltrDj0NYYvdGRANg6gPkpafhUZkjLKQVn2Lofld.jpeg"
 tags: ["laravel"]
 oldViewCount: 13934
 selected: true

@@ -3,7 +3,7 @@ title: "调整内心，写点东西"
 description: "这个五一，我的老朋友结婚啦。那年都军训完才到学校报告并且还睡我上面的小伙，没想到是我们寝室最早结婚的。当初脑子进水选..."
 pubDate: "2018-05-03 16:27:06"
 category: "life"
-banner: "@images/banners/_1553621492_HgG6NHK3b0.jpg"
+banner: "/images/banners/_1553621492_HgG6NHK3b0.jpg"
 tags: ["life"]
 oldViewCount: 2854
 oldKeywords: ["null"]

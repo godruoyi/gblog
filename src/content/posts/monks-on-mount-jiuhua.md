@@ -3,7 +3,7 @@ title: "九华山的和尚"
 description: "当二愣拿着从体检中心领取的早餐站在门口时，一位身穿黄色大褂的和尚出现在他面前。圆顶方袍、颈带佛珠，符合二愣心中对和尚的一切想象。他一手搓着佛珠，一手做着阿弥陀佛，操着流利的普通话："
 pubDate: "2021-02-04 03:33:39"
 category: "life"
-banner: "@images/banners/RFX8MTnNpnrse6othSA6tBwDWhFUMJoVz9T1YjBf.png"
+banner: "/images/banners/RFX8MTnNpnrse6othSA6tBwDWhFUMJoVz9T1YjBf.png"
 tags: ["life"]
 oldViewCount: 3478
 oldKeywords: ["九华山的和尚,九华山,重庆,godruoyi,二愣的闲谈杂鱼"]

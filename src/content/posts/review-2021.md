@@ -3,7 +3,7 @@ title: "2021 年终总结"
 description: "不过这只是属于我自己的看法罢了，每个位置都能发挥他的价值，有些鸟是关不住的。"
 pubDate: "2022-01-28 10:31:19"
 category: "life"
-banner: "@images/banners/MAycsXVXJpbFzBfdP92MJ5s9vD1LipBHIiPxw1Qm.jpeg"
+banner: "/images/banners/MAycsXVXJpbFzBfdP92MJ5s9vD1LipBHIiPxw1Qm.jpeg"
 tags: ["life"]
 oldViewCount: 3570
 oldKeywords: ["年终总结,2021,godruoyi,remote"]
