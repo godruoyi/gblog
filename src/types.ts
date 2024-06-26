@@ -4,7 +4,6 @@ export interface Site {
     url: string
     description: string
     shortDescription: string
-    assertPath: string
 }
 
 export interface NavigationLink {

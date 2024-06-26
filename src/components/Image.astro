@@ -23,7 +23,7 @@ if (typeof image === 'string') {
         throw new Error(`"${imageWithPublicPath}" does not exist in glob: "/public/images/**/*.{jpeg,jpg,png,gif,webp}"`)
     }
 
-    image = await getImage({ src: images[imageWithPublicPath]() })
+    image = await getImage({ src: images[imageWithPublicPath](), format: props.format ?? 'avif' })
 
     blurCSS = await blurStylePublicPath(props.src)
 }
