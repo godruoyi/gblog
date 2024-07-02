@@ -3,8 +3,8 @@ title: "Why Laravel?"
 description: "Laravel is a web application framework with expressive, elegant syntax. A web framework provides a structure and starting point for creating your application."
 pubDate: "2020-05-10 10:01:53"
 category: "php"
-cardImage: "@images/banners/laravel-2.jpg"
-cardImage2: "@images/banners/laravel-3.jpg"
+banner: "@images/banners/laravel-2.jpg"
+banner2: "@images/banners/laravel-3.jpg"
 tags: ["Laravel"]
 selected: true
 ---

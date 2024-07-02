@@ -3,7 +3,7 @@ title: "Markdown elements demo post"
 description: "Our initial conception when we started OpenAI was that we’d create AI and use it to create all sorts of benefits for the world. Instead, it now looks like we’ll create AI and then other people will use it to create all sorts of amazing things that we all benefit from."
 pubDate: "2019-05-12 00:00:00"
 category: "tool"
-cardImage: "@images/banners/markdown.avif"
+banner: "@images/banners/markdown.avif"
 tags: ["Markdown", "Blog", "Astro"]
 ---
 
