@@ -1,7 +1,7 @@
 import type { NavigationLink, Site } from './types.ts'
 
 export const SITE: Site = {
-    author: 'Godruoyi',
+    author: '776',
     url: 'https://76log.pages.dev/',
     title: '776\'s log',
     description: 'Godruoyi\'s personal blog, I enjoy the process of building something using any technology stack',
@@ -23,7 +23,7 @@ export const FooterLinks = [
             { name: 'Posts', url: '/posts' },
             { name: 'Timeline', url: '/timeline' },
             { name: 'Categories', url: '/categories' },
-            { name: 'About Me', url: '/posts/about-godruoyi' },
+            { name: 'About Me', url: '/posts/about-776' },
         ],
     },
     {
