@@ -1,4 +1,4 @@
 ---
 title: 'MyLife 😊'
-description: '关于生活的一切'
+description: '关于生活的一切~'
 ---
