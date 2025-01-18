@@ -4,7 +4,7 @@ export const SITE: Site = {
     author: '776',
     url: 'https://76log.pages.dev/',
     title: '776\'s log',
-    description: 'Godruoyi\'s personal blog, I enjoy the process of building something using any technology stack',
+    description: 'Xqilu\'s personal blog, I currently discovering the power of AI in helping me write less, code more',
     shortDescription: '',
 }
 
