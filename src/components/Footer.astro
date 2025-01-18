@@ -27,7 +27,7 @@ import { FooterLinks, SITE } from '@/config'
                                                 {link.name}
                                             </a>
                                         </li>
-                                ))}
+                                ))} 
                             </ul>
                     </div>
                 ))
@@ -47,11 +47,14 @@ import { FooterLinks, SITE } from '@/config'
             </div>
         </div>
 
-
         <div class="flex items-center text-center justify-center">
             <p class="text-sm text-neutral-600 dark:text-neutral-400">
-                © <span id="current-year">2024</span> {SITE.title}
+                © <span id="current-year"></span> {SITE.title}
             </p>
         </div>
     </div>
 </footer>
+
+<script>
+  document.getElementById('current-year').textContent = new Date().getFullYear();
+</script>
