@@ -1,10 +1,10 @@
 import type { NavigationLink, Site } from './types.ts'
 
 export const SITE: Site = {
-    author: '776',
+    author: 'Luka776',
     url: 'https://76log.pages.dev/',
-    title: '776\'s log',
-    description: 'Xqilu\'s personal blog, I currently discovering the power of AI in helping me write less, code more',
+    title: 'Luka776 Blog',
+    description: 'Luka776\'s personal blog, I currently discovering the power of AI in helping me write less, code more',
     shortDescription: '',
 }
 
@@ -29,9 +29,7 @@ export const FooterLinks = [
     {
         section: 'Other',
         links: [
-            { name: 'RSS', url: '/rss.xml' },
-            { name: 'Site Map', url: '/sitemap-index.xml' },
-            { name: 'Twitter', url: 'https://x.com/godruoyi' },
+            { name: 'Twitter', url: 'https://x.com' },
         ],
     },
 ]
