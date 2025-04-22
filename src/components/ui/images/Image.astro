@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets'
 import { ImageMetadata } from 'astro'
-import { blurStyle } from '@support/image'
+import { blurStyle, isOnlineImage } from '@support/image'
 
 const props = Astro.props
 
@@ -9,10 +9,16 @@ interface FsPathImage extends ImageMetadata {
     fsPath?: string
 }
 
-const image = props.src as FsPathImage
-const showBlur = !props.disableBlur
+let blurCSS = {}
+const isDev = import.meta.env.DEV
 
-const blurCSS = image.fsPath && showBlur ? await blurStyle(image.fsPath) : {}
+if (!isDev) {
+    const image = props.src as FsPathImage
+    const showBlur = !props.disableBlur
+    const filePath = typeof image === 'string' && isOnlineImage(image) ? image : image.fsPath
+
+    blurCSS = filePath && showBlur ? await blurStyle(filePath) : {}
+}
 ---
 
 <Image {...props} style={blurCSS} />
