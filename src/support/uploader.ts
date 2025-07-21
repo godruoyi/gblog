@@ -1,4 +1,4 @@
-import { uploader } from 'astro-uploader'
+import uploader from 'astro-uploader'
 import type { AstroIntegration } from 'astro'
 import { Settings } from './../config.ts'
 

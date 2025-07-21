@@ -34,9 +34,9 @@ export async function GET(context: APIContext) {
     const feedItems: RSSFeedItem[] = []
     for (const post of posts) {
         const { Content } = await post.render()
-        const rawContent = await container.renderToString(Content)
+        const rawContent = await container.renderToString(Content, { partial: true })
 
-        const content = await transform(rawContent.replace(/^<!DOCTYPE html>/, ''), [
+        const content = await transform(rawContent, [
             async (node) => {
                 await walk(node, (node) => {
                     if (node.name === 'a' && node.attributes.href?.startsWith('/')) {
