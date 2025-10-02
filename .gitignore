@@ -23,3 +23,5 @@ pnpm-debug.log*
 .vscode
 
 src/content/posts/test-markdown.md
+
+.zed

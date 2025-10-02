@@ -1,0 +1,78 @@
+---
+interface TimelineItemImage {
+    src: string
+    alt: string
+}
+
+interface TimelineItemLink {
+    href: string
+    text: string
+}
+
+interface TimelineItem {
+    date: string
+    title: string
+    description?: string
+    images?: TimelineItemImage[]
+    link?: TimelineItemLink
+}
+
+interface Props {
+    items: TimelineItem[]
+}
+
+const { items = [] } = Astro.props;
+---
+
+<div class="relative not-prose my-8">
+    {items.map((item, index) => (
+        <div class="flex gap-x-2">
+            <div
+                class="relative -ml-2 last:after:hidden after:absolute after:top-7 after:bottom-0 after:start-3.5 after:w-px after:-translate-x-[0.5px] after:bg-gray-200 dark:after:bg-neutral-700 after:bg-neutral-400"
+            >
+                <div class="relative z-10 size-7 flex justify-center items-center">
+                    <div class="size-2 rounded-full bg-neutral-400 dark:bg-neutral-600"></div>
+                </div>
+            </div>
+            <div class={`grow ${index === items.length - 1 ? '' : 'mb-4'} group`}>
+                <time
+                    class="text-sm font-normal leading-none text-neutral-500 dark:text-neutral-400 group-hover:text-neutral-400"
+                >{item.date}</time>
+                <h3 class="text-lg font-semibold text-neutral-700 group-hover:text-orange-600 dark:text-neutral-200 dark:group-hover:text-orange-300">{item.title}</h3>
+
+                {item.description && (
+                    <p
+                        class="text-base text-neutral-600 group-hover:text-neutral-500 dark:text-neutral-350 dark:group-hover:text-neutral-400"
+                        set:html={item.description}
+                    />
+                )}
+
+                {item.images && item.images.length > 0 && (
+                    <div class={`${index === items.length - 1 ? '' : 'mb-4'} mt-4`}>
+                        {item.images.length === 1
+                            ? (
+                                <figure>
+                                    <img
+                                        src={item.images[0].src}
+                                        alt={item.images[0].alt}
+                                        class="w-full h-auto rounded-lg shadow-md max-w-[350px] max-h-[480px]"
+                                    />
+                                </figure>
+                            )
+                            : (
+                                <div class="flex flex-wrap gap-4">
+                                    {item.images.map(image => (
+                                        <img
+                                            src={image.src}
+                                            alt={image.alt}
+                                            class="w-full max-w-[320px] max-h-[480px] h-auto object-cover rounded-lg shadow-md"
+                                        />
+                                    ))}
+                                </div>
+                            )}
+                    </div>
+                )}
+            </div>
+        </div>
+    ))}
+</div>

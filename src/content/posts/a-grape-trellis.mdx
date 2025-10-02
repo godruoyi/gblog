@@ -54,6 +54,71 @@ selected: true
 
 虽然很简陋，但我期望它今年能结果。
 
+## 最近更新
+
+import ArticleTimeline from '@components/blog/ArticleTimeline.astro';
+
+<ArticleTimeline
+    items={[
+        {
+            date: '20250-03-03',
+            title: '开始搭葡萄架',
+        },
+        {
+            date: '20250-03-12',
+            title: '发芽了',
+            images: [
+               {
+                    src: 'https://images.godruoyi.com/gblog/images/banners/d6e4e791-c2d3-4668-8268-ed13f926ec9c.avif',
+                    alt: '葡萄发芽了',
+                },
+            ],
+        },
+        {
+            date: '2025-05-31',
+            title: '开始结果了',
+            description: '一个多月就快铺满整个葡萄架了，并且还结果了。',
+            images: [
+               {
+                    src: 'https://images.godruoyi.com/gblog/images/banners/3fb20d22-d7ba-4532-bbe1-5a0e12c59950.avif',
+                    alt: '葡萄架',
+                },
+                {
+                    src: 'https://images.godruoyi.com/gblog/images/banners/8abf821e-8210-4c17-bd44-6f05e166ba53.avif',
+                    alt: '葡萄架',
+                },
+            ],
+        },
+        {
+            date: '2025-07-04',
+            title: '变成紫葡萄了',
+            description: '今儿回来一看，铺满整个葡萄架了，就是绿葡萄为啥变紫了呢',
+            images: [
+               {
+                    src: 'https://images.godruoyi.com/gblog/images/banners/db2aade0-83aa-40f6-bb02-30f968988633.avif',
+                    alt: 'Alt text 1',
+                },
+            ],
+        },
+        {
+            date: '2025-09-28',
+            title: '葡萄架垮了',
+            description: '今天回来给丈母娘过生，看到我搭的葡萄架居然垮了，哈，啥豆腐渣工程。',
+            images: [
+               {
+                    src: 'https://images.godruoyi.com/gblog/images/banners/8fac9b13-7d12-4ee1-90d6-20e53873d53a.avif',
+                    alt: '葡萄架居然垮了',
+                },
+            ],
+        },
+        {
+            date: 'todo',
+            title: '未完待续...',
+        },
+    ]}
+/>
+
+
 ## 老丈人系列
 
 *  [老丈人的三轮车](https://godruoyi.com/posts/dads-tricycle/)
