@@ -24,6 +24,7 @@ export const FooterLinks = [
             { name: 'Timeline', url: '/timeline/' },
             { name: 'Categories', url: '/categories/' },
             { name: 'About Me', url: '/posts/about-godruoyi/' },
+            { name: 'Friends', url: '/friends' },
         ],
     },
     {
@@ -32,6 +33,7 @@ export const FooterLinks = [
             { name: 'RSS', url: '/rss.xml' },
             { name: 'Site Map', url: '/sitemap-index.xml' },
             { name: 'GitHub', url: 'https://github.com/godruoyi' },
+            { name: 'Wechat', url: 'https://images.godruoyi.com/wechat.jpg' },
         ],
     },
 ]
