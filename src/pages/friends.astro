@@ -5,17 +5,13 @@ import { getCollection } from 'astro:content'
 import type { CollectionEntry } from 'astro:content'
 
 const friendsData: CollectionEntry<'friends'>[] = await getCollection('friends')
-if (friendsData?.length === 0) {
-    return Astro.redirect('/')
-}
-
-const friends = friendsData[0].data
+const friends = friendsData[0].data.sort(() => Math.random() - 0.5) || []
 ---
 
 <BaseLayout title="Godruoyi Fiends" description="Godruoyi and his friends">
-    <MainSection title="Hey Friends" subTitle="Email me if you want to show your link here." />
+    <MainSection title="Friends & Links" subTitle="Email me if you want to show your link here." />
 
-    <section class="mx-auto max-w-[85rem] px-4 py-8 sm:px-6 lg:px-8 mb-10 2xl:max-w-full">
+    <section class="mx-auto max-w-[85rem] px-4 pt-8 sm:px-6 lg:px-8 mb-10 2xl:max-w-full">
         <div class="grid gap-6 grid-cols-1 lg:grid-cols-3 sm:grid-cols-2">
             {
                 friends.map(f => (
@@ -128,6 +124,7 @@ const friends = friendsData[0].data
             }
         </div>
     </section>
+
     <script is:inline>
     function changeAvatar(event) {
         const dark = event?.detail === 'dark'
