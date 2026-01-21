@@ -26,3 +26,6 @@ tags: ["life"]
 许老三醒了，还好是一个梦，梦里的世界真可怕。
 
 他又摸了摸自己的腿，还在，但为什么觉得那么陌生，好像随时都会有人来把它取走。
+
+- https://godruoyi.com/posts/2024/
+- https://godruoyi.com/posts/banjiu/
