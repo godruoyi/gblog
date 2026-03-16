@@ -25,3 +25,4 @@ pnpm-debug.log*
 src/content/posts/test-markdown.md
 
 .zed
+.claude
