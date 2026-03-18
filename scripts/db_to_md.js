@@ -55,6 +55,7 @@ class BlogToMarkdown {
         }
 
         const arrayBuffer = await response.arrayBuffer()
+        const { Buffer } = require('node:buffer')
         fs.writeFileSync(filePath, Buffer.from(arrayBuffer))
     }
 

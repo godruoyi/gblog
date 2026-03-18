@@ -6,6 +6,8 @@ import BlogInsight from '@components/blog/BlogInsight.astro'
 import HeroSection from '@components/ui/sections/HeroSection.astro'
 import FeaturesSection from '@components/ui/sections/FeaturesSection.astro'
 import HeroSectionAlt from '@components/ui/sections/HeroSectionAlt.astro'
+import GallerySection from '@components/ui/sections/GallerySection.astro'
+import PrimaryCTA from '@components/ui/buttons/PrimaryCTA.astro'
 import blogHeroImg from '@images/home.png'
 
 const posts: CollectionEntry<'posts'>[] = (await getCollection('posts')).sort(
@@ -15,8 +17,8 @@ const posts: CollectionEntry<'posts'>[] = (await getCollection('posts')).sort(
 
 <BaseLayout>
     <HeroSection
-        title=`Hello, <span class="text-yellow-500 dark:text-yellow-400">Godruoyi</span>`
-        subTitle="Hi, I'm Lianbo, I enjoy the process of building something using any technology stack, welcome to my blog"
+        title={`Hello, <span class="text-yellow-500 dark:text-yellow-400">Godruoyi</span>`}
+        subTitle="Hi, I'm Lianbo. I solve bugs by day and write about life by night, welcome to my corner of the internet."
         primaryBtn="Explore Posts"
         primaryBtnURL="/posts"
         src={blogHeroImg}
@@ -41,7 +43,12 @@ const posts: CollectionEntry<'posts'>[] = (await getCollection('posts')).sort(
                 ))
             }
         </div>
+        <div class="mt-10 flex justify-center">
+            <PrimaryCTA title="View All Posts" url="/posts" />
+        </div>
     </section>
+
+    <GallerySection />
 
     <HeroSectionAlt
         title="Fellow me on GitHub"

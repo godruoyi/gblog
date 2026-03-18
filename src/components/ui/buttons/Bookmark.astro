@@ -17,7 +17,7 @@ import Icon from '@components/ui/icons/icon.astro';
 
      constructor(private dataAttrValue: string) {
          this.bookmarkButton = document.querySelector(
-                `[data-bookmark-button="${dataAttrValue}"]`,
+             `[data-bookmark-button="${dataAttrValue}"]`,
          )
      }
 
@@ -82,8 +82,7 @@ import Icon from '@components/ui/icons/icon.astro';
          if (index !== -1) {
              storedBookmarks.splice(index, 1)
              this.unmarkAsStored()
-         }
- else {
+         }  else {
              storedBookmarks.push(window.location.pathname)
              this.markAsStored()
          }
