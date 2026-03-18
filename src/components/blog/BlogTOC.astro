@@ -15,7 +15,8 @@ const { headings } = Astro.props
 const formatedHeadings = headings.reduce((acc, obj) => {
     if (obj.depth === 2) {
         acc.push({ current: obj, children: [] })
-    } else if (obj.depth === 3 && acc.length > 0) {
+    }
+ else if (obj.depth === 3 && acc.length > 0) {
         acc[acc.length - 1].children?.push(obj)
     }
 

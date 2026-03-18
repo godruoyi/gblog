@@ -1,0 +1,197 @@
+---
+interface Tab {
+    id: string
+    title: string
+    description: string
+    image: string
+}
+
+const { tabs, aspectRatio = '4/3' } = Astro.props
+
+interface Props {
+    tabs?: Tab[]
+    aspectRatio?: string // e.g., "4/3", "16/9", "1/1"
+}
+
+const defaultTabs: Tab[] = [
+    {
+        id: 'tab-1',
+        title: 'Daily Life',
+        description: 'Two children are holding balloons in Dali',
+        image: 'https://images.godruoyi.com/gblog/images/banners/e5afce41-0393-4a8d-bec0-9d08de12e958.avif',
+    },
+    {
+        id: 'tab-2',
+        title: 'Hometown Vibes',
+        description: 'I like this that looks just like it came straight from an elementary school textbook cover',
+        image: 'https://images.godruoyi.com/gblog/images/banners/a6cff06d-812a-4c87-bb27-0c7b37e4218e.avif',
+    },
+    {
+        id: 'tab-3',
+        title: 'Travel Snaps',
+        description: 'My wife took this photo of me in Dali',
+        image: 'https://images.godruoyi.com/gblog/images/banners/e0416b00-4056-4e7b-b6d8-e121f9d79efd.avif',
+    },
+]
+
+const galleryTabs = tabs || defaultTabs
+---
+
+<style>
+    .gallery-tab.active {
+        background-color: rgb(229 229 229);
+    }
+
+    :global(.dark) .gallery-tab.active {
+        background-color: rgb(38 38 38);
+    }
+
+    .gallery-tab.active:hover {
+        background-color: rgb(229 229 229);
+    }
+
+    :global(.dark) .gallery-tab.active:hover {
+        background-color: rgb(38 38 38);
+    }
+</style>
+
+<div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+    <div class="relative p-6 md:p-16">
+        <div class="relative z-10 lg:grid lg:grid-cols-12 lg:gap-16 lg:items-center">
+            <div class="mb-10 lg:mb-0 lg:col-span-6 lg:col-start-8 lg:order-2">
+                <h2 class="text-2xl text-neutral-800 dark:text-white font-bold sm:text-3xl">
+                    Life in Snapshots
+                </h2>
+
+                <nav class="grid gap-4 mt-5 md:mt-10" aria-label="Tabs" role="tablist" aria-orientation="vertical">
+                    {
+                        galleryTabs.map((tab, index) => (
+                            <button
+                                type="button"
+                                class={`gallery-tab text-start focus:outline-none p-4 md:p-5 rounded-xl transition-colors duration-200 ease-in-out border border-transparent hover:bg-neutral-100 dark:hover:bg-neutral-800/50 ${
+                                    index === 0 ? 'active' : ''
+                                }`}
+                                id={`tabs-with-card-item-${index + 1}`}
+                                aria-selected={index === 0 ? 'true' : 'false'}
+                                data-hs-tab={`#${tab.id}`}
+                                aria-controls={tab.id}
+                                role="tab"
+                            >
+                                <span class="flex gap-x-6">
+                                    <svg
+                                        class="shrink-0 mt-2 size-6 md:size-7 transition-colors text-neutral-600 dark:text-neutral-400"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="24"
+                                        height="24"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    >
+                                        <rect width="18" height="18" x="3" y="3" rx="2" ry="2" />
+                                        <circle cx="9" cy="9" r="2" />
+                                        <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" />
+                                    </svg>
+                                    <span class="grow">
+                                        <span class="block text-lg font-semibold transition-colors text-neutral-800 dark:text-neutral-200">
+                                            {tab.title}
+                                        </span>
+                                        <span class="block mt-1 text-neutral-600 dark:text-neutral-400">
+                                            {tab.description}
+                                        </span>
+                                    </span>
+                                </span>
+                            </button>
+                        ))
+                    }
+                </nav>
+            </div>
+
+            <div class="lg:col-span-6">
+                <div class="relative">
+                    <div class="relative w-full" style={`aspect-ratio: ${aspectRatio};`}>
+                        {
+                            galleryTabs.map((tab, index) => (
+                                <div
+                                    id={tab.id}
+                                    class={`absolute inset-0 transition-opacity duration-300 ${index === 0 ? '' : 'opacity-0 hidden'}`}
+                                    role="tabpanel"
+                                    aria-labelledby={`tabs-with-card-item-${index + 1}`}
+                                >
+                                    <img
+                                        class="shadow-xl rounded-xl w-full h-full object-cover"
+                                        src={tab.image}
+                                        alt={tab.title}
+                                        loading={index === 0 ? 'eager' : 'lazy'}
+                                    />
+                                </div>
+                            ))
+                        }
+                    </div>
+
+                    <div class="hidden absolute top-0 end-0 translate-x-20 md:block lg:translate-x-20">
+                        <svg
+                            class="w-16 h-auto text-orange-500"
+                            width="121"
+                            height="135"
+                            viewBox="0 0 121 135"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path d="M5 16.4754C11.7688 27.4499 21.2452 57.3224 5 89.0164" stroke="currentColor" stroke-width="10" stroke-linecap="round" />
+                            <path d="M33.6761 112.104C44.6984 98.1239 74.2618 57.6776 83.4821 5" stroke="currentColor" stroke-width="10" stroke-linecap="round" />
+                            <path d="M50.5525 130C68.2064 127.495 110.731 117.541 116 78.0874" stroke="currentColor" stroke-width="10" stroke-linecap="round" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute inset-0 grid grid-cols-12 size-full">
+            <div class="col-span-full lg:col-span-7 lg:col-start-6 bg-neutral-100 dark:bg-neutral-700/40 w-full h-5/6 rounded-xl sm:h-3/4 lg:h-full"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Simple tab functionality with fade transition
+document.addEventListener('DOMContentLoaded', () => {
+    const tabButtons = document.querySelectorAll('.gallery-tab')
+
+    tabButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+            const target = button.getAttribute('data-hs-tab')
+            if (!target) {
+                return
+            }
+
+            // Remove active class from all tabs
+            tabButtons.forEach((btn) => {
+                btn.classList.remove('active')
+                btn.setAttribute('aria-selected', 'false')
+            })
+
+            // Add active class to clicked tab
+            button.classList.add('active')
+            button.setAttribute('aria-selected', 'true')
+
+            // Hide all panels with fade out
+            const panels = document.querySelectorAll('[role="tabpanel"]')
+            panels.forEach((panel) => {
+                panel.classList.add('opacity-0', 'hidden')
+            })
+
+            // Show target panel with fade in
+            const targetPanel = document.querySelector(target)
+            if (targetPanel) {
+                targetPanel.classList.remove('hidden')
+                // Trigger reflow to enable transition
+                void targetPanel.offsetHeight
+                targetPanel.classList.remove('opacity-0')
+            }
+        })
+    })
+})
+</script>

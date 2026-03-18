@@ -137,7 +137,9 @@ const socialPlatforms: SocialPlatform[] = [
                 }
 
                 setTimeout(() => {
-                    if ($successText && oldSuccessText) { $successText.textContent = oldSuccessText }
+                    if ($successText && oldSuccessText) {
+                        $successText.textContent = oldSuccessText
+                    }
                     if ($default && $success) {
                         $success.style.display = ''
                         $default.style.display = ''

@@ -126,29 +126,28 @@ const friends = friendsData[0].data.sort(() => Math.random() - 0.5) || []
     </section>
 
     <script is:inline>
-    function changeAvatar(event) {
-        const dark = event?.detail === 'dark'
-        Array.from(document.getElementsByClassName('friend-avatar')).forEach((avatar) => {
-            const darkAvatar = avatar.getAttribute('data-dark')
-            if (dark && darkAvatar) {
-                avatar.src = avatar.getAttribute('data-dark')
-            }
-            else {
-                avatar.src = avatar.getAttribute('data-light')
-            }
-        })
-    }
-    function getCurrentTheme() {
-        if (window.localStorage.getItem('hs_theme')) {
-            return window.localStorage.getItem('hs_theme') ?? 'default'
-        }
+ function changeAvatar(event) {
+     const dark = event?.detail === 'dark'
+     Array.from(document.getElementsByClassName('friend-avatar')).forEach((avatar) => {
+         const darkAvatar = avatar.getAttribute('data-dark')
+         if (dark && darkAvatar) {
+             avatar.src = avatar.getAttribute('data-dark')
+         }  else {
+             avatar.src = avatar.getAttribute('data-light')
+         }
+     })
+ }
+ function getCurrentTheme() {
+     if (window.localStorage.getItem('hs_theme')) {
+         return window.localStorage.getItem('hs_theme') ?? 'default'
+     }
 
-        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'default'
-    }
-    document.addEventListener('DOMContentLoaded', () => {
-        changeAvatar({ detail: getCurrentTheme() })
+     return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'default'
+ }
+ document.addEventListener('DOMContentLoaded', () => {
+     changeAvatar({ detail: getCurrentTheme() })
 
-        window.addEventListener('on-hs-appearance-change', changeAvatar)
-    })
-    </script>
+     window.addEventListener('on-hs-appearance-change', changeAvatar)
+ })
+ </script>
 </BaseLayout>
