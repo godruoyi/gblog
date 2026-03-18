@@ -29,7 +29,7 @@ const defaultTabs: Tab[] = [
     {
         id: 'tab-3',
         title: 'Travel Snaps',
-        description: 'My wife took this photo of me in Dali',
+        description: 'My wife took this photo of me and my daughter in Dali',
         image: 'https://images.godruoyi.com/gblog/images/banners/e0416b00-4056-4e7b-b6d8-e121f9d79efd.avif',
     },
 ]
@@ -184,11 +184,9 @@ document.addEventListener('DOMContentLoaded', () => {
             })
 
             // Show target panel with fade in
-            const targetPanel = document.querySelector(target)
+            const targetPanel = document.querySelector(target) as HTMLElement
             if (targetPanel) {
                 targetPanel.classList.remove('hidden')
-                // Trigger reflow to enable transition
-                void targetPanel.offsetHeight
                 targetPanel.classList.remove('opacity-0')
             }
         })
