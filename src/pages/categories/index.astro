@@ -97,6 +97,7 @@ const URL = Astro.url.href
                                 slug={category.slug}
                                 title={category.data.title}
                                 description={category.data.description}
+                                background={category.data.background}
                                 count={postMap.get(category.slug)?.length ?? 0}
                                 publishDate={timeago(postMap.get(category.slug)?.[0]?.data?.pubDate)}
                                 layoutPattern={category.layoutPattern}

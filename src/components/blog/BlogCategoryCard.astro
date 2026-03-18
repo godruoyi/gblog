@@ -5,6 +5,7 @@ interface Props {
     description: string
     count: number
     publishDate: string
+    background?: string
     layoutPattern?: {
         smCol: number
         mdCol: number
@@ -13,65 +14,129 @@ interface Props {
     }
 }
 
-const { slug, layoutPattern, title, description, count, publishDate } = Astro.props
+const { slug, layoutPattern, title, description, count, publishDate, background } = Astro.props
 const isSingleItem = layoutPattern && layoutPattern.row === 1 && (layoutPattern.smCol === 1 || layoutPattern.mdCol === 1)
+const isBigCard = layoutPattern && layoutPattern.row === 2 && layoutPattern.mdCol >= 2
 
 const formatedDescription = isSingleItem ? `No description available` : description
+const cardImage = background || ''
 ---
+
+<style>
+    .flip-container {
+        perspective: 1000px;
+    }
+
+    .flip-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transition: transform 0.3s ease-out;
+        transform-style: preserve-3d;
+    }
+
+    .flip-container:hover .flip-inner {
+        transform: rotateY(180deg);
+    }
+
+    .flip-front,
+    .flip-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        border-radius: 0.75rem;
+    }
+
+    .flip-front {
+        z-index: 2;
+        transform: rotateY(0deg);
+    }
+
+    .flip-back {
+        transform: rotateY(180deg);
+    }
+</style>
 <a
     class="ring-zinc-500 dark:ring-zinc-200 dark:focus:outline-none"
     href={`/categories/${slug}/`}
     data-astro-prefetch="false"
 >
     <div
-        class="rounded-xl group shadow-md overflow-hidden transition-all duration-300 cursor-pointer h-full flex flex-col min-h-[220px] bg-white dark:bg-neutral-900/30"
+        class={`rounded-xl group shadow-md overflow-hidden transition-all duration-300 cursor-pointer h-full flex flex-col min-h-[220px] bg-white dark:bg-neutral-900/30 ${isBigCard ? 'flip-container' : ''}`}
     >
-        <div
-            class="overflow-hidden relative flex-grow min-h-0"
-        >
-            <div
-                class="absolute inset-1 p-3 md:p-4 lg:p-5 flex flex-col justify-end bg-gradient-to-t to-transparent"
-            >
-                <h2 class="mb-4 text-balance text-4xl font-extrabold tracking-tight text-neutral-700 dark:text-neutral-350 group-hover:text-orange-600 dark:group-hover:text-orange-300">
-                    {title}
-                </h2>
-                <p class=`mb-4 ${isSingleItem ? 'hidden lg:block' : ''} max-w-prose text-pretty font-light text-neutral-600 dark:text-neutral-400 sm:text-lg group-hover:text-neutral-500 dark:group-hover:text-neutral-300`>
-                    {formatedDescription}
-                </p>
-                <div
-                    class="flex justify-between items-center text-xs text-neutral-600 dark:text-neutral-400 mt-auto pt-1 md:pt-2"
-                >
-                    <span class="inline-flex items-center">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="12"
-                            height="12"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            class="mr-1"
-                        >
-                            <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path>
-                        </svg>
-                        {count}
-                    </span>
-                    <span class="inline-flex items-center">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="12"
-                            height="12"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            class="mr-1"
-                        >
-                           <circle cx="12" cy="12" r="10"></circle>
-                           <polyline points="12 6 12 12 16 14"></polyline>
-                        </svg>
-                        {publishDate}
-                    </span>
+        {isBigCard ? (
+            <div class="flip-inner h-full">
+                <!-- Front Side -->
+                <div class="flip-front">
+                    <div class="overflow-hidden relative h-full">
+                        <div class="absolute inset-1 p-3 md:p-4 lg:p-5 flex flex-col justify-end bg-gradient-to-t to-transparent">
+                            <h2 class="mb-4 text-balance text-4xl font-extrabold tracking-tight text-neutral-700 dark:text-neutral-350 group-hover:text-orange-600 dark:group-hover:text-orange-300">
+                                {title}
+                            </h2>
+                            <p class={`mb-4 ${isSingleItem ? 'hidden lg:block' : ''} max-w-prose text-pretty font-light text-neutral-600 dark:text-neutral-400 sm:text-lg group-hover:text-neutral-500 dark:group-hover:text-neutral-300`}>
+                                {formatedDescription}
+                            </p>
+                            <div class="flex justify-between items-center text-xs text-neutral-600 dark:text-neutral-400 mt-auto pt-1 md:pt-2">
+                                <span class="inline-flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="mr-1">
+                                        <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path>
+                                    </svg>
+                                    {count}
+                                </span>
+                                <span class="inline-flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="mr-1">
+                                       <circle cx="12" cy="12" r="10"></circle>
+                                       <polyline points="12 6 12 12 16 14"></polyline>
+                                    </svg>
+                                    {publishDate}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flip-back relative">
+                    <img
+                        src={cardImage}
+                        alt={title}
+                        class="w-full h-full object-cover"
+                        loading="lazy"
+                    />
+                    <div class="absolute inset-0 bg-black/40 dark:bg-black/50"></div>
+                    <div class="absolute inset-0 flex items-center justify-center p-6">
+                        <h2 class="text-center text-balance text-4xl md:text-5xl font-extrabold tracking-tight text-white drop-shadow-lg">
+                            {title}
+                        </h2>
+                    </div>
                 </div>
             </div>
-        </div>
+        ) : (
+            <div class="overflow-hidden relative flex-grow min-h-0">
+                <div class="absolute inset-1 p-3 md:p-4 lg:p-5 flex flex-col justify-end bg-gradient-to-t to-transparent">
+                    <h2 class="mb-4 text-balance text-4xl font-extrabold tracking-tight text-neutral-700 dark:text-neutral-350 group-hover:text-orange-600 dark:group-hover:text-orange-300">
+                        {title}
+                    </h2>
+                    <p class={`mb-4 ${isSingleItem ? 'hidden lg:block' : ''} max-w-prose text-pretty font-light text-neutral-600 dark:text-neutral-400 sm:text-lg group-hover:text-neutral-500 dark:group-hover:text-neutral-300`}>
+                        {formatedDescription}
+                    </p>
+                    <div class="flex justify-between items-center text-xs text-neutral-600 dark:text-neutral-400 mt-auto pt-1 md:pt-2">
+                        <span class="inline-flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="mr-1">
+                                <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path>
+                            </svg>
+                            {count}
+                        </span>
+                        <span class="inline-flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="mr-1">
+                               <circle cx="12" cy="12" r="10"></circle>
+                               <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            {publishDate}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        )}
     </div>
 </a>
