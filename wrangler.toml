@@ -1,0 +1,14 @@
+name = "gblog-astro"
+compatibility_date = "2024-01-01"
+
+[[kv_namespaces]]
+binding = "GALLERY"
+id = "39f12dc4e07a4e76b6d44d725a523eb9"
+
+[[r2_buckets]]
+binding = "R2_IMAGES"
+bucket_name = "gblog-images"
+
+[vars]
+CDN_DOMAIN = "images.godruoyi.com"
+# wrangler secret put CF_UPLOAD_TOKEN

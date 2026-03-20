@@ -22,6 +22,8 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "pages:dev": "wrangler pages dev ./dist --ip 0.0.0.0",
+    "pages:build": "astro build && wrangler pages dev ./dist --ip 0.0.0.0",
     "astro": "astro",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"

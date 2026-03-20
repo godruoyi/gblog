@@ -16,6 +16,7 @@ pnpm-debug.log*
 # environment variables
 .env
 .env.production
+.dev.vars
 
 # macOS-specific files
 .DS_Store
@@ -26,3 +27,4 @@ src/content/posts/test-markdown.md
 
 .zed
 .claude
+.wrangler
