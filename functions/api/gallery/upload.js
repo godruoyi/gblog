@@ -7,8 +7,8 @@
  *   - title: string (3-100 chars)
  *   - description: string (10-500 chars)
  *   - token: string
- *   - width: number (optional, default: 1500, range: 100-4000)
- *   - height: number (optional, default: 750, range: 100-4000)
+ *   - width: number (optional, default: 1500, range: 100-4000, height auto-adapts)
+ *   - createdAt: string (optional, date string, defaults to current time)
  *
  * Response:
  *   - 200: { success: true, item: {...} }
@@ -29,24 +29,26 @@ export async function onRequest(context) {
         const description = formData.get('description')
         const uploadToken = formData.get('token')
 
-        // Parse width and height with defaults
+        // Parse width with default (height will auto-adapt to maintain aspect ratio)
         const width = formData.get('width') ? Number.parseInt(formData.get('width'), 10) : 1500
-        const height = formData.get('height') ? Number.parseInt(formData.get('height'), 10) : 750
+
+        let createdAt = new Date().toISOString()
+        const createdAtInput = formData.get('createdAt')
+        if (createdAtInput) {
+            const parsedDate = new Date(createdAtInput)
+            if (!Number.isNaN(parsedDate.getTime())) {
+                createdAt = parsedDate.toISOString()
+            }
+        }
 
         if (uploadToken !== env.CF_UPLOAD_TOKEN) {
             return jsonResponse({ error: 'Invalid upload token' }, 401)
         }
 
-        // Validate width and height
+        // Validate width
         if (Number.isNaN(width) || width < 100 || width > 4000) {
             return jsonResponse({
                 error: 'Width must be a number between 100 and 4000'
-            }, 400)
-        }
-
-        if (Number.isNaN(height) || height < 100 || height > 4000) {
-            return jsonResponse({
-                error: 'Height must be a number between 100 and 4000'
             }, 400)
         }
 
@@ -74,7 +76,7 @@ export async function onRequest(context) {
             }, 400)
         }
 
-        console.log(`📸 Processing upload: "${title}" (${(image.size / 1024 / 1024).toFixed(2)}MB)`)
+        console.log(`📸 Processing upload: "${title}" (${(image.size / 1024 / 1024).toFixed(2)}MB, createdAt: ${createdAt})`)
 
         const uuid = crypto.randomUUID()
         const extension = getFileExtension(image.type)
@@ -88,19 +90,20 @@ export async function onRequest(context) {
             },
             customMetadata: {
                 originalName: image.name || 'unknown',
-                uploadedAt: new Date().toISOString(),
+                createdAt,
                 title: title || 'Daily Life',
             }
         })
 
         console.log(`✅ R2 upload successful: ${filename}`)
 
-        // generate Cloudflare Image Resizing URL with customizable dimensions
-        // format: https://domain.com/cdn-cgi/image/width=1500,height=750,fit=cover,format=auto/path
+        // generate Cloudflare Image Resizing URL with auto-height
+        // format: https://domain.com/cdn-cgi/image/width=1500,fit=scale-down,format=auto/path
+        // height auto-adapts to maintain aspect ratio
         const cdnDomain = env.CDN_DOMAIN || 'images.godruoyi.com'
-        const imageUrl = `https://${cdnDomain}/cdn-cgi/image/width=${width},height=${height},fit=cover,format=auto/${filename}`
+        const imageUrl = `https://${cdnDomain}/cdn-cgi/image/width=${width},fit=scale-down,format=auto/${filename}`
 
-        console.log(`🖼️ Generated optimized URL: ${imageUrl} (${width}x${height})`)
+        console.log(`🖼️ Generated optimized URL: ${imageUrl} (width=${width}, height=auto)`)
 
         const existingData = await env.GALLERY.get('gallery-items', { type: 'json' }) || []
 
@@ -115,16 +118,13 @@ export async function onRequest(context) {
             description: description.trim(),
             image: imageUrl,
             r2Path: filename,
-            createdAt: new Date().toISOString()
+            createdAt,
         }
 
         existingData.push(newItem)
         const updatedData = existingData
 
-        console.log(`➕ Added new item (total: ${existingData.length})`)
-
         await env.GALLERY.put('gallery-items', JSON.stringify(updatedData))
-        console.log(`✅ KV updated successfully`)
 
         return jsonResponse({
             success: true,
@@ -134,7 +134,6 @@ export async function onRequest(context) {
             totalItems: updatedData.length
         })
     } catch (error) {
-        console.error('❌ Upload error:', error)
         return jsonResponse({
             error: error.message || 'Internal server error'
         }, 500)

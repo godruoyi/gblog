@@ -22,7 +22,7 @@ export async function onRequest(context) {
         }
 
         const sortedData = galleryData.sort((a, b) => {
-            return new Date(b.createdAt) - new Date(a.createdAt)
+            return new Date(a.createdAt) - new Date(b.createdAt)
         })
 
         return jsonResponse(sortedData)
