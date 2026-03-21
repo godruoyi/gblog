@@ -31,21 +31,15 @@ export async function onRequest(context) {
             return jsonResponse({ error: 'Invalid upload token' }, 401)
         }
 
-        if (!image || !title || !description) {
+        if (!image) {
             return jsonResponse({
-                error: 'Missing required fields (image, title, description)'
+                error: 'Image file is required'
             }, 400)
         }
 
-        if (title.length < 3 || title.length > 100) {
+        if (description.length < 3 || description.length > 500) {
             return jsonResponse({
-                error: 'Title must be 3-100 characters'
-            }, 400)
-        }
-
-        if (description.length < 10 || description.length > 500) {
-            return jsonResponse({
-                error: 'Description must be 10-500 characters'
+                error: 'Description must be 3-500 characters'
             }, 400)
         }
 

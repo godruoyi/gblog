@@ -19,6 +19,8 @@
   },
   "scripts": {
     "dev": "astro dev",
+    "dev:full": "./scripts/dev-with-functions.sh",
+    "dev:functions": "astro build && wrangler pages dev ./dist --ip 0.0.0.0 --live-reload",
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
