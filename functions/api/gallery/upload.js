@@ -7,6 +7,8 @@
  *   - title: string (3-100 chars)
  *   - description: string (10-500 chars)
  *   - token: string
+ *   - width: number (optional, default: 1500, range: 100-4000)
+ *   - height: number (optional, default: 750, range: 100-4000)
  *
  * Response:
  *   - 200: { success: true, item: {...} }
@@ -27,8 +29,25 @@ export async function onRequest(context) {
         const description = formData.get('description')
         const uploadToken = formData.get('token')
 
+        // Parse width and height with defaults
+        const width = formData.get('width') ? Number.parseInt(formData.get('width'), 10) : 1500
+        const height = formData.get('height') ? Number.parseInt(formData.get('height'), 10) : 750
+
         if (uploadToken !== env.CF_UPLOAD_TOKEN) {
             return jsonResponse({ error: 'Invalid upload token' }, 401)
+        }
+
+        // Validate width and height
+        if (Number.isNaN(width) || width < 100 || width > 4000) {
+            return jsonResponse({
+                error: 'Width must be a number between 100 and 4000'
+            }, 400)
+        }
+
+        if (Number.isNaN(height) || height < 100 || height > 4000) {
+            return jsonResponse({
+                error: 'Height must be a number between 100 and 4000'
+            }, 400)
         }
 
         if (!image) {
@@ -76,12 +95,12 @@ export async function onRequest(context) {
 
         console.log(`✅ R2 upload successful: ${filename}`)
 
-        // generate Cloudflare Image Resizing URL
+        // generate Cloudflare Image Resizing URL with customizable dimensions
         // format: https://domain.com/cdn-cgi/image/width=1500,height=750,fit=cover,format=auto/path
         const cdnDomain = env.CDN_DOMAIN || 'images.godruoyi.com'
-        const imageUrl = `https://${cdnDomain}/cdn-cgi/image/width=1500,height=750,fit=cover,format=auto/${filename}`
+        const imageUrl = `https://${cdnDomain}/cdn-cgi/image/width=${width},height=${height},fit=cover,format=auto/${filename}`
 
-        console.log(`🖼️ Generated optimized URL: ${imageUrl}`)
+        console.log(`🖼️ Generated optimized URL: ${imageUrl} (${width}x${height})`)
 
         const existingData = await env.GALLERY.get('gallery-items', { type: 'json' }) || []
 
