@@ -3,6 +3,7 @@ import type { CollectionEntry } from 'astro:content'
 import { getCollection } from 'astro:content'
 import BaseLayout from '@layouts/BaseLayout.astro'
 import BlogTimeline from '@components/blog/BlogTimeline.astro'
+import Icon from '@components/ui/icons/icon.astro'
 import { SITE } from '@/config'
 
 const posts: CollectionEntry<'posts'>[] = (await getCollection('posts')).sort(
@@ -33,7 +34,12 @@ const URL = Astro.url.href
 >
     <section class="mx-auto max-w-[85rem] mt-10 lg:mt-10 px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
         <div class="max-w-3xl mx-auto mb-10 lg:mb-14">
-            <h2 class="text-3xl font-bold text-neutral-800 dark:text-neutral-200 md:text-4xl md:leading-tight">Timeline</h2>
+            <h2 class="text-3xl font-bold text-neutral-800 dark:text-neutral-200 md:text-4xl md:leading-tight">
+                Timeline
+                <a href="/life-snapshots" title="Switch to Life in Snapshots" class="inline-flex items-center ml-2 align-middle text-neutral-400 hover:text-orange-400 dark:text-neutral-500 dark:hover:text-orange-300 transition-colors duration-300">
+                    <Icon name="switchPage" />
+                </a>
+            </h2>
             <p class="mt-4 text-lg group text-pretty text-neutral-600 dark:text-neutral-400">
                 目前一共写了 <span class="group-hover:text-yellow-500 group-hover:dark:text-yellow-400">{posts.length}</span> 篇文章，再接再厉吧 💪
             </p>
