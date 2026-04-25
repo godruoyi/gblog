@@ -1,4 +1,5 @@
 ---
+import { ClientRouter } from 'astro:transitions'
 import BaseHead from '@components/BaseHead.astro'
 import Footer from '@components/Footer.astro'
 import Header from '@components/Header.astro'
@@ -29,21 +30,32 @@ const normalizeTitle = !title ? SITE.title : `${title} | ${SITE.title}`
             ogDescription={description}
             structuredData={structuredData}
         />
+        <ClientRouter />
         <script is:inline>
-        if (localStorage.getItem('hs_theme') === 'dark' || (!('hs_theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark')
-        }  else {
-            document.documentElement.classList.remove('dark')
+        function applyTheme() {
+            if (localStorage.getItem('hs_theme') === 'dark' || (!('hs_theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark')
+            } else {
+                document.documentElement.classList.remove('dark')
+            }
         }
+        applyTheme()
+        document.addEventListener('astro:after-swap', applyTheme)
         </script>
         <script is:inline src="/vendor/lenis/lenis1.1.5.min.js"></script>
         <script is:inline>
-        const lenis = new Lenis()
-        function raf(time) {
-            lenis.raf(time)
-            requestAnimationFrame(raf)
+        function initLenis() {
+            if (window.__lenisRaf) cancelAnimationFrame(window.__lenisRaf)
+            if (window.__lenis) window.__lenis.destroy()
+            window.__lenis = new Lenis()
+            function raf(time) {
+                window.__lenis.raf(time)
+                window.__lenisRaf = requestAnimationFrame(raf)
+            }
+            window.__lenisRaf = requestAnimationFrame(raf)
         }
-        requestAnimationFrame(raf)
+        initLenis()
+        document.addEventListener('astro:after-swap', initLenis)
         </script>
         <GoogleAnalytics />
         <UmamiAnalytics />

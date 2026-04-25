@@ -1,5 +1,5 @@
 ---
-import { type CollectionEntry, getCollection } from 'astro:content'
+import { type CollectionEntry, getCollection, render } from 'astro:content'
 import BaseLayout from '@layouts/BaseLayout.astro'
 import BlogComments from '@components/blog/BlogComments'
 import BlogTOC from '@components/blog/BlogTOC.astro'
@@ -10,7 +10,7 @@ import { SITE, Settings } from '@/config'
 export async function getStaticPaths() {
     const posts = await getCollection('posts')
     return posts.map(post => ({
-        params: { slug: post.slug },
+        params: { slug: post.id },
         props: post,
     }))
 }
@@ -18,13 +18,13 @@ export async function getStaticPaths() {
 type Props = CollectionEntry<'posts'>
 
 const post = Astro.props
-const { Content, remarkPluginFrontmatter, headings } = await post.render()
+const { Content, remarkPluginFrontmatter, headings } = await render(post)
 
 const category: CollectionEntry<'categories'> = (await getCollection('categories')).filter(
-    c => c.slug === post.data.category,
+    c => c.id === post.data.category,
 ).pop() as CollectionEntry<'categories'>
 
-const tags = post.data.tags ?? [category.slug]
+const tags = post.data.tags ?? [category.id]
 const URL = Astro.url.href
 const ogImage = post.data.ogImage
 ---
@@ -74,7 +74,7 @@ const ogImage = post.data.ogImage
                             <li class="inline-flex items-center">
                                 <a
                                     class="flex items-center text-sm text-orange-400 hover:text-orange-500 focus:outline-none focus:text-orange-500"
-                                    href=`/categories/${category.slug}`
+                                    href=`/categories/${category.id}`
                                 >
                                     {category?.data?.title}
                                 </a>

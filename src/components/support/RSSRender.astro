@@ -1,14 +1,14 @@
 ---
-import { type ContentCollectionKey, getEntry } from 'astro:content'
+import { getEntry, render } from 'astro:content'
 
 const { collection, slug } = Astro.params
-const entry = await getEntry(collection as ContentCollectionKey, slug as string)
+const entry = await getEntry(collection as string, slug as string)
 
 if (!entry) {
     throw new Error(`Entry not found: ${collection}/${slug}`)
 }
 
-const { Content } = await entry.render();
+const { Content } = await render(entry);
 ---
 
 <Content />

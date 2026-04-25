@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import fallbackData from '@/content/gallery/fallback.json'
+import fallbackData from '@/fallback.json'
 
 interface GalleryItem {
     id: string

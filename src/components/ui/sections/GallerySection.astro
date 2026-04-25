@@ -1,4 +1,6 @@
 ---
+import fallbackData from '@/fallback.json'
+
 interface Tab {
     id: string
     title: string
@@ -13,28 +15,7 @@ interface Props {
     aspectRatio?: string // e.g., "4/3", "16/9", "1/1"
 }
 
-const defaultTabs: Tab[] = [
-    {
-        id: 'tab-1',
-        title: 'Daily Life',
-        description: 'Two children are holding balloons in Dali',
-        image: 'https://images.godruoyi.com/gblog/images/banners/e5afce41-0393-4a8d-bec0-9d08de12e958.avif',
-    },
-    {
-        id: 'tab-2',
-        title: 'Hometown Vibes',
-        description: 'I like this that looks just like it came straight from an elementary school textbook cover',
-        image: 'https://images.godruoyi.com/gblog/images/banners/a6cff06d-812a-4c87-bb27-0c7b37e4218e.avif',
-    },
-    {
-        id: 'tab-3',
-        title: 'Travel Snaps',
-        description: 'My wife took this photo of me and my daughter in Dali',
-        image: 'https://images.godruoyi.com/gblog/images/banners/e0416b00-4056-4e7b-b6d8-e121f9d79efd.avif',
-    },
-]
-
-const galleryTabs = tabs || defaultTabs
+const galleryTabs = tabs || fallbackData
 ---
 
 <style>

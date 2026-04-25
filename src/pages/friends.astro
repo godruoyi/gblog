@@ -5,7 +5,7 @@ import { getCollection } from 'astro:content'
 import type { CollectionEntry } from 'astro:content'
 
 const friendsData: CollectionEntry<'friends'>[] = await getCollection('friends')
-const friends = friendsData[0].data.sort(() => Math.random() - 0.5) || []
+const friends = friendsData.map(f => f.data).sort(() => Math.random() - 0.5)
 ---
 
 <BaseLayout title="Godruoyi Fiends" description="Godruoyi and his friends">

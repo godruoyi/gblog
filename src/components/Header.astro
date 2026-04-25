@@ -83,28 +83,35 @@ import { NavigationLinks } from '@/config'
     </nav>
 </header>
 <script is:inline>
-const ViewTransitionStyleCSS = `::view-transition-group(root) {
-    animation-timing-function: var(--expo-out);
-}
+const ThemeTransitionCSS = `
+::view-transition-group(root) { animation-timing-function: cubic-bezier(0.16,1,0.3,1); }
 ::view-transition-new(root) {
-    mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><defs><filter id="blur"><feGaussianBlur stdDeviation="2"/></filter></defs><circle cx="0" cy="0" r="18" fill="white" filter="url(%23blur)"/></svg>') top left / 0 no-repeat;
+    mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><circle cx="0" cy="0" r="18" fill="white"/></svg>') top left / 0 no-repeat;
     mask-origin: content-box;
-    animation: scale 1s;
+    animation: theme-reveal 0.9s;
     transform-origin: top left;
 }
-::view-transition-old(root),.dark::view-transition-old(root) {
-    animation: scale 1s;
-    transform-origin: top left;
+::view-transition-old(root), .dark::view-transition-old(root) {
+    animation: none;
     z-index: -1;
 }
-@keyframes scale {
-    to {
-        mask-size: 350vmax;
+@keyframes theme-reveal { to { mask-size: 350vmax; } }
+`
+function switchThemeWithTransition(value) {
+    const switchTheme = () => HSThemeAppearance.setAppearance(value, true, true)
+    if (!document.startViewTransition) { switchTheme(); return }
+    let styleEl = document.querySelector('style[data-theme-transition]')
+    if (!styleEl) {
+        styleEl = document.createElement('style')
+        styleEl.setAttribute('data-theme-transition', '')
+        document.head.appendChild(styleEl)
     }
-}`
-const viewTransitionStyleElement = document.createElement('style')
-document.head.appendChild(viewTransitionStyleElement)
-const injectViewTransitionStyleCSS = () => viewTransitionStyleElement.textContent = ViewTransitionStyleCSS
+    const t = document.startViewTransition(() => {
+        styleEl.textContent = ThemeTransitionCSS
+        switchTheme()
+    })
+    t.finished.then(() => { styleEl.textContent = '' })
+}
 
 const HSThemeAppearance = {
     init() {
@@ -173,7 +180,7 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () 
     }
 })
 
-window.addEventListener('load', () => {
+function initThemeListeners() {
     const $clickableThemes = document.querySelectorAll(
         '[data-hs-theme-click-value]',
     )
@@ -183,20 +190,7 @@ window.addEventListener('load', () => {
 
     $clickableThemes.forEach(($item) => {
         $item.addEventListener('click', () => {
-            const switchThem = () => HSThemeAppearance.setAppearance(
-                $item.getAttribute('data-hs-theme-click-value'),
-                true,
-                true,
-            )
-
-            if (document.startViewTransition) {
-                document.startViewTransition(() => {
-                    injectViewTransitionStyleCSS()
-                    switchThem()
-                })
-            } else {
-                switchThem()
-            }
+            switchThemeWithTransition($item.getAttribute('data-hs-theme-click-value'))
         })
     })
 
@@ -208,11 +202,21 @@ window.addEventListener('load', () => {
         $item.checked = HSThemeAppearance.getAppearance() === 'dark'
     })
 
-    window.addEventListener('on-hs-appearance-change', (e) => {
+    if (window.__onHsAppearanceChange) {
+        window.removeEventListener('on-hs-appearance-change', window.__onHsAppearanceChange)
+    }
+    window.__onHsAppearanceChange = (e) => {
         $switchableThemes.forEach(($item) => {
             $item.checked = e.detail === 'dark'
         })
-    })
-})
+    }
+    window.addEventListener('on-hs-appearance-change', window.__onHsAppearanceChange)
+}
+
+initThemeListeners()
+if (!window.__headerPageLoadListenerAdded) {
+    window.__headerPageLoadListenerAdded = true
+    document.addEventListener('astro:page-load', initThemeListeners)
+}
 </script>
 <script is:inline src="/vendor/preline/collapse2.1.0.min.js"></script>

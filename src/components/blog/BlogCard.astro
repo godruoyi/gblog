@@ -11,13 +11,13 @@ interface Props {
 ---
 
 <a
-    class="group relative block rounded-xl outline-none ring-zinc-500 transition duration-500 focus-visible:ring dark:ring-zinc-200 dark:focus:outline-none"
-    href={`/posts/${blog.slug}/`}
+    class="group relative flex flex-col rounded-sm outline-none ring-zinc-500 transition duration-500 focus-visible:ring dark:ring-zinc-200 dark:focus:outline-none overflow-hidden bg-white dark:bg-neutral-900/40 border border-neutral-200 dark:border-neutral-800"
+    href={`/posts/${blog.id}/`}
     data-astro-prefetch="false"
 >
-    <div class="relative w-full flex-shrink-0 overflow-hidden rounded-xl before:absolute before:inset-x-0 before:z-[1] before:size-full before:bg-gradient-to-t before:from-neutral-900/[.7]">
+    <div class="relative w-full flex-shrink-0 overflow-hidden before:absolute before:inset-x-0 before:z-[1] before:size-full before:bg-gradient-to-t before:from-neutral-900/[.5]">
         <Image
-            class="w-full h-full sm:h-[220px] md:h-[240px] start-0 top-0 size-full object-cover transition duration-500 group-hover:scale-110"
+            class="w-full h-[200px] sm:h-[220px] start-0 top-0 size-full object-cover transition duration-500 group-hover:scale-105"
             src={blog.data.banner}
             alt={blog.data.title}
             draggable="false"
@@ -25,12 +25,21 @@ interface Props {
             format="avif"
             width="800"
             height="460"
+            disableBlur={typeof blog.data.banner === 'string'}
         />
     </div>
-    <h3 class="mt-2 text-xl font-bold text-neutral-800 group-hover:text-orange-400 dark:text-neutral-200 dark:group-hover:text-orange-300">
-        {blog.data.title}
-    </h3>
-    <p class="mt-2 text-sm text-gray-600 dark:text-neutral-400 dark:group-hover:text-neutral-500">
-        {formatDate(blog.data.pubDate)}
-    </p>
+
+    <div class="flex flex-col flex-grow p-4 sm:p-5">
+        <h3 class="text-lg font-bold text-neutral-800 group-hover:text-orange-400 dark:text-neutral-100 dark:group-hover:text-orange-300 transition-colors line-clamp-2">
+            {blog.data.title}
+        </h3>
+
+        <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-400 line-clamp-2 flex-grow">
+            {blog.data.description}
+        </p>
+
+        <p class="mt-3 text-xs text-neutral-500 dark:text-neutral-500">
+            {formatDate(blog.data.pubDate)}
+        </p>
+    </div>
 </a>

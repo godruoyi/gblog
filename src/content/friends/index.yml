@@ -1,4 +1,5 @@
-- avatar: 'https://yufan.me/logo.svg'
+- id: yufan
+  avatar: 'https://yufan.me/logo.svg'
   social:
     twitter: 'amehochan'
     blog: 'https://yufan.me/links'
@@ -8,7 +9,8 @@
   name: '雨帆'
   description: "A thoughtful guy living a simple life. Working for bread, studying for interests, and thinking for hope. Learned about just 8 programming languages for fun"
 
-- avatar: 'https://images.godruoyi.com/gblog/bird.png'
+- id: sppan
+  avatar: 'https://images.godruoyi.com/gblog/bird.png'
   social:
     twitter: 'sppan24'
     github: 'sppan24'
@@ -17,7 +19,8 @@
   name: 'Sppan'
   description: 'A man and a Bird who knows everything'
 
-- avatar: 'https://bucket.liruifengv.com/avatar.jpg'
+- id: liruifengv
+  avatar: 'https://bucket.liruifengv.com/avatar.jpg'
   social:
     twitter: 'liruifengv'
     blog: 'https://liruifengv.com'
@@ -26,7 +29,8 @@
   name: 'liruifengv'
   description: "Web 开发者，Astro 项目成员，开源爱好者。"
 
-- avatar: 'https://avatars.githubusercontent.com/u/21162238?v=4'
+- id: quentin-hsu
+  avatar: 'https://avatars.githubusercontent.com/u/21162238?v=4'
   social:
     twitter: 'quentin_hsu'
     blog: 'https://www.xqy404.com/'
@@ -34,4 +38,3 @@
   title: 'Web Developer'
   name: 'Quentin Hau'
   description: "Life's tough, let's be romantic"
-
