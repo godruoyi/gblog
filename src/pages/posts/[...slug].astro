@@ -55,9 +55,9 @@ const ogImage = post.data.ogImage
     <div class="mx-auto max-w-6xl px-4 pb-12 pt-8 sm:px-6 lg:px-8 lg:pt-12">
         <div class="relative w-full">
             <div class="shadow-none sm:shadow-sm mt-4 sm:mt-0">
-                <div class="w-full overflow-hidden rounded-tl-sm rounded-tr-sm bg-neutral-200 dark:bg-neutral-700" style="min-height: 300px;">
+                <div class="w-full overflow-hidden rounded-tl-sm rounded-tr-sm bg-neutral-200 dark:bg-neutral-700">
                     <img
-                        class="banner-img w-full object-cover max-h-[600px] transition-all duration-700 blur-xl scale-105 opacity-0"
+                        class="banner-img w-full object-cover max-h-[600px] transition-[filter] duration-700 blur-xl scale-105"
                         src={post.data.banner}
                         alt={post.data.title}
                         draggable="false"
@@ -65,7 +65,7 @@ const ogImage = post.data.ogImage
                     />
                 </div>
                 <div class="sm:dark:bg-neutral-900/30 sm:bg-neutral-100 px-0 sm:px-6 md:px-10 lg:px-14 py-6">
-                    <div class="mb-10">
+                    <div class="mb-6 md:mb-10">
                         <h2 class="block text-balance text-3xl font-bold tracking-tight text-neutral-800 dark:text-neutral-300 md:text-4xl lg:text-5xl">
                             {post.data.title}
                         </h2>
@@ -159,7 +159,7 @@ const ogImage = post.data.ogImage
     <script>
     function initBanner() {
         document.querySelectorAll('.banner-img').forEach((img) => {
-            const reveal = () => img.classList.remove('blur-xl', 'scale-105', 'opacity-0')
+            const reveal = () => img.classList.remove('blur-xl')
             if ((img as HTMLImageElement).complete && (img as HTMLImageElement).naturalWidth > 0) {
                 reveal()
             } else {
@@ -168,7 +168,6 @@ const ogImage = post.data.ogImage
         })
     }
     document.addEventListener('astro:page-load', initBanner)
-    initBanner()
     </script>
     <style is:inline>
         code[data-theme*=" "],

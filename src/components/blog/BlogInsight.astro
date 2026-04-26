@@ -15,9 +15,9 @@ interface Props {
     href={`/posts/${blog.id}/`}
     data-astro-prefetch
 >
-    <div class="aspect-w-16 aspect-h-10 relative overflow-hidden rounded-xl ">
+    <div class="aspect-w-16 aspect-h-10 relative overflow-hidden rounded-sm ">
         <Image
-            class="w-full h-full sm:h-[220px] md:h-[240px] object-cover rounded-xl transition duration-500 ease-in-out group-hover:scale-105"
+            class="w-full h-full sm:h-[220px] md:h-[240px] object-cover rounded-sm transition duration-500 ease-in-out group-hover:scale-105"
             src={blog.data.banner}
             alt={blog.data.title}
             format="avif"
