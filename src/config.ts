@@ -10,10 +10,9 @@ export const SITE: Site = {
 
 export const NavigationLinks: NavigationLink[] = [
     { name: 'Posts', url: '/posts/' },
-    { name: 'Category', url: '/categories/' },
+    { name: 'Categories', url: '/categories/' },
     { name: 'Timeline', url: '/timeline/' },
-    { name: 'About', url: '/posts/about-godruoyi/' },
-    { name: 'Friends', url: '/friends/' },
+    { name: 'About', url: '/posts/About-godruoyi/' },
 ]
 
 export const FooterLinks = [
@@ -23,8 +22,7 @@ export const FooterLinks = [
             { name: 'Posts', url: '/posts/' },
             { name: 'Timeline', url: '/timeline/' },
             { name: 'Categories', url: '/categories/' },
-            { name: 'About Me', url: '/posts/about-godruoyi/' },
-            { name: 'Friends', url: '/friends' },
+            { name: 'About Me', url: '/posts/About-godruoyi/' },
         ],
     },
     {
@@ -34,6 +32,7 @@ export const FooterLinks = [
             { name: 'Site Map', url: '/sitemap-index.xml' },
             { name: 'GitHub', url: 'https://github.com/godruoyi' },
             { name: 'Wechat', url: 'https://images.godruoyi.com/wechat.jpg' },
+            { name: 'Friends', url: '/friends/' },
         ],
     },
 ]

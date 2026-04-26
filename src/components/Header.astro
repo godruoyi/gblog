@@ -88,7 +88,7 @@ const ThemeTransitionCSS = `
 ::view-transition-new(root) {
     mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><circle cx="0" cy="0" r="18" fill="white"/></svg>') top left / 0 no-repeat;
     mask-origin: content-box;
-    animation: theme-reveal 0.9s;
+    animation: theme-reveal 0.9s forwards;
     transform-origin: top left;
 }
 ::view-transition-old(root), .dark::view-transition-old(root) {
@@ -98,8 +98,7 @@ const ThemeTransitionCSS = `
 @keyframes theme-reveal { to { mask-size: 350vmax; } }
 `
 function switchThemeWithTransition(value) {
-    const switchTheme = () => HSThemeAppearance.setAppearance(value, true, true)
-    if (!document.startViewTransition) { switchTheme(); return }
+    if (!document.startViewTransition) { HSThemeAppearance.setAppearance(value, true, true); return }
     let styleEl = document.querySelector('style[data-theme-transition]')
     if (!styleEl) {
         styleEl = document.createElement('style')
@@ -108,7 +107,11 @@ function switchThemeWithTransition(value) {
     }
     const t = document.startViewTransition(() => {
         styleEl.textContent = ThemeTransitionCSS
-        switchTheme()
+        // Apply theme directly to avoid _resetStylesOnLoad adding *{transition:unset} mid-animation
+        localStorage.setItem('hs_theme', value)
+        document.documentElement.classList.remove('dark', 'default', 'auto')
+        document.documentElement.classList.add(value)
+        window.dispatchEvent(new CustomEvent('on-hs-appearance-change', { detail: value }))
     })
     t.finished.then(() => { styleEl.textContent = '' })
 }
@@ -180,6 +183,14 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () 
     }
 })
 
+function handleThemeClick() {
+    switchThemeWithTransition(this.getAttribute('data-hs-theme-click-value'))
+}
+
+function handleThemeSwitch(e) {
+    HSThemeAppearance.setAppearance(e.target.checked ? 'dark' : 'default')
+}
+
 function initThemeListeners() {
     const $clickableThemes = document.querySelectorAll(
         '[data-hs-theme-click-value]',
@@ -189,16 +200,13 @@ function initThemeListeners() {
     )
 
     $clickableThemes.forEach(($item) => {
-        $item.addEventListener('click', () => {
-            switchThemeWithTransition($item.getAttribute('data-hs-theme-click-value'))
-        })
+        $item.removeEventListener('click', handleThemeClick)
+        $item.addEventListener('click', handleThemeClick)
     })
 
     $switchableThemes.forEach(($item) => {
-        $item.addEventListener('change', (e) => {
-            HSThemeAppearance.setAppearance(e.target.checked ? 'dark' : 'default')
-        })
-
+        $item.removeEventListener('change', handleThemeSwitch)
+        $item.addEventListener('change', handleThemeSwitch)
         $item.checked = HSThemeAppearance.getAppearance() === 'dark'
     })
 

@@ -137,8 +137,7 @@ const galleryTabs = tabs || fallbackData
 </div>
 
 <script>
-// Simple tab functionality with fade transition
-document.addEventListener('DOMContentLoaded', () => {
+function initGalleryTabs() {
     const tabButtons = document.querySelectorAll('.gallery-tab')
 
     tabButtons.forEach((button) => {
@@ -148,23 +147,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 return
             }
 
-            // Remove active class from all tabs
             tabButtons.forEach((btn) => {
                 btn.classList.remove('active')
                 btn.setAttribute('aria-selected', 'false')
             })
 
-            // Add active class to clicked tab
             button.classList.add('active')
             button.setAttribute('aria-selected', 'true')
 
-            // Hide all panels with fade out
             const panels = document.querySelectorAll('[role="tabpanel"]')
             panels.forEach((panel) => {
                 panel.classList.add('opacity-0', 'hidden')
             })
 
-            // Show target panel with fade in
             const targetPanel = document.querySelector(target) as HTMLElement
             if (targetPanel) {
                 targetPanel.classList.remove('hidden')
@@ -172,5 +167,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         })
     })
-})
+}
+
+document.addEventListener('DOMContentLoaded', initGalleryTabs)
+document.addEventListener('astro:page-load', initGalleryTabs)
 </script>

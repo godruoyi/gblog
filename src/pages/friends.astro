@@ -144,9 +144,10 @@ const friends = friendsData.map(f => f.data).sort(() => Math.random() - 0.5)
 
      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'default'
  }
- document.addEventListener('DOMContentLoaded', () => {
+ document.addEventListener('astro:page-load', () => {
      changeAvatar({ detail: getCurrentTheme() })
 
+     window.removeEventListener('on-hs-appearance-change', changeAvatar)
      window.addEventListener('on-hs-appearance-change', changeAvatar)
  })
  </script>
