@@ -40,7 +40,7 @@
     "@docsearch/css": "^3.9.0",
     "@docsearch/react": "^3.9.0",
     "@giscus/react": "^3.1.0",
-    "@playform/compress": "^0.0.4",
+    "@playform/compress": "^0.2.3",
     "@rehype-pretty/transformers": "^0.13.2",
     "@types/react": "^19.0.0",
     "@types/unist": "^3.0.2",
