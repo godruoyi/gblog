@@ -35,11 +35,11 @@ const layoutPattern = [
 ]
 
 const categories = (await getCollection('categories')).sort((a, b) => {
-    const aCount = postMap.get(a.slug)?.length ?? 0
-    const bCount = postMap.get(b.slug)?.length ?? 0
+    const aCount = postMap.get(a.id)?.length ?? 0
+    const bCount = postMap.get(b.id)?.length ?? 0
     return bCount - aCount
 }).map((c, index) => {
-    const posts = postMap.get(c.slug)
+    const posts = postMap.get(c.id)
     const pattern = layoutPattern[index % layoutPattern.length]
     const smColSpan = Math.min(pattern.col, 2)
     const mdColSpan = Math.min(pattern.col, 4)
@@ -94,12 +94,12 @@ const URL = Astro.url.href
                             style={category.layoutPattern.row > 1 ? 'grid-row: span 2 / span 2;' : ''}
                         >
                             <BlogCategoryCard
-                                slug={category.slug}
+                                slug={category.id}
                                 title={category.data.title}
                                 description={category.data.description}
                                 background={category.data.background}
-                                count={postMap.get(category.slug)?.length ?? 0}
-                                publishDate={timeago(postMap.get(category.slug)?.[0]?.data?.pubDate)}
+                                count={postMap.get(category.id)?.length ?? 0}
+                                publishDate={timeago(postMap.get(category.id)?.[0]?.data?.pubDate)}
                                 layoutPattern={category.layoutPattern}
                             />
                         </div>

@@ -8,7 +8,7 @@ import { SITE } from '@/config'
 export async function getStaticPaths() {
     const categories = await getCollection('categories')
     return categories.map(category => ({
-        params: { slug: category.slug },
+        params: { slug: category.id },
         props: { category },
     }))
 }
@@ -20,7 +20,7 @@ const categoriesURL = `${Astro.url.origin}/categories`
 const posts: CollectionEntry<'posts'>[] = (await getCollection('posts')).sort(
     (a: CollectionEntry<'posts'>, b: CollectionEntry<'posts'>) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 ).filter((b) => {
-    return b.data.category === category.slug
+    return b.data.category === category.id
 });
 ---
 

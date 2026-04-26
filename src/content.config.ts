@@ -1,7 +1,12 @@
 import { defineCollection, z } from 'astro:content'
+import { glob, file } from 'astro/loaders'
 
 const posts = defineCollection({
-    type: 'content',
+    loader: glob({
+        pattern: '**/*.{md,mdx}',
+        base: './src/content/posts',
+        generateId: ({ entry }) => entry.replace(/\.(md|mdx)$/, ''),
+    }),
     schema: ({ image }) => z.object({
         title: z.string(),
         description: z.string(),
@@ -30,7 +35,11 @@ const posts = defineCollection({
 })
 
 const categoryCollection = defineCollection({
-    type: 'content',
+    loader: glob({
+        pattern: '**/*.{md,mdx}',
+        base: './src/content/categories',
+        generateId: ({ entry }) => entry.replace(/\.(md|mdx)$/, ''),
+    }),
     schema: () => z.object({
         title: z.string(),
         description: z.string(),
@@ -39,21 +48,19 @@ const categoryCollection = defineCollection({
 })
 
 const friendsCollection = defineCollection({
-    type: 'data',
-    schema: () => z.array(
-        z.object({
-            title: z.string(),
-            name: z.string(),
-            description: z.string(),
-            avatar: z.string(),
-            avatarDark: z.string().optional(),
-            social: z.object({
-                twitter: z.string().optional(),
-                blog: z.string().optional(),
-                github: z.string().optional(),
-            }),
+    loader: file('./src/content/friends/index.yml'),
+    schema: z.object({
+        title: z.string(),
+        name: z.string(),
+        description: z.string(),
+        avatar: z.string(),
+        avatarDark: z.string().optional(),
+        social: z.object({
+            twitter: z.string().optional(),
+            blog: z.string().optional(),
+            github: z.string().optional(),
         }),
-    ),
+    }),
 })
 
 export const collections = { posts, categories: categoryCollection, friends: friendsCollection }

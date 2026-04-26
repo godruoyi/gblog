@@ -20,7 +20,7 @@ const id = path === '/' ? 'home' : path.replace(/^\/|\/$/g, '')
 </a>
 
 <script>
- document.addEventListener('DOMContentLoaded', () => {
+ function updateActiveNav() {
      const url = window.location.pathname.replace('/', '')
      let navId = 'home'
 
@@ -39,5 +39,7 @@ const id = path === '/' ? 'home' : path.replace(/^\/|\/$/g, '')
          nav.classList.add('text-orange-400', 'dark:text-orange-300')
          nav.setAttribute('aria-current', 'page')
      }
- })
+ }
+ document.addEventListener('DOMContentLoaded', updateActiveNav)
+ document.addEventListener('astro:page-load', updateActiveNav)
 </script>

@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import fallbackData from '@/content/gallery/fallback.json'
+import fallbackData from '@/fallback.json'
 
 interface GalleryItem {
     id: string
@@ -47,28 +47,26 @@ export default function LifeSnapshotsTimeline() {
 
     useEffect(() => {
         loadGalleryData()
+        document.addEventListener('astro:page-load', loadGalleryData)
+        return () => document.removeEventListener('astro:page-load', loadGalleryData)
     }, [])
 
     async function loadGalleryData() {
-        console.log('🔄 Loading gallery data from API...')
+        try {
+            const response = await fetch('/api/gallery', { cache: 'no-cache' })
+            if (!response.ok) return
 
-        const response = await fetch('/api/gallery', {
-            cache: 'no-cache'
-        })
-
-        if (!response.ok) {
-            throw new Error(`API responded with ${response.status}`)
-        }
-
-        const data = await response.json()
-
-        if (data && data.length > 0) {
-            const existingIds = new Set(galleryItems.map(item => item.id))
-            const newItems = data.filter((item: GalleryItem) => !existingIds.has(item.id))
-
-            if (newItems.length > 0) {
-                setGalleryItems(prevItems => [...prevItems, ...newItems])
+            const data = await response.json()
+            if (data && data.length > 0) {
+                setGalleryItems(prevItems => {
+                    const existingIds = new Set(prevItems.map(item => item.id))
+                    const newItems = data.filter((item: GalleryItem) => !existingIds.has(item.id))
+                    return newItems.length > 0 ? [...prevItems, ...newItems] : prevItems
+                })
             }
+        }
+        catch {
+            // keep fallback data on error
         }
     }
 

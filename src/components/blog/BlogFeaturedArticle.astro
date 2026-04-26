@@ -45,12 +45,12 @@ interface Props {
                                     max-w-prose text-pretty font-light text-neutral-600 sm:text-lg rounded-md transition-colors duration-200 ease-in-out hover:bg-neutral-200 hover:text-orange-400 dark:text-neutral-400 dark:hover:text-orange-300 dark:focus:outline-none"
                                 >
                                     <a
-                                        href=`/posts/${post.slug}`
+                                        href=`/posts/${post.id}`
                                         data-astro-prefetch
-                                        data-slug={post.slug}
+                                        data-slug={post.id}
                                         class="w-full block post-link outline-none focus:outline-none focus-visible:ring p-3"
                                     >
-                                        <span>{post.data.title}</span>
+                                        <span class="block font-semibold">{post.data.title}</span>
                                     </a>
                                 </li>
                             ))}
