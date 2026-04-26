@@ -224,7 +224,10 @@ function initThemeListeners() {
 initThemeListeners()
 if (!window.__headerPageLoadListenerAdded) {
     window.__headerPageLoadListenerAdded = true
-    document.addEventListener('astro:page-load', initThemeListeners)
+    document.addEventListener('astro:page-load', () => {
+        initThemeListeners()
+        if (window.HSCollapse) window.HSCollapse.autoInit()
+    })
 }
 </script>
 <script is:inline src="/vendor/preline/collapse2.1.0.min.js"></script>
