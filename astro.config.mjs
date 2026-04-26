@@ -17,7 +17,6 @@ export default defineConfig({
         // Please note that the environment value here is `string` type on Cloudflare Pages,
         // So please delete the environment variable directly if you want to disable the image optimization service
         service: (!!import.meta.env.ASTRO_IMAGE_OPTIMIZE || !!process.env.ASTRO_IMAGE_OPTIMIZE) ? sharpImageService() : passthroughImageService(),
-        domains: ['images.godruoyi.com', 'images.unsplash.com'],
     },
     integrations: [
         partytown(),
