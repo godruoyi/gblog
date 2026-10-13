@@ -21,7 +21,7 @@ function convertThemToGiscusThem(them: any): string {
     return them === 'dark' ? commentSetting.darkThem : commentSetting.lightThem
 }
 
-function BlogComments() {
+function BlogComments({ legacyTitle }: { legacyTitle?: string }) {
     const [mounted, setMounted] = React.useState(false)
     const [theme, setTheme] = React.useState(convertThemToGiscusThem(getCurrentTheme()))
 
@@ -54,7 +54,8 @@ function BlogComments() {
                         repoId={commentSetting.repoId}
                         category={commentSetting.category}
                         categoryId={commentSetting.categoryId}
-                        mapping="title"
+                        mapping={legacyTitle ? 'specific' : 'pathname'}
+                        term={legacyTitle}
                         reactionsEnabled="1"
                         emitMetadata="0"
                         inputPosition="top"

@@ -1,30 +1,8 @@
 ---
 import type { CollectionEntry } from 'astro:content'
+import { formatDate } from '@support/time'
 
+interface Props { blog: CollectionEntry<'posts'> }
 const { blog } = Astro.props
-
-interface Props {
-    blog: CollectionEntry<'posts'>
-}
 ---
-
-<div class="max-w-3xl mx-auto">
-    <div class="flex gap-x-2">
-        <div class="relative -ml-2 last:after:hidden after:absolute after:top-7 after:bottom-0 after:start-3.5 after:w-px after:-translate-x-[0.5px] after:bg-gray-200 dark:after:bg-neutral-700 after:bg-neutral-400">
-            <div class="relative z-10 size-7 flex justify-center items-center">
-                <div class="size-2 rounded-full bg-neutral-400 dark:bg-neutral-600"></div>
-            </div>
-        </div>
-        <div class="grow pt-0.5 pb-8 group">
-            <a
-                href=`/posts/${blog.slug}`
-                data-astro-prefetch
-                class="flex justify-between text-base font-bold text-neutral-700 outline-none ring-zinc-500 focus:outline-none focus-visible:ring focus-visible:ring-zinc-500 dark:ring-zinc-200"
-            >
-                <h3 class="flex gap-x-1.5 text-xl font-bold text-neutral-800 group-hover:text-orange-600 dark:text-neutral-200 dark:group-hover:text-orange-300">{blog.data.title}</h3>
-                <!--<span class="tracking-wide text-xs font-medium text-neutral-600 dark:text-neutral-500 group-hover:text-neutral-600 dark:group-hover:text-neutral-400">{formatDate(blog.data.pubDate)}</span>-->
-            </a>
-            <p class="mt-1.5 text-base text-neutral-600 group-hover:text-neutral-500 dark:text-neutral-500 dark:group-hover:text-neutral-400">{blog.data.description}</p>
-        </div>
-    </div>
-</div>
+<div class="timeline-item"><time datetime={blog.data.pubDate.toISOString()}>{formatDate(blog.data.pubDate)}</time><a href={`/posts/${blog.slug}/`}><h2>{blog.data.title}</h2><p>{blog.data.description}</p></a></div>

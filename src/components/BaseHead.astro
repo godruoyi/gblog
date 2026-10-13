@@ -1,92 +1,40 @@
 ---
 import { getImage } from 'astro:assets'
-import brandSrc from '@images/brand_logo.jpeg'
-import faviconSvgSrc from '@images/favicon_icon.svg'
-import faviconSrc from '@images/favicon_icon.png'
+import logo from '@images/theme/yp-logo.png'
 import { SEO, SITE } from '@/config'
 
 interface Props {
     title: string
     description: string
     ogImage?: any
-    ogTitle?: string
-    ogDescription?: string
     structuredData?: object
 }
 
-const canonicalURL = Astro.url.href
-let {
-    title,
-    description,
-    ogImage,
-    ogTitle = title,
-    ogDescription = description,
-    structuredData = SEO.structuredData,
-} = Astro.props
-
-let card = 'summary_large_image'
-if (!ogImage) {
-    ogImage = brandSrc
-    card = 'summary'
-}
-
-const faviconSvg = await getImage({ src: faviconSvgSrc, format: 'svg' })
-const appleTouchIcon = await getImage({ src: faviconSrc, width: 180, height: 180, format: 'png' })
-const socialImageRes = await getImage({ src: ogImage, width: 1200, height: 600 })
-
-let socialImage = socialImageRes.src
-if (!socialImage.startsWith('http')) {
-    socialImage = Astro.url.origin + socialImageRes.src
-}
+const { title, description, ogImage, structuredData = SEO.structuredData } = Astro.props
+const canonicalURL = new URL(Astro.url.pathname, SITE.url)
+const socialImage = await getImage({ src: ogImage || logo, width: 1200, height: 600 })
 ---
 
-<!-- Inject structured data https://developers.google.com/search/docs/advanced/structured-data/intro-structured-data -->
-{
-    structuredData && (
-        <script
-            type="application/ld+json"
-            set:html={JSON.stringify(structuredData)}
-        />
-    )
-}
-
-<!-- Global Metadata -->
-<meta name="title" content={title} />
-<meta name="description" content={description} />
 <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{title}</title>
+<meta name="description" content={description} />
 <meta name="web_author" content={SITE.author} />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0" />
 <meta name="generator" content={Astro.generator} />
-<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-<meta name="mobile-web-app-capable" content="yes" />
-<meta name="theme-color" content="#facc15" />
-
-<!-- Open Graph -->
+<meta name="theme-color" content="#f7f3eb" />
 <meta property="og:type" content="website" />
-<meta property="og:locale" content="en_US" />
-<meta property="og:url" content={Astro.url} />
-<meta property="og:type" content="website" />
-<meta property="og:title" content={ogTitle} />
+<meta property="og:locale" content="zh_CN" />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:title" content={title} />
 <meta property="og:site_name" content={SITE.title} />
-<meta property="og:description" content={ogDescription} />
-<meta property="og:image" content={socialImage} />
-<meta content="1200" property="og:image:width" />
-<meta content="600" property="og:image:height" />
-<meta content="image/png" property="og:image:type" />
-
-<!-- Twitter -->
-<meta property="twitter:card" content={card} />
-<meta property="twitter:url" content={Astro.url} />
-<meta property="twitter:domain" content={Astro.url} />
-<meta property="twitter:title" content={ogTitle} />
-<meta property="twitter:description" content={ogDescription} />
-<meta property="twitter:image" content={socialImage} />
-
-<!-- Links -->
-<link href={canonicalURL} rel="canonical" />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={new URL(socialImage.src, SITE.url)} />
+<meta name="twitter:card" content={ogImage ? 'summary_large_image' : 'summary'} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={new URL(socialImage.src, SITE.url)} />
+<link rel="canonical" href={canonicalURL} />
 <link rel="sitemap" href="/sitemap-index.xml" />
-<!--<link href="/manifest.json" rel="manifest" />-->
-<link href="/favicon.ico" rel="icon" sizes="any" type="image/x-icon" />
-<link href={faviconSvg.src} rel="icon" type="image/svg+xml" sizes="any" />
-<link href={appleTouchIcon.src} rel="apple-touch-icon" />
-<link href={appleTouchIcon.src} rel="shortcut icon" />
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="apple-touch-icon" href={logo.src} />
+{structuredData && <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />}

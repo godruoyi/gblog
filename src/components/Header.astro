@@ -2,216 +2,45 @@
 import NavLink from '@components/ui/links/NavLink.astro'
 import BrandLogo from '@components/ui/logos/BrandLogo.astro'
 import Theme from '@components/ui/logos/Theme.astro'
-import { NavigationLinks } from '@/config'
+import BlogSearch from '@components/blog/BlogSearch.astro'
+import { NavigationLinks, SITE } from '@/config'
 ---
 
-<header class="sticky inset-x-0 top-4 z-50 flex w-full flex-wrap text-sm md:flex-nowrap md:justify-start">
-    <nav
-        class="relative mx-2 w-full rounded-[36px] border border-neutral-100 bg-neutral-100 px-4 py-3 backdrop-blur-md dark:border-neutral-700/40 dark:bg-neutral-800/80 dark:backdrop-blur-md md:flex md:items-center md:justify-between md:px-6 lg:px-8 xl:mx-auto"
-        aria-label="Global"
-    >
-        <div class="flex items-center justify-between ">
-            <a
-                class="h-[42px] flex-none rounded-lg text-xl font-bold outline-none ring-zinc-500 focus-visible:ring dark:ring-zinc-200 dark:focus:outline-none"
-                href="/"
-                aria-label="Brand"
-            >
-                <BrandLogo class="h-full w-auto object-cover rounded-full" />
-            </a>
-
-            <div class="ml-auto md:hidden">
-                <button
-                    type="button"
-                    class="hs-collapse-toggle flex h-8 w-8 items-center justify-center rounded-full text-sm font-bold text-neutral-600 transition duration-300 hover:bg-neutral-200 disabled:pointer-events-none disabled:opacity-50 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:focus:outline-none"
-                    data-hs-collapse="#navbar-collapse-with-animation"
-                    aria-controls="navbar-collapse-with-animation"
-                    aria-label="Toggle navigation"
-                >
-                    <svg
-                        class="h-[1.25rem] w-[1.25rem] flex-shrink-0 hs-collapse-open:hidden"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                    >
-                        <line x1="3" x2="21" y1="6" y2="6"></line>
-                        <line x1="3" x2="21" y1="12" y2="12"></line>
-                        <line x1="3" x2="21" y1="18" y2="18"></line>
-                    </svg>
-                    <svg
-                        class="hidden h-[1.25rem] w-[1.25rem] flex-shrink-0 hs-collapse-open:block"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                    >
-                        <path d="M18 6 6 18"></path>
-                        <path d="m6 6 12 12"></path>
-                    </svg>
-                </button>
-            </div>
-            <span class="inline-block md:hidden">
-                <Theme />
-            </span>
-        </div>
-
-        <div
-            id="navbar-collapse-with-animation"
-            class="hs-collapse hidden grow basis-full overflow-hidden transition-all duration-300 md:block"
-        >
-            <div
-                class="mt-5 flex flex-col gap-x-0 gap-y-4 md:mt-0 md:flex-row md:items-center md:justify-end md:gap-x-4 lg:gap-x-7 md:gap-y-0 md:ps-7"
-            >
-                {NavigationLinks.map(link => (
-                    <NavLink url={link.url} name={link.name} />
-                ))}
-                <span class="hidden md:inline-block">
-                    <Theme />
-                </span>
-            </div>
+<header class="site-header">
+    <nav class="site-nav" aria-label="主导航">
+        <a class="brand" href="/" aria-label="返回博客首页">
+            <BrandLogo class="brand-logo" />
+            <span><strong>{SITE.author}</strong><small>{SITE.shortDescription}</small></span>
+        </a>
+        <div class="desktop-nav">{NavigationLinks.map(link => <NavLink {...link} />)}</div>
+        <div class="nav-actions">
+            <BlogSearch />
+            <Theme />
+            <details class="mobile-nav">
+                <summary class="icon-button" aria-label="展开导航菜单"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" /></svg></summary>
+                <div class="mobile-nav-links">{NavigationLinks.map(link => <NavLink {...link} />)}</div>
+            </details>
         </div>
     </nav>
 </header>
-<script is:inline>
-const ViewTransitionStyleCSS = `::view-transition-group(root) {
-    animation-timing-function: var(--expo-out);
-}
-::view-transition-new(root) {
-    mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><defs><filter id="blur"><feGaussianBlur stdDeviation="2"/></filter></defs><circle cx="0" cy="0" r="18" fill="white" filter="url(%23blur)"/></svg>') top left / 0 no-repeat;
-    mask-origin: content-box;
-    animation: scale 1s;
-    transform-origin: top left;
-}
-::view-transition-old(root),.dark::view-transition-old(root) {
-    animation: scale 1s;
-    transform-origin: top left;
-    z-index: -1;
-}
-@keyframes scale {
-    to {
-        mask-size: 350vmax;
+<script>
+    const button = document.querySelector<HTMLButtonElement>('[data-theme-toggle]')
+    function updateThemeButton() {
+        const dark = document.documentElement.classList.contains('dark')
+        button?.setAttribute('aria-pressed', String(dark))
+        button?.setAttribute('aria-label', dark ? '切换浅色主题' : '切换深色主题')
     }
-}`
-const viewTransitionStyleElement = document.createElement('style')
-document.head.appendChild(viewTransitionStyleElement)
-const injectViewTransitionStyleCSS = () => viewTransitionStyleElement.textContent = ViewTransitionStyleCSS
-
-const HSThemeAppearance = {
-    init() {
-        const defaultTheme = 'default'
-        const theme = localStorage.getItem('hs_theme') || defaultTheme
-
-        if (document.querySelector('html').classList.contains('dark')) {
-            return
-        }
-
-        this.setAppearance(theme)
-    },
-
-    _resetStylesOnLoad() {
-        const $resetStyles = document.createElement('style')
-        $resetStyles.textContent = `*{transition: unset !important;}`
-        $resetStyles.setAttribute('data-hs-appearance-onload-styles', '')
-        document.head.appendChild($resetStyles)
-        return $resetStyles
-    },
-
-    setAppearance(theme, saveInStore = true, dispatchEvent = true) {
-        const $resetStylesEl = this._resetStylesOnLoad()
-
-        if (saveInStore) {
-            localStorage.setItem('hs_theme', theme)
-        }
-
-        if (theme === 'auto') {
-            theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'default'
-        }
-
-        document.querySelector('html').classList.remove('dark')
-        document.querySelector('html').classList.remove('default')
-        document.querySelector('html').classList.remove('auto')
-
-        document.querySelector('html').classList.add(this.getOriginalAppearance())
-
-        setTimeout(() => $resetStylesEl.remove())
-
-        if (dispatchEvent) {
-            window.dispatchEvent(new CustomEvent('on-hs-appearance-change', { detail: theme }))
-        }
-    },
-
-    getAppearance() {
-        let theme = this.getOriginalAppearance()
-        if (theme === 'auto') {
-            theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'default'
-        }
-
-        return theme
-    },
-
-    getOriginalAppearance() {
-        const defaultTheme = 'default'
-        return localStorage.getItem('hs_theme') || defaultTheme
-    },
-}
-
-HSThemeAppearance.init()
-
-window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-    if (HSThemeAppearance.getOriginalAppearance() === 'auto') {
-        HSThemeAppearance.setAppearance('auto', false)
-    }
-})
-
-window.addEventListener('load', () => {
-    const $clickableThemes = document.querySelectorAll(
-        '[data-hs-theme-click-value]',
-    )
-    const $switchableThemes = document.querySelectorAll(
-        '[data-hs-theme-switch]',
-    )
-
-    $clickableThemes.forEach(($item) => {
-        $item.addEventListener('click', () => {
-            const switchThem = () => HSThemeAppearance.setAppearance(
-                $item.getAttribute('data-hs-theme-click-value'),
-                true,
-                true,
-            )
-
-            if (document.startViewTransition) {
-                document.startViewTransition(() => {
-                    injectViewTransitionStyleCSS()
-                    switchThem()
-                })
-            }
-            else {
-                switchThem()
-            }
-        })
+    updateThemeButton()
+    button?.addEventListener('click', () => {
+        const dark = document.documentElement.classList.toggle('dark')
+        try { localStorage.setItem('hs_theme', dark ? 'dark' : 'light') }
+        catch (_) {}
+        updateThemeButton()
+        window.dispatchEvent(new CustomEvent('on-hs-appearance-change', { detail: dark ? 'dark' : 'light' }))
     })
-
-    $switchableThemes.forEach(($item) => {
-        $item.addEventListener('change', (e) => {
-            HSThemeAppearance.setAppearance(e.target.checked ? 'dark' : 'default')
-        })
-
-        $item.checked = HSThemeAppearance.getAppearance() === 'dark'
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+            document.querySelector<HTMLDetailsElement>('.mobile-nav')?.removeAttribute('open')
+        }
     })
-
-    window.addEventListener('on-hs-appearance-change', (e) => {
-        $switchableThemes.forEach(($item) => {
-            $item.checked = e.detail === 'dark'
-        })
-    })
-})
 </script>
-<script is:inline src="/vendor/preline/collapse2.1.0.min.js"></script>

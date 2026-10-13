@@ -5,6 +5,7 @@ const posts = defineCollection({
     schema: ({ image }) => z.object({
         title: z.string(),
         description: z.string(),
+        commentTitle: z.string().optional(),
         banner: image().or(z.string()),
 
         // This banner will be shown in blog lists(/posts) if provided.

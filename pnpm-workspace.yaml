@@ -1,0 +1,14 @@
+﻿packages:
+  - "."
+
+overrides:
+  "@astrojs/sitemap": "3.2.1"
+  "zod": "3.25.76"
+  "zod-to-json-schema": "3.25.2"
+  "timeago.js": "4.0.2"
+  "sharp": "0.33.3"
+  "rollup": "4.22.4"
+
+allowBuilds:
+  esbuild: true
+  sharp: true

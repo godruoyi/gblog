@@ -1,0 +1,9 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import { Image } from 'astro:assets'
+import { formatDate } from '@support/time'
+
+interface Props { posts: CollectionEntry<'posts'>[], class?: string }
+const { posts, class: className } = Astro.props
+---
+{posts.length > 0 && <section class:list={['related-panel panel', className]}><h2>相关文章</h2>{posts.map(post => <a class="related-item" href={`/posts/${post.slug}/`}><Image src={post.data.banner2 ?? post.data.banner} width={140} height={116} alt="" loading="lazy" /><span><strong>{post.data.title}</strong><time datetime={post.data.pubDate.toISOString()}>{formatDate(post.data.pubDate)}</time></span></a>)}<a class="text-link" href="/posts/">查看全部文章 →</a></section>}

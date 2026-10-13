@@ -5,82 +5,37 @@ import Header from '@components/Header.astro'
 import GoogleAnalytics from '@components/support/GoogleAnalytics.astro'
 import UmamiAnalytics from '@components/support/UmamiAnalytics.astro'
 import { SITE } from '@/config'
+import '@/styles/global.css'
 
 interface Props {
-    title: string
-    description: string
+    title?: string
+    description?: string
     ogImage?: any
     lang?: string
     structuredData?: object
 }
 
-const { title, description = SITE.description, ogImage, lang = 'en', structuredData } = Astro.props
-const normalizeTitle = !title ? SITE.title : `${title} | ${SITE.title}`
+const { title, description = SITE.description, ogImage, lang = 'zh-CN', structuredData } = Astro.props
+const normalizeTitle = title ? `${title} | ${SITE.title}` : SITE.title
 ---
 
-<html lang={lang} class="scrollbar-hide lenis lenis-smooth scroll-pt-16">
+<html lang={lang}>
     <head>
-        <title>{normalizeTitle}</title>
-        <BaseHead
-            title={normalizeTitle}
-            description={description}
-            ogImage={ogImage}
-            ogTitle={title === '' ? SITE.title : title}
-            ogDescription={description}
-            structuredData={structuredData}
-        />
+        <BaseHead title={normalizeTitle} description={description} ogImage={ogImage} structuredData={structuredData} />
         <script is:inline>
-         if (localStorage.getItem('hs_theme') === 'dark' || (!('hs_theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-             document.documentElement.classList.add('dark')
-         }
-         else {
-             document.documentElement.classList.remove('dark')
-         }
-         </script>
-        <script is:inline src="/vendor/lenis/lenis1.1.5.min.js"></script>
-        <script is:inline>
-        const lenis = new Lenis()
-        function raf(time) {
-            lenis.raf(time)
-            requestAnimationFrame(raf)
-        }
-        requestAnimationFrame(raf)
+            try {
+                const saved = localStorage.getItem('hs_theme')
+                document.documentElement.classList.toggle('dark', saved === 'dark' || (!saved && matchMedia('(prefers-color-scheme: dark)').matches))
+            }
+            catch (_) {}
         </script>
         <GoogleAnalytics />
         <UmamiAnalytics />
     </head>
-    <body class="bg-neutral-200 selection:bg-yellow-400 selection:text-neutral-700 dark:bg-neutral-800">
-        <div class="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
-            <Header />
-            <main>
-                <slot />
-            </main>
-        </div>
+    <body>
+        <a class="skip-link" href="#main-content">跳至正文</a>
+        <Header />
+        <main id="main-content"><slot /></main>
         <Footer />
-        <style>
-            .scrollbar-hide::-webkit-scrollbar {
-                display: none;
-            }
-            .scrollbar-hide {
-                -ms-overflow-style: none;
-                scrollbar-width: none;
-            }
-            html.lenis,
-            html.lenis body {
-                height: auto;
-            }
-            .lenis.lenis-smooth {
-                scroll-behavior: auto !important;
-            }
-            .lenis.lenis-smooth [data-lenis-prevent] {
-                overscroll-behavior: contain;
-            }
-            .lenis.lenis-stopped {
-                overflow: hidden;
-            }
-            .lenis.lenis-scrolling iframe {
-                pointer-events: none;
-            }
-        </style>
     </body>
 </html>

@@ -1,122 +1,146 @@
 ---
-title: "Markdown elements demo post"
-description: "Our initial conception when we started OpenAI was that we’d create AI and use it to create all sorts of benefits for the world. Instead, it now looks like we’ll create AI and then other people will use it to create all sorts of amazing things that we all benefit from."
+title: "Markdown 排版与代码示例"
+description: "通过标题、段落、引用、列表、表格和代码示例，了解技术文章中常用的 Markdown 排版方式。"
 pubDate: "2019-05-12 00:00:00"
 category: "tool"
 banner: "@images/banners/markdown.avif"
-tags: ["Markdown", "Blog", "Astro"]
+tags: ["Markdown", "博客", "Astro"]
+commentTitle: "Markdown elements demo post | yongjian-peng博客记录"
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+<span id="headings" class="legacy-anchor" aria-hidden="true"></span>
 
-## Headings
+## 标题
 
-Sint sit cillum pariatur eiusmod nulla pariatur ipsum. Sit laborum anim qui mollit tempor pariatur nisi minim dolor. Aliquip et adipisicing sit sit fugiat commodo id sunt. Nostrud enim ad commodo incididunt cupidatat in ullamco ullamco Lorem cupidatat velit enim et Lorem. Ut laborum cillum laboris fugiat culpa sint irure do reprehenderit culpa occaecat. Exercitation esse mollit tempor magna aliqua in occaecat aliquip veniam reprehenderit nisi dolor in laboris dolore velit.
+标题用于组织文章的结构。技术文章应让读者能够快速找到背景介绍、实现步骤和验证结果，避免仅靠字体大小区分内容。
 
-## Heading two
+<span id="heading-two" class="legacy-anchor" aria-hidden="true"></span>
 
-Aute officia nulla deserunt do deserunt cillum velit magna. Officia veniam culpa anim minim dolore labore pariatur voluptate id ad est duis quis velit dolor pariatur enim. Incididunt enim excepteur do veniam consequat culpa do voluptate dolor fugiat ad adipisicing sit. Labore officia est adipisicing dolore proident eiusmod exercitation deserunt ullamco anim do occaecat velit. Elit dolor consectetur proident sunt aliquip est do tempor quis aliqua culpa aute. Duis in tempor exercitation pariatur et adipisicing mollit irure tempor ut enim esse commodo laboris proident. Do excepteur laborum anim esse aliquip eu sit id Lorem incididunt elit irure ea nulla dolor et. Nulla amet fugiat qui minim deserunt enim eu cupidatat aute officia do velit ea reprehenderit.
+## 二级标题
 
-### Heading three
+二级标题表示文章的主要章节，例如环境准备、开发流程和问题排查。
 
-Voluptate cupidatat cillum elit quis ipsum eu voluptate fugiat consectetur enim. Quis ut voluptate culpa ex anim aute consectetur dolore proident voluptate exercitation eiusmod. Esse in do anim magna minim culpa sint. Adipisicing ipsum consectetur proident ullamco magna sit amet aliqua aute fugiat laborum exercitation duis et.
+<span id="heading-three" class="legacy-anchor" aria-hidden="true"></span>
 
-#### Heading four
+### 三级标题
 
-Commodo fugiat aliqua minim quis pariatur mollit id tempor. Non occaecat minim esse enim aliqua adipisicing nostrud duis consequat eu adipisicing qui. Minim aliquip sit excepteur ipsum consequat laborum pariatur excepteur. Veniam fugiat et amet ad elit anim laborum duis mollit occaecat et et ipsum et reprehenderit. Occaecat aliquip dolore adipisicing sint labore occaecat officia fugiat. Quis adipisicing exercitation exercitation eu amet est laboris sunt nostrud ipsum reprehenderit ullamco. Enim sint ut consectetur id anim aute voluptate exercitation mollit dolore magna magna est Lorem. Ut adipisicing adipisicing aliqua ullamco voluptate labore nisi tempor esse magna incididunt.
+三级标题用于拆分主要章节中的具体步骤，例如安装依赖或配置开发环境。
 
-##### Heading five
+<span id="heading-four" class="legacy-anchor" aria-hidden="true"></span>
 
-Veniam enim esse amet veniam deserunt laboris amet enim consequat. Minim nostrud deserunt cillum consectetur commodo eu enim nostrud ullamco occaecat excepteur. Aliquip et ut est commodo enim dolor amet sint excepteur. Amet ad laboris laborum deserunt sint sunt aliqua commodo ex duis deserunt enim est ex labore ut. Duis incididunt velit adipisicing non incididunt adipisicing adipisicing. Ad irure duis nisi tempor eu dolor fugiat magna et consequat tempor eu ex dolore. Mollit esse nisi qui culpa ut nisi ex proident culpa cupidatat cillum culpa occaecat anim. Ut officia sit ea nisi ea excepteur nostrud ipsum et nulla.
+#### 四级标题
 
-###### Heading six
+当步骤中包含独立的小节时，可以使用四级标题。结构应服务于内容，而不是为了层级而增加层级。
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+<span id="heading-five" class="legacy-anchor" aria-hidden="true"></span>
 
-## Paragraphs
+##### 五级标题
 
-Incididunt ex adipisicing ea ullamco consectetur in voluptate proident fugiat tempor deserunt reprehenderit ullamco id dolore laborum. Do laboris laboris minim incididunt qui consectetur exercitation adipisicing dolore et magna consequat magna anim sunt. Officia fugiat Lorem sunt pariatur incididunt Lorem reprehenderit proident irure. Dolore ipsum aliqua mollit ad officia fugiat sit eu aliquip cupidatat ipsum duis laborum laborum fugiat esse. Voluptate anim ex dolore deserunt ea ex eiusmod irure. Occaecat excepteur aliqua exercitation aliquip dolor esse eu eu.
+较深的标题层级适合补充说明。一般技术文章使用二级、三级标题即可满足大多数需求。
 
-Officia dolore laborum aute incididunt commodo nisi velit est est elit et dolore elit exercitation. Enim aliquip magna id ipsum aliquip consectetur ad nulla quis. Incididunt pariatur dolor consectetur cillum enim velit cupidatat laborum quis ex.
+<span id="heading-six" class="legacy-anchor" aria-hidden="true"></span>
 
-Officia irure in non voluptate adipisicing sit amet tempor duis dolore deserunt enim ut. Reprehenderit incididunt in ad anim et deserunt deserunt Lorem laborum quis. Enim aute anim labore proident laboris voluptate elit excepteur in. Ex labore nulla velit officia ullamco Lorem Lorem id do. Dolore ullamco ipsum magna dolor pariatur voluptate ipsum id occaecat ipsum. Dolore tempor quis duis commodo quis quis enim.
+###### 六级标题
 
-## Blockquotes
+这是 Markdown 支持的最深标题层级，用于演示不同层级的显示效果。
 
-Ad nisi laborum aute cupidatat magna deserunt eu id laboris id. Aliquip nulla cupidatat sint ex Lorem mollit laborum dolor amet est ut esse aute. Nostrud ex consequat id incididunt proident ipsum minim duis aliqua ut ex et ad quis. Laborum sint esse cillum anim nulla cillum consectetur aliqua sit. Nisi excepteur cillum labore amet excepteur commodo enim occaecat consequat ipsum proident exercitation duis id in.
+<span id="paragraphs" class="legacy-anchor" aria-hidden="true"></span>
 
-> Ipsum et cupidatat mollit exercitation enim duis sunt irure aliqua reprehenderit mollit. Pariatur Lorem pariatur laboris do culpa do elit irure. Eiusmod amet nulla voluptate velit culpa et aliqua ad reprehenderit sit ut.
+## 段落
 
-Labore ea magna Lorem consequat aliquip consectetur cillum duis dolore. Et veniam dolor qui incididunt minim amet laboris sit. Dolore ad esse commodo et dolore amet est velit ut nisi ea. Excepteur ea nulla commodo dolore anim dolore adipisicing eiusmod labore id enim esse quis mollit deserunt est. Minim ea culpa voluptate nostrud commodo proident in duis aliquip minim.
+一个段落围绕一个主题展开。例如，介绍串口通信时，可以先解释波特率和数据格式，再说明如何连接设备，最后给出验证方式。
 
-> Qui est sit et reprehenderit aute est esse enim aliqua id aliquip ea anim. Pariatur sint reprehenderit mollit velit voluptate enim consectetur sint enim. Quis exercitation proident elit non id qui culpa dolore esse aliquip consequat.
+段落之间留出适当间距，有助于阅读长篇技术内容。描述操作步骤时，尽量说明执行位置、输入内容和预期结果，让读者能够复现。
 
-Ipsum excepteur cupidatat sunt minim ad eiusmod tempor sit.
+<span id="blockquotes" class="legacy-anchor" aria-hidden="true"></span>
 
-> Deserunt excepteur adipisicing culpa pariatur cillum laboris ullamco nisi fugiat cillum officia. In cupidatat nulla aliquip tempor ad Lorem Lorem quis voluptate officia consectetur pariatur ex in est duis. Mollit id esse est elit exercitation voluptate nostrud nisi laborum magna dolore dolore tempor in est consectetur.
+## 引用
 
-Adipisicing voluptate ipsum culpa voluptate id aute laboris labore esse fugiat veniam ullamco occaecat do ut. Tempor et esse reprehenderit veniam proident ipsum irure sit ullamco et labore ea excepteur nulla labore ut. Ex aute minim quis tempor in eu id id irure ea nostrud dolor esse.
+引用块适合放置补充说明、原文摘录和操作提醒。
 
-## Lists
+> 调试前先确认问题能够稳定复现，再收集日志并缩小排查范围。记录环境和操作过程，比反复尝试更有帮助。
 
-### Ordered List
+引用也可以包含多段内容。
 
-1. Longan
-2. Lychee
-3. Excepteur ad cupidatat do elit laborum amet cillum reprehenderit consequat quis.
-   Deserunt officia esse aliquip consectetur duis ut labore laborum commodo aliquip aliquip velit pariatur dolore.
-4. Marionberry
-5. Melon
-   - Cantaloupe
-   - Honeydew
-   - Watermelon
-6. Miracle fruit
-7. Mulberry
+> 配置修改后，应先检查文件格式和参数是否正确。
+>
+> 如果服务无法启动，可以结合启动日志定位原因，而不是一次修改多个不相关的选项。
 
-### Unordered List
+嵌套引用可以表达进一步说明。
 
-- Olive
-- Orange
-  - Blood orange
-  - Clementine
-- Papaya
-- Ut aute ipsum occaecat nisi culpa Lorem id occaecat cupidatat id id magna laboris ad duis. Fugiat cillum dolore veniam nostrud proident sint consectetur eiusmod irure adipisicing.
-- Passionfruit
+> 使用版本控制保存可工作的状态。
+>
+> > 每次提交聚焦一个明确改动，方便后续对比与回退。
 
+<span id="lists" class="legacy-anchor" aria-hidden="true"></span>
 
-## Horizontal
+## 列表
 
-In dolore velit aliquip labore mollit minim tempor veniam eu veniam ad in sint aliquip mollit mollit. Ex occaecat non deserunt elit laborum sunt tempor sint consequat culpa culpa qui sit. Irure ad commodo eu voluptate mollit cillum cupidatat veniam proident amet minim reprehenderit.
+<span id="ordered-list" class="legacy-anchor" aria-hidden="true"></span>
+
+### 有序列表
+
+1. 确认开发环境和工具版本。
+2. 安装项目依赖。
+3. 修改站点配置。
+   1. 设置站点名称和描述。
+   2. 检查访问地址与链接。
+4. 启动开发服务器并查看页面。
+5. 构建静态文件，检查生成结果。
+
+<span id="unordered-list" class="legacy-anchor" aria-hidden="true"></span>
+
+### 无序列表
+
+- 开发工具：编辑器、终端和版本控制。
+- 调试资料：设备手册、日志和配置文件。
+  - 保存原始日志，便于追踪问题。
+  - 记录每次修改及其效果。
+- 验证结果：构建输出、测试结果和页面截图。
+
+<span id="horizontal" class="legacy-anchor" aria-hidden="true"></span>
+
+## 分隔线
+
+分隔线用于区分独立的内容块。优先用清晰的章节结构组织文章，必要时再添加视觉分隔。
 
 ---
 
-In laboris eiusmod reprehenderit aliquip sit proident occaecat. Non sit labore anim elit veniam Lorem minim commodo eiusmod irure do minim nisi. Dolor amet cillum excepteur consequat sint non sint.
+下面是使用分隔线后的另一个段落。
 
+<span id="table" class="legacy-anchor" aria-hidden="true"></span>
 
-## Table
+## 表格
 
-Duis sunt ut pariatur reprehenderit mollit mollit magna dolore in pariatur nulla commodo sit dolor ad fugiat. Laboris amet ea occaecat duis eu enim exercitation deserunt ea laborum occaecat reprehenderit. Et incididunt dolor commodo consequat mollit nisi proident non pariatur in et incididunt id. Eu ut et Lorem ea ex magna minim ipsum ipsum do.
+表格适合比较工具、参数和验证结果。
 
-| Table Heading 1 | Table Heading 2 | Center align | Right align | Table Heading 5 |
-| :-------------- | :-------------- | :----------: | ----------: | :-------------- |
-| Item 1          | Item 2          |    Item 3    |      Item 4 | Item 5          |
-| Item 1          | Item 2          |    Item 3    |      Item 4 | Item 5          |
-| Item 1          | Item 2          |    Item 3    |      Item 4 | Item 5          |
-| Item 1          | Item 2          |    Item 3    |      Item 4 | Item 5          |
-| Item 1          | Item 2          |    Item 3    |      Item 4 | Item 5          |
+| 工具 | 用途 | 常见操作 |
+| --- | --- | --- |
+| Git | 版本控制 | 查看改动、提交记录 |
+| npm | 依赖与脚本管理 | 安装依赖、运行构建 |
+| Astro | 静态站点开发 | 生成页面、组织文章 |
 
-Minim id consequat adipisicing cupidatat laborum culpa veniam non consectetur et duis pariatur reprehenderit eu ex consectetur. Sunt nisi qui eiusmod ut cillum laborum Lorem officia aliquip laboris ullamco nostrud laboris non irure laboris. Cillum dolore labore Lorem deserunt mollit voluptate esse incididunt ex dolor.
+| 参数 | 默认值 | 说明 |
+| :--- | :---: | ---: |
+| 波特率 | 115200 | 双方配置应一致 |
+| 数据位 | 8 | 常见串口数据格式 |
+| 停止位 | 1 | 根据设备手册设置 |
 
+<span id="code" class="legacy-anchor" aria-hidden="true"></span>
 
-## Code
+## 代码
 
-### Inline code
+<span id="inline-code" class="legacy-anchor" aria-hidden="true"></span>
 
-Ad amet irure est magna id mollit Lorem in do duis enim. Excepteur velit nisi magna ea pariatur pariatur ullamco fugiat deserunt sint non sint. Duis duis est `code in text` velit velit aute culpa ex quis pariatur pariatur laborum aute pariatur duis tempor sunt ad. Irure magna voluptate dolore consectetur consectetur irure esse. Anim magna `<strong>in culpa qui officia</strong>` dolor eiusmod esse amet aute cupidatat aliqua do id voluptate cupidatat reprehenderit amet labore deserunt.
+### 行内代码
 
-### Highlighted
+在正文中可以用 `npm run dev` 表示命令，用 `src/config.ts` 表示配置文件，用 `pubDate` 表示字段名。保留这些名称的原始拼写，便于直接查找和使用。
 
-Et fugiat ad nisi amet magna labore do cillum fugiat occaecat cillum Lorem proident. In sint dolor ullamco ad do adipisicing amet id excepteur Lorem aliquip sit irure veniam laborum duis cillum. Aliqua occaecat minim cillum deserunt magna sunt laboris do do irure ea nostrud consequat ut voluptate ex.
+<span id="highlighted" class="legacy-anchor" aria-hidden="true"></span>
+
+### 语法高亮
+
+下面是一个使用 Go 标准库创建 HTTP 服务的示例。代码块保留原始内容，复制后可以在本地开发环境中运行。
 
 ```go
 package main
@@ -136,20 +160,18 @@ func main() {
 }
 ```
 
-Ex amet id ex aliquip id do laborum excepteur exercitation elit sint commodo occaecat nostrud est. Nostrud pariatur esse veniam laborum non sint magna sit laboris minim in id. Aliqua pariatur pariatur excepteur adipisicing irure culpa consequat commodo et ex id ad.
+为代码块指定语言，可以帮助阅读器正确高亮语法。讲解代码时，应解释关键行为和使用前提，而不是重复每一行语句。
 
+<span id="inline" class="legacy-anchor" aria-hidden="true"></span>
 
-## Inline
+## 行内样式与图片
 
-Sint ea anim ipsum ad commodo cupidatat do **exercitation** incididunt et minim ad labore sunt. Minim deserunt labore laboris velit nulla incididunt ipsum nulla. Ullamco ad laborum ea qui et anim in laboris exercitation tempor sit officia laborum reprehenderit culpa velit quis. **Consequat commodo** reprehenderit duis [irure](#!) esse esse exercitation minim enim Lorem dolore duis irure. Nisi Lorem reprehenderit ea amet excepteur dolor excepteur magna labore proident voluptate ipsum. Reprehenderit ex esse deserunt aliqua ea officia mollit Lorem nulla magna enim. Et ad ipsum labore enim ipsum **cupidatat consequat**. Commodo non ea cupidatat magna deserunt dolore ipsum velit nulla elit veniam nulla eiusmod proident officia.
+使用 **加粗** 强调重要结论，使用 *斜体* 表示补充说明，也可以组合成 ***加粗斜体***。链接应使用清晰的文字，例如[返回代码示例](#代码)，让读者知道点击后的目标。
 
-![Super wide](https://images.unsplash.com/photo-1710170601257-242514895755?q=80&w=2832&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)
+![宽幅风景图片，演示文章内图片的自适应显示](https://images.unsplash.com/photo-1710170601257-242514895755?q=80&w=2832&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fA%3D%3D)
 
-_Proident sit veniam in est proident officia adipisicing_ ea tempor cillum non cillum velit deserunt. Voluptate laborum incididunt sit consectetur Lorem irure incididunt voluptate nostrud. Commodo ut eiusmod tempor cupidatat esse enim minim ex anim consequat. Mollit sint culpa qui laboris quis consectetur ad sint esse. Amet anim anim minim ullamco et duis non irure. Sit tempor adipisicing ea laboris `culpa ex duis sint` anim aute reprehenderit id eu ea. Aute [excepteur proident](#!) Lorem minim adipisicing nostrud mollit ad ut voluptate do nulla esse occaecat aliqua sint anim.
+图片应附带准确的替代文字，并根据正文宽度缩放。*补充说明可以与正文自然衔接*，例如介绍截图的环境、参数和操作步骤。
 
-![Not so big](https://placehold.co/600x400/000000/FFFFFF/png)
+![六百乘四百像素的占位图片，演示较小图片的显示](https://placehold.co/600x400/000000/FFFFFF/png)
 
-Incididunt in culpa cupidatat mollit cillum qui proident sit. In cillum aliquip incididunt voluptate magna amet cupidatat cillum pariatur sint aliqua est _enim **anim** voluptate_. Magna aliquip proident incididunt id duis pariatur eiusmod incididunt commodo culpa dolore sit. Culpa do nostrud elit ad exercitation anim pariatur non minim nisi **adipisicing sunt _officia_**. Do deserunt magna mollit Lorem commodo ipsum do cupidatat mollit enim ut elit veniam ea voluptate.
-
-Reprehenderit non eu quis in ad elit esse qui aute id [incididunt](#!) dolore cillum. Esse laboris consequat dolor anim exercitation tempor aliqua deserunt velit magna laboris. Culpa culpa minim duis amet mollit do quis amet commodo nulla irure.
-
+技术文章的排版最终是为了帮助读者理解内容。清晰的标题、适当的留白，以及可以直接使用的代码和链接，往往比复杂的装饰更有价值。

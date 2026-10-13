@@ -1,51 +1,25 @@
 ---
 import { getCollection } from 'astro:content'
-import type { CollectionEntry } from 'astro:content'
 import BaseLayout from '@layouts/BaseLayout.astro'
 import BlogInsight from '@components/blog/BlogInsight.astro'
 import HeroSection from '@components/ui/sections/HeroSection.astro'
 import FeaturesSection from '@components/ui/sections/FeaturesSection.astro'
 import HeroSectionAlt from '@components/ui/sections/HeroSectionAlt.astro'
-import blogHeroImg from '@images/home.png'
+import { sortPosts } from '@support/posts'
 
-const posts: CollectionEntry<'posts'>[] = (await getCollection('posts')).sort(
-    (a: CollectionEntry<'posts'>, b: CollectionEntry<'posts'>) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-).slice(0, 3);
+const posts = sortPosts(await getCollection('posts'))
+const categories = await getCollection('categories')
 ---
-
 <BaseLayout>
-    <HeroSection
-        title=`Hello, <span class="text-yellow-500 dark:text-yellow-400">GBlog</span>`
-        subTitle="Hi, Welcome to Gblog, gblog is an open-source, simple, and beautiful blog built with Astro."
-        primaryBtn="Explore Posts"
-        primaryBtnURL="/posts"
-        src={blogHeroImg}
-        alt="godruoyi's blog"
-    />
-
-    <FeaturesSection />
-
-    <section class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 2xl:max-w-full">
-        <div class="mx-auto mb-10 max-w-2xl text-center lg:mb-14">
-            <h2 class="text-3xl font-bold text-neutral-800 dark:text-neutral-200 md:text-4xl md:leading-tight">
-                Latest Post
-            </h2>
-            <p class="mt-1 text-pretty text-neutral-600 dark:text-neutral-400">
-                Always want to write something, but rarely actually do it
-            </p>
-        </div>
-        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {
-                posts.map(b => (
-                    <BlogInsight blog={b} />
-                ))
-            }
-        </div>
+    <HeroSection />
+    <section class="container stats-panel panel" aria-label="博客概览">
+        <div><span class="stat-icon" aria-hidden="true">▤</span><p><strong>{posts.length} 篇</strong><small>技术文章</small></p></div>
+        <div><span class="stat-icon" aria-hidden="true">▦</span><p><strong>{categories.length} 个</strong><small>技术分类</small></p></div>
+        <div><span class="stat-icon" aria-hidden="true">⌘</span><p><strong>开源探索</strong><small>持续学习与分享</small></p></div>
+        <div><span class="stat-icon" aria-hidden="true">⚙</span><p><strong>实践记录</strong><small>让知识连接现实</small></p></div>
+        <p class="handwritten stats-note">保持热爱，<br />把探索写成笔记。</p>
     </section>
-
-    <HeroSectionAlt
-        title="Fellow me on GitHub"
-        subTitle="I love open source and have some small tools on my GitHub. You can get me more by checking out my code"
-        url="https://github.com/godruoyi/gblog"
-    />
+    <FeaturesSection />
+    <section class="container recent-section panel"><div class="section-heading"><div><p class="eyebrow">最近更新</p><h2>最新文章</h2></div><a class="text-link" href="/posts/">查看全部文章 <span aria-hidden="true">→</span></a></div><div class="article-grid">{posts.slice(0, 3).map(blog => <BlogInsight blog={blog} />)}</div></section>
+    <HeroSectionAlt />
 </BaseLayout>

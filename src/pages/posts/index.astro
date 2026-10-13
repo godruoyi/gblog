@@ -1,49 +1,12 @@
 ---
 import { getCollection } from 'astro:content'
-import type { CollectionEntry } from 'astro:content'
 import BaseLayout from '@layouts/BaseLayout.astro'
 import BlogRecentCard from '@components/blog/BlogRecentCard.astro'
 import BlogSelectedArticle from '@components/blog/BlogSelectedArticle.astro'
 import MainSection from '@components/ui/sections/MainSection.astro'
-import { SITE } from '@/config'
+import { sortPosts } from '@support/posts'
 
-const posts: CollectionEntry<'posts'>[] = (await getCollection('posts')).sort(
-    (a: CollectionEntry<'posts'>, b: CollectionEntry<'posts'>) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-)
-
-const selectedPosts: CollectionEntry<'posts'>[] = posts.filter(p => p.data.selected)
-const description = 'Here are some articles that Godruoyi believes are not bad, hope you enjoy them.'
-const URL = Astro.url.href
+const posts = sortPosts(await getCollection('posts'))
+const description = '记录技术学习与开发实践，把遇到的问题和有用的发现整理成文章。'
 ---
-
-<BaseLayout
-    title="All Blogs"
-    description={description}
-    structuredData={{
-        '@context': 'https://schema.org',
-        '@type': 'WebPage',
-        'inLanguage': 'en-US',
-        '@id': URL,
-        'url': URL,
-        'name': `All Blogs - ${SITE.title}`,
-        'description': description,
-        'isPartOf': {
-            '@type': 'WebSite',
-            'url': SITE.url,
-            'name': SITE.title,
-            'description': SITE.description,
-        },
-    }}
->
-    <MainSection
-        title="Write you want"
-        subTitle="生活不能让人处处满意，但我们还要热情的生活下去"
-        btnExists={true}
-        btnTitle="All Posts"
-        btnURL="/timeline"
-    />
-
-    <BlogRecentCard blogs={posts} />
-    <BlogSelectedArticle posts={selectedPosts} />
-</BaseLayout>
-
+<BaseLayout title="全部文章" description={description}><MainSection title="把探索写成笔记" subTitle={`目前共 ${posts.length} 篇文章。${description}`} btnExists btnTitle="按时间浏览" btnURL="/timeline/" /><BlogRecentCard blogs={posts} /><BlogSelectedArticle posts={posts.filter(post => post.data.selected)} /></BaseLayout>

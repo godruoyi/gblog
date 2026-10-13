@@ -1,61 +1,14 @@
 ---
-import PrimaryCTA from '@components/ui/buttons/PrimaryCTA.astro'
-import SecondaryCTA from '@components/ui/buttons/SecondaryCTA.astro'
-import Image from '@components/ui/images/Image.astro'
-
-const {
-    title,
-    subTitle,
-    primaryBtn,
-    primaryBtnURL,
-    secondaryBtn,
-    secondaryBtnURL,
-    src,
-    alt,
-} = Astro.props
-
-interface Props {
-    title: string
-    subTitle?: string
-    primaryBtn?: string
-    primaryBtnURL?: string
-    secondaryBtn?: string
-    secondaryBtnURL?: string
-    src?: any
-    alt?: string
-}
+import { Image } from 'astro:assets'
+import workbench from '@images/theme/embedded-workbench.png'
 ---
-
-<section class="mx-auto grid max-w-[85rem] gap-4 px-4 py-14 sm:px-6 md:grid-cols-2 md:items-center md:gap-8 lg:px-8 2xl:max-w-full">
-    <div>
-        <h1 class="block text-balance text-3xl font-bold tracking-tight text-neutral-800 dark:text-neutral-200 sm:text-4xl lg:text-6xl lg:leading-tight">
-            <Fragment set:html={title} />
-        </h1>
-        {subTitle && (
-            <p class="mt-6 text-pretty text-lg leading-relaxed text-neutral-700 dark:text-neutral-400 lg:w-4/5">
-                {subTitle}
-            </p>
-        )}
-
-        <div class="mt-7 grid w-full gap-3 sm:inline-flex">
-            {primaryBtn && <PrimaryCTA title={primaryBtn} url={primaryBtnURL} />}
-            {secondaryBtn && <SecondaryCTA title={secondaryBtn} url={secondaryBtnURL} />}
-        </div>
-    </div>
-
-    <div class="w-full hidden md:block">
-        <div class="top-12 overflow-hidden w-full md:ml-4 flex justify-center">
-            {src && alt && (
-                <Image
-                    src={src}
-                    alt={alt}
-                    class="h-full w-[320px] scale-100 object-cover object-center"
-                    draggable="false"
-                    loading="eager"
-                    format="avif"
-                    disableBlur={true}
-                />
-            )}
-        </div>
+<section class="home-hero">
+    <Image class="hero-background" src={workbench} alt="暖色灯光下的嵌入式开发工作台" width={1672} height={941} loading="eager" fetchpriority="high" />
+    <div class="hero-shade"></div>
+    <div class="container hero-content">
+        <p class="handwritten hero-kicker">代码 · 技术 · 真实世界</p>
+        <h1>记录代码，<br />连接<span>现实。</span></h1>
+        <p class="hero-description">你好，我是 Yongjian Peng。<br />在这里记录技术学习、代码实践与开发中的思考。<br class="desktop-break" />从工具到系统，让每一次探索<br class="desktop-break" />都留下有用的笔记。</p>
+        <div class="hero-buttons"><a class="button primary" href="/posts/">阅读文章 <span aria-hidden="true">→</span></a><a class="button secondary" href="/posts/gblog/">关于博客 <span aria-hidden="true">↗</span></a></div>
     </div>
 </section>

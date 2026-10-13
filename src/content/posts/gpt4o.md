@@ -1,28 +1,31 @@
 ---
-title: "GPT-4o"
-description: "Our initial conception when we started OpenAI was that we’d create AI and use it to create all sorts of benefits for the world. Instead, it now looks like we’ll create AI and then other people will use it to create all sorts of amazing things that we all benefit from."
+title: "GPT-4o：让 AI 交互更自然"
+description: "从向更多人开放强大的 AI 工具，到更自然的语音与视频交互，Sam Altman 分享了 GPT-4o 发布时的思考。"
 pubDate: "2024-05-15 00:00:00"
 category: "tool"
 banner: "@images/banners/gpt.jpg"
 banner2: "@images/banners/gpt-2.jpg"
 tags: ["GPT", "OpenAI"]
 selected: true
+commentTitle: "GPT-4o | yongjian-peng博客记录"
 ---
 
-There are two things from our announcement today I wanted to highlight.
+> 本文译自 Sam Altman 在 GPT-4o 发布时撰写的文章。以下“我”和“我们”指原作者及 OpenAI，产品描述保留原文发表时的语境。
 
-First, a key part of our mission is to put very capable AI tools in the hands of people for free (or at a great price). I am very proud that we’ve made the best model in the world available for free in ChatGPT, without ads or anything like that. 
+关于今天的发布，有两件事我特别想谈一谈。
 
-Our initial conception when we started OpenAI was that we’d create AI and use it to create all sorts of benefits for the world. Instead, it now looks like we’ll create AI and then other people will use it to create all sorts of amazing things that we all benefit from. 
+首先，我们使命的重要一部分，是让人们能够免费，或以非常合理的价格，使用能力强大的 AI 工具。我们已经让大家可以在 ChatGPT 中免费使用当时世界上最好的模型，而且没有广告之类的干扰，这让我非常自豪。
 
-We are a business and will find plenty of things to charge for, and that will help us provide free, outstanding AI service to (hopefully) billions of people. 
+创办 OpenAI 时，我们最初的设想是：创造 AI，再用它为世界带来各种益处。而现在看来，我们会创造 AI，然后由其他人用它创造出各种令人惊叹、让大家受益的事物。
 
-Second, the new voice (and video) mode is the best computer interface I’ve ever used. It feels like AI from the movies; and it’s still a bit surprising to me that it’s real. Getting to human-level response times and expressiveness turns out to be a big change.
+我们是一家企业，也会找到许多可以收费的服务。这些收入将帮助我们向更多人提供免费、出色的 AI 服务，希望最终能覆盖数十亿人。
 
-The original ChatGPT showed a hint of what was possible with language interfaces; this new thing feels viscerally different. It is fast, smart, fun, natural, and helpful.
+其次，新的语音与视频模式，是我用过的最好的计算机交互界面。它让人感觉像是在和电影中的 AI 交流；直到现在，我仍有些惊讶，这一切已经成为现实。接近人类水平的响应速度和表达能力，带来了非常大的变化。
 
-Talking to a computer has never felt really natural for me; now it does. As we add (optional) personalization, access to your information, the ability to take actions on your behalf, and more, I can really see an exciting future where we are able to use computers to do much more than ever before.
+最初的 ChatGPT 展示了语言交互界面的一部分潜力，而这次的新体验，从直觉上就让人感到截然不同。它快速、聪明、有趣、自然，也能真正提供帮助。
 
-Finally, huge thanks to the team that poured so much work into making this happen!
+过去，与计算机对话从未让我觉得特别自然；现在，这种感觉改变了。随着我们逐步加入可选的个性化能力、访问个人信息的能力，以及代用户执行操作等功能，我能看到一个令人期待的未来：我们可以借助计算机做到比以往更多的事情。
 
-- https://blog.samaltman.com/gpt-4o
+最后，衷心感谢为此付出大量心血的团队！
+
+原文：[Sam Altman — GPT-4o](https://blog.samaltman.com/gpt-4o)。

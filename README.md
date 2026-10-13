@@ -1,65 +1,56 @@
-# Gblog is an open-source, simple, and beautiful blog built with Astro.
+# Yongjian Peng 的技术博客
 
-![godruoyi gblog](https://images.godruoyi.com/logos/gblog-1.png)
+基于 [Gblog](https://github.com/godruoyi/gblog) 和 Astro 的静态博客，采用暖米色与橙色的技术笔记风格。
 
-Gblog is a blog template designed for those who are unable or unwilling to write frontend code. All you need to do is find an interesting Tailwind CSS template from elsewhere and paste it into Gblog, and it will function seamlessly. Additionally, you can customize your own blog without to write any JavaScript code.
+## 功能
 
-**[View Live Demo](https://godruoyi.com)**
+- 中文文章、分类与时间线
+- 响应式布局与浅色／深色主题
+- 按标题、摘要、标签进行站内搜索
+- 自动文章目录、相关推荐与上一篇／下一篇
+- Markdown 代码高亮、复制和表格排版
+- 中文 SEO 信息与站点地图
+- 保留现有可选统计、Giscus 评论及资源上传配置
 
-## Features
+## 本地开发
 
-- 🐈 Simple And Beautiful
-- 🖥️️ Responsive And Light/Dark mode
-- 🐛 SiteMap & RSS Feed
-- 🐝 Category and Timeline Support
-- 🍋 Google Analytics & Google Structured Data
-- 🐜 SEO and Responsiveness
-- 🪲 Markdown And MDX
-- 🏂🏾 Page Compression & Image Optimization
+安装依赖后启动开发服务器：
 
-## Make Your Own
-
-You can use this template directly to build your own blog in four different ways.
-
-https://github.com/godruoyi/gblog/assets/16079222/773cd885-d4b7-482d-818f-566606e70b90
-
-### Deploy to Zeabur
-
-[![Deploy on Zeabur](https://zeabur.com/button.svg)](https://zeabur.com/templates/6FMSVU)
-
-Click the button above to build your blog to Zeabur within one minute.
-
-### Deploy to Vercel
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fgodruoyi%2Fgblog%2Ftree%2Fgblog-template&project-name=gblog&repository-name=my-gblog&demo-title=%E8%BF%9E%E6%B3%A2%E7%9A%84%E9%97%B2%E8%B0%88%E6%9D%82%E9%B1%BC&demo-description=Godruoyi's%20private%20blog&demo-url=https%3A%2F%2Fgodruoyi.com)
-
-### Build from Source
-
-1. Clone the `gblog-template` branch of this repository `git clone -b gblog-template git@github.com:godruoyi/gblog.git`
-2. Execute `pnpm install` to install dependencies.
-3. Modify the `src/config.ts` file to what you want.
-4. Execute `pnpm run dev`: Starts a local development server with hot reloading enabled.
-
-### Build from Astro Template(coming soon)
-
-```
-pnpm create astro@latest -- --template godruoyi/gblog
+```shell
+npm install
+npm run dev
 ```
 
-### Development Commands
+构建与预览：
 
-With dependencies installed, you can utilize the following npm scripts to manage your project's development lifecycle:
+```shell
+npm run build
+npm run preview
+```
 
-- `pnpm run dev`: Starts a local development server with hot reloading enabled.
-- `pnpm run preview`: Serves your build output locally for preview before deployment.
-- `pnpm run build`: Bundles your site into static files for production.
+静态文件生成到 `dist/`，可用于 GitHub Pages 等静态托管。
 
-For detailed help with Astro CLI commands, visit [Astro's documentation](https://docs.astro.build/en/reference/cli-reference/).
+## 内容与配置
 
-## Thanks 
+- `src/config.ts`：站点名称、导航、评论与统计配置。
+- `src/content/posts/`：文章；文件名决定访问地址。
+- `src/content/categories/`：分类；文章的 `category` 与分类文件名对应。
+- `src/content/friends/index.yml`：友链。
+- `src/images/theme/`：已按语义命名的页面素材。
+- `src/styles/global.css`：公共主题、响应式布局和正文样式。
 
-Thanks https://github.com/mearashadowfax/ScrewFast, The majority of the code for this project comes from ScrewFast.
+文章日期、代码和技术名称按原内容保留。已翻译的原文保留相应的来源说明；当前 RSS 页面未启用。
 
-## License
+## 检查
 
-This project is released under the MIT License. Please read the [LICENSE](https://github.com/godruoyi/gblog/blob/astro/LICENSE) file for more details.
+```shell
+node --experimental-strip-types --test tests/blog.test.mjs tests/rg200u-content.test.mjs
+npm run lint
+npm run build
+```
+
+内置测试使用 Node.js 22.6 及以上版本的 TypeScript 类型擦除能力，无需安装额外测试框架。
+
+## 致谢
+
+感谢 Gblog 原作者 [Godruoyi](https://github.com/godruoyi)，以及提供原始页面基础的 [ScrewFast](https://github.com/mearashadowfax/ScrewFast)。Gblog 原项目采用 MIT 许可证，相关条款参见[原项目许可证](https://github.com/godruoyi/gblog/blob/astro/LICENSE)。

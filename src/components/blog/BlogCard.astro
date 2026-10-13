@@ -1,36 +1,12 @@
 ---
 import type { CollectionEntry } from 'astro:content'
-import Image from '@components/ui/images/Image.astro'
+import { Image } from 'astro:assets'
 import { formatDate } from '@support/time'
 
+interface Props { blog: CollectionEntry<'posts'> }
 const { blog } = Astro.props
-
-interface Props {
-    blog: CollectionEntry<'posts'>
-}
 ---
-
-<a
-    class="group relative block rounded-xl outline-none ring-zinc-500 transition duration-500 focus-visible:ring dark:ring-zinc-200 dark:focus:outline-none"
-    href={`/posts/${blog.slug}/`}
-    data-astro-prefetch="false"
->
-    <div class="relative w-full flex-shrink-0 overflow-hidden rounded-xl before:absolute before:inset-x-0 before:z-[1] before:size-full before:bg-gradient-to-t before:from-neutral-900/[.7]">
-        <Image
-            class="w-full h-full sm:h-[220px] md:h-[240px] start-0 top-0 size-full object-cover transition duration-500 group-hover:scale-110"
-            src={blog.data.banner}
-            alt={blog.data.title}
-            draggable="false"
-            loading="eager"
-            format="avif"
-            width="800"
-            height="460"
-        />
-    </div>
-    <h3 class="mt-2 text-xl font-bold text-neutral-800 group-hover:text-orange-400 dark:text-neutral-200 dark:group-hover:text-orange-300">
-        {blog.data.title}
-    </h3>
-    <p class="mt-2 text-sm text-gray-600 dark:text-neutral-400 dark:group-hover:text-neutral-500">
-        {formatDate(blog.data.pubDate)}
-    </p>
+<a class:list={['article-card', { 'rg200u-article': blog.slug === 'rg200u-5g-debug' }]} href={`/posts/${blog.slug}/`}>
+    <div class="article-card-cover"><Image src={blog.data.banner2 ?? blog.data.banner} alt={blog.data.title} width={700} height={390} loading="lazy" /><span class="round-arrow" aria-hidden="true">→</span></div>
+    <div class="article-card-copy"><time datetime={blog.data.pubDate.toISOString()}>{formatDate(blog.data.pubDate)}</time><h3>{blog.data.title}</h3><p>{blog.data.description}</p><div class="tags">{(blog.data.tags ?? []).map(tag => <span class="tag">{tag}</span>)}</div></div>
 </a>

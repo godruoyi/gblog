@@ -1,54 +1,11 @@
 ---
+import { getCollection } from 'astro:content'
+import BlogCategory from '@components/blog/BlogCategory.astro'
+
+const categories = await getCollection('categories')
+const posts = await getCollection('posts')
 ---
-
-<section class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 2xl:max-w-full">
-    <div class="flex flex-col items-center justify-center gap-y-2 sm:flex-row sm:gap-x-12 sm:gap-y-0 lg:gap-x-24">
-        <div class="max-w-5xl px-4 sm:px-6 lg:px-8 mx-auto">
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
-                <a class="group flex flex-col bg-neutral-100 dark:bg-neutral-900/30 rounded-xl hover:group" href="#">
-                    <div class="p-4 md:p-5">
-                        <div class="flex">
-                            <svg class="mt-1 flex-shrink-0 size-5 text-neutral-600 group-hover:text-orange-400 dark:text-neutral-300 dark:group-hover:text-orange-300" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5.8 11.3 2 22l10.7-3.79" /><path d="M4 3h.01" /><path d="M22 8h.01" /><path d="M15 2h.01" /><path d="M22 20h.01" /><path d="m22 2-2.24.75a2.9 2.9 0 0 0-1.96 3.12v0c.1.86-.57 1.63-1.45 1.63h-.38c-.86 0-1.6.6-1.76 1.44L14 10" /><path d="m22 13-.82-.33c-.86-.34-1.82.2-1.98 1.11v0c-.11.7-.72 1.22-1.43 1.22H17" /><path d="m11 2 .33.82c.34.86-.2 1.82-1.11 1.98v0C9.52 4.9 9 5.52 9 6.23V7" /><path d="M11 13c1.93 1.93 2.83 4.17 2 5-.83.83-3.07-.07-5-2-1.93-1.93-2.83-4.17-2-5 .83-.83 3.07.07 5 2Z" /></svg>
-                            <div class="grow ms-5">
-                                <span class="block text-lg font-bold text-neutral-600 group-hover:text-orange-400 dark:text-neutral-300 dark:group-hover:text-orange-300">Focus on Backend</span>
-                                <span class="mt-1 block text-neutral-500 group-hover:text-neutral-600 dark:text-neutral-500 dark:group-hover:text-neutral-400">
-                                    I use Golang, Java, PHP as my main language
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-
-                <a class="group flex flex-col bg-neutral-100 dark:bg-neutral-900/30 rounded-xl hover:group" href="#">
-                    <div class="p-4 md:p-5">
-                        <div class="flex">
-                            <svg class="mt-1 flex-shrink-0 size-5 text-neutral-600 group-hover:text-orange-400 dark:text-neutral-300 dark:group-hover:text-orange-300" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 -.11376601 49.74245785 51.31690859" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m49.626 11.564a.809.809 0 0 1 .028.209v10.972a.8.8 0 0 1 -.402.694l-9.209 5.302v10.509c0 .286-.152.55-.4.694l-19.223 11.066c-.044.025-.092.041-.14.058-.018.006-.035.017-.054.022a.805.805 0 0 1 -.41 0c-.022-.006-.042-.018-.063-.026-.044-.016-.09-.03-.132-.054l-19.219-11.066a.801.801 0 0 1 -.402-.694v-32.916c0-.072.01-.142.028-.21.006-.023.02-.044.028-.067.015-.042.029-.085.051-.124.015-.026.037-.047.055-.071.023-.032.044-.065.071-.093.023-.023.053-.04.079-.06.029-.024.055-.05.088-.069h.001l9.61-5.533a.802.802 0 0 1 .8 0l9.61 5.533h.002c.032.02.059.045.088.068.026.02.055.038.078.06.028.029.048.062.072.094.017.024.04.045.054.071.023.04.036.082.052.124.008.023.022.044.028.068a.809.809 0 0 1 .028.209v20.559l8.008-4.611v-10.51c0-.07.01-.141.028-.208.007-.024.02-.045.028-.068.016-.042.03-.085.052-.124.015-.026.037-.047.054-.071.024-.032.044-.065.072-.093.023-.023.052-.04.078-.06.03-.024.056-.05.088-.069h.001l9.611-5.533a.801.801 0 0 1 .8 0l9.61 5.533c.034.02.06.045.09.068.025.02.054.038.077.06.028.029.048.062.072.094.018.024.04.045.054.071.023.039.036.082.052.124.009.023.022.044.028.068zm-1.574 10.718v-9.124l-3.363 1.936-4.646 2.675v9.124l8.01-4.611zm-9.61 16.505v-9.13l-4.57 2.61-13.05 7.448v9.216zm-36.84-31.068v31.068l17.618 10.143v-9.214l-9.204-5.209-.003-.002-.004-.002c-.031-.018-.057-.044-.086-.066-.025-.02-.054-.036-.076-.058l-.002-.003c-.026-.025-.044-.056-.066-.084-.02-.027-.044-.05-.06-.078l-.001-.003c-.018-.03-.029-.066-.042-.1-.013-.03-.03-.058-.038-.09v-.001c-.01-.038-.012-.078-.016-.117-.004-.03-.012-.06-.012-.09v-21.483l-4.645-2.676-3.363-1.934zm8.81-5.994-8.007 4.609 8.005 4.609 8.006-4.61-8.006-4.608zm4.164 28.764 4.645-2.674v-20.096l-3.363 1.936-4.646 2.675v20.096zm24.667-23.325-8.006 4.609 8.006 4.609 8.005-4.61zm-.801 10.605-4.646-2.675-3.363-1.936v9.124l4.645 2.674 3.364 1.937zm-18.422 20.561 11.743-6.704 5.87-3.35-8-4.606-9.211 5.303-8.395 4.833z" /></svg>
-                            <div class="grow ms-5">
-                                <span class="block text-lg font-bold text-neutral-600 group-hover:text-orange-400 dark:text-neutral-300 dark:group-hover:text-orange-300">Laravel</span>
-                                <span class="mt-1 block text-neutral-500 group-hover:text-neutral-600 dark:text-neutral-500 dark:group-hover:text-neutral-400">
-                                    Love Laravel forever
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-
-                <a class="group flex flex-col bg-neutral-100 dark:bg-neutral-900/30 rounded-xl hover:group" href="#">
-                    <div class="p-4 md:p-5">
-                        <div class="flex">
-                            <svg class="mt-1 flex-shrink-0 size-5 text-neutral-600 group-hover:text-orange-400 dark:text-neutral-300 dark:group-hover:text-orange-300" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 8.4c.5.38.8.97.8 1.6v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V10a2 2 0 0 1 .8-1.6l8-6a2 2 0 0 1 2.4 0l8 6Z" /><path d="m22 10-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 10" /></svg>
-                            <div class="grow ms-5">
-                                <span class="block text-lg font-bold text-neutral-600 group-hover:text-orange-400 dark:text-neutral-300 dark:group-hover:text-orange-300">
-                                    Email me
-                                </span>
-                                <span class="mt-1 block text-neutral-500 group-hover:text-neutral-600 dark:text-neutral-500 dark:group-hover:text-neutral-400">
-                                    Reach me at <span class="text-blue-600 decoration-2 group-hover:underline font-medium dark:text-blue-500">godruoyi@gmail.com</span>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </div>
+<section class="container categories-section">
+    <div class="section-heading"><div><p class="eyebrow">技术分类</p><h2>我在记录什么</h2><p>从开发工具到框架实践，整理探索过程中的知识与经验。<br />每一个分类，都是持续学习的足迹。</p></div><p class="handwritten section-note">保持好奇，<br />让想法落在代码里。</p></div>
+    <div class="category-grid">{categories.map(category => <BlogCategory slug={category.slug} title={category.data.title} description={category.data.description} count={posts.filter(post => post.data.category === category.slug).length} />)}</div>
 </section>

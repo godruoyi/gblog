@@ -1,58 +1,15 @@
 ---
-import BaseLayout from '@layouts/BaseLayout.astro'
 import { type CollectionEntry, getCollection } from 'astro:content'
-import BlogCard from '@components/blog/BlogCard.astro'
+import BaseLayout from '@layouts/BaseLayout.astro'
 import MainSection from '@components/ui/sections/MainSection.astro'
-import { SITE } from '@/config'
+import BlogCard from '@components/blog/BlogCard.astro'
+import { sortPosts } from '@support/posts'
 
 export async function getStaticPaths() {
-    const categories = await getCollection('categories')
-    return categories.map(category => ({
-        params: { slug: category.slug },
-        props: { category },
-    }))
+    return (await getCollection('categories')).map(category => ({ params: { slug: category.slug }, props: { category } }))
 }
-
+interface Props { category: CollectionEntry<'categories'> }
 const { category } = Astro.props
-const URL = Astro.url.href
-const categoriesURL = `${Astro.url.origin}/categories`
-
-const posts: CollectionEntry<'posts'>[] = (await getCollection('posts')).sort(
-    (a: CollectionEntry<'posts'>, b: CollectionEntry<'posts'>) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-).filter((b) => {
-    return b.data.category === category.slug
-});
+const posts = sortPosts(await getCollection('posts')).filter(post => post.data.category === category.slug)
 ---
-
-<BaseLayout
-    title={category.data.title}
-    description={category.data.description}
-    structuredData={{
-        '@context': 'https://schema.org',
-        '@type': 'WebPage',
-        'inLanguage': 'en-US',
-        '@id': URL,
-        'url': URL,
-        'name': `${category.data.title} - ${SITE.title}`,
-        'description': category.data.description,
-        'isPartOf': {
-            '@type': 'WebSite',
-            'url': categoriesURL,
-            'name': `All Categories - ${SITE.title}`,
-        },
-    }}
->
-    <MainSection
-        title={category.data.title}
-        subTitle={category.data.description}
-        btnExists={true}
-        btnTitle="Go to List"
-        btnURL="/categories"
-    />
-
-    <section class="mx-auto max-w-[85rem] px-4 py-8 sm:px-6 lg:px-8 mb-10 2xl:max-w-full">
-        <div class="grid gap-6 grid-cols-1 lg:grid-cols-3 sm:grid-cols-2">
-            {posts.map(b => <BlogCard blog={b} />)}
-        </div>
-    </section>
-</BaseLayout>
+<BaseLayout title={category.data.title} description={category.data.description}><MainSection title={category.data.title} subTitle={category.data.description} btnExists btnTitle="全部分类" btnURL="/categories/" /><section class="container page-section panel">{posts.length > 0 ? <div class="article-grid">{posts.map(blog => <BlogCard blog={blog} />)}</div> : <div class="empty-state"><p>该分类暂时还没有文章。</p><a class="text-link" href="/posts/">先看看其他文章 →</a></div>}</section></BaseLayout>

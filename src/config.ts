@@ -1,37 +1,36 @@
 import type { NavigationLink, Site } from './types.ts'
 
 export const SITE: Site = {
-    author: 'Godruoyi',
-    url: 'https://godruoyi.com',
-    title: '连波的闲谈杂鱼',
-    description: 'Godruoyi\'s personal blog, I enjoy the process of building something using any technology stack',
-    shortDescription: '',
+    author: 'Yongjian Peng',
+    url: 'https://yongjian-peng.github.io',
+    title: 'Yongjian Peng 的技术博客',
+    description: '记录技术学习、代码实践与开发中的思考。从工具到系统，让每一次探索都留下有用的笔记。',
+    shortDescription: '技术笔记与开发实践',
 }
 
 export const NavigationLinks: NavigationLink[] = [
-    { name: 'Posts', url: '/posts' },
-    { name: 'Category', url: '/categories' },
-    { name: 'Timeline', url: '/timeline' },
-    { name: 'About', url: '/posts/gblog' },
-    { name: 'Friends', url: '/friends' },
+    { name: '文章', url: '/posts' },
+    { name: '分类', url: '/categories' },
+    { name: '时间线', url: '/timeline' },
+    { name: '关于博客', url: '/posts/gblog' },
+    { name: '友链', url: '/friends' },
 ]
 
 export const FooterLinks = [
     {
-        section: 'Blog',
+        section: '博客',
         links: [
-            { name: 'Posts', url: '/posts' },
-            { name: 'Timeline', url: '/timeline' },
-            { name: 'Categories', url: '/categories' },
-            { name: 'About Me', url: '/posts/about-godruoyi' },
+            { name: '文章', url: '/posts' },
+            { name: '时间线', url: '/timeline' },
+            { name: '分类', url: '/categories' },
+            { name: '关于博客', url: '/posts/gblog' },
         ],
     },
     {
-        section: 'Other',
+        section: '其他',
         links: [
-            { name: 'RSS', url: '/rss.xml' },
-            { name: 'Site Map', url: '/sitemap-index.xml' },
-            { name: 'Twitter', url: 'https://x.com/godruoyi' },
+            { name: '站点地图', url: '/sitemap-index.xml' },
+            { name: 'GitHub', url: 'https://github.com/yongjian-peng' },
         ],
     },
 ]
@@ -95,7 +94,7 @@ export const SEO = {
     structuredData: {
         '@context': 'https://schema.org',
         '@type': 'WebPage',
-        'inLanguage': 'en-US',
+        'inLanguage': 'zh-CN',
         '@id': SITE.url,
         'url': SITE.url,
         'name': SITE.title,

@@ -1,44 +1,8 @@
 ---
 import type { CollectionEntry } from 'astro:content'
-import LeftSection from '@components/ui/sections/LeftSection.astro'
-import RightSection from '@components/ui/sections/RightSection.astro'
+import BlogCard from './BlogCard.astro'
 
+interface Props { blogs: CollectionEntry<'posts'>[] }
 const { blogs } = Astro.props
-
-interface Props {
-    blogs: CollectionEntry<'posts'>[]
-}
-
-const posts = blogs.slice(0, 5)
 ---
-
-{
-    posts.map((b, index) => index % 2 === 0
-        ? (
-            <LeftSection
-                title={b.data.title}
-                subTitle={b.data.description}
-                btnExists={true}
-                btnTitle="Read More"
-                btnURL=`/posts/${b.slug}`
-                img={b.data.banner}
-                imgAlt={b.data.title}
-            />
-        )
-        : (
-            <RightSection
-                title={b.data.title}
-                subTitle={b.data.description}
-                btnExists={true}
-                btnTitle="Read More"
-                btnURL=`/posts/${b.slug}`
-                img={b.data.banner}
-                imgAlt={b.data.title}
-                single={!b.data.banner2}
-                imgOne={b.data.banner}
-                imgOneAlt={b.data.title}
-                imgTwo={b.data?.banner2}
-                imgTwoAlt={b.data.title}
-            />
-        ))
-}
+<section class="container page-section panel"><div class="article-grid">{blogs.map(blog => <BlogCard blog={blog} />)}</div></section>

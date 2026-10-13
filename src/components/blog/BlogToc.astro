@@ -1,0 +1,30 @@
+---
+interface Props { headings: Array<{ depth: number, slug: string, text: string }> }
+const headings = Astro.props.headings.filter(heading => heading.depth === 2 || heading.depth === 3)
+---
+{headings.length > 0 && <details class="toc-panel panel" id="article-toc" open><summary>本文目录</summary><nav aria-label="本文目录"><ol class="toc-links">{headings.map(heading => <li class:list={{ 'toc-sub': heading.depth === 3 }}><a href={`#${heading.slug}`} data-toc-link>{heading.text}</a></li>)}</ol></nav></details>}
+<script>
+    const toc = document.querySelector<HTMLDetailsElement>('#article-toc')
+    if (toc) {
+        const media = matchMedia('(max-width: 900px)')
+        toc.open = !media.matches
+        media.addEventListener('change', () => { toc.open = !media.matches })
+        const links = [...toc.querySelectorAll<HTMLAnchorElement>('[data-toc-link]')]
+        const targets = links.map(link => document.getElementById(decodeURIComponent(link.hash.slice(1))))
+        let scheduled = false
+        function highlight() {
+            let current = 0
+            targets.forEach((target, index) => { if (target && target.getBoundingClientRect().top <= 145) { current = index } })
+            links.forEach((link, index) => {
+                link.classList.toggle('active', index === current)
+                if (index === current) { link.setAttribute('aria-current', 'location') }
+                else { link.removeAttribute('aria-current') }
+            })
+            scheduled = false
+        }
+        highlight()
+        window.addEventListener('scroll', () => {
+            if (!scheduled) { scheduled = true; requestAnimationFrame(highlight) }
+        }, { passive: true })
+    }
+</script>

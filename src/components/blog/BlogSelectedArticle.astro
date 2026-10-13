@@ -1,38 +1,8 @@
 ---
 import type { CollectionEntry } from 'astro:content'
-import Icon from '@components/ui/icons/icon.astro'
 import BlogCard from './BlogCard.astro'
 
+interface Props { posts: CollectionEntry<'posts'>[] }
 const { posts } = Astro.props
-
-interface Props {
-    posts: CollectionEntry<'posts'>[]
-}
 ---
-
-<section class="mx-auto max-w-[85rem] px-4 py-8 sm:px-6 lg:px-8 mb-10 2xl:max-w-full">
-    <div class="text-left">
-        <h2 id="selected-articel" class="mb-4 text-balance text-5xl font-extrabold tracking-tight text-neutral-800 dark:text-neutral-200">
-            Selected Article
-        </h2>
-        <p class="mb-8 max-w-prose text-pretty font-light text-neutral-600 dark:text-neutral-400 sm:text-xl">
-            Here are a few articles that I think are not bad, hope you like too.
-        </p>
-    </div>
-
-    <div class="grid gap-6 grid-cols-1 lg:grid-cols-3 sm:grid-cols-2">
-        {posts.map(b => <BlogCard blog={b} />)}
-    </div>
-
-    <div class="text-center mt-6">
-        <a
-            href="/timeline"
-            class="group inline-flex items-center justify-center gap-x-2 rounded-full px-4 py-3 text-sm font-bold text-neutral-50 ring-zinc-500 transition duration-300 focus-visible:ring outline-none border border-transparent bg-orange-400 hover:bg-orange-500 active:bg-orange-500 dark:focus:outline-none disabled:pointer-events-none disabled:opacity-50 2xl:text-base dark:ring-zinc-200"
-        >
-            <div class="flex items-center gap-x-2">
-                <p>Want to read more?</p>Go here
-                <Icon name="arrowRight" class="h-4 w-4 flex-shrink-0 transition duration-300 group-hover:translate-x-1" />
-            </div>
-        </a>
-    </div>
-</section>
+{posts.length > 0 && <section class="container page-section panel"><p class="eyebrow">值得一读</p><h2 class="section-title">精选文章</h2><div class="article-grid">{posts.map(blog => <BlogCard blog={blog} />)}</div></section>}

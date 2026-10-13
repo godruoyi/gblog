@@ -8,6 +8,6 @@ export function remarkReadingTime() {
         const textOnPage = toString(tree)
         const readingTime = getReadingTime(textOnPage)
 
-        data.astro.frontmatter.minutesRead = readingTime.text
+        data.astro.frontmatter.minutesRead = `约 ${Math.max(1, Math.ceil(readingTime.minutes))} 分钟阅读`
     }
 }

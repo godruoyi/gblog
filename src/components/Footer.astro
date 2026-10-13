@@ -1,57 +1,13 @@
 ---
+import { Image } from 'astro:assets'
 import BrandLogo from '@components/ui/logos/BrandLogo.astro'
-import Image from '@components/ui/images/Image.astro'
-import footerBanner from '@images/footer.png'
-import { FooterLinks, SITE } from '@/config'
+import mountain from '@images/theme/circuit-mountains.png'
+import { NavigationLinks, SITE } from '@/config'
 ---
 
-<footer class="w-full bg-neutral-300 dark:bg-neutral-900">
-    <div class="mx-auto w-full max-w-[85rem] px-4 py-10 sm:px-6 lg:px-16 lg:pt-20 2xl:max-w-screen-2xl">
-        <div class="grid grid-cols-2 sm:grid-cols-3 gap-6 md:grid-cols-5">
-            <div class="col-span-full flex justify-center sm:grid sm:col-span-1">
-                <BrandLogo class="h-auto w-28 rounded-full" />
-            </div>
-            {
-                FooterLinks.map(section => (
-                    <div class="col-span-1 text-center">
-                        <h3 class="font-bold text-neutral-800 dark:text-neutral-200">
-                            {section.section}
-                        </h3>
-                        <ul class="mt-3 grid space-y-3">
-                                {section.links.map((link, _index) => (
-                                        <li>
-                                            <a
-                                                href={link.url}
-                                                class="inline-flex gap-x-2 rounded-lg text-neutral-600 outline-none ring-zinc-500 transition duration-300 hover:text-neutral-500 focus-visible:ring dark:text-neutral-400 dark:ring-zinc-200 dark:hover:text-neutral-300 dark:focus:outline-none"
-                                            >
-                                                {link.name}
-                                            </a>
-                                        </li>
-                                ))}
-                            </ul>
-                    </div>
-                ))
-            }
-
-            <div class="col-span-2 flex justify-center mt-10 md:mt-0">
-                <div class="max-w-[320px] max-h-[320px] -mt-16 scale-75 hidden md:block">
-                    <Image
-                        src={footerBanner}
-                        alt={SITE.title}
-                        class="h-full w-full object-cover object-center"
-                        draggable="false"
-                        loading="eager"
-                        disableBlur={true}
-                    />
-                </div>
-            </div>
-        </div>
-
-
-        <div class="flex items-center text-center justify-center">
-            <p class="text-sm text-neutral-600 dark:text-neutral-400">
-                © <span id="current-year">2024</span> {SITE.title}
-            </p>
-        </div>
-    </div>
+<footer class="site-footer container">
+    <div class="footer-brand"><a class="brand" href="/"><BrandLogo class="brand-logo" /><span><strong>{SITE.author}</strong><small>{SITE.shortDescription}</small></span></a><p>© {new Date().getFullYear()} {SITE.author} · 保持好奇，持续记录</p></div>
+    <nav class="footer-nav" aria-label="页脚导航">{NavigationLinks.map(link => <a href={link.url}>{link.name}</a>)}</nav>
+    <div class="footer-links"><a href="https://github.com/yongjian-peng" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="/sitemap-index.xml">站点地图</a></div>
+    <Image class="footer-mountains" src={mountain} width={340} alt="" loading="lazy" />
 </footer>

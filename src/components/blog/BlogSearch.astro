@@ -1,0 +1,49 @@
+---
+import { getCollection } from 'astro:content'
+import { sortPosts } from '@support/posts'
+
+const posts = sortPosts(await getCollection('posts')).map(post => ({
+    title: post.data.title,
+    description: post.data.description,
+    tags: post.data.tags ?? [],
+    url: `/posts/${post.slug}/`,
+}))
+---
+<button class="icon-button" type="button" data-search-open aria-label="搜索文章" aria-haspopup="dialog"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" /><path d="m16 16 4.5 4.5" /></svg></button>
+<dialog class="search-dialog" id="site-search" aria-labelledby="search-title">
+    <div class="search-heading"><h2 id="search-title">搜索文章</h2><form method="dialog"><button class="icon-button" aria-label="关闭搜索">×</button></form></div>
+    <label for="search-input" class="search-label">在标题、摘要和标签中查找</label>
+    <div class="search-field"><input id="search-input" type="search" placeholder="输入关键词，如 Astro、开发工具…" autocomplete="off" /><button type="button" data-search-clear>清空</button></div>
+    <p class="search-status" aria-live="polite" data-search-status>共 {posts.length} 篇文章</p>
+    <ul class="search-results">{posts.map(post => <li data-search-url={post.url}><a href={post.url}><strong>{post.title}</strong><span>{post.description}</span><small>{post.tags.join(' · ')}</small></a></li>)}</ul>
+    <p class="search-empty" data-search-empty hidden>没有找到相关文章，试试其他关键词。</p>
+    <p class="search-hint">按 Esc 关闭 · 点击文章开始阅读</p>
+    <script type="application/json" id="search-data" set:html={JSON.stringify(posts).replaceAll('<', '\\u003c')} />
+</dialog>
+<script>
+    import { filterPosts } from '@support/search'
+    import type { SearchEntry } from '@support/search'
+
+    const dialog = document.querySelector<HTMLDialogElement>('#site-search')!
+    const input = dialog.querySelector<HTMLInputElement>('#search-input')!
+    const opener = document.querySelector<HTMLButtonElement>('[data-search-open]')!
+    const posts: SearchEntry[] = JSON.parse(document.querySelector('#search-data')!.textContent!)
+    const rows = [...dialog.querySelectorAll<HTMLElement>('[data-search-url]')]
+    function renderResults() {
+        const matches = filterPosts(posts, input.value)
+        const urls = new Set(matches.map(post => post.url))
+        rows.forEach(row => { row.hidden = !urls.has(row.dataset.searchUrl!) })
+        dialog.querySelector<HTMLElement>('[data-search-empty]')!.hidden = matches.length > 0
+        dialog.querySelector('[data-search-status]')!.textContent = `找到 ${matches.length} 篇文章`
+    }
+    opener.addEventListener('click', () => { dialog.showModal(); input.focus() })
+    input.addEventListener('input', renderResults)
+    dialog.querySelector('[data-search-clear]')!.addEventListener('click', () => { input.value = ''; renderResults(); input.focus() })
+    dialog.addEventListener('close', () => opener.focus())
+    dialog.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+            event.preventDefault()
+            dialog.close()
+        }
+    })
+</script>
